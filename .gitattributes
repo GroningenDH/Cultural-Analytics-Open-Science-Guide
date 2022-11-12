@@ -1,3 +1,9 @@
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.jsonl filter=lfs diff=lfs merge=lfs -text
+.csv filter=lfs diff=lfs merge=lfs -text
+.jsonl filter=lfs diff=lfs merge=lfs -text
+.mp4 filter=lfs diff=lfs merge=lfs -text
 MenuItem.csv filter=lfs diff=lfs merge=lfs -text
 Seattle_Book_Checkouts_2010_2017.csv filter=lfs diff=lfs merge=lfs -text
 Terminal-Keep-In-Dock.mp4 filter=lfs diff=lfs merge=lfs -text
