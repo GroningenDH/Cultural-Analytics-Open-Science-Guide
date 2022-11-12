@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cultural Analytics Open Science Guide - 16&nbsp; Pandas Basics — Part 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" rel="next">
+<link href="../code/02-Data-Analysis.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../" class="sidebar-logo-link">
+      <img src="../images/dh_gro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Cultural Analytics Open Science Guide</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="" title="Personal account" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://signon.rug.nl/nidp/app/login?id=100&amp;sid=2&amp;option=credential&amp;sid=2">
+          Login to your student account
+          </a>
+        </li>
+    </ul>
+    <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://www.rug.nl/research/research-let/expertisecentra/centre-for-digital-humanities/" title="Center for Digital Humanities - University of Groningen" class="sidebar-tool px-1"><i class="bi bi-house"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/00-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datasets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/version_control.html" class="sidebar-item-text sidebar-link">Version Control</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/01-The-Command-Line.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Command Line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">General Workflow of a Vercion Control System (VCS)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-merge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Merging Branches in Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-interactive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive, Visual Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/github-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/the-clone-wars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Clone Wars</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Git Summary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Version Control for Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/02-Data-Analysis.html" class="sidebar-item-text sidebar-link">Data Analysis (Pandas)</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03-Pandas-Basics-Part1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04-Pandas-Basics-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04.5-Pandas-Basics-Part2-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Pandas Basics Part 2 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05-Pandas-Basics-Part3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05.5-Pandas-Basics-Part3-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Pandas Basics Part 3 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/06-Pandas-Basics-More-Methods-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Pandas Basics — More Useful Methods — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/07-Pandas-Merge-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Pandas — Merge Datasets</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/08-Data-Collection.html" class="sidebar-item-text sidebar-link">Data Collection</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10-Web-Scraping-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10.5-Web-Scraping-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Web Scraping Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/11-Web-Scraping-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13-What-Is-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Application Programming Interfaces (APIs)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13.5-APIs-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">APIs — Workbook</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Data collection examples</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/14-Song-Genius.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Song Genius Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/15-Genius-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Song Genius API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/16-Collect-Genius-Lyrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Song Lyrics Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/17-Lyrics-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Song Lyrics Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/18-Twitter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Twitter Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/19-Twitter-API-Setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Twitter API Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/20-Twitter-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Twitter Data Collection &amp; Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/21-Twitter-Data-Sharing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Twitter Data Sharing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/22-Reddit-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">References</span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset"><span class="toc-section-number">16.1</span>  Dataset</a>
+  <ul>
+  <li><a href="#the-bellevue-almshouse-dataset" id="toc-the-bellevue-almshouse-dataset" class="nav-link" data-scroll-target="#the-bellevue-almshouse-dataset"><span class="toc-section-number">16.1.1</span>  The Bellevue Almshouse Dataset</a></li>
+  </ul></li>
+  <li><a href="#import-pandas" id="toc-import-pandas" class="nav-link" data-scroll-target="#import-pandas"><span class="toc-section-number">16.2</span>  Import Pandas</a></li>
+  <li><a href="#set-display-settings" id="toc-set-display-settings" class="nav-link" data-scroll-target="#set-display-settings"><span class="toc-section-number">16.3</span>  Set Display Settings</a></li>
+  <li><a href="#read-in-csv-file" id="toc-read-in-csv-file" class="nav-link" data-scroll-target="#read-in-csv-file"><span class="toc-section-number">16.4</span>  Read in CSV File</a></li>
+  <li><a href="#display-data" id="toc-display-data" class="nav-link" data-scroll-target="#display-data"><span class="toc-section-number">16.5</span>  Display Data</a>
+  <ul>
+  <li><a href="#display-first-n-rows" id="toc-display-first-n-rows" class="nav-link" data-scroll-target="#display-first-n-rows"><span class="toc-section-number">16.5.1</span>  Display First <em>n</em> Rows</a></li>
+  <li><a href="#display-random-sample" id="toc-display-random-sample" class="nav-link" data-scroll-target="#display-random-sample"><span class="toc-section-number">16.5.2</span>  Display Random Sample</a></li>
+  </ul></li>
+  <li><a href="#get-info" id="toc-get-info" class="nav-link" data-scroll-target="#get-info"><span class="toc-section-number">16.6</span>  Get Info</a></li>
+  <li><a href="#calculate-summary-statistics" id="toc-calculate-summary-statistics" class="nav-link" data-scroll-target="#calculate-summary-statistics"><span class="toc-section-number">16.7</span>  Calculate Summary Statistics</a></li>
+  <li><a href="#select-columns" id="toc-select-columns" class="nav-link" data-scroll-target="#select-columns"><span class="toc-section-number">16.8</span>  Select Columns</a></li>
+  <li><a href="#count-values" id="toc-count-values" class="nav-link" data-scroll-target="#count-values"><span class="toc-section-number">16.9</span>  Count Values</a></li>
+  <li><a href="#make-and-save-plots" id="toc-make-and-save-plots" class="nav-link" data-scroll-target="#make-and-save-plots"><span class="toc-section-number">16.10</span>  Make and Save Plots</a></li>
+  <li><a href="#filtersubset-data" id="toc-filtersubset-data" class="nav-link" data-scroll-target="#filtersubset-data"><span class="toc-section-number">16.11</span>  Filter/Subset Data</a></li>
+  <li><a href="#write-to-csv" id="toc-write-to-csv" class="nav-link" data-scroll-target="#write-to-csv"><span class="toc-section-number">16.12</span>  Write to CSV</a></li>
+  <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources"><span class="toc-section-number">16.13</span>  Further Resources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p><em>Note: You can explore the <a href="https://mybinder.org/v2/gh/melaniewalsh/Intro-Cultural-Analytics/master?urlpath=lab/tree/book/03-Data-Analysis/workbooks/01.5-Pandas-Basics-Part1-WORKBOOK.ipynb">associated workbook</a> for this chapter in the cloud.</em></p>
+<p>In this lesson, we’re going to introduce some of the basics of <a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html">Pandas</a>, a powerful Python library for working with tabular data like CSV files.</p>
+<p>We will cover how to:</p>
+<ul>
+<li>Import Pandas</li>
+<li>Read in a CSV file</li>
+<li>Explore and filter data</li>
+<li>Make simple plots and data visualizations</li>
+<li>Write a CSV file</li>
+</ul>
+<hr>
+<section id="dataset" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="dataset"><span class="header-section-number">16.1</span> Dataset</h2>
+<section id="the-bellevue-almshouse-dataset" class="level3" data-number="16.1.1">
+<h3 data-number="16.1.1" class="anchored" data-anchor-id="the-bellevue-almshouse-dataset"><span class="header-section-number">16.1.1</span> The Bellevue Almshouse Dataset</h3>
+<blockquote class="epigraph blockquote" style=" padding: 10px">
+<p>Nineteenth-century immigration data was produced with the express purpose of reducing people to bodies; bodies to easily quantifiable aspects; and assigning value to those aspects which proved that the marginalized people to who they belonged were worth less than their elite counterparts.</p>
+-Anelise Shrout, <a href="https://crdh.rrchnm.org/essays/v01-10-(re)-humanizing-data/">“(Re)Humanizing Data”</a>
+</blockquote>
+<p>The dataset that we’re working with in this lesson is the <a href="https://www.nyuirish.net/almshouse/the-almshouse-records/">Bellevue Almshouse Dataset</a>, created by historian and DH scholar Anelise Shrout. It includes information about Irish-born immigrants who were admitted to New York City’s Bellevue Almshouse in the 1840s.</p>
+<p>The Bellevue Almshouse was part of New York City’s public health system, a place where poor, sick, homeless, and otherwise marginalized people were sent — sometimes voluntarily and sometimes forcibly. Devastated by widespread famine in Ireland, many Irish people fled their homes for New York City in the 1840s, and many of them ended up in the Bellevue Almshouse.</p>
+<p>We’re using the <a href="https://www.nyuirish.net/almshouse/the-almshouse-records/">Bellevue Almshouse Dataset</a> to practice data analysis with Pandas because we want to think deeply about the consequences of reducing human life to data. As Shrout argues in <a href="https://crdh.rrchnm.org/essays/v01-10-(re)-humanizing-data/">her essay</a>, this data purposely reduced people to bodies and “easily quantifiable aspects” in order to devalue their lives, potentially enacting “both epistemic and physical violence” on them.</p>
+<p>We want to think about how responsible data analysis requires more than just technical tools like Pandas. It also requires an interrogation of the data. Who collected this data? How and why was this data collected? What assumptions are present in this data? What are the consequences of this data in the world? What does this data reflect about the world? For example, Shrout claims that the “Bellevue administrators framed any ailments or difficulties inmates might have had as a consequence of [their immigration] status” — perhaps best exemplified by the fact that a frequent “disease” in the dataset is “recent emigrant.” Below we’re going to explore the prevalence of “recent emigrant” in the data as well as other salient patterns.</p>
+<hr>
+</section>
+</section>
+<section id="import-pandas" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="import-pandas"><span class="header-section-number">16.2</span> Import Pandas</h2>
+<div class="admonition note" name="html-admonition" style="background: lightblue; padding: 10px">
+<p class="title">
+Note
+</p>
+<p>If you installed Python with Anaconda, you should already have Pandas installed. If you did not install Python with Anaconda, see <a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html/">Pandas Installation.</a></p>
+</div>
+<p>To use the Pandas library, we first need to <code>import</code> it.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above <code>import</code> statement not only imports the Pandas library but also gives it an alias or nickname — <code>pd</code>. This alias will save us from having to type out the entire words <code>pandas</code> each time we need to use it. Many Python libraries have commonly used aliases like <code>pd</code>.</p>
+</section>
+<section id="set-display-settings" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="set-display-settings"><span class="header-section-number">16.3</span> Set Display Settings</h2>
+<p>By default, Pandas will display 60 rows and 20 columns. I often change <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/options.html">Pandas’ default display settings</a> to show more rows or columns.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="read-in-csv-file" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="read-in-csv-file"><span class="header-section-number">16.4</span> Read in CSV File</h2>
+<p>To read in a CSV file, we will use the function <code>pd.read_csv()</code> and insert the name of our desired file path.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bellevue_df <span class="op">=</span> pd.read_csv(<span class="st">'../data/bellevue_almshouse_modified.csv'</span>, delimiter<span class="op">=</span><span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This creates a Pandas <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">DataFrame object</a> — often abbreviated as <em>df</em>, e.g., <em>bellevue_df</em>. A DataFrame looks and acts a lot like a spreadsheet. But it has special powers and functions that we will discuss in the next few lessons.</p>
+<p>When reading in the CSV file, we also specified the <code>encoding</code> and <code>delimiter</code>. The <code>delimiter</code> specifies the character that separates or “delimits” the columns in our dataset. For CSV files, the delimiter will most often be a comma. (CSV is short for <em>Comma Separated Values</em>.) Sometimes, however, the delimiter of a CSV file might be a tab (<code>\t</code>) or, more rarely, another character.</p>
+</section>
+<section id="display-data" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="display-data"><span class="header-section-number">16.5</span> Display Data</h2>
+<p>We can display a DataFrame in a Jupyter notebook simply by running a cell with the variable name of the DataFrame.</p>
+<div class="admonition pandasreview" name="html-admonition" style="background: black; color: white; padding: 10px">
+<p class="title">
+Pandas Review
+</p>
+<p><code>NaN</code> is the Pandas value for any missing data. See <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html?highlight=nan/">“Working with missing data”</a> for more information.</p>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>bellevue_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>gender</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1847-04-17</td>
+      <td>Mary</td>
+      <td>Gallagher</td>
+      <td>28.0</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>w</td>
+      <td>Child Alana 10 days</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1847-04-08</td>
+      <td>John</td>
+      <td>Sanin (?)</td>
+      <td>19.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Catherine 2 mo</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1847-04-17</td>
+      <td>Anthony</td>
+      <td>Clark</td>
+      <td>60.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Charles Riley afed 10 days</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1847-04-08</td>
+      <td>Lawrence</td>
+      <td>Feeney</td>
+      <td>32.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Child</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1847-04-13</td>
+      <td>Henry</td>
+      <td>Joyce</td>
+      <td>21.0</td>
+      <td>recent emigrant</td>
+      <td>NaN</td>
+      <td>m</td>
+      <td>Child 1 mo</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9579</th>
+      <td>1847-06-17</td>
+      <td>Mary</td>
+      <td>Smith</td>
+      <td>47.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9580</th>
+      <td>1847-06-22</td>
+      <td>Francis</td>
+      <td>Riley</td>
+      <td>29.0</td>
+      <td>lame</td>
+      <td>superintendent</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9581</th>
+      <td>1847-07-02</td>
+      <td>Martin</td>
+      <td>Dunn</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9582</th>
+      <td>1847-07-08</td>
+      <td>Elizabeth</td>
+      <td>Post</td>
+      <td>32.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9583</th>
+      <td>1847-04-28</td>
+      <td>Bridget</td>
+      <td>Ryan</td>
+      <td>28.0</td>
+      <td>destitution</td>
+      <td>spinster</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>9584 rows × 8 columns</p>
+</div>
+</div>
+</div>
+<p>There are a few important things to note about the DataFrame displayed here:</p>
+<ul>
+<li>Index
+<ul>
+<li>The bolded ascending numbers in the very left-hand column of the DataFrame is called the Pandas <em>Index</em>. You can select rows based on the Index.</li>
+<li>By default, the Index is a sequence of numbers starting with zero. However, you can change the Index to something else, such as one of the columns in your dataset.</li>
+</ul></li>
+<li>Truncation
+<ul>
+<li>The DataFrame is truncated, signaled by the ellipses in the middle <code>...</code> of every column.</li>
+<li>The DataFrame is truncated because we set our default display settings to 100 rows. Anything more than 100 rows will be truncated. To display all the rows, we would need to alter Pandas’ default display settings yet again.</li>
+</ul></li>
+<li>Rows x Columns
+<ul>
+<li>Pandas reports how many rows and columns are in this dataset at the bottom of the output (9584 x 8 columns).</li>
+<li>This is very useful!</li>
+</ul></li>
+</ul>
+<section id="display-first-n-rows" class="level3" data-number="16.5.1">
+<h3 data-number="16.5.1" class="anchored" data-anchor-id="display-first-n-rows"><span class="header-section-number">16.5.1</span> Display First <em>n</em> Rows</h3>
+<p>To look at the first <em>n</em> rows in a DataFrame, we can use a method called <code>.head()</code>.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>gender</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1847-04-17</td>
+      <td>Mary</td>
+      <td>Gallagher</td>
+      <td>28.0</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>w</td>
+      <td>Child Alana 10 days</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1847-04-08</td>
+      <td>John</td>
+      <td>Sanin (?)</td>
+      <td>19.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Catherine 2 mo</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>gender</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1847-04-17</td>
+      <td>Mary</td>
+      <td>Gallagher</td>
+      <td>28.0</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>w</td>
+      <td>Child Alana 10 days</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1847-04-08</td>
+      <td>John</td>
+      <td>Sanin (?)</td>
+      <td>19.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Catherine 2 mo</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1847-04-17</td>
+      <td>Anthony</td>
+      <td>Clark</td>
+      <td>60.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Charles Riley afed 10 days</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1847-04-08</td>
+      <td>Lawrence</td>
+      <td>Feeney</td>
+      <td>32.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Child</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1847-04-13</td>
+      <td>Henry</td>
+      <td>Joyce</td>
+      <td>21.0</td>
+      <td>recent emigrant</td>
+      <td>NaN</td>
+      <td>m</td>
+      <td>Child 1 mo</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1847-04-14</td>
+      <td>Bridget</td>
+      <td>Hart</td>
+      <td>20.0</td>
+      <td>recent emigrant</td>
+      <td>spinster</td>
+      <td>w</td>
+      <td>Child</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1847-04-14</td>
+      <td>Mary</td>
+      <td>Green</td>
+      <td>40.0</td>
+      <td>recent emigrant</td>
+      <td>spinster</td>
+      <td>w</td>
+      <td>And child 2 months</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1847-04-19</td>
+      <td>Daniel</td>
+      <td>Loftus</td>
+      <td>27.0</td>
+      <td>destitution</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1847-04-10</td>
+      <td>James</td>
+      <td>Day</td>
+      <td>35.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1847-04-10</td>
+      <td>Margaret</td>
+      <td>Farrell</td>
+      <td>30.0</td>
+      <td>recent emigrant</td>
+      <td>widow</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="display-random-sample" class="level3" data-number="16.5.2">
+<h3 data-number="16.5.2" class="anchored" data-anchor-id="display-random-sample"><span class="header-section-number">16.5.2</span> Display Random Sample</h3>
+<p>To look at a random sample of rows, we can use the <code>.sample()</code> method.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>gender</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5768</th>
+      <td>1847-10-27</td>
+      <td>Elizabeth</td>
+      <td>Phinney</td>
+      <td>40.0</td>
+      <td>destitution</td>
+      <td>seamstress</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>1847-03-01</td>
+      <td>Catherine</td>
+      <td>Mullin</td>
+      <td>1.0</td>
+      <td>recent emigrant</td>
+      <td>NaN</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1397</th>
+      <td>1847-04-30</td>
+      <td>Mary Anne</td>
+      <td>Graham</td>
+      <td>30.0</td>
+      <td>sickness</td>
+      <td>widow</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7170</th>
+      <td>1847-10-22</td>
+      <td>Ellen</td>
+      <td>Reynolds</td>
+      <td>18.0</td>
+      <td>sickness</td>
+      <td>spinster</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8203</th>
+      <td>1847-05-19</td>
+      <td>Richard</td>
+      <td>Hennesy</td>
+      <td>63.0</td>
+      <td>destitution</td>
+      <td>baker</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1708</th>
+      <td>1847-03-13</td>
+      <td>Patrick</td>
+      <td>Kane</td>
+      <td>52.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4026</th>
+      <td>1846-08-05</td>
+      <td>Henry</td>
+      <td>Reddy</td>
+      <td>33.0</td>
+      <td>NaN</td>
+      <td>peddler</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3108</th>
+      <td>1846-01-07</td>
+      <td>Rhoda (Johanna)</td>
+      <td>Dunn</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>widow</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5313</th>
+      <td>1847-03-22</td>
+      <td>Terence</td>
+      <td>Smith</td>
+      <td>37.0</td>
+      <td>sickness</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8043</th>
+      <td>1846-08-03</td>
+      <td>Eliza</td>
+      <td>Duffy</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>spinster</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="get-info" class="level2" data-number="16.6">
+<h2 data-number="16.6" class="anchored" data-anchor-id="get-info"><span class="header-section-number">16.6</span> Get Info</h2>
+<p>To get important info about all the columns in the DataFrame, we can use <code>.info()</code>.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 9584 entries, 0 to 9583
+Data columns (total 8 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   date_in     9584 non-null   object 
+ 1   first_name  9580 non-null   object 
+ 2   last_name   9584 non-null   object 
+ 3   age         9534 non-null   float64
+ 4   disease     6497 non-null   object 
+ 5   profession  8565 non-null   object 
+ 6   gender      9584 non-null   object 
+ 7   children    37 non-null     object 
+dtypes: float64(1), object(7)
+memory usage: 599.1+ KB</code></pre>
+</div>
+</div>
+<p>This report will tell us how many non-null, or non-blank, values are in each column, as well as what <em>type</em> of data is in each column.</p>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 87%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Pandas Data Type</strong></th>
+<th style="text-align: center;"><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>object</code></td>
+<td style="text-align: center;">string</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>float64</code></td>
+<td style="text-align: center;">float</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>int64</code></td>
+<td style="text-align: center;">integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>datetime64</code></td>
+<td style="text-align: center;">date time</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="calculate-summary-statistics" class="level2" data-number="16.7">
+<h2 data-number="16.7" class="anchored" data-anchor-id="calculate-summary-statistics"><span class="header-section-number">16.7</span> Calculate Summary Statistics</h2>
+<p>To calculate summary statistics for every column in our DataFrame, we can use the <code>.describe()</code> method.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>9534.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>30.332604</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.179608</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.080000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>21.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>28.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>39.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>97.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>By default, <code>.describe()</code> will only compute columns with numerical data. To include all columns, we can use <code>include='all</code>.</p>
+<div class="admonition pandasreview" name="html-admonition" style="background: black; color: white; padding: 10px">
+<p class="title">
+Pandas Review
+</p>
+<p><code>NaN</code> is the Pandas value for any missing data. See <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html?highlight=nan/">“Working with missing data”</a> for more information.</p>
+</div>
+<div class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="109">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>gender</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>9584</td>
+      <td>9580</td>
+      <td>9584</td>
+      <td>9534.000000</td>
+      <td>6497</td>
+      <td>8565</td>
+      <td>9584</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>653</td>
+      <td>523</td>
+      <td>3142</td>
+      <td>NaN</td>
+      <td>75</td>
+      <td>172</td>
+      <td>5</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>1847-05-24 00:00:00</td>
+      <td>Mary</td>
+      <td>Kelly</td>
+      <td>NaN</td>
+      <td>sickness</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Child</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>113</td>
+      <td>979</td>
+      <td>137</td>
+      <td>NaN</td>
+      <td>2706</td>
+      <td>3108</td>
+      <td>4958</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>first</th>
+      <td>1846-01-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>last</th>
+      <td>1847-12-31 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30.332604</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.179608</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.080000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>28.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>39.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>97.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Here are some insights that can be gleaned from these summary statistics: - For the column <strong>date_in</strong>, the earliest recorded admission to the Bellevue Almshouse (<strong>first</strong>) is 1846-01-01 and the latest (<strong>last</strong>) is 1847-12-31 - For the column <strong>first_name</strong>, the most frequently occurring first name (<strong>top</strong>) is Mary, which appears 979 times (<strong>freq</strong>) - For the column <strong>last_name</strong>, the most frequently occurring last name (<strong>top</strong>) is Kelly, which appears 137 times (<strong>freq</strong>) - For the column <strong>age</strong>, average age in the dataset (<strong>mean</strong>) is 30, the youngest (<strong>min</strong>) is .8, and the oldest (<strong>max</strong>) is 97 - For the columns <strong>disease</strong> and <strong>profession</strong>, there are 75 unique (<strong>unique</strong>) diseases and 172 unique (<strong>unique</strong>) professions - For the column <strong>children</strong>, there are 37 rows that include information about children (<strong>count</strong>) (i.e., rows that do not have blank values)</p>
+</section>
+<section id="select-columns" class="level2" data-number="16.8">
+<h2 data-number="16.8" class="anchored" data-anchor-id="select-columns"><span class="header-section-number">16.8</span> Select Columns</h2>
+<p>To select a column from the DataFrame, we will type the name of the DataFrame followed by square brackets and a column name in quotations marks.</p>
+<div class="cell" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'disease'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="110">
+<pre><code>0       recent emigrant
+1       recent emigrant
+2       recent emigrant
+3       recent emigrant
+4       recent emigrant
+             ...       
+9579                NaN
+9580               lame
+9581                NaN
+9582                NaN
+9583        destitution
+Name: disease, Length: 9584, dtype: object</code></pre>
+</div>
+</div>
+<div class="admonition pythonreview" name="html-admonition" style="background: lightgreen; padding: 10px">
+<p class="title">
+Python Review
+</p>
+<p><strong>Dictionary</strong></p>
+<p><code> person1 = {“name”: “Mary Gallagher”, “age”: 28, “profession”: “married”} </code></p>
+<p><strong>Key</strong> -&gt; <strong>Value</strong> <code> person1[‘name’] —&gt; “Mary Gallagher” </code></p>
+<p>Technically, a single column in a DataFrame is a <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dsintro"><em>Series</em> object</a>.</p>
+<div class="cell" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(bellevue_df[<span class="st">'disease'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="111">
+<pre><code>pandas.core.series.Series</code></pre>
+</div>
+</div>
+<p>A Series object displays differently than a DataFrame object. To select a column as a DataFrame and not as a Series object, we will use two square brackets.</p>
+<div class="cell" data-execution_count="112">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[[<span class="st">'disease'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="112">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>disease</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9579</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9580</th>
+      <td>lame</td>
+    </tr>
+    <tr>
+      <th>9581</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9582</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9583</th>
+      <td>destitution</td>
+    </tr>
+  </tbody>
+</table>
+<p>9584 rows × 1 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="113">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(bellevue_df[[<span class="st">'disease'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="113">
+<pre><code>pandas.core.frame.DataFrame</code></pre>
+</div>
+</div>
+<p>By using two square brackets, we can also select multiple columns at the same time.</p>
+<div class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[[<span class="st">'first_name'</span>, <span class="st">'last_name'</span>, <span class="st">'disease'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="114">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>disease</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mary</td>
+      <td>Gallagher</td>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>John</td>
+      <td>Sanin (?)</td>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Anthony</td>
+      <td>Clark</td>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Lawrence</td>
+      <td>Feeney</td>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Henry</td>
+      <td>Joyce</td>
+      <td>recent emigrant</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9579</th>
+      <td>Mary</td>
+      <td>Smith</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9580</th>
+      <td>Francis</td>
+      <td>Riley</td>
+      <td>lame</td>
+    </tr>
+    <tr>
+      <th>9581</th>
+      <td>Martin</td>
+      <td>Dunn</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9582</th>
+      <td>Elizabeth</td>
+      <td>Post</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9583</th>
+      <td>Bridget</td>
+      <td>Ryan</td>
+      <td>destitution</td>
+    </tr>
+  </tbody>
+</table>
+<p>9584 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<pre class="{warning}"><code>Heads up! The code below will cause an error.</code></pre>
+<p>See what happens if we try to select multiple columns as a Series…</p>
+<div class="cell" data-tags="[&quot;hide-output&quot;]" data-execution_count="115">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'first_name'</span>, <span class="st">'last_name'</span>, <span class="st">'disease'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>KeyError: ('first_name', 'last_name', 'disease')</code></pre>
+</div>
+</div>
+</div></section>
+<section id="count-values" class="level2" data-number="16.9">
+<h2 data-number="16.9" class="anchored" data-anchor-id="count-values"><span class="header-section-number">16.9</span> Count Values</h2>
+<p>To count the number of <em>unique</em> values in a column, we can use the <code>.value_counts()</code> method.</p>
+<p>```{sidebar} On Bellevue Almshouse “Diseases” &gt; Some were diagnosed with medically recognizable illnesses, including “fever,” “dropsy” and “neuralgia.” Others were diagnosed with “diseases” that made visible the ways in which immigrants were failing to meet the expectations of urban citizenship. These included “destitution” and “recent emigrant.” Neither of these diagnoses reflected an immigrant’s health. Nevertheless, they were treated as pathologies, and those pathologies governed city officials perceptions of immigrants. Sickness, injuries or destitution were subsumed under the pathology of “recent emigrant.” This diagnosis also determined immigrants’ paths through the New York City public health system.</p>
+<p>-Anelise Shrout, <a href="https://crdh.rrchnm.org/essays/v01-10-(re)-humanizing-data/">“(Re)Humanizing Data: Digitally Navigating the Bellevue Almshouse”</a></p>
+<pre><code>
+::: {.cell scrolled='true' execution_count=116}
+``` {.python .cell-code}
+bellevue_df['disease'].value_counts()</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="116">
+<pre><code>sickness           2706
+recent emigrant    1974
+destitution         841
+fever               192
+insane              138
+pregnant            134
+sore                 79
+intemperance         71
+illegible            47
+typhus               46
+injuries             31
+ulcers               26
+ophthalmia           19
+vagrant              17
+lame                 15
+debility             11
+rheumatism           11
+bronchitis            9
+blind                 9
+dropsy                8
+phthisis              8
+old age               7
+syphilis              7
+erysipelas            6
+dysentery             6
+diarrhea              6
+broken bone           5
+cripple               5
+measles               3
+burn                  3
+drunkenness           3
+abandonment           2
+scrofula              2
+tuberculosis          2
+delusion dreams       2
+jaundice              2
+pneumonia             2
+sprain                2
+scarletina            2
+fits                  2
+piles                 2
+ascites               1
+sunburn               1
+colic                 1
+ungovernable          1
+del femur             1
+congested head        1
+hernia                1
+cut                   1
+tumor                 1
+eczema                1
+emotional             1
+paralysis             1
+orchitis              1
+neuralgia             1
+contusion             1
+asthma                1
+beggar                1
+from trial            1
+disabled              1
+hypochondria          1
+ague                  1
+abscess               1
+bleeding              1
+spinal disease        1
+smallpox              1
+severed limb          1
+horrors               1
+throat cut            1
+seizure               1
+rickets               1
+phagadaena            1
+deaf                  1
+bruise                1
+poorly                1
+Name: disease, dtype: int64</code></pre>
+</div>
+<p>:::</p>
+<p>Look through the so-called “diseases” recorded in the Bellevue Almshouse data and consider what these categories reflect about New York City in the 1840s, particularly with regard to immigration status.</p>
+<p>To select the top 10 most frequent values in the “disease” column, we can combine <code>value_counts()</code> with regular Python list slicing.</p>
+<div class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'disease'</span>].value_counts()[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="117">
+<pre><code>sickness           2706
+recent emigrant    1974
+destitution         841
+fever               192
+insane              138
+pregnant            134
+sore                 79
+intemperance         71
+illegible            47
+typhus               46
+Name: disease, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="119">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'profession'</span>].value_counts()[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="119">
+<pre><code>laborer       3108
+married       1584
+spinster      1521
+widow         1053
+shoemaker      158
+tailor         116
+blacksmith     104
+mason           98
+weaver          66
+carpenter       65
+Name: profession, dtype: int64</code></pre>
+</div>
+</div>
+<p>In a similar vein, consider what these “professions” reflect about New York City in the 1840s.</p>
+</section>
+<section id="make-and-save-plots" class="level2" data-number="16.10">
+<h2 data-number="16.10" class="anchored" data-anchor-id="make-and-save-plots"><span class="header-section-number">16.10</span> Make and Save Plots</h2>
+<p>Pandas makes it easy to create plots and data visualizations. We can make a simple plot by adding <code>.plot()</code> to any DataFrame or Series object that has appropriate numeric data.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'disease'</span>].value_counts()[:<span class="dv">10</span>].plot(kind<span class="op">=</span><span class="st">'bar'</span>, title<span class="op">=</span><span class="st">'Bellevue Almshouse:</span><span class="ch">\n</span><span class="st">Most Frequent "Diseases"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x112db7f10&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="03-Pandas-Basics-Part1_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We specify the title with the <code>title=</code> parameter and the kind of plot by altering the <code>kind=</code> parameter: * ‘bar’ or ‘barh’ for bar plots</p>
+<ul>
+<li><p>‘hist’ for histogram</p></li>
+<li><p>‘box’ for boxplot</p></li>
+<li><p>‘kde’ or ‘density’ for density plots</p></li>
+<li><p>‘area’ for area plots</p></li>
+<li><p>‘scatter’ for scatter plots</p></li>
+<li><p>‘hexbin’ for hexagonal bin plots</p></li>
+<li><p>‘pie’ for pie plots</p></li>
+</ul>
+<p>For example, to make a horizontal bar chart, we can set <code>kind='barh'</code></p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'disease'</span>].value_counts()[:<span class="dv">10</span>].plot(kind<span class="op">=</span><span class="st">'barh'</span>,title<span class="op">=</span><span class="st">'Bellevue Almshouse:</span><span class="ch">\n</span><span class="st">Most Frequent "Diseases"'</span>).get_figure().savefig(<span class="st">'Bellevue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="03-Pandas-Basics-Part1_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>To make a pie chart, we can set <code>kind='pie'</code></p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'profession'</span>].value_counts()[:<span class="dv">10</span>].plot(kind<span class="op">=</span><span class="st">'pie'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>), title<span class="op">=</span><span class="st">'Bellevue Almshouse:</span><span class="ch">\n</span><span class="st">Most Frequent "Professions"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1130ee590&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="03-Pandas-Basics-Part1_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>To save a plot as an image file or PDF file, we can assign the plot to a variable called <code>ax</code>, short for axes.</p>
+<p>Then we can use <code>ax.figure.savefig('FILE-NAME.png')</code> or <code>ax.figure.savefig('FILE-NAME.pdf')</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> bellevue_df[<span class="st">'profession'</span>].value_counts()[:<span class="dv">10</span>].plot(kind<span class="op">=</span><span class="st">'pie'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>), title<span class="op">=</span><span class="st">'Bellevue Almshouse:</span><span class="ch">\n</span><span class="st">Most Frequent "Professions"'</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>ax.figure.savefig(<span class="st">'Bellevue-professions_pie-chart.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If your plot is being cut off in the image, see Pandas Basics Part 2 (“Prevent Labels From Getting Cut Off”).</p>
+</section>
+<section id="filtersubset-data" class="level2" data-number="16.11">
+<h2 data-number="16.11" class="anchored" data-anchor-id="filtersubset-data"><span class="header-section-number">16.11</span> Filter/Subset Data</h2>
+<p>We can filter a Pandas DataFrame to select only certain values. Filtering data by certain values is similar to selecting columns.</p>
+<p>We type the name of the DataFrame followed by square brackets and then, instead of inserting a column name, we insert a True/False condition. For example, to select only rows that contain the value “teacher,” we insert the condition <code>bellevue_df['profession'] == 'teacher'</code></p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[bellevue_df[<span class="st">'profession'</span>] <span class="op">==</span> <span class="st">'teacher'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>gender</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2195</th>
+      <td>1847-03-12</td>
+      <td>Michael</td>
+      <td>Rush</td>
+      <td>40.0</td>
+      <td>recent emigrant</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2692</th>
+      <td>1846-03-11</td>
+      <td>Thomas</td>
+      <td>Brady</td>
+      <td>45.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3773</th>
+      <td>1846-07-06</td>
+      <td>Henry</td>
+      <td>Dunlap</td>
+      <td>66.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4283</th>
+      <td>1846-09-03</td>
+      <td>John B.</td>
+      <td>Murray</td>
+      <td>45.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4286</th>
+      <td>1846-09-03</td>
+      <td>Alexander</td>
+      <td>Alcock</td>
+      <td>46.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4611</th>
+      <td>1846-10-15</td>
+      <td>John</td>
+      <td>Dillon</td>
+      <td>32.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5224</th>
+      <td>1847-03-01</td>
+      <td>George F.</td>
+      <td>Robins</td>
+      <td>57.0</td>
+      <td>destitution</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6251</th>
+      <td>1847-08-05</td>
+      <td>Patrick</td>
+      <td>McGowen</td>
+      <td>24.0</td>
+      <td>sickness</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8293</th>
+      <td>1847-05-27</td>
+      <td>William</td>
+      <td>Smith</td>
+      <td>29.0</td>
+      <td>destitution</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8641</th>
+      <td>1847-06-23</td>
+      <td>Thomas</td>
+      <td>Gleason</td>
+      <td>50.0</td>
+      <td>sickness</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>It can be helpful to isolate this condition and see that it produces a long list of True/False pairs for every row.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'profession'</span>] <span class="op">==</span> <span class="st">'teacher'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>0       False
+1       False
+2       False
+3       False
+4       False
+        ...  
+9579    False
+9580    False
+9581    False
+9582    False
+9583    False
+Name: profession, Length: 9584, dtype: bool</code></pre>
+</div>
+</div>
+<p>Filtering DataFrames can sometimes get confusing and unwieldy (as conditions within conditions pile up like Russian dolls). It can be helpful to make a separate variable for a filter, as below.</p>
+<div class="cell" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>teacher_filter <span class="op">=</span> bellevue_df[<span class="st">'profession'</span>] <span class="op">==</span> <span class="st">'teacher'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[teacher_filter]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>gender</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2195</th>
+      <td>1847-03-12</td>
+      <td>Michael</td>
+      <td>Rush</td>
+      <td>40.0</td>
+      <td>recent emigrant</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2692</th>
+      <td>1846-03-11</td>
+      <td>Thomas</td>
+      <td>Brady</td>
+      <td>45.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3773</th>
+      <td>1846-07-06</td>
+      <td>Henry</td>
+      <td>Dunlap</td>
+      <td>66.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4283</th>
+      <td>1846-09-03</td>
+      <td>John B.</td>
+      <td>Murray</td>
+      <td>45.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4286</th>
+      <td>1846-09-03</td>
+      <td>Alexander</td>
+      <td>Alcock</td>
+      <td>46.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4611</th>
+      <td>1846-10-15</td>
+      <td>John</td>
+      <td>Dillon</td>
+      <td>32.0</td>
+      <td>NaN</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5224</th>
+      <td>1847-03-01</td>
+      <td>George F.</td>
+      <td>Robins</td>
+      <td>57.0</td>
+      <td>destitution</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6251</th>
+      <td>1847-08-05</td>
+      <td>Patrick</td>
+      <td>McGowen</td>
+      <td>24.0</td>
+      <td>sickness</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8293</th>
+      <td>1847-05-27</td>
+      <td>William</td>
+      <td>Smith</td>
+      <td>29.0</td>
+      <td>destitution</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8641</th>
+      <td>1847-06-23</td>
+      <td>Thomas</td>
+      <td>Gleason</td>
+      <td>50.0</td>
+      <td>sickness</td>
+      <td>teacher</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>In a similar vein, it’s often useful to make a new variable for a filtered DataFrame. For example, let’s say we wanted to look at only the women in the dataset and see the most commons professions.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>women_filter <span class="op">=</span> bellevue_df[<span class="st">'gender'</span>] <span class="op">==</span> <span class="st">'w'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>bellevue_women <span class="op">=</span> bellevue_df[women_filter]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>bellevue_women[<span class="st">'profession'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>married        1564
+spinster       1507
+widow          1043
+laborer          27
+seamstress        3
+baker             2
+single            2
+waiter            2
+(illegible)       1
+gardener          1
+weaver            1
+servant           1
+peddler           1
+cook              1
+sham              1
+carpenter         1
+tailor            1
+Name: profession, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>bellevue_women[<span class="st">'profession'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'pie'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>), title<span class="op">=</span><span class="st">'Bellevue Almshouse:</span><span class="ch">\n</span><span class="st">Most Frequent "Professions" Among Women'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x113785a90&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="03-Pandas-Basics-Part1_files/figure-html/cell-32-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>There’s a lot we can do with filters beyond exact value matches with an equals operator <code>==</code>.</p>
+<p>We can also incorporate <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> with integers, floats, and even dates. For example, we can filter the DataFrame for only people who arrived to the Bellevue Almshouse on or after ‘1847-04-17’</p>
+<div class="cell" data-execution_count="120">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>date_filter <span class="op">=</span> bellevue_df[<span class="st">'date_in'</span>] <span class="op">&gt;=</span> <span class="st">'1847-04-17'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-scrolled="true" data-execution_count="121">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[date_filter]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="121">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>age</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>gender</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1847-04-17</td>
+      <td>Mary</td>
+      <td>Gallagher</td>
+      <td>28.0</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>w</td>
+      <td>Child Alana 10 days</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1847-04-08</td>
+      <td>John</td>
+      <td>Sanin (?)</td>
+      <td>19.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Catherine 2 mo</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1847-04-17</td>
+      <td>Anthony</td>
+      <td>Clark</td>
+      <td>60.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Charles Riley afed 10 days</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1847-04-08</td>
+      <td>Lawrence</td>
+      <td>Feeney</td>
+      <td>32.0</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>Child</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1847-04-13</td>
+      <td>Henry</td>
+      <td>Joyce</td>
+      <td>21.0</td>
+      <td>recent emigrant</td>
+      <td>NaN</td>
+      <td>m</td>
+      <td>Child 1 mo</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9564</th>
+      <td>1846-07-03</td>
+      <td>Michael</td>
+      <td>Brown</td>
+      <td>37.0</td>
+      <td>NaN</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9565</th>
+      <td>1846-02-11</td>
+      <td>Thomas</td>
+      <td>Kennedy</td>
+      <td>69.0</td>
+      <td>NaN</td>
+      <td>laborer</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9568</th>
+      <td>1847-04-02</td>
+      <td>Ann</td>
+      <td>Gedney</td>
+      <td>30.0</td>
+      <td>sickness</td>
+      <td>widow</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9574</th>
+      <td>1846-08-14</td>
+      <td>Ann</td>
+      <td>Murray</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>w</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9578</th>
+      <td>1846-05-23</td>
+      <td>Joseph</td>
+      <td>Aton</td>
+      <td>69.0</td>
+      <td>NaN</td>
+      <td>shoemaker</td>
+      <td>m</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>4614 rows × 8 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="write-to-csv" class="level2" data-number="16.12">
+<h2 data-number="16.12" class="anchored" data-anchor-id="write-to-csv"><span class="header-section-number">16.12</span> Write to CSV</h2>
+<p>To output a new CSV file, we can use the <code>.to_csv</code> method with a name for the file in quotation marks.</p>
+<p>Here’s how we might output a new CSV file that only includes rows with women.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>bellevue_women.to_csv(<span class="st">"Bellevue_women.csv"</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In addition to a filename, we’re also specifying that the encoding is utf-8 and that the Index (the bolded left-most column) is not included in the CSV file.</p>
+</section>
+<section id="further-resources" class="level2" data-number="16.13">
+<h2 data-number="16.13" class="anchored" data-anchor-id="further-resources"><span class="header-section-number">16.13</span> Further Resources</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html">10 minutes to Pandas</a>, Pandas Official Documentation</li>
+<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/03.00-introduction-to-pandas.html">“Data Manipulation with Pandas”</a>, <em>Python Data Science</em>, Jake VanderPlas</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../code/02-Data-Analysis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Analysis (Pandas)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Cultural Analytics Open Science Guide</div>   
+    <div class="nav-footer-right">powered by <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,3613 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cultural Analytics Open Science Guide - 18&nbsp; Pandas Basics — Part 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../code/04.5-Pandas-Basics-Part2-WORKBOOK.html" rel="next">
+<link href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../" class="sidebar-logo-link">
+      <img src="../images/dh_gro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Cultural Analytics Open Science Guide</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="" title="Personal account" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://signon.rug.nl/nidp/app/login?id=100&amp;sid=2&amp;option=credential&amp;sid=2">
+          Login to your student account
+          </a>
+        </li>
+    </ul>
+    <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://www.rug.nl/research/research-let/expertisecentra/centre-for-digital-humanities/" title="Center for Digital Humanities - University of Groningen" class="sidebar-tool px-1"><i class="bi bi-house"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/00-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datasets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/version_control.html" class="sidebar-item-text sidebar-link">Version Control</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/01-The-Command-Line.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Command Line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">General Workflow of a Vercion Control System (VCS)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-merge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Merging Branches in Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-interactive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive, Visual Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/github-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/the-clone-wars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Clone Wars</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Git Summary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Version Control for Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/02-Data-Analysis.html" class="sidebar-item-text sidebar-link">Data Analysis (Pandas)</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03-Pandas-Basics-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04-Pandas-Basics-Part2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04.5-Pandas-Basics-Part2-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Pandas Basics Part 2 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05-Pandas-Basics-Part3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05.5-Pandas-Basics-Part3-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Pandas Basics Part 3 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/06-Pandas-Basics-More-Methods-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Pandas Basics — More Useful Methods — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/07-Pandas-Merge-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Pandas — Merge Datasets</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/08-Data-Collection.html" class="sidebar-item-text sidebar-link">Data Collection</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10-Web-Scraping-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10.5-Web-Scraping-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Web Scraping Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/11-Web-Scraping-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13-What-Is-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Application Programming Interfaces (APIs)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13.5-APIs-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">APIs — Workbook</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Data collection examples</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/14-Song-Genius.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Song Genius Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/15-Genius-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Song Genius API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/16-Collect-Genius-Lyrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Song Lyrics Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/17-Lyrics-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Song Lyrics Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/18-Twitter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Twitter Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/19-Twitter-API-Setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Twitter API Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/20-Twitter-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Twitter Data Collection &amp; Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/21-Twitter-Data-Sharing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Twitter Data Sharing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/22-Reddit-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">References</span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset"><span class="toc-section-number">18.1</span>  Dataset</a>
+  <ul>
+  <li><a href="#the-trans-atlantic-slave-trade-database" id="toc-the-trans-atlantic-slave-trade-database" class="nav-link" data-scroll-target="#the-trans-atlantic-slave-trade-database"><span class="toc-section-number">18.1.1</span>  The Trans-Atlantic Slave Trade Database</a></li>
+  </ul></li>
+  <li><a href="#examine-data" id="toc-examine-data" class="nav-link" data-scroll-target="#examine-data"><span class="toc-section-number">18.2</span>  Examine Data</a>
+  <ul>
+  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape"><span class="toc-section-number">18.2.1</span>  Shape</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="toc-section-number">18.2.2</span>  Data Types</a></li>
+  <li><a href="#columns" id="toc-columns" class="nav-link" data-scroll-target="#columns"><span class="toc-section-number">18.2.3</span>  Columns</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics"><span class="toc-section-number">18.2.4</span>  Summary Statistics</a></li>
+  </ul></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data"><span class="toc-section-number">18.3</span>  Missing Data</a>
+  <ul>
+  <li><a href="#isna-.notna" id="toc-isna-.notna" class="nav-link" data-scroll-target="#isna-.notna"><span class="toc-section-number">18.3.1</span>  .isna() / .notna()</a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count"><span class="toc-section-number">18.3.2</span>  .count()</a></li>
+  <li><a href="#fillna" id="toc-fillna" class="nav-link" data-scroll-target="#fillna"><span class="toc-section-number">18.3.3</span>  .fillna()</a></li>
+  </ul></li>
+  <li><a href="#rename-columns" id="toc-rename-columns" class="nav-link" data-scroll-target="#rename-columns"><span class="toc-section-number">18.4</span>  Rename Columns</a></li>
+  <li><a href="#drop-columns" id="toc-drop-columns" class="nav-link" data-scroll-target="#drop-columns"><span class="toc-section-number">18.5</span>  Drop Columns</a></li>
+  <li><a href="#add-columns" id="toc-add-columns" class="nav-link" data-scroll-target="#add-columns"><span class="toc-section-number">18.6</span>  Add Columns</a></li>
+  <li><a href="#sort-columns" id="toc-sort-columns" class="nav-link" data-scroll-target="#sort-columns"><span class="toc-section-number">18.7</span>  Sort Columns</a></li>
+  <li><a href="#calculate-columns" id="toc-calculate-columns" class="nav-link" data-scroll-target="#calculate-columns"><span class="toc-section-number">18.8</span>  Calculate Columns</a></li>
+  <li><a href="#groupby-columns" id="toc-groupby-columns" class="nav-link" data-scroll-target="#groupby-columns"><span class="toc-section-number">18.9</span>  Groupby Columns</a></li>
+  <li><a href="#make-time-series-with-groupby" id="toc-make-time-series-with-groupby" class="nav-link" data-scroll-target="#make-time-series-with-groupby"><span class="toc-section-number">18.10</span>  Make Time Series with Groupby</a></li>
+  <li><a href="#save-plots" id="toc-save-plots" class="nav-link" data-scroll-target="#save-plots"><span class="toc-section-number">18.11</span>  Save Plots</a></li>
+  <li><a href="#prevent-labels-from-getting-cut-off" id="toc-prevent-labels-from-getting-cut-off" class="nav-link" data-scroll-target="#prevent-labels-from-getting-cut-off"><span class="toc-section-number">18.12</span>  Prevent Labels From Getting Cut Off</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p><em>Note: You can explore the <a href="https://mybinder.org/v2/gh/melaniewalsh/Intro-Cultural-Analytics/master?urlpath=lab/tree/book/03-Data-Analysis/workbooks/02.5-Pandas-Basics-Part2-WORKBOOK.ipynb">associated workbook</a> for this chapter in the cloud.</em></p>
+<p>In this lesson, we’re going to introduce some more fundamentals of <a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html">Pandas</a>, a powerful Python library for working with tabular data like CSV files.</p>
+<p>We will review skills learned from the last lesson and introduce how to:</p>
+<ul>
+<li>Broadly examine data</li>
+<li>Work with missing data</li>
+<li>Rename, drop, and add new columns</li>
+<li>Perform mathematical calculations</li>
+<li>Aggregate subsets of data</li>
+<li>Make a simple time series</li>
+</ul>
+<hr>
+<section id="dataset" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="dataset"><span class="header-section-number">18.1</span> Dataset</h2>
+<section id="the-trans-atlantic-slave-trade-database" class="level3" data-number="18.1.1">
+<h3 data-number="18.1.1" class="anchored" data-anchor-id="the-trans-atlantic-slave-trade-database"><span class="header-section-number">18.1.1</span> The Trans-Atlantic Slave Trade Database</h3>
+<blockquote class="epigraph blockquote" style=" padding: 10px">
+<p>[D]isplaying data alone could not and did not offer the atonement descendants of slaves sought or capture the inhumanity of this archive’s formation.</p>
+<p>-Jessica Marie Johnson, <a href="https://read.dukeupress.edu/social-text/article/36/4%20(137)/57/137032/Markup-BodiesBlack-Life-Studies-and-Slavery-Death">“Markup Bodies”</a></p>
+</blockquote>
+<p>The dataset that we’re going to be working with in this lesson is taken from <a href="https://www.slavevoyages.org/voyage/database">The Trans-Atlantic Slave Trade Database</a>, part of the <a href="https://www.slavevoyages.org/"><em>Slave Voyages</em> project</a>. The larger database includes information about 35,000 slave-trading voyages from 1514-1866. The dataset we’re working with here was filtered to include the 20,000 voyages that landed in the Americas. The data was filtered to also include the percentage of enslaved men, women, and children on the voyages.</p>
+<p>We’re working with this data for a number of reasons. The <em>Slave Voyages</em> project is a major data-driven contribution to the history of slavery and to the field of the digital humanities. Before the Trans-Atlantic Slave Trade Database, as DH scholar Jessica Johnson <a href="https://read.dukeupress.edu/social-text/article-abstract/36/4%20(137)/57/137032/Markup-BodiesBlack-Life-Studies-and-Slavery-Death?redirectedFrom=fulltext">writes,</a> “historians assumed enslaved women and children played a negligible role in the slave trade.” But evidence from the Trans-Atlantic Slave Trade Database suggested otherwise. “The existence of the Trans-Atlantic Slave Trade Database immediately reshaped debates about numbers of women and children exported from the continent,” Johnson says, “influencing work on women in the slave trade on the African coast, slavery in African societies, and women in the slave trade to the Americas.”</p>
+<p>Though the Trans-Atlantic Slave Trade Database helped shed new light on the roles of enslaved women and children, Johnson makes clear that it was not computation or data alone that shed this light: &gt; [D]isplaying data alone could not and did not offer the atonement descendants of slaves sought or capture the inhumanity of this archive’s formation. Culling the lives of women and children from the data set required approaching the data with intention. It required a methodology attuned to black life and to dismantling the methods used to create the manifests in the first place, then designing and launching an interface responsive to the desire of descendants of slaves for reparation and redress.</p>
+<p>In this spirit, we want to think about how responsible data analysis requires more than just data and technical tools like Pandas. It requires approaching data with intention and developing methodologies geared toward justice. This is especially necessary when dealing with data that records and perpetrates violence like the Trans-Atlantic Slave Trade Database.</p>
+<hr>
+<p><strong>Import Pandas</strong></p>
+<p>To use the Pandas library, we first need to <code>import</code> it.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above <code>import</code> statement not only imports the Pandas library but also gives it an alias or nickname — <code>pd</code>. This alias will save us from having to type out the entire words <code>pandas</code> each time we need to use it. Many Python libraries have commonly used aliases like <code>pd</code>.</p>
+<p><strong>Set Display Settings</strong></p>
+<p>By default, Pandas will display 60 rows and 20 columns. I often change <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/options.html">Pandas’ default display settings</a> to show more rows or columns.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Read in CSV File</strong></p>
+<pre class="{sidebar}"><code>```{tip} 
+If you use the `help()` function, you can see the documentation for almost any bit of code. If we run it on `pd.read_csv()`, we can see all the possible parameters that can be used with `pd.read_csv()`.
+help(pd.read_csv)
+```
+</code></pre>
+<p>To read in a CSV file, we will use the function <code>pd.read_csv()</code> and insert the name of our desired file path.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df <span class="op">=</span> pd.read_csv(<span class="st">'../data/Trans-Atlantic-Slave-Trade_Americas.csv'</span>, delimiter<span class="op">=</span><span class="st">","</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This creates a Pandas <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#DataFrame">DataFrame object</a> — often abbreviated as <em>df</em>, e.g., <em>slave_voyages_df</em>. A DataFrame looks and acts a lot like a spreadsheet. But it has special powers and functions that we will discuss in the next few lessons.</p>
+<p>When reading in the CSV file, we also specified the <code>encoding</code> and <code>delimiter</code>. The <code>delimiter</code> specifies the character that separates or “delimits” the columns in our dataset. For CSV files, the delimiter will most often be a comma. (CSV is short for <em>Comma Separated Values</em>.) Sometimes, however, the delimiter of a CSV file might be a tab (<code>\t</code>) or, more rarely, another character.</p>
+<p><strong>Display Data</strong></p>
+<p>We can display a DataFrame in a Jupyter notebook simply by running a cell with the variable name of the DataFrame.</p>
+<div class="admonition pandasreview" name="html-admonition" style="background: black; color: white; padding: 10px">
+<p class="title">
+Pandas Review
+</p>
+<p><code>NaN</code> is the Pandas value for any missing data. See <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html?highlight=nan/">“Working with missing data”</a> for more information.</p>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>flag</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>sources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1520</td>
+      <td>NaN</td>
+      <td>Portuguese Guinea</td>
+      <td>San Juan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>324.0</td>
+      <td>259.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>42987</td>
+      <td>[u'AGI,Patronato 175, r.9&lt;&gt;&lt;p&gt;&lt;em&gt;AG!&lt;/em&gt; (Se...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1525</td>
+      <td>Portugal / Brazil</td>
+      <td>Sao Tome</td>
+      <td>Hispaniola, unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td>S Maria de Bogoña</td>
+      <td>Monteiro, Pero</td>
+      <td>46473</td>
+      <td>[u'ANTT,CC,Parte II, maco 131, doc 54&lt;&gt;&lt;i&gt;Inst...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1526</td>
+      <td>Spain / Uruguay</td>
+      <td>Cape Verde Islands</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>Carega, Esteban (?)</td>
+      <td>11297</td>
+      <td>[u'Pike,60-1,172&lt;&gt;Pike, Ruth, &lt;i&gt;Enterprise&lt;/i...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1526</td>
+      <td>Spain / Uruguay</td>
+      <td>Cape Verde Islands</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>Carega, Esteban (?)</td>
+      <td>11298</td>
+      <td>[u'Pike,60-1,172&lt;&gt;Pike, Ruth, &lt;i&gt;Enterprise&lt;/i...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1526</td>
+      <td>NaN</td>
+      <td>Cape Verde Islands</td>
+      <td>Caribbean (colony unspecified)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td>S Anton</td>
+      <td>Leon, Juan de</td>
+      <td>42631</td>
+      <td>[u'Chaunus, 3: 162-63&lt;&gt;&lt;p&gt;Chaunus, &lt;em&gt;xxxxxx&lt;...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20736</th>
+      <td>1864</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>488.0</td>
+      <td>465.0</td>
+      <td>NaN</td>
+      <td>Polaca</td>
+      <td>NaN</td>
+      <td>46554</td>
+      <td>[u'AHNM, Ultramar, Leg. 3551, 6&lt;&gt;&lt;i&gt;Archivo Hi...</td>
+    </tr>
+    <tr>
+      <th>20737</th>
+      <td>1865</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Isla de Pinas</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>152.0</td>
+      <td>145.0</td>
+      <td>Slave insurrection</td>
+      <td>Gato</td>
+      <td>NaN</td>
+      <td>4394</td>
+      <td>[u'IUP,ST,50/B/137&lt;&gt;Great Britain, &lt;i&gt;Irish Un...</td>
+    </tr>
+    <tr>
+      <th>20738</th>
+      <td>1865</td>
+      <td>NaN</td>
+      <td>Africa., port unspecified</td>
+      <td>Mariel</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>780.0</td>
+      <td>650.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>4395</td>
+      <td>[u'IUP,ST,50/B/144&lt;&gt;Great Britain, &lt;i&gt;Irish Un...</td>
+    </tr>
+    <tr>
+      <th>20739</th>
+      <td>1865</td>
+      <td>NaN</td>
+      <td>Congo River</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1265.0</td>
+      <td>1004.0</td>
+      <td>NaN</td>
+      <td>Cicerón</td>
+      <td>Mesquita</td>
+      <td>5052</td>
+      <td>[u'IUP,ST,50/A/23-4&lt;&gt;Great Britain, &lt;i&gt;Irish U...</td>
+    </tr>
+    <tr>
+      <th>20740</th>
+      <td>1866</td>
+      <td>NaN</td>
+      <td>Africa., port unspecified</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>851.0</td>
+      <td>700.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>4998</td>
+      <td>[u'IUP,ST,50/B/220&lt;&gt;Great Britain, &lt;i&gt;Irish Un...</td>
+    </tr>
+  </tbody>
+</table>
+<p>20741 rows × 14 columns</p>
+</div>
+</div>
+</div>
+<p>There are a few important things to note about the DataFrame displayed here:</p>
+<ul>
+<li>Index
+<ul>
+<li>The bolded ascending numbers in the very left-hand column of the DataFrame is called the Pandas <em>Index</em>. You can select rows based on the Index.</li>
+<li>By default, the Index is a sequence of numbers starting with zero. However, you can change the Index to something else, such as one of the columns in your dataset.</li>
+</ul></li>
+<li>Truncation
+<ul>
+<li>The DataFrame is truncated, signaled by the ellipses in the middle <code>...</code> of every column.</li>
+<li>The DataFrame is truncated because we set our default display settings to 100 rows. Anything more than 100 rows will be truncated. To display all the rows, we would need to alter Pandas’ default display settings yet again.</li>
+</ul></li>
+<li>Rows x Columns
+<ul>
+<li>Pandas reports how many rows and columns are in this dataset at the bottom of the output (20,741 x 14 columns).</li>
+</ul></li>
+</ul>
+<p><strong>Display First <em>n</em> Rows</strong></p>
+<p>To look at the first <em>n</em> rows in a DataFrame, we can use a method called <code>.head()</code>.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>flag</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>sources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1520</td>
+      <td>NaN</td>
+      <td>Portuguese Guinea</td>
+      <td>San Juan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>324.0</td>
+      <td>259.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>42987</td>
+      <td>[u'AGI,Patronato 175, r.9&lt;&gt;&lt;p&gt;&lt;em&gt;AG!&lt;/em&gt; (Se...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1525</td>
+      <td>Portugal / Brazil</td>
+      <td>Sao Tome</td>
+      <td>Hispaniola, unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td>S Maria de Bogoña</td>
+      <td>Monteiro, Pero</td>
+      <td>46473</td>
+      <td>[u'ANTT,CC,Parte II, maco 131, doc 54&lt;&gt;&lt;i&gt;Inst...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1526</td>
+      <td>Spain / Uruguay</td>
+      <td>Cape Verde Islands</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>Carega, Esteban (?)</td>
+      <td>11297</td>
+      <td>[u'Pike,60-1,172&lt;&gt;Pike, Ruth, &lt;i&gt;Enterprise&lt;/i...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1526</td>
+      <td>Spain / Uruguay</td>
+      <td>Cape Verde Islands</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>Carega, Esteban (?)</td>
+      <td>11298</td>
+      <td>[u'Pike,60-1,172&lt;&gt;Pike, Ruth, &lt;i&gt;Enterprise&lt;/i...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1526</td>
+      <td>NaN</td>
+      <td>Cape Verde Islands</td>
+      <td>Caribbean (colony unspecified)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td>S Anton</td>
+      <td>Leon, Juan de</td>
+      <td>42631</td>
+      <td>[u'Chaunus, 3: 162-63&lt;&gt;&lt;p&gt;Chaunus, &lt;em&gt;xxxxxx&lt;...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1526</td>
+      <td>NaN</td>
+      <td>Cape Verde Islands</td>
+      <td>San Domingo (a) Santo Domingo</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td>Santa Maria de Guadalupe</td>
+      <td>Pabon, Francisco</td>
+      <td>42679</td>
+      <td>[u'Chaunus, 3: 162-63&lt;&gt;&lt;p&gt;Chaunus, &lt;em&gt;xxxxxx&lt;...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1526</td>
+      <td>Portugal / Brazil</td>
+      <td>Sao Tome</td>
+      <td>Spanish Caribbean, unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>46474</td>
+      <td>[u'ANTT,CC,Parte II, maco 131, doc 54&lt;&gt;&lt;i&gt;Inst...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1527</td>
+      <td>Spain / Uruguay</td>
+      <td>Cape Verde Islands</td>
+      <td>Puerto Rico, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>325.0</td>
+      <td>260.0</td>
+      <td>NaN</td>
+      <td>Concepción</td>
+      <td>Díaz, Alonso</td>
+      <td>99027</td>
+      <td>[u'SuedBadillo,57,75,76&lt;&gt;&lt;p&gt;SuedBadillo, &lt;em&gt;x...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1532</td>
+      <td>Portugal / Brazil</td>
+      <td>Sao Tome</td>
+      <td>Spanish Caribbean, unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td>S Antônio</td>
+      <td>Afonso, Martim</td>
+      <td>11293</td>
+      <td>[u'Ryder,66&lt;&gt;Ryder, A. F. C., &lt;i&gt;Benin&lt;/i&gt;&lt;i&gt; ...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1532</td>
+      <td>NaN</td>
+      <td>Cape Verde Islands</td>
+      <td>San Juan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>20.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>de Illanes, Manuel</td>
+      <td>28994</td>
+      <td>[u'Tanodi, 321-22&lt;&gt;Tanodi, Aurelio, &lt;i&gt;Documen...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="examine-data" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="examine-data"><span class="header-section-number">18.2</span> Examine Data</h2>
+<section id="shape" class="level3" data-number="18.2.1">
+<h3 data-number="18.2.1" class="anchored" data-anchor-id="shape"><span class="header-section-number">18.2.1</span> Shape</h3>
+<p>To explicitly check for how many rows vs columns make up a dataset, we can use the <code>.shape</code> method.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>(20741, 14)</code></pre>
+</div>
+</div>
+<p>There are 20,741 rows and 14 columns.</p>
+</section>
+<section id="data-types" class="level3" data-number="18.2.2">
+<h3 data-number="18.2.2" class="anchored" data-anchor-id="data-types"><span class="header-section-number">18.2.2</span> Data Types</h3>
+<p>Just like Python has different data types, Pandas has different data types, too. These data types are automatically assigned to columns when we read in a CSV file. We can check these Pandas data types with the <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dtypes.html"><code>.dtypes</code> method</a>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 87%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Pandas Data Type</strong></th>
+<th style="text-align: center;"><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>object</code></td>
+<td style="text-align: center;">string</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>float64</code></td>
+<td style="text-align: center;">float</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>int64</code></td>
+<td style="text-align: center;">integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>datetime64</code></td>
+<td style="text-align: center;">date time</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>year_of_arrival        int64
+flag                  object
+place_of_purchase     object
+place_of_landing      object
+percent_women        float64
+percent_children     float64
+percent_men          float64
+total_embarked       float64
+total_disembarked    float64
+resistance_label      object
+vessel_name           object
+captain's_name        object
+voyage_id              int64
+sources               object
+dtype: object</code></pre>
+</div>
+</div>
+<p>It’s important to always check the data types in your DataFrame. For example, sometimes numeric values will accidentally be interpreted as a string object. To perform calculations on this data, you would need to first convert that column from a string to an integer.</p>
+</section>
+<section id="columns" class="level3" data-number="18.2.3">
+<h3 data-number="18.2.3" class="anchored" data-anchor-id="columns"><span class="header-section-number">18.2.3</span> Columns</h3>
+<p>We can also check the column names of the DataFrame with <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.columns.html"><code>.columns</code></a></p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>Index(['year_of_arrival', 'flag', 'place_of_purchase', 'place_of_landing',
+       'percent_women', 'percent_children', 'percent_men', 'total_embarked',
+       'total_disembarked', 'resistance_label', 'vessel_name',
+       'captain's_name', 'voyage_id', 'sources'],
+      dtype='object')</code></pre>
+</div>
+</div>
+</section>
+<section id="summary-statistics" class="level3" data-number="18.2.4">
+<h3 data-number="18.2.4" class="anchored" data-anchor-id="summary-statistics"><span class="header-section-number">18.2.4</span> Summary Statistics</h3>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>flag</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>sources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>20741.000000</td>
+      <td>19583</td>
+      <td>20663</td>
+      <td>20741</td>
+      <td>2894.000000</td>
+      <td>2927.000000</td>
+      <td>2894.000000</td>
+      <td>20722.000000</td>
+      <td>20719.000000</td>
+      <td>372</td>
+      <td>20741</td>
+      <td>19396</td>
+      <td>20741.000000</td>
+      <td>20741</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>NaN</td>
+      <td>8</td>
+      <td>156</td>
+      <td>187</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6</td>
+      <td>5849</td>
+      <td>12233</td>
+      <td>NaN</td>
+      <td>13754</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>NaN</td>
+      <td>Great Britain</td>
+      <td>Africa., port unspecified</td>
+      <td>Barbados, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Slave insurrection</td>
+      <td></td>
+      <td>Smith, John</td>
+      <td>NaN</td>
+      <td>[u'mettas,I&lt;&gt;Mettas, Jean,  &lt;i&gt;R\xe9pertoire d...</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>NaN</td>
+      <td>10536</td>
+      <td>5999</td>
+      <td>2038</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>330</td>
+      <td>712</td>
+      <td>36</td>
+      <td>NaN</td>
+      <td>1134</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1752.014850</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.274198</td>
+      <td>0.231582</td>
+      <td>0.496648</td>
+      <td>295.050381</td>
+      <td>251.573966</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>42783.741671</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>59.702189</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.116513</td>
+      <td>0.149508</td>
+      <td>0.140324</td>
+      <td>147.997690</td>
+      <td>128.050439</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>32401.785320</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1520.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>112.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1724.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.195265</td>
+      <td>0.115380</td>
+      <td>0.407460</td>
+      <td>194.000000</td>
+      <td>163.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>17862.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1765.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.264110</td>
+      <td>0.215100</td>
+      <td>0.497890</td>
+      <td>282.000000</td>
+      <td>241.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>31916.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1792.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.346150</td>
+      <td>0.321900</td>
+      <td>0.586765</td>
+      <td>368.000000</td>
+      <td>313.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>78283.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1866.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>2024.000000</td>
+      <td>1700.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>900206.000000</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="missing-data" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="missing-data"><span class="header-section-number">18.3</span> Missing Data</h2>
+<pre class="{epigraph}"><code>The conceit of the archive is that it is the repository of answers, of knowable conclusions, of the data needed to explain or understand the past.
+
+The reality, however, is that the archive is the troubled genesis of our always-failed effort to unravel the effects of the past on the present; rather than verifiable truths, the archive — and its silences — house the very questions that unsettle us.
+
+-- Jennifer Morgan, ["Accounting for 'The Most Excruciating Torment'"](https://read.dukeupress.edu/history-of-the-present/article-abstract/6/2/184/153282/Accounting-for-The-Most-Excruciating-Torment?redirectedFrom=PDF)</code></pre>
+<p>Responsible data analysis requires understanding missing data. The Trans-Atlantic Slave Trade Database, as historian Jennifer Morgan <a href="https://read.dukeupress.edu/history-of-the-present/article-abstract/6/2/184/153282/Accounting-for-The-Most-Excruciating-Torment?redirectedFrom=PDF">writes</a>, contains innumerable “silences” and “gaps.” These silences include the thoughts, feelings, and experiences of the enslaved African people on board the voyages — silences that cannot be found in the database itself.</p>
+<p>There are other kinds of silences and gaps that can be detected in the database itself, however. For example, while some of the voyages in the the Trans-Atlantic Slave Trade Database recorded information about how many enslaved women and children were aboard, most did not. Yet focusing on the data that is there and analyzing trends in the missing data can help shed light on the history of gender and enslavement. The fact that most ship captains did not record gender information, Morgan argues, helps tell us about their “priorities”: “[W]e can assume that had it been financially significant to have more men than women that data would have been more scrupulously recorded.”</p>
+<section id="isna-.notna" class="level3" data-number="18.3.1">
+<h3 data-number="18.3.1" class="anchored" data-anchor-id="isna-.notna"><span class="header-section-number">18.3.1</span> .isna() / .notna()</h3>
+<p>Pandas has special ways of dealing with missing data. As you may have already noticed, blank rows in a CSV file show up as <code>NaN</code> in a Pandas DataFrame.</p>
+<p>To filter and count the number of missing/not missing values in a dataset, we can use the special <code>.isna()</code> and <code>.notna()</code> methods on a DataFrame or Series object.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'percent_women'</span>].notna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>0        False
+1        False
+2        False
+3        False
+4        False
+         ...  
+20736    False
+20737    False
+20738    False
+20739    False
+20740    False
+Name: percent_women, Length: 20741, dtype: bool</code></pre>
+</div>
+</div>
+<p>The <code>.isna()</code> and <code>.notna()</code> methods return True/False pairs for each row, which we can use to filter the DataFrame for any rows that have information in a given column. For example, we can filter the DataFrame for only rows that have information about the percentage of enslaved women aboard the voyage.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[slave_voyages_df[<span class="st">'percent_women'</span>].notna()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>flag</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>sources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>938</th>
+      <td>1613</td>
+      <td>Portugal / Brazil</td>
+      <td>Luanda</td>
+      <td>Santo Tomas</td>
+      <td>0.30556</td>
+      <td>0.20588</td>
+      <td>0.69444</td>
+      <td>362.0</td>
+      <td>290.0</td>
+      <td>NaN</td>
+      <td>NS de Nazareth</td>
+      <td>Gómez, Juan</td>
+      <td>47352</td>
+      <td>[u'AGI-Esc 38B, pieza 2, folios 427r-427v&lt;&gt;&lt;p&gt;...</td>
+    </tr>
+    <tr>
+      <th>1044</th>
+      <td>1619</td>
+      <td>Portugal / Brazil</td>
+      <td>Luanda</td>
+      <td>Veracruz</td>
+      <td>0.21127</td>
+      <td>0.21596</td>
+      <td>0.57277</td>
+      <td>349.0</td>
+      <td>279.0</td>
+      <td>NaN</td>
+      <td>S Antônio</td>
+      <td>Acosta, Jacome de</td>
+      <td>29248</td>
+      <td>[u'Vila Vilar,Cuadro3&lt;&gt;&lt;p&gt;Vila Vilar, Enriquet...</td>
+    </tr>
+    <tr>
+      <th>1115</th>
+      <td>1620</td>
+      <td>Portugal / Brazil</td>
+      <td>Luanda</td>
+      <td>Buenos Aires</td>
+      <td>0.13043</td>
+      <td>0.29193</td>
+      <td>0.57764</td>
+      <td>381.0</td>
+      <td>304.0</td>
+      <td>NaN</td>
+      <td>NS de Consolación</td>
+      <td>Acosta, Gonçalo</td>
+      <td>29561</td>
+      <td>[u'AGI, Indiferente General, 2795&lt;&gt;&lt;p&gt;&lt;em&gt;AG!&lt;...</td>
+    </tr>
+    <tr>
+      <th>1117</th>
+      <td>1620</td>
+      <td>NaN</td>
+      <td>Luanda</td>
+      <td>Cumana</td>
+      <td>0.29570</td>
+      <td>0.33571</td>
+      <td>0.70430</td>
+      <td>421.0</td>
+      <td>337.0</td>
+      <td>NaN</td>
+      <td>NS de Rocha</td>
+      <td>Sosa, Nicolás de&lt;br/&gt; Estéves, Domingo&lt;br/&gt; Ro...</td>
+      <td>29941</td>
+      <td>[u'AGI, Contratacion, 2881&lt;&gt;&lt;p&gt;&lt;em&gt;AG!&lt;/em&gt; (S...</td>
+    </tr>
+    <tr>
+      <th>1334</th>
+      <td>1628</td>
+      <td>Portugal / Brazil</td>
+      <td>West Central Africa and St. Helena, port unspe...</td>
+      <td>Spanish Circum-Caribbean,unspecified</td>
+      <td>0.16908</td>
+      <td>0.58454</td>
+      <td>0.24638</td>
+      <td>303.0</td>
+      <td>242.0</td>
+      <td>NaN</td>
+      <td>S Pedro</td>
+      <td>Silva, Jacinto da</td>
+      <td>29568</td>
+      <td>[u'AGI, Indiferente General, 2796&lt;&gt;&lt;p&gt;&lt;em&gt;AG!&lt;...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20295</th>
+      <td>1841</td>
+      <td>Portugal / Brazil</td>
+      <td>Rio Pongo</td>
+      <td>Cuba, port unspecified</td>
+      <td>0.20548</td>
+      <td>0.21233</td>
+      <td>0.58219</td>
+      <td>324.0</td>
+      <td>292.0</td>
+      <td>NaN</td>
+      <td>Segunda Rosália</td>
+      <td>Peirano, Francisco</td>
+      <td>2078</td>
+      <td>[u'PP,1845,XLIX:593-633&lt;&gt;Great Britain, &lt;i&gt;Par...</td>
+    </tr>
+    <tr>
+      <th>20321</th>
+      <td>1841</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Bahamas, port unspecified</td>
+      <td>0.15758</td>
+      <td>0.31548</td>
+      <td>0.53939</td>
+      <td>215.0</td>
+      <td>193.0</td>
+      <td>NaN</td>
+      <td>Trovadore</td>
+      <td>Velasea, de Bonita</td>
+      <td>5503</td>
+      <td>[u'Dalleo,24&lt;&gt;Dalleo, Peter D.,"Africans in th...</td>
+    </tr>
+    <tr>
+      <th>20429</th>
+      <td>1850</td>
+      <td>NaN</td>
+      <td>Benguela</td>
+      <td>British Caribbean, colony unspecified</td>
+      <td>0.00000</td>
+      <td>1.00000</td>
+      <td>0.00000</td>
+      <td>94.0</td>
+      <td>74.0</td>
+      <td>NaN</td>
+      <td>Amélia</td>
+      <td>Oliveira, José</td>
+      <td>4674</td>
+      <td>[u'IUP,ST,38/A/208&lt;&gt;Great Britain, &lt;i&gt;Irish Un...</td>
+    </tr>
+    <tr>
+      <th>20498</th>
+      <td>1854</td>
+      <td>U.S.A.</td>
+      <td>Whydah</td>
+      <td>Bahia Honda</td>
+      <td>0.45455</td>
+      <td>0.08333</td>
+      <td>0.54545</td>
+      <td>600.0</td>
+      <td>584.0</td>
+      <td>NaN</td>
+      <td>Grey Eagle</td>
+      <td>Darnaud</td>
+      <td>4190</td>
+      <td>[u'FO84/965,Crawford,55.02.07,enc&lt;&gt;&lt;p&gt;&lt;em&gt;BNA&lt;...</td>
+    </tr>
+    <tr>
+      <th>20555</th>
+      <td>1857</td>
+      <td>NaN</td>
+      <td>Cabinda</td>
+      <td>Kingston</td>
+      <td>0.08943</td>
+      <td>0.00000</td>
+      <td>0.91057</td>
+      <td>500.0</td>
+      <td>362.0</td>
+      <td>NaN</td>
+      <td>Zeldina</td>
+      <td>NaN</td>
+      <td>4229</td>
+      <td>[u'IUP,ST,44/A/44,161&lt;&gt;Great Britain, &lt;i&gt;Irish...</td>
+    </tr>
+  </tbody>
+</table>
+<p>2894 rows × 14 columns</p>
+</div>
+</div>
+</div>
+<p>The data is now filtered to only include the 2,894 rows with information about how many women were aboard the voyage.</p>
+<p>To explicitly count the number of blank rows, we can use the <code>.value_counts()</code> method.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'percent_women'</span>].isna().value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>True     17847
+False     2894
+Name: percent_women, dtype: int64</code></pre>
+</div>
+</div>
+<p>There are 17,874 that do not contain information about the number of enslaved women on the voyage (<code>isna</code> = True) and 2,894 rows that do contain this information (<code>isna</code> = False).</p>
+<p>To quickly transform these numbers into percentages, we can set the <code>normalize=</code> parameter to True.</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'percent_women'</span>].isna().value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>True     0.86047
+False    0.13953
+Name: percent_women, dtype: float64</code></pre>
+</div>
+</div>
+<p>About 14% of rows in this dataset have information about the number of enslaved women on the voyage while 86% do not.</p>
+</section>
+<section id="count" class="level3" data-number="18.3.2">
+<h3 data-number="18.3.2" class="anchored" data-anchor-id="count"><span class="header-section-number">18.3.2</span> .count()</h3>
+<p>Because the <code>.count()</code> method always excludes NaN values, we can also count the number of values in each column and divide by the total number of rows in each column (<code>len()</code>) to find the percentage of not blank data in every column.</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.count() <span class="op">/</span> <span class="bu">len</span>(slave_voyages_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>year_of_arrival      1.000000
+flag                 0.944169
+place_of_purchase    0.996239
+place_of_landing     1.000000
+percent_women        0.139530
+percent_children     0.141121
+percent_men          0.139530
+total_embarked       0.999084
+total_disembarked    0.998939
+resistance_label     0.017935
+vessel_name          1.000000
+captain's_name       0.935153
+voyage_id            1.000000
+sources              1.000000
+dtype: float64</code></pre>
+</div>
+</div>
+<p>For example, 100% of the rows in the columns “year_of_arrival” contain information, while 2% of the rows in the column “resistance_label” contain information. The “resistance_label” indicates whether there is a record of the enslaved Africans aboard the voyage staging some form of resistance.</p>
+</section>
+<section id="fillna" class="level3" data-number="18.3.3">
+<h3 data-number="18.3.3" class="anchored" data-anchor-id="fillna"><span class="header-section-number">18.3.3</span> .fillna()</h3>
+<p>If we wanted, we could fill the <code>NaN</code> values in the DataFrame with a different value by using the <code>.fillna()</code> method.</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'percent_women'</span>].fillna(<span class="st">'no gender information recorded'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>0        no gender information recorded
+1        no gender information recorded
+2        no gender information recorded
+3        no gender information recorded
+4        no gender information recorded
+                      ...              
+20736    no gender information recorded
+20737    no gender information recorded
+20738    no gender information recorded
+20739    no gender information recorded
+20740    no gender information recorded
+Name: percent_women, Length: 20741, dtype: object</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="rename-columns" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="rename-columns"><span class="header-section-number">18.4</span> Rename Columns</h2>
+<p>We can rename columns with the <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html"><code>.rename()</code> method</a> and the <code>columns=</code> parameter. For example, we can rename the “flag” column “national_affiliation.”</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.rename(columns<span class="op">=</span>{<span class="st">'flag'</span>: <span class="st">'national_affiliation'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>national_affiliation</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>sources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1520</td>
+      <td>NaN</td>
+      <td>Portuguese Guinea</td>
+      <td>San Juan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>324.0</td>
+      <td>259.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>42987</td>
+      <td>[u'AGI,Patronato 175, r.9&lt;&gt;&lt;p&gt;&lt;em&gt;AG!&lt;/em&gt; (Se...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1525</td>
+      <td>Portugal / Brazil</td>
+      <td>Sao Tome</td>
+      <td>Hispaniola, unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td>S Maria de Bogoña</td>
+      <td>Monteiro, Pero</td>
+      <td>46473</td>
+      <td>[u'ANTT,CC,Parte II, maco 131, doc 54&lt;&gt;&lt;i&gt;Inst...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1526</td>
+      <td>Spain / Uruguay</td>
+      <td>Cape Verde Islands</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>Carega, Esteban (?)</td>
+      <td>11297</td>
+      <td>[u'Pike,60-1,172&lt;&gt;Pike, Ruth, &lt;i&gt;Enterprise&lt;/i...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1526</td>
+      <td>Spain / Uruguay</td>
+      <td>Cape Verde Islands</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>Carega, Esteban (?)</td>
+      <td>11298</td>
+      <td>[u'Pike,60-1,172&lt;&gt;Pike, Ruth, &lt;i&gt;Enterprise&lt;/i...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1526</td>
+      <td>NaN</td>
+      <td>Cape Verde Islands</td>
+      <td>Caribbean (colony unspecified)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>359.0</td>
+      <td>287.0</td>
+      <td>NaN</td>
+      <td>S Anton</td>
+      <td>Leon, Juan de</td>
+      <td>42631</td>
+      <td>[u'Chaunus, 3: 162-63&lt;&gt;&lt;p&gt;Chaunus, &lt;em&gt;xxxxxx&lt;...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20736</th>
+      <td>1864</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>488.0</td>
+      <td>465.0</td>
+      <td>NaN</td>
+      <td>Polaca</td>
+      <td>NaN</td>
+      <td>46554</td>
+      <td>[u'AHNM, Ultramar, Leg. 3551, 6&lt;&gt;&lt;i&gt;Archivo Hi...</td>
+    </tr>
+    <tr>
+      <th>20737</th>
+      <td>1865</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Isla de Pinas</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>152.0</td>
+      <td>145.0</td>
+      <td>Slave insurrection</td>
+      <td>Gato</td>
+      <td>NaN</td>
+      <td>4394</td>
+      <td>[u'IUP,ST,50/B/137&lt;&gt;Great Britain, &lt;i&gt;Irish Un...</td>
+    </tr>
+    <tr>
+      <th>20738</th>
+      <td>1865</td>
+      <td>NaN</td>
+      <td>Africa., port unspecified</td>
+      <td>Mariel</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>780.0</td>
+      <td>650.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>4395</td>
+      <td>[u'IUP,ST,50/B/144&lt;&gt;Great Britain, &lt;i&gt;Irish Un...</td>
+    </tr>
+    <tr>
+      <th>20739</th>
+      <td>1865</td>
+      <td>NaN</td>
+      <td>Congo River</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1265.0</td>
+      <td>1004.0</td>
+      <td>NaN</td>
+      <td>Cicerón</td>
+      <td>Mesquita</td>
+      <td>5052</td>
+      <td>[u'IUP,ST,50/A/23-4&lt;&gt;Great Britain, &lt;i&gt;Irish U...</td>
+    </tr>
+    <tr>
+      <th>20740</th>
+      <td>1866</td>
+      <td>NaN</td>
+      <td>Africa., port unspecified</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>851.0</td>
+      <td>700.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>4998</td>
+      <td>[u'IUP,ST,50/B/220&lt;&gt;Great Britain, &lt;i&gt;Irish Un...</td>
+    </tr>
+  </tbody>
+</table>
+<p>20741 rows × 14 columns</p>
+</div>
+</div>
+</div>
+<p>Renaming the “flag” column as above will only momentarily change that column’s name, however. If we display our DataFrame, we will see that the column name has <em>not</em> changed permamently.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>flag</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>sources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1520</td>
+      <td>NaN</td>
+      <td>Portuguese Guinea</td>
+      <td>San Juan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>324.0</td>
+      <td>259.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>42987</td>
+      <td>[u'AGI,Patronato 175, r.9&lt;&gt;&lt;p&gt;&lt;em&gt;AG!&lt;/em&gt; (Se...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>To save changes in the DataFrame, we need to reassign the DataFrame to the same variable.</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df <span class="op">=</span> slave_voyages_df.rename(columns<span class="op">=</span>{<span class="st">'flag'</span>: <span class="st">'national_affiliation'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>national_affiliation</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>sources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1520</td>
+      <td>NaN</td>
+      <td>Portuguese Guinea</td>
+      <td>San Juan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>324.0</td>
+      <td>259.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>42987</td>
+      <td>[u'AGI,Patronato 175, r.9&lt;&gt;&lt;p&gt;&lt;em&gt;AG!&lt;/em&gt; (Se...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="drop-columns" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="drop-columns"><span class="header-section-number">18.5</span> Drop Columns</h2>
+<p>We can remove a column from the DataFrame with the <code>.drop()</code> method and the column name.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df <span class="op">=</span> slave_voyages_df.drop(columns<span class="op">=</span><span class="st">"sources"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>Index(['year_of_arrival', 'flag', 'place_of_purchase', 'place_of_landing',
+       'percent_women', 'percent_children', 'percent_men', 'total_embarked',
+       'total_disembarked', 'resistance_label', 'vessel_name',
+       'captain's_name', 'voyage_id'],
+      dtype='object')</code></pre>
+</div>
+</div>
+</section>
+<section id="add-columns" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="add-columns"><span class="header-section-number">18.6</span> Add Columns</h2>
+<p>To add a column, we simply put a new column name in square brackets and set it equal to whatever we want the new column to be.</p>
+<p>For example, if we wanted to create new columns for the total women and men aboard each voyage, we could set them equal to the product of the “total_disembarked” column * the “percent_women” / “percent_men” columns.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'total_women'</span>] <span class="op">=</span> slave_voyages_df[<span class="st">'total_embarked'</span>] <span class="op">*</span> slave_voyages_df[<span class="st">'percent_women'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'total_men'</span>] <span class="op">=</span> slave_voyages_df[<span class="st">'total_embarked'</span>] <span class="op">*</span> slave_voyages_df[<span class="st">'percent_men'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we scroll all the way to the right side of the DataFrame, we can see that these columns have been added.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>national_affiliation</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>total_women</th>
+      <th>total_men</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1520</td>
+      <td>NaN</td>
+      <td>Portuguese Guinea</td>
+      <td>San Juan</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>324.0</td>
+      <td>259.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>42987</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="sort-columns" class="level2" data-number="18.7">
+<h2 data-number="18.7" class="anchored" data-anchor-id="sort-columns"><span class="header-section-number">18.7</span> Sort Columns</h2>
+<p>We can sort a DataFrame with the <code>.sort_values()</code> method, inside of which we include the parameter <code>by=</code> and indicate the name of the column we want to sort by (written in quotation marks).</p>
+<p>For example, we can sort the DataFrame by the voyages that had the largest proportion of enslaved women aboard.</p>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.sort_values(by<span class="op">=</span><span class="st">'percent_women'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>national_affiliation</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>total_women</th>
+      <th>total_men</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19042</th>
+      <td>1819</td>
+      <td>Spain / Uruguay</td>
+      <td>Luanda</td>
+      <td>Havana</td>
+      <td>1.00000</td>
+      <td>0.00000</td>
+      <td>0.00000</td>
+      <td>82.0</td>
+      <td>73.0</td>
+      <td>NaN</td>
+      <td>S José Diligente</td>
+      <td>Estepa</td>
+      <td>14378</td>
+      <td>82.00000</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>4269</th>
+      <td>1715</td>
+      <td>France</td>
+      <td>Senegambia and offshore Atlantic, port unspeci...</td>
+      <td>Cap Francais</td>
+      <td>0.74747</td>
+      <td>0.16162</td>
+      <td>0.09091</td>
+      <td>120.0</td>
+      <td>118.0</td>
+      <td>NaN</td>
+      <td>Elisabeth</td>
+      <td>Beliveau</td>
+      <td>31883</td>
+      <td>89.69640</td>
+      <td>10.90920</td>
+    </tr>
+    <tr>
+      <th>1741</th>
+      <td>1659</td>
+      <td>Netherlands</td>
+      <td>Bonny</td>
+      <td>Jamaica, port unspecified</td>
+      <td>0.72500</td>
+      <td>0.05882</td>
+      <td>0.27500</td>
+      <td>195.0</td>
+      <td>85.0</td>
+      <td>NaN</td>
+      <td>S Jan</td>
+      <td>Veer, Adriaen Blaes van der</td>
+      <td>21566</td>
+      <td>141.37500</td>
+      <td>53.62500</td>
+    </tr>
+    <tr>
+      <th>19047</th>
+      <td>1819</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Havana</td>
+      <td>0.71429</td>
+      <td>0.00000</td>
+      <td>0.28571</td>
+      <td>178.0</td>
+      <td>161.0</td>
+      <td>NaN</td>
+      <td>Descubridor</td>
+      <td>Benoit&lt;br/&gt; Valdes</td>
+      <td>14868</td>
+      <td>127.14362</td>
+      <td>50.85638</td>
+    </tr>
+    <tr>
+      <th>18950</th>
+      <td>1818</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Havana</td>
+      <td>0.69355</td>
+      <td>0.30645</td>
+      <td>0.00000</td>
+      <td>69.0</td>
+      <td>62.0</td>
+      <td>NaN</td>
+      <td>Vencedor</td>
+      <td>Iturrondo</td>
+      <td>14857</td>
+      <td>47.85495</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20736</th>
+      <td>1864</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>488.0</td>
+      <td>465.0</td>
+      <td>NaN</td>
+      <td>Polaca</td>
+      <td>NaN</td>
+      <td>46554</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20737</th>
+      <td>1865</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Isla de Pinas</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>152.0</td>
+      <td>145.0</td>
+      <td>Slave insurrection</td>
+      <td>Gato</td>
+      <td>NaN</td>
+      <td>4394</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20738</th>
+      <td>1865</td>
+      <td>NaN</td>
+      <td>Africa., port unspecified</td>
+      <td>Mariel</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>780.0</td>
+      <td>650.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>4395</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20739</th>
+      <td>1865</td>
+      <td>NaN</td>
+      <td>Congo River</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1265.0</td>
+      <td>1004.0</td>
+      <td>NaN</td>
+      <td>Cicerón</td>
+      <td>Mesquita</td>
+      <td>5052</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20740</th>
+      <td>1866</td>
+      <td>NaN</td>
+      <td>Africa., port unspecified</td>
+      <td>Cuba, port unspecified</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>851.0</td>
+      <td>700.0</td>
+      <td>NaN</td>
+      <td></td>
+      <td>NaN</td>
+      <td>4998</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>20741 rows × 15 columns</p>
+</div>
+</div>
+</div>
+<p>By default, Pandas will sort in “ascending” order, from the smallest value to the largest value. If we want to sort the largest values first, we need to include another parameter <code>ascending=False</code>.</p>
+<p>Because the DataFrame is truncated when it has more than 100 rows, we can use a Python list slice to view the top 30 (or any number less than 100) voyages with enslaved women aboard.</p>
+<div class="cell" data-scrolled="true" data-tags="[&quot;output_scroll&quot;]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.sort_values(by<span class="op">=</span><span class="st">'percent_women'</span>, ascending<span class="op">=</span><span class="va">False</span>)[:<span class="dv">30</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>national_affiliation</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>total_women</th>
+      <th>total_men</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19042</th>
+      <td>1819</td>
+      <td>Spain / Uruguay</td>
+      <td>Luanda</td>
+      <td>Havana</td>
+      <td>1.00000</td>
+      <td>0.00000</td>
+      <td>0.00000</td>
+      <td>82.0</td>
+      <td>73.0</td>
+      <td>NaN</td>
+      <td>S José Diligente</td>
+      <td>Estepa</td>
+      <td>14378</td>
+      <td>82.00000</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>4269</th>
+      <td>1715</td>
+      <td>France</td>
+      <td>Senegambia and offshore Atlantic, port unspeci...</td>
+      <td>Cap Francais</td>
+      <td>0.74747</td>
+      <td>0.16162</td>
+      <td>0.09091</td>
+      <td>120.0</td>
+      <td>118.0</td>
+      <td>NaN</td>
+      <td>Elisabeth</td>
+      <td>Beliveau</td>
+      <td>31883</td>
+      <td>89.69640</td>
+      <td>10.90920</td>
+    </tr>
+    <tr>
+      <th>1741</th>
+      <td>1659</td>
+      <td>Netherlands</td>
+      <td>Bonny</td>
+      <td>Jamaica, port unspecified</td>
+      <td>0.72500</td>
+      <td>0.05882</td>
+      <td>0.27500</td>
+      <td>195.0</td>
+      <td>85.0</td>
+      <td>NaN</td>
+      <td>S Jan</td>
+      <td>Veer, Adriaen Blaes van der</td>
+      <td>21566</td>
+      <td>141.37500</td>
+      <td>53.62500</td>
+    </tr>
+    <tr>
+      <th>19047</th>
+      <td>1819</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Havana</td>
+      <td>0.71429</td>
+      <td>0.00000</td>
+      <td>0.28571</td>
+      <td>178.0</td>
+      <td>161.0</td>
+      <td>NaN</td>
+      <td>Descubridor</td>
+      <td>Benoit&lt;br/&gt; Valdes</td>
+      <td>14868</td>
+      <td>127.14362</td>
+      <td>50.85638</td>
+    </tr>
+    <tr>
+      <th>18950</th>
+      <td>1818</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Havana</td>
+      <td>0.69355</td>
+      <td>0.30645</td>
+      <td>0.00000</td>
+      <td>69.0</td>
+      <td>62.0</td>
+      <td>NaN</td>
+      <td>Vencedor</td>
+      <td>Iturrondo</td>
+      <td>14857</td>
+      <td>47.85495</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>19037</th>
+      <td>1819</td>
+      <td>Spain / Uruguay</td>
+      <td>Ambriz</td>
+      <td>Havana</td>
+      <td>0.68456</td>
+      <td>0.00000</td>
+      <td>0.31544</td>
+      <td>164.0</td>
+      <td>149.0</td>
+      <td>NaN</td>
+      <td>Supremo Habanero</td>
+      <td>Blanco, Pedro</td>
+      <td>14372</td>
+      <td>112.26784</td>
+      <td>51.73216</td>
+    </tr>
+    <tr>
+      <th>4894</th>
+      <td>1721</td>
+      <td>France</td>
+      <td>Benin</td>
+      <td>Martinique, port unspecified</td>
+      <td>0.67797</td>
+      <td>0.15254</td>
+      <td>0.16949</td>
+      <td>69.0</td>
+      <td>59.0</td>
+      <td>NaN</td>
+      <td>Saint Jean Triomphant</td>
+      <td>Gaulart, J</td>
+      <td>33087</td>
+      <td>46.77993</td>
+      <td>11.69481</td>
+    </tr>
+    <tr>
+      <th>4150</th>
+      <td>1714</td>
+      <td>Great Britain</td>
+      <td>Calabar</td>
+      <td>Saint John (Antigua)</td>
+      <td>0.66667</td>
+      <td>0.16667</td>
+      <td>0.33333</td>
+      <td>360.0</td>
+      <td>240.0</td>
+      <td>NaN</td>
+      <td>Florida</td>
+      <td>Payne, Samuel</td>
+      <td>75489</td>
+      <td>240.00120</td>
+      <td>119.99880</td>
+    </tr>
+    <tr>
+      <th>6259</th>
+      <td>1734</td>
+      <td>Netherlands</td>
+      <td>Jacquin</td>
+      <td>Suriname</td>
+      <td>0.66480</td>
+      <td>0.09078</td>
+      <td>0.24441</td>
+      <td>716.0</td>
+      <td>374.0</td>
+      <td>NaN</td>
+      <td>Rusthof</td>
+      <td>Bovenmans, Anthony&lt;br/&gt; Theunissen, Willem</td>
+      <td>10278</td>
+      <td>475.99680</td>
+      <td>174.99756</td>
+    </tr>
+    <tr>
+      <th>1823</th>
+      <td>1664</td>
+      <td>Great Britain</td>
+      <td>New Calabar</td>
+      <td>Barbados, port unspecified</td>
+      <td>0.65217</td>
+      <td>0.08696</td>
+      <td>0.26087</td>
+      <td>242.0</td>
+      <td>168.0</td>
+      <td>NaN</td>
+      <td>Elizabeth</td>
+      <td>Francis, William</td>
+      <td>9558</td>
+      <td>157.82514</td>
+      <td>63.13054</td>
+    </tr>
+    <tr>
+      <th>1799</th>
+      <td>1663</td>
+      <td>Great Britain</td>
+      <td>Ardra</td>
+      <td>Barbados, port unspecified</td>
+      <td>0.64667</td>
+      <td>0.00000</td>
+      <td>0.35333</td>
+      <td>373.0</td>
+      <td>150.0</td>
+      <td>NaN</td>
+      <td>Blackamore</td>
+      <td>Bowles</td>
+      <td>9552</td>
+      <td>241.20791</td>
+      <td>131.79209</td>
+    </tr>
+    <tr>
+      <th>15471</th>
+      <td>1792</td>
+      <td>Great Britain</td>
+      <td>Calabar</td>
+      <td>Grenada, port unspecified</td>
+      <td>0.64646</td>
+      <td>0.06965</td>
+      <td>0.29798</td>
+      <td>200.0</td>
+      <td>135.0</td>
+      <td>NaN</td>
+      <td>Fame</td>
+      <td>Jenkins, William</td>
+      <td>18138</td>
+      <td>129.29200</td>
+      <td>59.59600</td>
+    </tr>
+    <tr>
+      <th>1824</th>
+      <td>1664</td>
+      <td>Great Britain</td>
+      <td>Bight of Biafra and Gulf of Guinea Islands, po...</td>
+      <td>Jamaica, port unspecified</td>
+      <td>0.64324</td>
+      <td>0.12973</td>
+      <td>0.22703</td>
+      <td>267.0</td>
+      <td>185.0</td>
+      <td>NaN</td>
+      <td>Allepine</td>
+      <td>Thwaites, William</td>
+      <td>9559</td>
+      <td>171.74508</td>
+      <td>60.61701</td>
+    </tr>
+    <tr>
+      <th>5049</th>
+      <td>1723</td>
+      <td>Great Britain</td>
+      <td>Cabinda</td>
+      <td>Jamaica, port unspecified</td>
+      <td>0.64141</td>
+      <td>0.26768</td>
+      <td>0.09091</td>
+      <td>201.0</td>
+      <td>198.0</td>
+      <td>NaN</td>
+      <td>Royal African Packet</td>
+      <td>Cornwell, Henry</td>
+      <td>76460</td>
+      <td>128.92341</td>
+      <td>18.27291</td>
+    </tr>
+    <tr>
+      <th>2151</th>
+      <td>1677</td>
+      <td>Great Britain</td>
+      <td>Calabar</td>
+      <td>Barbados, port unspecified</td>
+      <td>0.63816</td>
+      <td>0.03289</td>
+      <td>0.32895</td>
+      <td>219.0</td>
+      <td>152.0</td>
+      <td>NaN</td>
+      <td>Lenox</td>
+      <td>Wilkins, Amos</td>
+      <td>9980</td>
+      <td>139.75704</td>
+      <td>72.04005</td>
+    </tr>
+    <tr>
+      <th>17618</th>
+      <td>1804</td>
+      <td>Spain / Uruguay</td>
+      <td>Africa., port unspecified</td>
+      <td>Buenos Aires</td>
+      <td>0.63333</td>
+      <td>0.05000</td>
+      <td>0.31667</td>
+      <td>160.0</td>
+      <td>81.0</td>
+      <td>NaN</td>
+      <td>S Ana</td>
+      <td>Amaro, Rodriguez de Oliveira</td>
+      <td>96099</td>
+      <td>101.33280</td>
+      <td>50.66720</td>
+    </tr>
+    <tr>
+      <th>19040</th>
+      <td>1819</td>
+      <td>Spain / Uruguay</td>
+      <td>Luanda</td>
+      <td>Havana</td>
+      <td>0.62201</td>
+      <td>0.00000</td>
+      <td>0.37799</td>
+      <td>219.0</td>
+      <td>209.0</td>
+      <td>NaN</td>
+      <td>Clarita</td>
+      <td>Carballo, Alberto</td>
+      <td>14375</td>
+      <td>136.22019</td>
+      <td>82.77981</td>
+    </tr>
+    <tr>
+      <th>2318</th>
+      <td>1681</td>
+      <td>Great Britain</td>
+      <td>Gold Coast, port unspecified</td>
+      <td>Jamaica, port unspecified</td>
+      <td>0.62048</td>
+      <td>0.07831</td>
+      <td>0.30120</td>
+      <td>400.0</td>
+      <td>170.0</td>
+      <td>NaN</td>
+      <td>African</td>
+      <td>Mingham, John</td>
+      <td>9918</td>
+      <td>248.19200</td>
+      <td>120.48000</td>
+    </tr>
+    <tr>
+      <th>4364</th>
+      <td>1716</td>
+      <td>France</td>
+      <td>Goree</td>
+      <td>Leogane</td>
+      <td>0.62025</td>
+      <td>0.20736</td>
+      <td>0.37975</td>
+      <td>411.0</td>
+      <td>402.0</td>
+      <td>NaN</td>
+      <td>Duc d'Orléans</td>
+      <td>Villers, Chevalier de</td>
+      <td>31886</td>
+      <td>254.92275</td>
+      <td>156.07725</td>
+    </tr>
+    <tr>
+      <th>5259</th>
+      <td>1725</td>
+      <td>France</td>
+      <td>Senegambia and offshore Atlantic, port unspeci...</td>
+      <td>Cap Francais</td>
+      <td>0.61353</td>
+      <td>0.05314</td>
+      <td>0.33333</td>
+      <td>210.0</td>
+      <td>207.0</td>
+      <td>NaN</td>
+      <td>Prothée</td>
+      <td>Hantier, J</td>
+      <td>32873</td>
+      <td>128.84130</td>
+      <td>69.99930</td>
+    </tr>
+    <tr>
+      <th>4773</th>
+      <td>1720</td>
+      <td>France</td>
+      <td>Formosa</td>
+      <td>Martinique, port unspecified</td>
+      <td>0.61207</td>
+      <td>0.25862</td>
+      <td>0.12931</td>
+      <td>215.0</td>
+      <td>176.0</td>
+      <td>Slave insurrection</td>
+      <td>Don de Dieu</td>
+      <td>Masson Du Bocage, Guillaume</td>
+      <td>33119</td>
+      <td>131.59505</td>
+      <td>27.80165</td>
+    </tr>
+    <tr>
+      <th>2591</th>
+      <td>1686</td>
+      <td>Great Britain</td>
+      <td>New Calabar</td>
+      <td>Newcastle (Nevis)</td>
+      <td>0.60656</td>
+      <td>0.14754</td>
+      <td>0.24590</td>
+      <td>267.0</td>
+      <td>111.0</td>
+      <td>NaN</td>
+      <td>Francis</td>
+      <td>Wimple, Ralph</td>
+      <td>9838</td>
+      <td>161.95152</td>
+      <td>65.65530</td>
+    </tr>
+    <tr>
+      <th>2182</th>
+      <td>1678</td>
+      <td>Great Britain</td>
+      <td>Calabar</td>
+      <td>Jamaica, port unspecified</td>
+      <td>0.60526</td>
+      <td>0.04605</td>
+      <td>0.34868</td>
+      <td>219.0</td>
+      <td>152.0</td>
+      <td>NaN</td>
+      <td>Vine</td>
+      <td>Coleman, John</td>
+      <td>9987</td>
+      <td>132.55194</td>
+      <td>76.36092</td>
+    </tr>
+    <tr>
+      <th>5543</th>
+      <td>1727</td>
+      <td>Great Britain</td>
+      <td>Africa., port unspecified</td>
+      <td>Rappahannock</td>
+      <td>0.60440</td>
+      <td>0.35000</td>
+      <td>0.39560</td>
+      <td>161.0</td>
+      <td>140.0</td>
+      <td>NaN</td>
+      <td>John and Betty</td>
+      <td>Denton, William</td>
+      <td>92352</td>
+      <td>97.30840</td>
+      <td>63.69160</td>
+    </tr>
+    <tr>
+      <th>2540</th>
+      <td>1685</td>
+      <td>Great Britain</td>
+      <td>Cape Coast Castle</td>
+      <td>Jamaica, port unspecified</td>
+      <td>0.59917</td>
+      <td>0.00000</td>
+      <td>0.40083</td>
+      <td>310.0</td>
+      <td>242.0</td>
+      <td>NaN</td>
+      <td>Jefferie</td>
+      <td>Daile, Benjamin</td>
+      <td>9669</td>
+      <td>185.74270</td>
+      <td>124.25730</td>
+    </tr>
+    <tr>
+      <th>4736</th>
+      <td>1719</td>
+      <td>France</td>
+      <td>Africa., port unspecified</td>
+      <td>Cayenne</td>
+      <td>0.59524</td>
+      <td>0.16667</td>
+      <td>0.23810</td>
+      <td>52.0</td>
+      <td>42.0</td>
+      <td>NaN</td>
+      <td>Fidèle</td>
+      <td>Bonneau, Jean</td>
+      <td>30111</td>
+      <td>30.95248</td>
+      <td>12.38120</td>
+    </tr>
+    <tr>
+      <th>2327</th>
+      <td>1681</td>
+      <td>Great Britain</td>
+      <td>New Calabar</td>
+      <td>Barbados, port unspecified</td>
+      <td>0.59231</td>
+      <td>0.06923</td>
+      <td>0.33846</td>
+      <td>232.0</td>
+      <td>130.0</td>
+      <td>NaN</td>
+      <td>Hope</td>
+      <td>Grible, John</td>
+      <td>9927</td>
+      <td>137.41592</td>
+      <td>78.52272</td>
+    </tr>
+    <tr>
+      <th>2377</th>
+      <td>1682</td>
+      <td>Great Britain</td>
+      <td>Calabar</td>
+      <td>Jamaica, port unspecified</td>
+      <td>0.58879</td>
+      <td>0.08411</td>
+      <td>0.32710</td>
+      <td>164.0</td>
+      <td>114.0</td>
+      <td>NaN</td>
+      <td>Arthur</td>
+      <td>Penny, George</td>
+      <td>9898</td>
+      <td>96.56156</td>
+      <td>53.64440</td>
+    </tr>
+    <tr>
+      <th>2376</th>
+      <td>1682</td>
+      <td>Great Britain</td>
+      <td>Calabar</td>
+      <td>Newcastle (Nevis)</td>
+      <td>0.58696</td>
+      <td>0.11957</td>
+      <td>0.29348</td>
+      <td>146.0</td>
+      <td>119.0</td>
+      <td>NaN</td>
+      <td>Eaglet</td>
+      <td>Waugh, John</td>
+      <td>9896</td>
+      <td>85.69616</td>
+      <td>42.84808</td>
+    </tr>
+    <tr>
+      <th>1833</th>
+      <td>1664</td>
+      <td>Great Britain</td>
+      <td>Calabar</td>
+      <td>Barbados, port unspecified</td>
+      <td>0.58549</td>
+      <td>0.15544</td>
+      <td>0.25907</td>
+      <td>278.0</td>
+      <td>193.0</td>
+      <td>NaN</td>
+      <td>Success</td>
+      <td>Duke, Abraham</td>
+      <td>9584</td>
+      <td>162.76622</td>
+      <td>72.02146</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>If we want to sort a Series object, we don’t need to use the <code>by=</code> paramter.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'total_women'</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>6259     475.996800
+18822    316.640164
+2264     311.833480
+6163     303.000180
+3129     301.764000
+            ...    
+20736           NaN
+20737           NaN
+20738           NaN
+20739           NaN
+20740           NaN
+Name: total_women, Length: 20741, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="calculate-columns" class="level2" data-number="18.8">
+<h2 data-number="18.8" class="anchored" data-anchor-id="calculate-columns"><span class="header-section-number">18.8</span> Calculate Columns</h2>
+<p>We can do different calculations on columns with built-in Pandas functions. These calculations will ignore <code>NaN</code> values.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Pandas calculations</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.count()</code></td>
+<td>Number of observations</td>
+</tr>
+<tr class="even">
+<td><code>.sum()</code></td>
+<td>Sum of values</td>
+</tr>
+<tr class="odd">
+<td><code>.mean()</code></td>
+<td>Mean of values</td>
+</tr>
+<tr class="even">
+<td><code>.median()</code></td>
+<td>Median of values</td>
+</tr>
+<tr class="odd">
+<td><code>.min()</code></td>
+<td>Minimum</td>
+</tr>
+<tr class="even">
+<td><code>.max()</code></td>
+<td>Maximum</td>
+</tr>
+<tr class="odd">
+<td><code>.mode()</code></td>
+<td>Mode</td>
+</tr>
+<tr class="even">
+<td><code>.std()</code></td>
+<td>Unbiased standard deviation</td>
+</tr>
+</tbody>
+</table>
+<p>For example, to find the average proprotion of enslaved women aboard the voyages (for voyages that have this information), we can use the <code>.mean()</code> method.</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'percent_women'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>0.27419760653973735</code></pre>
+</div>
+</div>
+<p>There were on average 27% enslaved women aboard the voyages for voyages that recorded this information.</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'percent_women'</span>].<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>1.0</code></pre>
+</div>
+</div>
+<p>The highest percentage of women aboard the slave voyages was 100%. We can use this calculation as a filter to identify the voyage(s) with this maximum value.</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[slave_voyages_df[<span class="st">'percent_women'</span>] <span class="op">==</span> slave_voyages_df[<span class="st">'percent_women'</span>].<span class="bu">max</span>()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>national_affiliation</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>total_women</th>
+      <th>total_men</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19042</th>
+      <td>1819</td>
+      <td>Spain / Uruguay</td>
+      <td>Luanda</td>
+      <td>Havana</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>82.0</td>
+      <td>73.0</td>
+      <td>NaN</td>
+      <td>S José Diligente</td>
+      <td>Estepa</td>
+      <td>14378</td>
+      <td>82.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>According to the Trans-Atlantic Slave Trade Database, the 1819 voyage of the S José Diligente had 100% enslaved women aboard.</p>
+<p>As demonstrated previously, we can also perform calculations with columns themselves.</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(slave_voyages_df[<span class="st">'total_embarked'</span>] <span class="op">*</span> slave_voyages_df[<span class="st">'percent_women'</span>]).<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>475.99679999999995</code></pre>
+</div>
+</div>
+</section>
+<section id="groupby-columns" class="level2" data-number="18.9">
+<h2 data-number="18.9" class="anchored" data-anchor-id="groupby-columns"><span class="header-section-number">18.9</span> Groupby Columns</h2>
+<p>The Pandas function<code>.groupby()</code> allows us to group data and perform calculations on the groups.</p>
+<p>For example, Jennifer Morgan writes about how some nations recorded more information about the gender of the enslaved people aboard their voyages than other nations did. To see the breakdown of gender information by nation, we can use a <code>.groupby()</code> function.</p>
+<p>The first step to using groupby is to type the name of the DataFrame followed by <code>.groupby()</code> with the column we’d like to aggregate based on, such as “national_affiliation.”</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.groupby(<span class="st">'national_affiliation'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fdd2d0c2150&gt;</code></pre>
+</div>
+</div>
+<p>This action will created a <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html">GroupBy object</a>. We can perform calculations on this grouped data, such as counting the number of non-blank values in each column for each nation.</p>
+<div class="cell" data-tags="[&quot;full-width&quot;]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.groupby(<span class="st">'national_affiliation'</span>).count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year_of_arrival</th>
+      <th>place_of_purchase</th>
+      <th>place_of_landing</th>
+      <th>percent_women</th>
+      <th>percent_children</th>
+      <th>percent_men</th>
+      <th>total_embarked</th>
+      <th>total_disembarked</th>
+      <th>resistance_label</th>
+      <th>vessel_name</th>
+      <th>captain's_name</th>
+      <th>voyage_id</th>
+      <th>total_women</th>
+      <th>total_men</th>
+    </tr>
+    <tr>
+      <th>national_affiliation</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Denmark / Baltic</th>
+      <td>290</td>
+      <td>290</td>
+      <td>290</td>
+      <td>119</td>
+      <td>119</td>
+      <td>119</td>
+      <td>290</td>
+      <td>290</td>
+      <td>8</td>
+      <td>290</td>
+      <td>163</td>
+      <td>290</td>
+      <td>119</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <th>France</th>
+      <td>3381</td>
+      <td>3377</td>
+      <td>3381</td>
+      <td>708</td>
+      <td>709</td>
+      <td>708</td>
+      <td>3381</td>
+      <td>3381</td>
+      <td>121</td>
+      <td>3381</td>
+      <td>3289</td>
+      <td>3381</td>
+      <td>708</td>
+      <td>708</td>
+    </tr>
+    <tr>
+      <th>Great Britain</th>
+      <td>10536</td>
+      <td>10530</td>
+      <td>10536</td>
+      <td>1123</td>
+      <td>1151</td>
+      <td>1123</td>
+      <td>10526</td>
+      <td>10525</td>
+      <td>152</td>
+      <td>10536</td>
+      <td>10226</td>
+      <td>10536</td>
+      <td>1123</td>
+      <td>1123</td>
+    </tr>
+    <tr>
+      <th>Netherlands</th>
+      <td>1389</td>
+      <td>1341</td>
+      <td>1389</td>
+      <td>200</td>
+      <td>201</td>
+      <td>200</td>
+      <td>1387</td>
+      <td>1387</td>
+      <td>51</td>
+      <td>1389</td>
+      <td>1316</td>
+      <td>1389</td>
+      <td>200</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <th>Other</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Portugal / Brazil</th>
+      <td>1009</td>
+      <td>1009</td>
+      <td>1009</td>
+      <td>42</td>
+      <td>48</td>
+      <td>42</td>
+      <td>1009</td>
+      <td>1009</td>
+      <td>0</td>
+      <td>1009</td>
+      <td>874</td>
+      <td>1009</td>
+      <td>42</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>Spain / Uruguay</th>
+      <td>1528</td>
+      <td>1524</td>
+      <td>1528</td>
+      <td>468</td>
+      <td>465</td>
+      <td>468</td>
+      <td>1528</td>
+      <td>1528</td>
+      <td>4</td>
+      <td>1528</td>
+      <td>1323</td>
+      <td>1528</td>
+      <td>468</td>
+      <td>468</td>
+    </tr>
+    <tr>
+      <th>U.S.A.</th>
+      <td>1446</td>
+      <td>1436</td>
+      <td>1446</td>
+      <td>223</td>
+      <td>223</td>
+      <td>223</td>
+      <td>1443</td>
+      <td>1442</td>
+      <td>31</td>
+      <td>1446</td>
+      <td>1283</td>
+      <td>1446</td>
+      <td>223</td>
+      <td>223</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>```{sidebar} On England’s Slave Ship Records &gt; For example, patterns emerge that suggest that English slave ship captains provided the most data related to the age or sex characteristics of the captives they transported and sold into slavery…The degree to which the practice of recording the sex of the passengers on board accords to national origin raises some interesting questions about the possible correlations between certain notational and national presumptions of accountability.</p>
+<p>-Jennifer Morgan, <a href="https://read.dukeupress.edu/history-of-the-present/article-abstract/6/2/184/153282/Accounting-for-The-Most-Excruciating-Torment?redirectedFrom=PDF">“Accounting for ‘The Most Excruciating Torment’”</a></p>
+<pre><code>
+We can also isolate only the "percent_women" column.
+
+::: {.cell execution_count=34}
+``` {.python .cell-code}
+slave_voyages_df.groupby('national_affiliation').count()['percent_women']</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>national_affiliation
+Denmark / Baltic      119
+France                708
+Great Britain        1123
+Netherlands           200
+Other                   0
+Portugal / Brazil      42
+Spain / Uruguay       468
+U.S.A.                223
+Name: percent_women, dtype: int64</code></pre>
+</div>
+<p>:::</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.groupby(<span class="st">'national_affiliation'</span>)[<span class="st">'percent_women'</span>].count().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>national_affiliation
+Great Britain        1123
+France                708
+Spain / Uruguay       468
+U.S.A.                223
+Netherlands           200
+Denmark / Baltic      119
+Portugal / Brazil      42
+Other                   0
+Name: percent_women, dtype: int64</code></pre>
+</div>
+</div>
+<p><code>{margin} Line Breaks If a line of code gets too long, you can create a line break with a backslash `\`</code></p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.groupby(<span class="st">'national_affiliation'</span>)[<span class="st">'percent_women'</span>].count()<span class="op">\</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>.sort_values(ascending<span class="op">=</span><span class="va">False</span>).plot(kind<span class="op">=</span><span class="st">'bar'</span>, title<span class="op">=</span><span class="st">'Trans-Atlantic Slave Trade (Americas): </span><span class="ch">\n</span><span class="st"> Slave Voyages with Recorded Gender Information'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fdd2bda9750&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04-Pandas-Basics-Part2_files/figure-html/cell-37-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="make-time-series-with-groupby" class="level2" data-number="18.10">
+<h2 data-number="18.10" class="anchored" data-anchor-id="make-time-series-with-groupby"><span class="header-section-number">18.10</span> Make Time Series with Groupby</h2>
+<p>To make a time series, we would typically want to convert our date column into datetime values rather than integers.</p>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df[<span class="st">'year_of_arrival'</span>].dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>dtype('int64')</code></pre>
+</div>
+</div>
+<p>Datetime values allow us to do special things that we can’t do with regular integers and floats, such as extract just the year, month, week, day, or second from any date or aggregate based on any of the above.</p>
+<p>However, we can also make some simple time series plots just by grouping by the year column and performing calculations on those year groupings, such as calculating the average percentage of enslaved women aboard the voyages over time.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>slave_voyages_df.groupby(<span class="st">'year_of_arrival'</span>)[<span class="st">'total_women'</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>year_of_arrival
+1520    0.0
+1525    0.0
+1526    0.0
+1527    0.0
+1532    0.0
+       ... 
+1862    0.0
+1863    0.0
+1864    0.0
+1865    0.0
+1866    0.0
+Name: total_women, Length: 330, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>total_women_by_year <span class="op">=</span> slave_voyages_df.groupby(<span class="st">'year_of_arrival'</span>)[<span class="st">'total_women'</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>total_women_by_year.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbc383adb50&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04-Pandas-Basics-Part2_files/figure-html/cell-41-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>total_women_by_year.plot(kind<span class="op">=</span><span class="st">'line'</span>, title<span class="op">=</span><span class="st">"Trans-Atlantic Slave Trade (Americas):</span><span class="ch">\n</span><span class="st">Total Number of Enslaved Women on Voyages"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbc39cfa110&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04-Pandas-Basics-Part2_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can put different plots on the same axes by assigning one of the plots to the variable <code>ax</code>, short for axes, and then using <code>ax=ax</code> in the other plot to explicitly put it on the same axes.</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>total_men_by_year <span class="op">=</span> slave_voyages_df.groupby(<span class="st">'year_of_arrival'</span>)[<span class="st">'total_men'</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> total_women_by_year.plot(kind<span class="op">=</span><span class="st">'line'</span>, legend<span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>                              title<span class="op">=</span><span class="st">"Trans-Atlantic Slave Trade (Americas):</span><span class="ch">\n</span><span class="st">Total Number of Enslaved Women on Voyages"</span>)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>total_men_by_year.plot(ax<span class="op">=</span>ax, legend<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbc39ec9c90&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04-Pandas-Basics-Part2_files/figure-html/cell-44-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can change the labels in a legend by using the <code>label=</code> parameter.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> total_women_by_year.plot(kind<span class="op">=</span><span class="st">'line'</span>, label<span class="op">=</span><span class="st">"Total Women"</span>, legend<span class="op">=</span> <span class="va">True</span>, title<span class="op">=</span><span class="st">"Trans-Atlantic Slave Trade (Americas):</span><span class="ch">\n</span><span class="st">Total Number of Enslaved Women on Voyages"</span>)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>total_men_by_year.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Total Men"</span>, legend<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbc3a004710&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04-Pandas-Basics-Part2_files/figure-html/cell-45-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Finally, we can also add in the total number of enslaved people who embarked on the voyages, offering a perspective of how much gender information we have about the voyages compared to the total number of voyages.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>total_embarked_by_year <span class="op">=</span> slave_voyages_df.groupby(<span class="st">'year_of_arrival'</span>)[<span class="st">'total_embarked'</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> total_women_by_year.plot(kind<span class="op">=</span><span class="st">'line'</span>, label<span class="op">=</span><span class="st">"Total Women"</span>, legend<span class="op">=</span> <span class="va">True</span>, title<span class="op">=</span><span class="st">"Trans-Atlantic Slave Trade (Americas):</span><span class="ch">\n</span><span class="st">Total Number of Enslaved Women on Voyages"</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>total_men_by_year.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Total Men"</span>, legend<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>total_embarked_by_year.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Total Embarked"</span>, legend<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbc3a0f8f10&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04-Pandas-Basics-Part2_files/figure-html/cell-47-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="save-plots" class="level2" data-number="18.11">
+<h2 data-number="18.11" class="anchored" data-anchor-id="save-plots"><span class="header-section-number">18.11</span> Save Plots</h2>
+<p>To save a plot as an image file or PDF file, we can again assign the plot to a variable called <code>ax</code>, short for axes.</p>
+<p>Then we can use <code>ax.figure.savefig('FILE-NAME.png')</code> or <code>ax.figure.savefig('FILE-NAME.pdf')</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> total_women_by_year.plot(kind<span class="op">=</span><span class="st">'line'</span>, label<span class="op">=</span><span class="st">"Total Women"</span>, legend<span class="op">=</span> <span class="va">True</span>, title<span class="op">=</span><span class="st">"Trans-Atlantic Slave Trade (Americas):</span><span class="ch">\n</span><span class="st">Total Number of Enslaved Women on Voyages"</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>total_men_by_year.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Total Men"</span>, legend<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>total_embarked_by_year.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Total Embarked"</span>, legend<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>ax.figure.savefig(<span class="st">'Trans-Atlantic-Slave-Trade_Gender-Info.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="prevent-labels-from-getting-cut-off" class="level2" data-number="18.12">
+<h2 data-number="18.12" class="anchored" data-anchor-id="prevent-labels-from-getting-cut-off"><span class="header-section-number">18.12</span> Prevent Labels From Getting Cut Off</h2>
+<p>If labels are getting cut off in your image, you can explicitly import <code>matplotlib.pyplot</code> (the data viz Python library that Pandas <code>.plot()</code>s are built on) and use the <code>tight_layout()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> total_women_by_year.plot(kind<span class="op">=</span><span class="st">'line'</span>, label<span class="op">=</span><span class="st">"Total Women"</span>, legend<span class="op">=</span> <span class="va">True</span>, title<span class="op">=</span><span class="st">"Trans-Atlantic Slave Trade (Americas):</span><span class="ch">\n</span><span class="st">Total Number of Enslaved Women on Voyages"</span>)</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>total_men_by_year.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Total Men"</span>, legend<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>total_embarked_by_year.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Total Embarked"</span>, legend<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>ax.figure.savefig(<span class="st">'Trans-Atlantic-Slave-Trade_Gender-Info.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../code/04.5-Pandas-Basics-Part2-WORKBOOK.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Pandas Basics Part 2 — Workbook</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Cultural Analytics Open Science Guide</div>   
+    <div class="nav-footer-right">powered by <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
