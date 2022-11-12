@@ -1,0 +1,11 @@
+{
+  "hash": "25a93e781416c54d925c899d8c33c95b",
+  "result": {
+    "markdown": "# Data Analysis (Pandas)\n\nThis series of lessons will focus on [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html), a powerful Python library for working with tabular data like CSV files.\n\n```{tableofcontents}\n```\n\n",
+    "supporting": [
+      "02-Data-Analysis_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

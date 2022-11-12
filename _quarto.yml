@@ -1,0 +1,160 @@
+project:
+  type: book
+  output-dir: docs
+
+# execute:
+#   enabled: true
+
+jupyter:
+        kernelspec:
+            display_name: Python 3
+            language: python
+            name: python3
+
+book:
+    page-navigation: true
+    title: "Cultural Analytics Open Science Guide"
+
+    author:
+        - Federico Pianzola
+        - Paschalis Agapitos
+    #date-meta: today
+    # downloads: [pdf]
+
+    reader-mode: true
+    page-footer:
+        left: Cultural Analytics Open Science Guide
+        right: powered by <a href="https://quarto.org/">Quarto</a>.
+        background: "#D9E3E4"
+    sidebar:
+        style: "floating"
+        collapse-level: 7
+        border: true
+        search: true
+        background: "#D9E3E4"
+        logo: images/dh_gro_logo.png
+        pinned: true
+        align: center
+        tools:
+            - icon: person-fill
+              text: "Personal account"
+              menu:
+                  - text: Login to your student account
+                    url: https://signon.rug.nl/nidp/app/login?id=100&sid=2&option=credential&sid=2
+            - icon: github
+              href: https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide
+              text: "Source Code"
+            - icon: house
+              href: https://www.rug.nl/research/research-let/expertisecentra/centre-for-digital-humanities/
+              text: "Center for Digital Humanities - University of Groningen"
+            # - icon: link
+            #   text: Useful links
+            #   menu:
+            #       - text: Introduction to Cultural Analytics & Python by Melanie Walsh
+            #         url: https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html
+            #       - text: PythonHumanities.com
+            #         url: https://pythonhumanities.com/
+            #       - text: Introduction to Python for Humanists by Dr. W.J.B. Mattingly
+            #         url: https://python-textbook.pythonhumanities.com/intro.html
+            #       - text: Python for Data Analysis by Wes McKinney
+            #         url: https://wesmckinney.com/book/
+
+    #style: "docked"
+    search: true
+    cover-image: images/dh_gro_logo.png
+
+
+    chapters:
+        - index.qmd
+        - code/00-Datasets.ipynb
+        - part: code/version_control.md
+          chapters:
+            - code/01-The-Command-Line.ipynb
+            - code/README_file.md
+            - code/vcs-workflow.md
+            - code/vcs-git.md
+            - code/vcs-git-commit.md
+            - code/vcs-git-compare.md
+            - code/vcs-git-branches.md
+            - code/vcs-git-merge.md
+            - code/vcs-git-interactive.md
+            - code/github-flow.md
+            - code/vcs-github.md
+            - code/the-clone-wars.md
+            - code/vcs-git-summary.md
+            - code/vcs-data.md
+        - part: code/02-Data-Analysis.ipynb
+          chapters:
+            - code/03-Pandas-Basics-Part1.ipynb
+            - code/03.5-Pandas-Basics-Part1-WORKBOOK.ipynb
+            - code/04-Pandas-Basics-Part2.ipynb
+            - code/04.5-Pandas-Basics-Part2-WORKBOOK.ipynb
+            - code/05-Pandas-Basics-Part3.ipynb
+            - code/05.5-Pandas-Basics-Part3-WORKBOOK.ipynb
+            - code/06-Pandas-Basics-More-Methods-WORKBOOK.ipynb
+            - code/07-Pandas-Merge-Datasets.ipynb
+        - part: code/08-Data-Collection.ipynb
+          chapters:
+            - code/09-User-Ethics-Legal-Concerns.ipynb
+            - code/10-Web-Scraping-Part1.ipynb
+            - code/10.5-Web-Scraping-Part1-WORKBOOK.ipynb
+            - code/11-Web-Scraping-Part2.ipynb
+            - code/11.5-Web-Scraping-Part2-WORKBOOK.ipynb
+            - code/12-Git-Github.ipynb
+            - code/13-What-Is-API.ipynb
+            - code/13.5-APIs-WORKBOOK.ipynb
+        - part: "Data collection examples"
+          chapters:
+            - code/14-Song-Genius.ipynb
+            - code/15-Genius-API.ipynb
+            - code/16-Collect-Genius-Lyrics.ipynb
+            - code/17-Lyrics-Analysis.ipynb
+            - code/18-Twitter.ipynb
+            - code/19-Twitter-API-Setup.ipynb
+            - code/20-Twitter-Data.ipynb
+            - code/21-Twitter-Data-Sharing.ipynb
+            - code/22-Reddit-Data.ipynb
+        - part: references.qmd
+bibliography: references.bib
+
+format:
+  html:
+    highlight-style: a11y
+    theme:
+      light: flatly
+      dark: darkly
+    mainfont: "Helvetica"
+    fontsize: "17px"
+    linestretch: 1.8
+    smooth-scroll: true
+    toc-depth: 4
+    code-copy: true
+    code-overflow: wrap
+    code-block-bg: true
+    code-tools:
+        toggle: true
+        source: https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide
+    toc: true
+    page-layout: article
+
+  # pdf:
+  #   documentclass: book
+  #   lof: true
+  #   lot: true
+  #   toc: true
+  #   geometry:
+  #     - top=30mm
+  #     - left=20mm
+  #     - heightrounded
+  #   hyperrefoptions:
+  #     - linktoc=all
+  #   colorlinks: true
+  #   linkcolor: "blue"
+  #   biblio-style: apalike
+  #   keep-text: true
+
+latex-auto-install: true
+
+freeze: auto
+
+editor: visual

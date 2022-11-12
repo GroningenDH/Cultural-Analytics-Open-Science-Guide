@@ -1,0 +1,11 @@
+{
+  "hash": "5af70030c4c852340dc2aaa36d5f4edf",
+  "result": {
+    "markdown": "## Song Genius Data Collection\n\nThis series of lessons covers how to collect and analyze song lyrics from Genius.com:\n\n```{tableofcontents}\n```\n\n",
+    "supporting": [
+      "14-Song-Genius_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -1,0 +1,4 @@
+MenuItem.csv filter=lfs diff=lfs merge=lfs -text
+Seattle_Book_Checkouts_2010_2017.csv filter=lfs diff=lfs merge=lfs -text
+Terminal-Keep-In-Dock.mp4 filter=lfs diff=lfs merge=lfs -text
+dfw.jsonl filter=lfs diff=lfs merge=lfs -text

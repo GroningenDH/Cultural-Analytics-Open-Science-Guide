@@ -1,0 +1,11 @@
+{
+  "hash": "7568b6bd6e0bf026ba9076e8d5c8b485",
+  "result": {
+    "markdown": "## Twitter Data\n\nThis series of lessons covers how to collect and analyze Twitter data:\n\n```{tableofcontents}\n```\n\n",
+    "supporting": [
+      "18-Twitter_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cultural Analytics Open Science Guide - 17&nbsp; Pandas Basics Part 1 — Workbook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../code/04-Pandas-Basics-Part2.html" rel="next">
+<link href="../code/03-Pandas-Basics-Part1.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../" class="sidebar-logo-link">
+      <img src="../images/dh_gro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Cultural Analytics Open Science Guide</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="" title="Personal account" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://signon.rug.nl/nidp/app/login?id=100&amp;sid=2&amp;option=credential&amp;sid=2">
+          Login to your student account
+          </a>
+        </li>
+    </ul>
+    <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://www.rug.nl/research/research-let/expertisecentra/centre-for-digital-humanities/" title="Center for Digital Humanities - University of Groningen" class="sidebar-tool px-1"><i class="bi bi-house"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/00-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datasets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/version_control.html" class="sidebar-item-text sidebar-link">Version Control</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/01-The-Command-Line.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Command Line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">General Workflow of a Vercion Control System (VCS)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-merge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Merging Branches in Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-interactive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive, Visual Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/github-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/the-clone-wars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Clone Wars</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Git Summary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Version Control for Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/02-Data-Analysis.html" class="sidebar-item-text sidebar-link">Data Analysis (Pandas)</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03-Pandas-Basics-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04-Pandas-Basics-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04.5-Pandas-Basics-Part2-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Pandas Basics Part 2 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05-Pandas-Basics-Part3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05.5-Pandas-Basics-Part3-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Pandas Basics Part 3 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/06-Pandas-Basics-More-Methods-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Pandas Basics — More Useful Methods — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/07-Pandas-Merge-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Pandas — Merge Datasets</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/08-Data-Collection.html" class="sidebar-item-text sidebar-link">Data Collection</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10-Web-Scraping-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10.5-Web-Scraping-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Web Scraping Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/11-Web-Scraping-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13-What-Is-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Application Programming Interfaces (APIs)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13.5-APIs-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">APIs — Workbook</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Data collection examples</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/14-Song-Genius.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Song Genius Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/15-Genius-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Song Genius API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/16-Collect-Genius-Lyrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Song Lyrics Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/17-Lyrics-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Song Lyrics Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/18-Twitter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Twitter Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/19-Twitter-API-Setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Twitter API Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/20-Twitter-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Twitter Data Collection &amp; Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/21-Twitter-Data-Sharing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Twitter Data Sharing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/22-Reddit-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">References</span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#import-pandas" id="toc-import-pandas" class="nav-link active" data-scroll-target="#import-pandas"><span class="toc-section-number">17.1</span>  Import Pandas</a></li>
+  <li><a href="#change-display-settings" id="toc-change-display-settings" class="nav-link" data-scroll-target="#change-display-settings"><span class="toc-section-number">17.2</span>  Change Display Settings</a></li>
+  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="toc-section-number">17.3</span>  Get Data</a></li>
+  <li><a href="#begin-to-examine-patterns" id="toc-begin-to-examine-patterns" class="nav-link" data-scroll-target="#begin-to-examine-patterns"><span class="toc-section-number">17.4</span>  Begin to Examine Patterns</a>
+  <ul>
+  <li><a href="#select-columns-as-series-objects" id="toc-select-columns-as-series-objects" class="nav-link" data-scroll-target="#select-columns-as-series-objects"><span class="toc-section-number">17.4.1</span>  Select Columns as Series Objects <code>[]</code></a></li>
+  </ul></li>
+  <li><a href="#pandas-methods" id="toc-pandas-methods" class="nav-link" data-scroll-target="#pandas-methods"><span class="toc-section-number">17.5</span>  Pandas Methods</a>
+  <ul>
+  <li><a href="#how-old-on-average-were-the-people-admitted-to-the-bellevue-almshouse" id="toc-how-old-on-average-were-the-people-admitted-to-the-bellevue-almshouse" class="nav-link" data-scroll-target="#how-old-on-average-were-the-people-admitted-to-the-bellevue-almshouse"><span class="toc-section-number">17.5.1</span>  ❓ How old (on average) were the people admitted to the Bellevue Almshouse?</a></li>
+  <li><a href="#how-old-was-the-oldest-person-admitted-to-bellevue" id="toc-how-old-was-the-oldest-person-admitted-to-bellevue" class="nav-link" data-scroll-target="#how-old-was-the-oldest-person-admitted-to-bellevue"><span class="toc-section-number">17.5.2</span>  ❓ How old was the oldest person admitted to Bellevue?</a></li>
+  <li><a href="#how-young-was-the-youngest-person" id="toc-how-young-was-the-youngest-person" class="nav-link" data-scroll-target="#how-young-was-the-youngest-person"><span class="toc-section-number">17.5.3</span>  ❓ How young was the youngest person?</a></li>
+  <li><a href="#what-were-the-most-common-professions-among-these-irish-immigrants" id="toc-what-were-the-most-common-professions-among-these-irish-immigrants" class="nav-link" data-scroll-target="#what-were-the-most-common-professions-among-these-irish-immigrants"><span class="toc-section-number">17.5.4</span>  ❓ What were the most common professions among these Irish immigrants?</a></li>
+  <li><a href="#what-are-the-most-common-diseases" id="toc-what-are-the-most-common-diseases" class="nav-link" data-scroll-target="#what-are-the-most-common-diseases"><span class="toc-section-number">17.5.5</span>  ❓ What are the most common diseases?</a></li>
+  <li><a href="#where-were-most-people-sent" id="toc-where-were-most-people-sent" class="nav-link" data-scroll-target="#where-were-most-people-sent"><span class="toc-section-number">17.5.6</span>  ❓ Where were most people sent?</a></li>
+  </ul></li>
+  <li><a href="#examine-subsets" id="toc-examine-subsets" class="nav-link" data-scroll-target="#examine-subsets"><span class="toc-section-number">17.6</span>  Examine Subsets</a>
+  <ul>
+  <li><a href="#why-were-people-being-sent-to-hostpital-ward-38" id="toc-why-were-people-being-sent-to-hostpital-ward-38" class="nav-link" data-scroll-target="#why-were-people-being-sent-to-hostpital-ward-38"><span class="toc-section-number">17.6.1</span>  ❓ Why were people being sent to Hostpital Ward 38?</a></li>
+  </ul></li>
+  <li><a href="#what-data-is-missing-what-data-do-you-wish-we-had" id="toc-what-data-is-missing-what-data-do-you-wish-we-had" class="nav-link" data-scroll-target="#what-data-is-missing-what-data-do-you-wish-we-had"><span class="toc-section-number">17.7</span>  ❓ What data is missing? What data do you wish we had?</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="toc-section-number">17.8</span>  Overview</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p><em>If you want to save your work from this notebook, you should be sure to make a copy of it on your own computer.</em></p>
+<p>In this workbook, we’re going to explore the basics of the Python library Pandas.</p>
+<section id="import-pandas" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="import-pandas"><span class="header-section-number">17.1</span> Import Pandas</h2>
+<p>To use the Pandas library, we first need to <code>import</code> it.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:05.115232Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:04.696405Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="change-display-settings" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="change-display-settings"><span class="header-section-number">17.2</span> Change Display Settings</h2>
+<p>By default, Pandas will display 60 rows and 20 columns. I often change <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/options.html">Pandas’ default display settings</a> to show more rows or columns.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:06.661183Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:06.657281Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">200</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-data" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="get-data"><span class="header-section-number">17.3</span> Get Data</h2>
+<p>To read in a CSV file, we will use the method <code>pd.read_csv()</code> and insert the name of our desired file path.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:08.072259Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:07.995841Z&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'Bellevue_Almshouse_Dataset.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>full_name</th>
+      <th>age</th>
+      <th>gender</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>children</th>
+      <th>sent_to</th>
+      <th>sender1</th>
+      <th>sender2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1847-04-17</td>
+      <td>Mary</td>
+      <td>Gallagher</td>
+      <td>Mary Gallagher</td>
+      <td>28.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>Child Alana 10 days</td>
+      <td>Hospital</td>
+      <td>superintendent</td>
+      <td>hd. gibbens</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1847-04-08</td>
+      <td>John</td>
+      <td>Sanin (?)</td>
+      <td>John Sanin (?)</td>
+      <td>19.0</td>
+      <td>m</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>Catherine 2 mo</td>
+      <td>NaN</td>
+      <td>george w. anderson</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1847-04-17</td>
+      <td>Anthony</td>
+      <td>Clark</td>
+      <td>Anthony Clark</td>
+      <td>60.0</td>
+      <td>m</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>Charles Riley afed 10 days</td>
+      <td>Hospital</td>
+      <td>george w. anderson</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1847-04-08</td>
+      <td>Lawrence</td>
+      <td>Feeney</td>
+      <td>Lawrence Feeney</td>
+      <td>32.0</td>
+      <td>m</td>
+      <td>recent emigrant</td>
+      <td>laborer</td>
+      <td>Child</td>
+      <td>NaN</td>
+      <td>george w. anderson</td>
+      <td>james donnelly</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1847-04-13</td>
+      <td>Henry</td>
+      <td>Joyce</td>
+      <td>Henry Joyce</td>
+      <td>21.0</td>
+      <td>m</td>
+      <td>recent emigrant</td>
+      <td>NaN</td>
+      <td>Child 1 mo</td>
+      <td>NaN</td>
+      <td>george w. anderson</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9593</th>
+      <td>1846-05-23</td>
+      <td>Joseph</td>
+      <td>Aton</td>
+      <td>Joseph Aton</td>
+      <td>69.0</td>
+      <td>m</td>
+      <td>NaN</td>
+      <td>shoemaker</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>[blank]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9594</th>
+      <td>1847-06-17</td>
+      <td>Mary</td>
+      <td>Smith</td>
+      <td>Mary Smith</td>
+      <td>47.0</td>
+      <td>f</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>[blank]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9595</th>
+      <td>1847-06-22</td>
+      <td>Francis</td>
+      <td>Riley</td>
+      <td>Francis Riley</td>
+      <td>29.0</td>
+      <td>m</td>
+      <td>lame</td>
+      <td>superintendent</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>[blank]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9596</th>
+      <td>1847-07-02</td>
+      <td>Martin</td>
+      <td>Dunn</td>
+      <td>Martin Dunn</td>
+      <td>4.0</td>
+      <td>m</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>[blank]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9597</th>
+      <td>1847-07-08</td>
+      <td>Elizabeth</td>
+      <td>Post</td>
+      <td>Elizabeth Post</td>
+      <td>32.0</td>
+      <td>f</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hospital</td>
+      <td>[blank]</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>9598 rows × 12 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:11.895289Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:11.847738Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pd.read_csv(<span class="st">'Bellevue_Almshouse_Dataset.csv'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>pandas.core.frame.DataFrame</code></pre>
+</div>
+</div>
+<p>This creates a Pandas <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">DataFrame object</a>, one of the two main data structures in Pandas. A DataFrame looks and acts a lot like a spreadsheet, but it has special powers and functions that we will discuss below and in the next few lessons.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Pandas objects</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DataFrame</code></td>
+<td>Like a spreadsheet, 2-dimensional</td>
+</tr>
+<tr class="even">
+<td><code>Series</code></td>
+<td>Like a column, 1-dimensional</td>
+</tr>
+</tbody>
+</table>
+<p>We assign the DataFrame to a variable called <code>bellevue_df</code>. It is common convention to name DataFrame variables <code>df</code>, but we want to be a bit more specific.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:15.011610Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:14.967205Z&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bellevue_df <span class="op">=</span> pd.read_csv(<span class="st">'Bellevue_Almshouse_Dataset.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="begin-to-examine-patterns" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="begin-to-examine-patterns"><span class="header-section-number">17.4</span> Begin to Examine Patterns</h2>
+<section id="select-columns-as-series-objects" class="level3" data-number="17.4.1">
+<h3 data-number="17.4.1" class="anchored" data-anchor-id="select-columns-as-series-objects"><span class="header-section-number">17.4.1</span> Select Columns as Series Objects <code>[]</code></h3>
+<p>To select a column from the DataFrame, we will type the name of the DataFrame followed by square brackets and a column name in quotations marks.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:16.123509Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:16.113032Z&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'age'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>0       28.0
+1       19.0
+2       60.0
+3       32.0
+4       21.0
+        ... 
+9593    69.0
+9594    47.0
+9595    29.0
+9596     4.0
+9597    32.0
+Name: age, Length: 9598, dtype: float64</code></pre>
+</div>
+</div>
+<p>Technically, a single column in a DataFrame is a <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dsintro"><em>Series</em> object</a>.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:16.840662Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:16.835494Z&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(bellevue_df[<span class="st">'age'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>pandas.core.series.Series</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="pandas-methods" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="pandas-methods"><span class="header-section-number">17.5</span> Pandas Methods</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Pandas method</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.sum()</code></td>
+<td>Sum of values</td>
+</tr>
+<tr class="even">
+<td><code>.mean()</code></td>
+<td>Mean of values</td>
+</tr>
+<tr class="odd">
+<td><code>.median()</code></td>
+<td>Median of values</td>
+</tr>
+<tr class="even">
+<td><code>.min()</code></td>
+<td>Minimum</td>
+</tr>
+<tr class="odd">
+<td><code>.max()</code></td>
+<td>Maximum</td>
+</tr>
+<tr class="even">
+<td><code>.mode()</code></td>
+<td>Mode</td>
+</tr>
+<tr class="odd">
+<td><code>.std()</code></td>
+<td>Unbiased standard deviation</td>
+</tr>
+<tr class="even">
+<td><code>.count()</code></td>
+<td>Total number of non-blank values</td>
+</tr>
+<tr class="odd">
+<td><code>.value_counts()</code></td>
+<td>Frequency of unique values</td>
+</tr>
+</tbody>
+</table>
+<section id="how-old-on-average-were-the-people-admitted-to-the-bellevue-almshouse" class="level3" data-number="17.5.1">
+<h3 data-number="17.5.1" class="anchored" data-anchor-id="how-old-on-average-were-the-people-admitted-to-the-bellevue-almshouse"><span class="header-section-number">17.5.1</span> ❓ How old (on average) were the people admitted to the Bellevue Almshouse?</h3>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:17.790089Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:17.782184Z&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'age'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>0       28.0
+1       19.0
+2       60.0
+3       32.0
+4       21.0
+        ... 
+9593    69.0
+9594    47.0
+9595    29.0
+9596     4.0
+9597    32.0
+Name: age, Length: 9598, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="how-old-was-the-oldest-person-admitted-to-bellevue" class="level3" data-number="17.5.2">
+<h3 data-number="17.5.2" class="anchored" data-anchor-id="how-old-was-the-oldest-person-admitted-to-bellevue"><span class="header-section-number">17.5.2</span> ❓ How old was the oldest person admitted to Bellevue?</h3>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:18.335446Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:18.327407Z&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'age'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>0       28.0
+1       19.0
+2       60.0
+3       32.0
+4       21.0
+        ... 
+9593    69.0
+9594    47.0
+9595    29.0
+9596     4.0
+9597    32.0
+Name: age, Length: 9598, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="how-young-was-the-youngest-person" class="level3" data-number="17.5.3">
+<h3 data-number="17.5.3" class="anchored" data-anchor-id="how-young-was-the-youngest-person"><span class="header-section-number">17.5.3</span> ❓ How young was the youngest person?</h3>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:18.890523Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:18.880483Z&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'age'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>0       28.0
+1       19.0
+2       60.0
+3       32.0
+4       21.0
+        ... 
+9593    69.0
+9594    47.0
+9595    29.0
+9596     4.0
+9597    32.0
+Name: age, Length: 9598, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="what-were-the-most-common-professions-among-these-irish-immigrants" class="level3" data-number="17.5.4">
+<h3 data-number="17.5.4" class="anchored" data-anchor-id="what-were-the-most-common-professions-among-these-irish-immigrants"><span class="header-section-number">17.5.4</span> ❓ What were the most common professions among these Irish immigrants?</h3>
+<p>To count the values in a column, we can use the <code>.value_counts()</code> method.</p>
+<p>What patterns do you notice in this list? What seems strange to you? What can we learn about the people in the dataset <em>and</em> the people who created the dataset?</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:19.633291Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:19.618750Z&quot;}" data-scrolled="true" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'profession'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>laborer                        3116
+married                        1586
+spinster                       1522
+widow                          1055
+shoemaker                       158
+tailor                          116
+blacksmith                      104
+mason                            99
+weaver                           66
+carpenter                        65
+baker                            48
+waiter                           41
+clerk                            28
+stone cutter                     27
+painter                          26
+gardener                         25
+cooper                           24
+farmer                           21
+peddler                          20
+cartman                          15
+wheelwright                      14
+hostler                          12
+hatter                           12
+printer                          11
+butcher                          11
+tinsmith                         10
+boot maker                       10
+teacher                          10
+coachman                         10
+sailor                           10
+servant                           9
+boiler maker                      9
+harness maker                     9
+cabinet maker                     8
+boatman                           8
+nailer                            8
+porter                            6
+plasterer                         6
+nail maker                        6
+(illegible)                       6
+umbrella maker                    6
+seaman                            5
+soldier                           5
+marble polisher                   5
+grocer                            5
+machinist                         5
+brick layer                       4
+ship carpenter                    4
+barkeeper                         4
+book maker                        4
+hackman                           4
+turner                            4
+dyer                              4
+tinman                            4
+miner                             3
+merchant                          3
+starch maker                      3
+courier                           3
+seamstress                        3
+saddler                           3
+varnisher                         3
+locksmith                         3
+brass founder                     3
+pavier                            3
+store keeper                      3
+brewer                            3
+paper stainer                     3
+lawyer                            2
+barker                            2
+morocco dresser                   2
+cab driver                        2
+carver                            2
+glass cutter                      2
+copper smith                      2
+barber                            2
+engraver                          2
+engineer                          2
+food carrier                      2
+quarry man                        2
+rigger                            2
+stevedore                         2
+single                            2
+sail maker                        2
+stove maker                       2
+shipwright                        2
+type caster                       2
+glove maker                       2
+tanner                            2
+sawyer                            2
+calico printer                    2
+paper maker                       2
+chair maker                       2
+gw anderson per e witherell       1
+drayman                           1
+groom                             1
+plumber                           1
+soap boiler                       1
+paner                             1
+wool manufacturer                 1
+joiner                            1
+hodman                            1
+leather draper                    1
+flag cutter                       1
+rectifier                         1
+parrier                           1
+teamster                          1
+clery                             1
+book seller                       1
+manufacturer                      1
+wood sawyer                       1
+auctioneer                        1
+dugget                            1
+mariner                           1
+cook                              1
+polisher                          1
+sham                              1
+tavern keeper                     1
+surveyor                          1
+ship sawyer                       1
+oysterman                         1
+hacker                            1
+moulder                           1
+magician                          1
+builder                           1
+soapmaker                         1
+jeweller                          1
+strap maker                       1
+upholsterer                       1
+book keeper                       1
+school teacher                    1
+shop keeper                       1
+iron moulder                      1
+glover                            1
+flagger                           1
+book binder                       1
+apothecary                        1
+saw maker                         1
+marble cutter                     1
+jobber                            1
+flag pavier                       1
+musician                          1
+marble sawyer                     1
+leather dresser                   1
+chandler                          1
+paper-carrier                     1
+book pedlar                       1
+cabrener                          1
+miniature painter                 1
+cabman                            1
+truss maker                       1
+marketmab                         1
+copoper                           1
+stage driver                      1
+brass turner                      1
+fishman                           1
+brush maker                       1
+soap comber                       1
+manow(?)                          1
+waterman                          1
+cloth printer                     1
+stone sawyer                      1
+schoolmaster                      1
+dancing master                    1
+music painter                     1
+croper                            1
+cotton sampler                    1
+gas fitter                        1
+gas manufacturer                  1
+caulker                           1
+basket maker                      1
+gun maker                         1
+superintendent                    1
+Name: profession, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="what-are-the-most-common-diseases" class="level3" data-number="17.5.5">
+<h3 data-number="17.5.5" class="anchored" data-anchor-id="what-are-the-most-common-diseases"><span class="header-section-number">17.5.5</span> ❓ What are the most common diseases?</h3>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:20.052701Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:20.040338Z&quot;}" data-scrolled="true" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'disease'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>sickness           2710
+recent emigrant    1975
+destitution         846
+fever               192
+insane              138
+pregnant            134
+sore                 79
+intemperance         71
+illegible            47
+typhus               46
+injuries             32
+ulcers               26
+ophthalmia           19
+vagrant              17
+lame                 15
+debility             12
+rheumatism           11
+blind                 9
+bronchitis            9
+dropsy                8
+phthisis              8
+syphilis              7
+old age               7
+dysentery             6
+erysipelas            6
+diarrhea              6
+cripple               5
+broken bone           5
+measles               3
+drunkenness           3
+burn                  3
+delusion dreams       2
+scrofula              2
+tuberculosis          2
+pneumonia             2
+fits                  2
+abandonment           2
+piles                 2
+sprain                2
+jaundice              2
+scarletina            2
+phagadaena            1
+spinal disease        1
+tumor                 1
+smallpox              1
+horrors               1
+hernia                1
+paralysis             1
+abscess               1
+neuralgia             1
+hypochondria          1
+ungovernable          1
+from trial            1
+sunburn               1
+colic                 1
+orchitis              1
+beggar                1
+contusion             1
+rickets               1
+ascites               1
+cut                   1
+deaf                  1
+congested head        1
+eczema                1
+bruise                1
+severed limb          1
+emotional             1
+poorly                1
+disabled              1
+bleeding              1
+seizure               1
+del femur             1
+throat cut            1
+ague                  1
+asthma                1
+Name: disease, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="where-were-most-people-sent" class="level3" data-number="17.5.6">
+<h3 data-number="17.5.6" class="anchored" data-anchor-id="where-were-most-people-sent"><span class="header-section-number">17.5.6</span> ❓ Where were most people sent?</h3>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:20.767468Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:20.757173Z&quot;}" data-scrolled="true" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'sent_to'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>Hospital                             3882
+Blackwell's Island                    571
+Bellevue Garret                       250
+Randall's Island                      172
+Shanty                                109
+Lunatic Asylum                         93
+CHECK                                  90
+Bellevue Hospital Chapel               78
+Almshouse                              64
+Hospital Ward 38                       62
+Long Island Farms                      45
+Hospital Ward 46                       42
+Lunatic Asylum (?)                     37
+Hospital Ward 18                       23
+Blackwell's Island Ward 38             14
+Hospital Ward 39                       11
+Hospital Ward 16                       11
+Hospital Blackwell's Island            10
+Hospital on Blackwell's Island         10
+Lunatic Asylum Ward 38                  5
+Hospital Ward 13                        5
+Hosptial Ward 17                        5
+Hospital Ward 11                        4
+Hospital Ward 17                        3
+Hospital Morgue                         3
+Hospital Ward 22                        3
+Hospital Ward 9                         3
+Almshouse on Blackwell's Island         2
+Hospital Ward 45                        2
+Children's Home                         2
+Hospital Ward 6                         2
+Blackwell's Island Ward 39              2
+Lunatic Asylum Ward 28                  2
+Hospital Ward 32                        2
+Hospital Ward 42                        2
+Hospital Ward 24                        2
+Hospital Ward 12                        2
+Shanty 38                               2
+Blackwell's Island Workhouse (?)        1
+Lunatic Asylum Ward 5                   1
+Blackwell's Island Ward 19              1
+Blackwell's Island Ward 7               1
+Blackwell's Island Ward 8               1
+Randall's Island Ward 8                 1
+Hospital Women's Ward                   1
+Hospital Ward 5                         1
+Lunatic Asylum Blackwell's Island       1
+Blackwell's Island Ward 17              1
+Shanty 6                                1
+Randall's Island Ward 38                1
+Hospital Ward 28                        1
+Hospital Ward 34                        1
+Hosital Ward 45                         1
+Blackwell's Island Ward 11              1
+Hospital Ward 26                        1
+Blackwell's Island Ward 18              1
+Blackwell's Island Ward 5               1
+Blackwell's Island Shanty               1
+Blackwell's Island Ward 10              1
+Hospital Ward 36                        1
+Hospital Ward 35                        1
+Hospital Ward 21                        1
+Hospital Ward 15                        1
+Blackwell's Island Ward 16              1
+Women's Hospital                        1
+Almshouse Hospital                      1
+Blackwell's Island Ward 4               1
+Hospital Ward 29                        1
+Randall's Island Ward 17                1
+Shanty 18                               1
+Shanty 1                                1
+Randall's Island Ward 6                 1
+Blackwell's Island Ward 35              1
+Hospital Ward 30                        1
+Lunatic Asylum Ward 18                  1
+Lunatic Asylum Ward 16                  1
+Shanty 8                                1
+Name: sent_to, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="examine-subsets" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="examine-subsets"><span class="header-section-number">17.6</span> Examine Subsets</h2>
+<section id="why-were-people-being-sent-to-hostpital-ward-38" class="level3" data-number="17.6.1">
+<h3 data-number="17.6.1" class="anchored" data-anchor-id="why-were-people-being-sent-to-hostpital-ward-38"><span class="header-section-number">17.6.1</span> ❓ Why were people being sent to Hostpital Ward 38?</h3>
+<p>To explore this question, we can filter rows with a condition.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:22.384526Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:22.369326Z&quot;}" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[<span class="st">'sent_to'</span>] <span class="op">==</span> <span class="st">'Hospital Ward 38'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>0       False
+1       False
+2       False
+3       False
+4       False
+        ...  
+9593    False
+9594     True
+9595    False
+9596    False
+9597    False
+Name: sent_to, Length: 9598, dtype: bool</code></pre>
+</div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:22.622370Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:22.577362Z&quot;}" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>bellevue_df[bellevue_df[<span class="st">'sent_to'</span>] <span class="op">==</span> <span class="st">'Hospital Ward 38'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>full_name</th>
+      <th>age</th>
+      <th>gender</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>children</th>
+      <th>sent_to</th>
+      <th>sender1</th>
+      <th>sender2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>249</th>
+      <td>1847-05-17</td>
+      <td>Elizabeth</td>
+      <td>Cauley</td>
+      <td>Elizabeth Cauley</td>
+      <td>24.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>Son Walter 4 mo</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>330</th>
+      <td>1847-03-22</td>
+      <td>Sarah</td>
+      <td>Corrigan</td>
+      <td>Sarah Corrigan</td>
+      <td>21.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>1847-06-13</td>
+      <td>Bridget</td>
+      <td>Reynolds</td>
+      <td>Bridget Reynolds</td>
+      <td>20.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>oscar s. field</td>
+    </tr>
+    <tr>
+      <th>499</th>
+      <td>1847-06-09</td>
+      <td>Rose</td>
+      <td>Dinns</td>
+      <td>Rose Dinns</td>
+      <td>22.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>698</th>
+      <td>1847-08-21</td>
+      <td>Bridget</td>
+      <td>Redding</td>
+      <td>Bridget Redding</td>
+      <td>25.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1041</th>
+      <td>1847-03-13</td>
+      <td>Betty</td>
+      <td>Dunn</td>
+      <td>Betty Dunn</td>
+      <td>34.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>1290</th>
+      <td>1847-02-17</td>
+      <td>Catherine</td>
+      <td>Doherty</td>
+      <td>Catherine Doherty</td>
+      <td>34.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>widow</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1426</th>
+      <td>1847-05-31</td>
+      <td>Catherine</td>
+      <td>Riley</td>
+      <td>Catherine Riley</td>
+      <td>28.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>1494</th>
+      <td>1847-06-14</td>
+      <td>Brigt</td>
+      <td>Frikee?</td>
+      <td>Brigt Frikee?</td>
+      <td>25.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>1584</th>
+      <td>1847-10-28</td>
+      <td>Ellen</td>
+      <td>Lamb</td>
+      <td>Ellen Lamb</td>
+      <td>20.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1685</th>
+      <td>1847-03-09</td>
+      <td>Catherine</td>
+      <td>McManus</td>
+      <td>Catherine McManus</td>
+      <td>21.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>widow</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>james donnelly</td>
+    </tr>
+    <tr>
+      <th>1746</th>
+      <td>1847-05-08</td>
+      <td>Ellen</td>
+      <td>O'Brien</td>
+      <td>Ellen O'Brien</td>
+      <td>20.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>1863</th>
+      <td>1847-06-01</td>
+      <td>Bridget</td>
+      <td>Nash</td>
+      <td>Bridget Nash</td>
+      <td>30.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>1960</th>
+      <td>1847-05-13</td>
+      <td>Mary</td>
+      <td>Gallagher</td>
+      <td>Mary Gallagher</td>
+      <td>18.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>2370</th>
+      <td>1847-02-13</td>
+      <td>Eliza</td>
+      <td>Latimer</td>
+      <td>Eliza Latimer</td>
+      <td>19.0</td>
+      <td>f</td>
+      <td>recent emigrant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5194</th>
+      <td>1847-02-22</td>
+      <td>Mary</td>
+      <td>Toohey</td>
+      <td>Mary Toohey</td>
+      <td>34.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>5286</th>
+      <td>1847-03-16</td>
+      <td>Mary</td>
+      <td>Mullen</td>
+      <td>Mary Mullen</td>
+      <td>27.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>james donnelly</td>
+    </tr>
+    <tr>
+      <th>5309</th>
+      <td>1847-03-22</td>
+      <td>Margaret</td>
+      <td>Welsh</td>
+      <td>Margaret Welsh</td>
+      <td>24.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>benson s. hopkins</td>
+    </tr>
+    <tr>
+      <th>5310</th>
+      <td>1847-03-22</td>
+      <td>Elizabeth</td>
+      <td>McDonald</td>
+      <td>Elizabeth McDonald</td>
+      <td>26.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>5321</th>
+      <td>1847-03-24</td>
+      <td>Mary Jane</td>
+      <td>Stevens</td>
+      <td>Mary Jane Stevens</td>
+      <td>30.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>5445</th>
+      <td>1847-04-15</td>
+      <td>Alice</td>
+      <td>Duffy</td>
+      <td>Alice Duffy</td>
+      <td>28.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>5629</th>
+      <td>1847-05-10</td>
+      <td>Jane</td>
+      <td>McCann</td>
+      <td>Jane McCann</td>
+      <td>22.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>5636</th>
+      <td>1847-05-10</td>
+      <td>Susan</td>
+      <td>Patterson</td>
+      <td>Susan Patterson</td>
+      <td>20.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>5777</th>
+      <td>1847-08-11</td>
+      <td>Bridget</td>
+      <td>Grady</td>
+      <td>Bridget Grady</td>
+      <td>35.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>thomas b. tappen</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5935</th>
+      <td>1847-07-15</td>
+      <td>Ellen</td>
+      <td>Connolly</td>
+      <td>Ellen Connolly</td>
+      <td>25.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6003</th>
+      <td>1847-07-19</td>
+      <td>Mary</td>
+      <td>Kelly</td>
+      <td>Mary Kelly</td>
+      <td>27.0</td>
+      <td>f</td>
+      <td>sickness</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>charles j. sutton</td>
+    </tr>
+    <tr>
+      <th>6051</th>
+      <td>1847-07-22</td>
+      <td>Ann</td>
+      <td>Clark</td>
+      <td>Ann Clark</td>
+      <td>23.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6052</th>
+      <td>1847-07-22</td>
+      <td>Mary</td>
+      <td>Diffen</td>
+      <td>Mary Diffen</td>
+      <td>32.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>widow</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6053</th>
+      <td>1847-07-22</td>
+      <td>Mary Ann</td>
+      <td>Williamson</td>
+      <td>Mary Ann Williamson</td>
+      <td>50.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>widow</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6102</th>
+      <td>1847-07-25</td>
+      <td>Margaret</td>
+      <td>McCabe</td>
+      <td>Margaret McCabe</td>
+      <td>40.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6265</th>
+      <td>1847-08-06</td>
+      <td>Elizabeth</td>
+      <td>Wilkinson</td>
+      <td>Elizabeth Wilkinson</td>
+      <td>13.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7140</th>
+      <td>1847-10-20</td>
+      <td>Bridget</td>
+      <td>Riley</td>
+      <td>Bridget Riley</td>
+      <td>18.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7209</th>
+      <td>1847-10-27</td>
+      <td>Ann</td>
+      <td>Rourke</td>
+      <td>Ann Rourke</td>
+      <td>20.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7221</th>
+      <td>1847-10-28</td>
+      <td>Catherine</td>
+      <td>McDermott</td>
+      <td>Catherine McDermott</td>
+      <td>28.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7280</th>
+      <td>1847-11-02</td>
+      <td>Ellen</td>
+      <td>Sweeney</td>
+      <td>Ellen Sweeney</td>
+      <td>20.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7297</th>
+      <td>1847-11-04</td>
+      <td>Mary</td>
+      <td>Smith</td>
+      <td>Mary Smith</td>
+      <td>30.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7312</th>
+      <td>1847-11-05</td>
+      <td>Bridget</td>
+      <td>Campbell</td>
+      <td>Bridget Campbell</td>
+      <td>23.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7338</th>
+      <td>1847-11-08</td>
+      <td>Bridget</td>
+      <td>Laughlin</td>
+      <td>Bridget Laughlin</td>
+      <td>21.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7347</th>
+      <td>1847-11-09</td>
+      <td>Catherine</td>
+      <td>Gillespie</td>
+      <td>Catherine Gillespie</td>
+      <td>34.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7417</th>
+      <td>1847-11-16</td>
+      <td>Eliza</td>
+      <td>Martin</td>
+      <td>Eliza Martin</td>
+      <td>30.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7470</th>
+      <td>1847-11-20</td>
+      <td>Catherine</td>
+      <td>O'Brien</td>
+      <td>Catherine O'Brien</td>
+      <td>29.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>william w. lyons</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8009</th>
+      <td>1847-06-15</td>
+      <td>Hannah</td>
+      <td>Keatherson</td>
+      <td>Hannah Keatherson</td>
+      <td>14.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>8100</th>
+      <td>1847-02-12</td>
+      <td>Mary</td>
+      <td>McGrath</td>
+      <td>Mary McGrath</td>
+      <td>26.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>widow</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>benson s. hopkins</td>
+    </tr>
+    <tr>
+      <th>8101</th>
+      <td>1847-02-18</td>
+      <td>Jane</td>
+      <td>Smith</td>
+      <td>Jane Smith</td>
+      <td>25.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>benson s. hopkins</td>
+    </tr>
+    <tr>
+      <th>8125</th>
+      <td>1847-04-19</td>
+      <td>Mary</td>
+      <td>Smith</td>
+      <td>Mary Smith</td>
+      <td>23.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>benson s. hopkins</td>
+    </tr>
+    <tr>
+      <th>8129</th>
+      <td>1847-04-22</td>
+      <td>Ellen</td>
+      <td>McCalu</td>
+      <td>Ellen McCalu</td>
+      <td>24.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>seamstress</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>commissioners of emigration</td>
+    </tr>
+    <tr>
+      <th>8134</th>
+      <td>1847-05-08</td>
+      <td>Judah</td>
+      <td>Fallen</td>
+      <td>Judah Fallen</td>
+      <td>30.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>widow</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>benson s. hopkins</td>
+    </tr>
+    <tr>
+      <th>8180</th>
+      <td>1847-05-15</td>
+      <td>Catherine</td>
+      <td>Seele</td>
+      <td>Catherine Seele</td>
+      <td>25.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>8203</th>
+      <td>1847-05-18</td>
+      <td>Mary</td>
+      <td>Andrews</td>
+      <td>Mary Andrews</td>
+      <td>26.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>8285</th>
+      <td>1847-05-26</td>
+      <td>Ellen</td>
+      <td>McCake</td>
+      <td>Ellen McCake</td>
+      <td>23.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>benson s. hopkins</td>
+    </tr>
+    <tr>
+      <th>8303</th>
+      <td>1847-05-27</td>
+      <td>Sarah</td>
+      <td>Campbell</td>
+      <td>Sarah Campbell</td>
+      <td>22.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>8364</th>
+      <td>1847-06-01</td>
+      <td>Bridget</td>
+      <td>Keanan</td>
+      <td>Bridget Keanan</td>
+      <td>20.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>benson s. hopkins</td>
+    </tr>
+    <tr>
+      <th>8379</th>
+      <td>1847-06-02</td>
+      <td>Sarah</td>
+      <td>Cormick</td>
+      <td>Sarah Cormick</td>
+      <td>46.0</td>
+      <td>f</td>
+      <td>destitution</td>
+      <td>widow</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>8410</th>
+      <td>1847-06-04</td>
+      <td>Mary</td>
+      <td>Hart</td>
+      <td>Mary Hart</td>
+      <td>37.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>8424</th>
+      <td>1847-06-05</td>
+      <td>Ann</td>
+      <td>Smith</td>
+      <td>Ann Smith</td>
+      <td>24.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>8479</th>
+      <td>1847-06-11</td>
+      <td>Mary</td>
+      <td>McMagh</td>
+      <td>Mary McMagh</td>
+      <td>28.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>oscar s. field</td>
+    </tr>
+    <tr>
+      <th>8498</th>
+      <td>1847-06-13</td>
+      <td>Mary</td>
+      <td>Henry</td>
+      <td>Mary Henry</td>
+      <td>27.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>8506</th>
+      <td>1847-06-14</td>
+      <td>Mary</td>
+      <td>Keeler</td>
+      <td>Mary Keeler</td>
+      <td>44.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>cook</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>oscar s. field</td>
+    </tr>
+    <tr>
+      <th>8541</th>
+      <td>1847-06-17</td>
+      <td>Mary</td>
+      <td>Smith</td>
+      <td>Mary Smith</td>
+      <td>23.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>8581</th>
+      <td>1847-06-19</td>
+      <td>Martha</td>
+      <td>McConnelly</td>
+      <td>Martha McConnelly</td>
+      <td>35.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>spinster</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>8714</th>
+      <td>1847-06-26</td>
+      <td>Jane</td>
+      <td>Davis</td>
+      <td>Jane Davis</td>
+      <td>18.0</td>
+      <td>f</td>
+      <td>pregnant</td>
+      <td>married</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>moses g. leonard</td>
+      <td>edward witherell</td>
+    </tr>
+    <tr>
+      <th>9594</th>
+      <td>1847-06-17</td>
+      <td>Mary</td>
+      <td>Smith</td>
+      <td>Mary Smith</td>
+      <td>47.0</td>
+      <td>f</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hospital Ward 38</td>
+      <td>[blank]</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="what-data-is-missing-what-data-do-you-wish-we-had" class="level2" data-number="17.7">
+<h2 data-number="17.7" class="anchored" data-anchor-id="what-data-is-missing-what-data-do-you-wish-we-had"><span class="header-section-number">17.7</span> ❓ What data is missing? What data do you wish we had?</h2>
+</section>
+<section id="overview" class="level2" data-number="17.8">
+<h2 data-number="17.8" class="anchored" data-anchor-id="overview"><span class="header-section-number">17.8</span> Overview</h2>
+<p>Generate descriptive statistics for all the columns in the data</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:23.529769Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:23.508009Z&quot;}" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>9548.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>30.337039</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.179527</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.080000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>21.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>28.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>39.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>97.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:23.730726Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:23.680444Z&quot;}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>date_in</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>full_name</th>
+      <th>age</th>
+      <th>gender</th>
+      <th>disease</th>
+      <th>profession</th>
+      <th>children</th>
+      <th>sent_to</th>
+      <th>sender1</th>
+      <th>sender2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>9598</td>
+      <td>9594</td>
+      <td>9598</td>
+      <td>9598</td>
+      <td>9548.000000</td>
+      <td>9598</td>
+      <td>6509</td>
+      <td>8579</td>
+      <td>37</td>
+      <td>5666</td>
+      <td>9521</td>
+      <td>5212</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>653</td>
+      <td>523</td>
+      <td>3159</td>
+      <td>7308</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>75</td>
+      <td>172</td>
+      <td>36</td>
+      <td>77</td>
+      <td>59</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>1847-05-24</td>
+      <td>Mary</td>
+      <td>Kelly</td>
+      <td>Mary Smith</td>
+      <td>NaN</td>
+      <td>m</td>
+      <td>sickness</td>
+      <td>laborer</td>
+      <td>Child</td>
+      <td>Hospital</td>
+      <td>george w. anderson</td>
+      <td>peter c. johnston</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>113</td>
+      <td>979</td>
+      <td>137</td>
+      <td>21</td>
+      <td>NaN</td>
+      <td>4967</td>
+      <td>2710</td>
+      <td>3116</td>
+      <td>2</td>
+      <td>3882</td>
+      <td>3469</td>
+      <td>1666</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30.337039</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.179527</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.080000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>28.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>39.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>97.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Generate information about all the columns in the data</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:24.221694Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:24.183042Z&quot;}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 9598 entries, 0 to 9597
+Data columns (total 12 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   date_in     9598 non-null   object 
+ 1   first_name  9594 non-null   object 
+ 2   last_name   9598 non-null   object 
+ 3   full_name   9598 non-null   object 
+ 4   age         9548 non-null   float64
+ 5   gender      9598 non-null   object 
+ 6   disease     6509 non-null   object 
+ 7   profession  8579 non-null   object 
+ 8   children    37 non-null     object 
+ 9   sent_to     5666 non-null   object 
+ 10  sender1     9521 non-null   object 
+ 11  sender2     5212 non-null   object 
+dtypes: float64(1), object(11)
+memory usage: 899.9+ KB</code></pre>
+</div>
+</div>
+<p>Make a histogram of the DataFrame</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-11-11T10:49:26.225206Z&quot;,&quot;start_time&quot;:&quot;2022-11-11T10:49:25.320449Z&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>bellevue_df.hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>array([[&lt;AxesSubplot:title={'center':'age'}&gt;]], dtype=object)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="03.5-Pandas-Basics-Part1-WORKBOOK_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../code/03-Pandas-Basics-Part1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../code/04-Pandas-Basics-Part2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Cultural Analytics Open Science Guide</div>   
+    <div class="nav-footer-right">powered by <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
