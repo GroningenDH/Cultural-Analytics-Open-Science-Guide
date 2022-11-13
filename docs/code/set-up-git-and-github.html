@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Analytics Open Science Guide - 5&nbsp; Version Control System and Git/Github</title>
+<title>Cultural Analytics Open Science Guide - 5&nbsp; What are Git and GitHub?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -151,22 +151,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -186,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -363,20 +363,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#getting-started-with-git" id="toc-getting-started-with-git" class="nav-link active" data-scroll-target="#getting-started-with-git"><span class="toc-section-number">6</span>  Getting Started with Git</a>
+  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link active" data-scroll-target="#create-a-github-account"><span class="toc-section-number">5.1</span>  Create a GitHub Account</a></li>
+  <li><a href="#git-setup-for-mac-and-windows" id="toc-git-setup-for-mac-and-windows" class="nav-link" data-scroll-target="#git-setup-for-mac-and-windows"><span class="toc-section-number">5.2</span>  Git Setup for Mac and Windows</a>
   <ul>
-  <li><a href="#what-are-git-and-github" id="toc-what-are-git-and-github" class="nav-link" data-scroll-target="#what-are-git-and-github"><span class="toc-section-number">6.1</span>  What are Git and GitHub?</a></li>
-  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link" data-scroll-target="#create-a-github-account"><span class="toc-section-number">6.2</span>  Create a GitHub Account</a></li>
-  <li><a href="#git-setup-for-mac-and-windows" id="toc-git-setup-for-mac-and-windows" class="nav-link" data-scroll-target="#git-setup-for-mac-and-windows"><span class="toc-section-number">6.3</span>  Git Setup for Mac and Windows</a>
-  <ul class="collapse">
-  <li><a href="#mac-users" id="toc-mac-users" class="nav-link" data-scroll-target="#mac-users"><span class="toc-section-number">6.3.1</span>  Mac users:</a></li>
-  <li><a href="#windows-users" id="toc-windows-users" class="nav-link" data-scroll-target="#windows-users"><span class="toc-section-number">6.3.2</span>  Windows users:</a></li>
+  <li><a href="#mac-users" id="toc-mac-users" class="nav-link" data-scroll-target="#mac-users"><span class="toc-section-number">5.2.1</span>  Mac users:</a></li>
+  <li><a href="#windows-users" id="toc-windows-users" class="nav-link" data-scroll-target="#windows-users"><span class="toc-section-number">5.2.2</span>  Windows users:</a></li>
   </ul></li>
-  <li><a href="#create-your-first-repository" id="toc-create-your-first-repository" class="nav-link" data-scroll-target="#create-your-first-repository"><span class="toc-section-number">6.4</span>  Create your first repository</a></li>
-  <li><a href="#your-first-remote-repository-on-github" id="toc-your-first-remote-repository-on-github" class="nav-link" data-scroll-target="#your-first-remote-repository-on-github"><span class="toc-section-number">6.5</span>  Your First Remote Repository on GitHub</a>
-  <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions"><span class="toc-section-number">6.5.1</span>  Instructions</a></li>
-  </ul></li>
+  <li><a href="#create-your-first-repository" id="toc-create-your-first-repository" class="nav-link" data-scroll-target="#create-your-first-repository"><span class="toc-section-number">5.3</span>  Create your first repository</a></li>
+  <li><a href="#your-first-remote-repository-on-github" id="toc-your-first-remote-repository-on-github" class="nav-link" data-scroll-target="#your-first-remote-repository-on-github"><span class="toc-section-number">5.4</span>  Your First Remote Repository on GitHub</a>
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions"><span class="toc-section-number">5.4.1</span>  Instructions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -386,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -400,123 +396,111 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="getting-started-with-git" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Getting Started with Git</h1>
-<section id="what-are-git-and-github" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="what-are-git-and-github"><span class="header-section-number">6.1</span> What are Git and GitHub?</h2>
-<p>This tutorial refers to Git and GitHub repeatedly.&nbsp; _Git_&nbsp;is a widely-used version control system used to manage code. Git allows you to save drafts of your code so that you can look back at previous versions and potentially undo complicated errors. A project managed with Git is called a&nbsp;_Git repository_.</p>
-<p>_GitHub_&nbsp;is a popular hosting service for Git repositories. GitHub allows you to store your local Git repositories in the cloud. With GitHub, you can backup your personal files, share your code, and collaborate with others.</p>
-<p>In short, GitHub is a tool for working with Git. There are other services to host Git repositories, but GitHub is a trusted, free service used by organizations across the world, big and small.</p>
-</section>
-<section id="create-a-github-account" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="create-a-github-account"><span class="header-section-number">6.2</span> Create a GitHub Account</h2>
-<p>To use GitHub, you will need a GitHub account.</p>
+<!-- #region -->
+<p>This tutorial refers to Git and GitHub repeatedly.&nbsp;<em>Git</em>&nbsp;is a widely-used version control system used to manage code. <em>Git</em> allows you to save drafts of your code so that you can look back at previous versions and potentially undo complicated errors. A project managed with Git is called a&nbsp;<em>Git repository</em>.</p>
+<p><em>GitHub</em>&nbsp;is a popular hosting service for <em>Git</em> repositories. <em>GitHub</em> allows you to store your local <em>Git</em> repositories in the cloud. With <em>GitHub</em>, you can backup your personal files, share your code, and collaborate with others.</p>
+<p>In short, <em>GitHub</em> is a tool for working with <em>Git</em>. There are other services to host <em>Git</em> repositories, but <em>GitHub</em> is a trusted, free service used by organizations across the world, big and small.</p>
+<section id="create-a-github-account" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="create-a-github-account"><span class="header-section-number">5.1</span> Create a GitHub Account</h2>
+<p>To use <em>GitHub</em>, you will need a <em>GitHub</em> account.</p>
 <p>In your own browser:</p>
-<p>1. Open a new browser tab</p>
-<p>2. Navigate to&nbsp;[https://github.com/](https://github.com/)</p>
-<p>3. Create an account</p>
-<p>If you already have a GitHub account, continue to the next exercise.</p>
-<p>After you sign up, you will receive a verification e-mail. Be sure to verify your e-mail address to GitHub by following the instructions in that e-mail.</p>
+<ol type="1">
+<li>Open a new browser tab</li>
+<li>Navigate to&nbsp;<a href="https://github.com/">https://github.com/</a></li>
+<li>Create an account</li>
+</ol>
+<p>If you already have a <em>GitHub</em> account, continue to the next exercise.</p>
+<p>After you sign up, you will receive a verification e-mail. Be sure to verify your e-mail address to <em>GitHub</em> by following the instructions in that e-mail.</p>
 </section>
-<section id="git-setup-for-mac-and-windows" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="git-setup-for-mac-and-windows"><span class="header-section-number">6.3</span> Git Setup for Mac and Windows</h2>
-<p>Next, we will set up Git on your personal computer. Follow the instructions for your operating system.</p>
-<section id="mac-users" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="mac-users"><span class="header-section-number">6.3.1</span> Mac users:</h3>
-<p>1. Launch the&nbsp;**_Terminal_**&nbsp;application. You can find it in&nbsp;**/Applications/Utilities/**. You can also use the&nbsp;**_Spotlight_**&nbsp;search tool (the little magnifying glass in the top right of your screen) to search for&nbsp;**_Terminal_**. Once&nbsp;**_Spotlight_**&nbsp;locates it, click on the result that says&nbsp;**_Terminal_**.</p>
-<p>2. When&nbsp;**_Terminal_**&nbsp;opens, type in&nbsp;`git`&nbsp;and press enter.</p>
-<p>3. If you don’t already have Git installed, a dialog will appear saying that “The ‘git’ command requires the command line developer tools. Would you like to install the tools now?” Click “Install”.</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_prompt.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Git and bash setup for Mac; installation of Git (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_prompt.png))</p>
-<p>&lt;/p&gt;</p>
+<section id="git-setup-for-mac-and-windows" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="git-setup-for-mac-and-windows"><span class="header-section-number">5.2</span> Git Setup for Mac and Windows</h2>
+<p>Next, we will set up <em>Git</em> on your personal computer. Follow the instructions for your operating system.</p>
+<section id="mac-users" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="mac-users"><span class="header-section-number">5.2.1</span> Mac users:</h3>
+<ol type="1">
+<li><p>Launch the&nbsp;<strong><em>Terminal</em></strong>&nbsp;application. You can find it in&nbsp;<strong><em>Applications/Utilities</em></strong>. You can also use the&nbsp;<strong><em>Spotlight</em></strong>&nbsp;search tool (the little magnifying glass in the top right of your screen) to search for&nbsp;<strong><em>Terminal</em></strong>. Once&nbsp;<strong><em>Spotlight</em></strong>&nbsp;locates it, click on the result that says&nbsp;<strong><em>Terminal</em></strong>.</p></li>
+<li><p>When&nbsp;<strong><em>Terminal</em></strong>&nbsp;opens, type in&nbsp;<code>git</code>&nbsp;and press enter.</p></li>
+<li><p>If you don’t already have Git installed, a dialog will appear saying that “The ‘git’ command requires the command line developer tools. Would you like to install the tools now?” Click “Install”.</p></li>
+</ol>
+<p><img src="../images/annotated_xcode_prompt.png" class="img-fluid" alt="Git and bash setup for Mac; installation of Git (image taken from Codecademy)"> <strong>Fig 1</strong> <em>Git</em> and <em>Bash</em> setup for Mac; installation of Git (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_prompt.png">Codecademy</a>)</p>
 <p>Then click “Agree to the Terms of Service” when requested.</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_terms.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Git and bash setup for Mac; Licence Agreement (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_terms.png))</p>
-<p>&lt;/p&gt;</p>
-<p>4. When the download finishes, the installer will go away on its own signifying that Git is now installed! Click “Done” to finish the installation process.</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_finished.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Git and bash setup for Mac; sucessful installation (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_finished.png))</p>
-<p>&lt;/p&gt;</p>
-<p>5. Navigate to GitHub’s articles on setting up your&nbsp;[Git username](https://help.github.com/articles/set-up-git/)&nbsp;and&nbsp;[email](https://help.github.com/articles/setting-your-email-in-git/)&nbsp;and follow the instructions for each using Terminal.</p>
-<p>6. GitHub offers two authentication options, HTTPS and SSH, to keep your work secure. This is a security measure that prevents anyone who isn’t authorized from making changes to your GitHub repository. In this article, we will use HTTPS. Navigate to GitHub’s article on&nbsp;[creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)&nbsp;and follow the instructions to configure your computer to be able to use HTTPS.</p>
-<p>&gt; Note: As of August 13th, 2021, GitHub uses tokens instead of passwords to authenticate Git operations. More details can be found in [GitHub’s blog post](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/).</p>
-<p>Now skip down to the “Try it Out!” section below.</p>
+<p><img src="../images/annotated_xcode_terms.png" class="img-fluid" alt="Git and bash setup for Mac; License Agreement (image taken from Codecademy"> <strong>Fig 2</strong> <em>Git</em> and <em>Bash</em> setup for Mac; License Agreement (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_terms.png">Codecademy</a></p>
+<ol start="4" type="1">
+<li>When the download finishes, the installer will go away on its own signifying that Git is now installed! Click “Done” to finish the installation process.</li>
+</ol>
+<p><img src="../images/annotated_xcode_finished.png" class="img-fluid" alt="Git and bash setup for Mac; successful installation (image taken from Codecademy"> <strong>Fig 3</strong> <em>Git</em> and <em>Bash</em> setup for Mac; successful installation (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_finished.png">Codecademy</a>)</p>
+<ol start="5" type="1">
+<li><p>Navigate to GitHub’s articles on setting up your&nbsp;<a href="https://help.github.com/articles/set-up-git/">Git username</a>&nbsp;and&nbsp;<a href="https://help.github.com/articles/setting-your-email-in-git/">email</a>&nbsp;and follow the instructions for each using Terminal.</p></li>
+<li><p>GitHub offers two authentication options, HTTPS and SSH, to keep your work secure. This is a security measure that prevents anyone who isn’t authorised from making changes to your GitHub repository. In this article, we will use HTTPS. Navigate to GitHub’s article on&nbsp;<a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">creating a personal access token</a>&nbsp;and follow the instructions to configure your computer to be able to use HTTPS.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Note: As of August 13th, 2021, GitHub uses tokens instead of passwords to authenticate Git operations. More details can be found in <a href="https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/">GitHub’s blog post</a>. <!-- #endregion --></p>
+</blockquote>
+<!-- #region -->
 </section>
-<section id="windows-users" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="windows-users"><span class="header-section-number">6.3.2</span> Windows users:</h3>
+<section id="windows-users" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="windows-users"><span class="header-section-number">5.2.2</span> Windows users:</h3>
 <p>This portion of the guide assumes you have already installed a program called Git Bash which allows us access to Git on Windows. If you have not installed Git Bash, please refer to the previous tutorial on Command Line Interface (CLI) Setup and follow the instructions for installing Git Bash on Windows. Once you complete that you can continue with this guide.</p>
-<p>1. Open the Start menu and search for the app, git bash. You should see ‘Git Bash Desktop app’ appear. Press Enter or click on the Git Bash icon to open the app.</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_start.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Git and bash setup for Windows; Open Git Bash (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_start.png))</p>
-<p>&lt;/p&gt;</p>
+<ol type="1">
+<li>Open the Start menu and search for the app, git bash. You should see ‘Git Bash Desktop app’ appear. Press Enter or click on the Git Bash icon to open the app.</li>
+</ol>
+<p><img src="../images/annotated_gitbash_start.png" class="img-fluid" alt="Git and bash setup for Windows; Open Git Bash (image taken from Codecademy)"> <strong>Fig 4</strong> <em>Git</em> and <em>Bash</em> setup for Windows; Open <em>Git Bash</em> (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_start.png">Codecademy</a>)</p>
 <p>A new window will open that looks like this:</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_shell_edited.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Git and bash setup for Windows; visualisation of the git bash cell (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_shell_edited.png))</p>
-<p>&lt;/p&gt;</p>
+<p><img src="../images/annotated_gitbash_shell_edited.png" class="img-fluid" alt="Git and bash setup for Windows; visualisation of the git bash cell (image taken from Codecademy)"> <strong>Fig 5</strong> Git* and <em>Bash</em> setup for Windows; visualisation of the git bash cell (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_shell_edited.png">Codecademy</a>)</p>
 <p>This window is our CLI, where we will use our Git commands.</p>
-<p>2. If you want to make sure that Git is installed, run&nbsp;`git --version`&nbsp;in the CLI. You should see a response that gives you the version of Git installed. It will look like this:</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_test_edited.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Git and bash setup for Windows; check your Git version (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_test_edited.png))</p>
-<p>&lt;/p&gt;</p>
+<ol start="2" type="1">
+<li>If you want to make sure that Git is installed, run&nbsp;<code>git --version</code>&nbsp;in the CLI. You should see a response that gives you the version of Git installed. It will look like this:</li>
+</ol>
+<p><img src="../images/annotated_gitbash_test_edited.png" class="img-fluid" alt="Git and bash setup for Windows; check your Git version (image taken from Codecademy)"> <strong>Fig 6</strong> <em>Git</em> and <em>Bash</em> setup for Windows; check your <em>Git</em> version (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_test_edited.png">Codecademy</a>)</p>
 <p>Git can now be used in the Git Bash app!</p>
-<p>3. Navigate to GitHub’s articles on setting up your&nbsp;[Git username](https://help.github.com/articles/set-up-git/)&nbsp;and&nbsp;[email](https://help.github.com/articles/setting-your-email-in-git/)&nbsp;and follow the instructions for each using Git Bash.</p>
-<p>4. GitHub offers two authentication options, HTTPS and SSH, to keep your work secure. This is a security measure that prevents anyone who isn’t authorized from making changes to your GitHub repository. In this article, we will use HTTPS. Navigate to GitHub’s article on&nbsp;[creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)&nbsp;and follow the instructions to configure your computer to be able to use HTTPS.</p>
-<p>&gt; Note: As of August 13th, 2021, GitHub uses tokens instead of passwords to authenticate Git operations. More details can be found in [GitHub’s blog post](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/).</p>
+<ol start="3" type="1">
+<li><p>Navigate to GitHub’s articles on setting up your&nbsp;<a href="https://help.github.com/articles/set-up-git/">Git username</a>&nbsp;and&nbsp;<a href="https://help.github.com/articles/setting-your-email-in-git/">email</a>&nbsp;and follow the instructions for each using Git Bash.</p></li>
+<li><p>GitHub offers two authentication options, HTTPS and SSH, to keep your work secure. This is a security measure that prevents anyone who isn’t authorized from making changes to your GitHub repository. In this article, we will use HTTPS. Navigate to GitHub’s article on&nbsp;<a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">creating a personal access token</a>&nbsp;and follow the instructions to configure your computer to be able to use HTTPS.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Note: As of August 13th, 2021, GitHub uses tokens instead of passwords to authenticate Git operations. More details can be found in <a href="https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/">GitHub’s blog post</a>.</p>
+</blockquote>
 </section>
 </section>
-<section id="create-your-first-repository" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="create-your-first-repository"><span class="header-section-number">6.4</span> Create your first repository</h2>
+<section id="create-your-first-repository" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="create-your-first-repository"><span class="header-section-number">5.3</span> Create your first repository</h2>
 <p>Now you have everything you need to practice your Git skills on your local computer. Take a moment to run the commands below to initialize a Git repository. We will use this Git repository again later in this tutorial so make sure you complete these steps exactly as described.</p>
 <ol type="1">
-<li>`mkdir git_practice`&nbsp;to make a new directory to practice.</li>
-<li>`cd git_practice`&nbsp;to make the new directory your working directory.</li>
-<li>`git init`&nbsp;to turn the current, empty directory into a fresh Git repository.</li>
-<li>`echo “Hello Git and GitHub” &gt;&gt; README.txt`&nbsp;to create a new README file (more on this later) with some sample text.</li>
-<li>`git add README.txt`&nbsp;to add the new file to the Git staging area.</li>
-<li>`git commit -m “say something the describes what you do”</li>
+<li><code>mkdir git_practice</code>&nbsp;to make a new directory to practice.</li>
+<li><code>cd git_practice</code>&nbsp;to make the new directory your working directory.</li>
+<li><code>git init</code>&nbsp;to turn the current, empty directory into a fresh Git repository.</li>
+<li><code>echo "Hello Git and GitHub" &gt;&gt; README.txt</code>&nbsp;to create a new README file (more on this later) with some sample text.</li>
+<li><code>git add README.txt</code>&nbsp;to add the new file to the Git staging area.</li>
 </ol>
-<p>Commits serve as checkpoints where individual files or an entire project can be safely reverted to when necessary. By making commits, you can save versions of your code and switch between them/compare them easily without cluttering up your directory.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/change-stage-repo.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">How <code>git add</code> and <code>git commit</code> works (image taken from <a href="https://the-turing-way.netlify.app/reproducible-research/vcs/vcs-git.html">The Turing Way</a>)</figcaption><p></p>
-</figure>
-</div>
 </section>
-<section id="your-first-remote-repository-on-github" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="your-first-remote-repository-on-github"><span class="header-section-number">6.5</span> Your First Remote Repository on GitHub</h2>
+<section id="your-first-remote-repository-on-github" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="your-first-remote-repository-on-github"><span class="header-section-number">5.4</span> Your First Remote Repository on GitHub</h2>
 <p>Finally, we’ll create a repository on GitHub and then link it to a local repository on your computer. This allows you to backup your work constantly and safely, so you never need to worry about losing your work again!</p>
 <p>Now, let’s connect our local Git repository to GitHub.</p>
-<section id="instructions" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="instructions"><span class="header-section-number">6.5.1</span> Instructions</h3>
-<p>1. In your Command Line Interface, make sure your current working directory is your new Git repository. Navigate there if not.</p>
-<p>2. Check the status of which files and folders are new or have been edited. There should be no files modified.</p>
-<p>```</p>
-<p>$ git status</p>
-<p>```</p>
-<p>3. On GitHub, create a new repository by clicking the&nbsp;**New repository**&nbsp;button on the home page.</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/newrepository.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Graphic User Interface of Github; by clicking on the button “New repository” you tell Github to create a remote Github repository (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/newrepository.png))</p>
-<p>&lt;/p&gt;</p>
-<p>4. On the new repository page, give your repository a name. It’s not necessary, but it would be convenient to name it the same as the directory,&nbsp;**git_practice**. After naming the repository, click&nbsp;**Create repository**.</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/createrepository.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Graphic User Interface of Github; Give your repository a short but descriptive name (hint: make sure to separate different words either with underscores or hyphens, because this will prevent git from throwing an error). After you give some additional information for different aspects of your Github repository, click on the button “Create Repository”(image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/createrepository.png))</p>
-<p>&lt;/p&gt;</p>
-<p>5. After creating a repository, GitHub displays the repository page. At the top of the page, make sure “HTTPS” is selected.</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/githubhttps.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Populating a remote repository ising “HTTPS” (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/githubhttps.png))</p>
-<p>&lt;/p&gt;</p>
+<section id="instructions" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="instructions"><span class="header-section-number">5.4.1</span> Instructions</h3>
+<ol type="1">
+<li><p>In your Command Line Interface, make sure your current working directory is your new Git repository. Navigate there if not.</p></li>
+<li><p>Check the status of which files and folders are new or have been edited. There should be no files modified. (run this command in your terminal <code>git status</code>).</p></li>
+<li><p>On GitHub, create a new repository by clicking the&nbsp;<strong>New repository</strong>&nbsp;button on the home page. <img src="../images/newrepository.png" class="img-fluid" alt="Graphic User Interface of Github; by clicking on the button “New repository” you tell Github to create a remote Github repository (image taken from Codecademy)"> <strong>Fig 7</strong> Graphic User Interface of <em>Github</em>; by clicking on the button “New repository” you tell <em>Github</em> to create a remote <em>Github</em> repository (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/newrepository.png">Codecademy</a>)</p></li>
+<li><p>On the new repository page, give your repository a name. It’s not necessary, but it would be convenient to name it the same as the directory,&nbsp;<strong>git_practice</strong>. After naming the repository, click&nbsp;<strong>Create repository</strong>.</p></li>
+</ol>
+<p><img src="../images/createrepository.png" class="img-fluid" alt="Graphic User Interface of Github; Give your repository a short but descriptive name (hint: make sure to separate different words either with underscores or hyphens, because this will prevent git from throwing an error). After you give some additional information for different aspects of your Github repository, click on the button “Create Repository”(image taken from Codecademy)"> <strong>Fig 8</strong> Graphic User Interface of <em>Github</em>; Give your repository a short but descriptive name (hint: make sure to separate different words either with underscores or hyphens, because this will prevent git from throwing an error). After you give some additional information for different aspects of your <em>Github</em> repository, click on the button “Create Repository”(image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/createrepository.png">Codecademy</a>)</p>
+<ol start="5" type="1">
+<li>After creating a repository, <em>GitHub</em> displays the repository page. At the top of the page, make sure “HTTPS” is selected.</li>
+</ol>
+<p><img src="../images/githubhttps.png" class="img-fluid" alt="Populating a remote repository using “HTTPS” (image taken from Codecademy)"> <strong>Fig 9</strong> Populating a remote repository using “HTTPS” (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/githubhttps.png">Codecademy</a>)</p>
 <p>6.The repository is empty, so it’s time to connect it to your existing work. Copy the Git commands on the GitHub page, under the title “…or push an existing repository from the command line”, and paste them into your Command Line Interface. Running these commands will add a remote repository, and then push your local repository to the remote repository.</p>
-<p>When asked for a username and password, type in your GitHub username and password and press&nbsp;`enter`&nbsp;after each. Don’t be alarmed if you can’t see the characters you are typing, they are intentionally hidden as a security measure.</p>
-<p>&lt;p align = “center”&gt;&lt;img src = “https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/githubcommands.png”&gt;&lt;/p&gt;&lt;p align = “center”&gt;</p>
-<p>Graphic User Interface of Github; these are the commands with which you can populate your remote Github repository. Always remember that you should run every command on a separate line” (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/githubcommands.png))</p>
-<p>&lt;/p&gt;</p>
-<p>**Note:**&nbsp;If you set up two-factor authentication with GitHub (don’t worry if you didn’t), follow&nbsp;[GitHub’s instructions on creating a personal access (OAuth) token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)&nbsp;to be used instead of your password in bash. By default, GitHub does not set up two-factor authentication. If you are not familiar with two-factor authentication, you don’t have to generate an OAuth token.</p>
-<p>7. Once your Command Line Interface reports that the push is complete, refresh the page on GitHub. You should now see the text you wrote earlier in the README file, “Hello Git and GitHub.”</p>
-<p>GitHub automatically displays the contents of a file named&nbsp;**README.txt**&nbsp;if it exists in the repository. The README file is the perfect place to write a description of your project.</p>
+<p>When asked for a username and password, type in your GitHub username and password and press&nbsp;<code>enter</code>&nbsp;after each. Don’t be alarmed if you can’t see the characters you are typing, they are intentionally hidden as a security measure.</p>
+<p><img src="../images/githubcommands.png" class="img-fluid" alt="Graphic User Interface of Github; these are the commands with which you can populate your remote Github repository. Always remember that you should run every command on a separate line” (image taken from Codecademy)"> <strong>Fig 10</strong> Graphic User Interface (GUI) of <em>Github</em>; these are the commands with which you can populate your remote <em>Github</em> repository. Always remember that you should run every command on a separate line” (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/githubcommands.png">Codecademy</a>)</p>
+<p><strong>Note:</strong>&nbsp;If you set up two-factor authentication with GitHub (don’t worry if you didn’t), follow&nbsp;<a href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/">GitHub’s instructions on creating a personal access (OAuth) token</a>&nbsp;to be used instead of your password in bash. By default, <em>GitHub</em> does not set up two-factor authentication. If you are not familiar with two-factor authentication, you don’t have to generate an OAuth token.</p>
+<ol start="7" type="1">
+<li>Once your Command Line Interface reports that the push is complete, refresh the page on GitHub. You should now see the text you wrote earlier in the README file, “Hello Git and GitHub.”</li>
+</ol>
+<p>GitHub automatically displays the contents of a file named&nbsp;<strong>README.txt</strong>&nbsp;if it exists in the repository. The README file is the perfect place to write a description of your project. <!-- #endregion --></p>
+<p>If there is anything wrong, please open <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues">an issue on GitHub</a> or email f.pianzola@rug.nl</p>
 
 
-</section>
 </section>
 </section>
 
@@ -791,7 +775,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../code/vcs-git-commit.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

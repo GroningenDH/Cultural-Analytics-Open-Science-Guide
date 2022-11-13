@@ -29,7 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/vcs-git.html" rel="next">
+<link href="../code/set-up-git-and-github.html" rel="next">
 <link href="../code/README_file.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -151,22 +151,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -186,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -363,10 +363,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#general-workflow" id="toc-general-workflow" class="nav-link active" data-scroll-target="#general-workflow"><span class="toc-section-number">5</span>  General Workflow</a>
-  <ul>
-  <li><a href="#non-linear-development-of-your-project-with-branches" id="toc-non-linear-development-of-your-project-with-branches" class="nav-link" data-scroll-target="#non-linear-development-of-your-project-with-branches"><span class="toc-section-number">5.1</span>  Non-Linear Development of Your Project with “Branches”</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">4.1</span>  Introduction</a></li>
+  <li><a href="#non-linear-development-of-your-project-with-branches" id="toc-non-linear-development-of-your-project-with-branches" class="nav-link" data-scroll-target="#non-linear-development-of-your-project-with-branches"><span class="toc-section-number">4.2</span>  Non-Linear Development of Your Project with “Branches”</a></li>
   </ul>
 </nav>
     </div>
@@ -389,8 +387,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="general-workflow" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> General Workflow</h1>
+<section id="introduction" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
 <p>Version control is a systematic approach to record changes made in a file, or set of files, over time. This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed. A typical procedure for using version control is as follows:</p>
 <ol type="1">
 <li>Create files - these may contain text, code or both.</li>
@@ -407,8 +405,9 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>In many version control systems, you will be able to add a comment every time you save a new version. These comments should be clear and concise to make it easy to understand what changes were proposed and what updates were made in a version. This ensures that it is easy to find what you are looking for when you need to go back to a past version. Your collaborators will thank you, but so will future versions of yourself.</p>
-<section id="non-linear-development-of-your-project-with-branches" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="non-linear-development-of-your-project-with-branches"><span class="header-section-number">5.1</span> Non-Linear Development of Your Project with “Branches”</h2>
+</section>
+<section id="non-linear-development-of-your-project-with-branches" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="non-linear-development-of-your-project-with-branches"><span class="header-section-number">4.2</span> Non-Linear Development of Your Project with “Branches”</h2>
 <p>So you have your project and you want to add something new or try something out before reflecting the changes in the main project folder. To add something new, you can continue editing your files and save them with the proposed changes. Suppose you want to try something without reflecting the changes in the central repository. In that case, you can use the “branching” feature of more advanced version control systems such as Git. A branch creates a local copy of the main repository where you can work and try new changes. Any work you do on your branch will not be reflected on your main project (referred to as your main branch) so it remains secure and error-free. At the same time, you can test your ideas and troubleshoot in a local branch.</p>
 <p>When you are happy with the new changes, you can introduce them to the main project. The merge feature in Git allows the independent lines of development in a local branch to get integrated into the main branch.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -433,9 +432,9 @@ If one of your branches ends up not working, you can either abandon it or delete
 </figure>
 </div>
 <p>No matter how many branches you have, you can access the past versions you made on any of them. If you are curious to know how to use this feature in practice, you will find more details a few sections ahead.</p>
+<p>If there is anything wrong, please open <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues">an issue on GitHub</a> or email f.pianzola@rug.nl</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -704,12 +703,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../code/README_file.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/vcs-git.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../code/set-up-git-and-github.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Analytics Open Science Guide - 12&nbsp; Git Commands on Github</title>
+<title>Cultural Analytics Open Science Guide - 12&nbsp; Git Commands to Work on GitHub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -151,22 +151,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -186,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -363,20 +363,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#git-commands-to-work-on-github" id="toc-git-commands-to-work-on-github" class="nav-link active" data-scroll-target="#git-commands-to-work-on-github"><span class="toc-section-number">13</span>  Git Commands to Work on GitHub</a>
+  <li><a href="#create-a-local-copy-of-an-online-repository" id="toc-create-a-local-copy-of-an-online-repository" class="nav-link active" data-scroll-target="#create-a-local-copy-of-an-online-repository"><span class="toc-section-number">12.1</span>  Create a Local Copy of an Online Repository</a></li>
+  <li><a href="#link-a-local-project-on-your-computer-to-an-online-repository" id="toc-link-a-local-project-on-your-computer-to-an-online-repository" class="nav-link" data-scroll-target="#link-a-local-project-on-your-computer-to-an-online-repository"><span class="toc-section-number">12.2</span>  Link a Local Project on Your Computer to an Online Repository</a>
   <ul>
-  <li><a href="#create-a-local-copy-of-an-online-repository" id="toc-create-a-local-copy-of-an-online-repository" class="nav-link" data-scroll-target="#create-a-local-copy-of-an-online-repository"><span class="toc-section-number">13.1</span>  Create a Local Copy of an Online Repository</a></li>
-  <li><a href="#link-a-local-project-on-your-computer-to-an-online-repository" id="toc-link-a-local-project-on-your-computer-to-an-online-repository" class="nav-link" data-scroll-target="#link-a-local-project-on-your-computer-to-an-online-repository"><span class="toc-section-number">13.2</span>  Link a Local Project on Your Computer to an Online Repository</a>
-  <ul class="collapse">
-  <li><a href="#pull-requests" id="toc-pull-requests" class="nav-link" data-scroll-target="#pull-requests"><span class="toc-section-number">13.2.1</span>  Pull Requests</a></li>
+  <li><a href="#pull-requests" id="toc-pull-requests" class="nav-link" data-scroll-target="#pull-requests"><span class="toc-section-number">12.2.1</span>  Pull Requests</a></li>
   </ul></li>
-  <li><a href="#contributing-to-other-projects" id="toc-contributing-to-other-projects" class="nav-link" data-scroll-target="#contributing-to-other-projects"><span class="toc-section-number">13.3</span>  Contributing to Other Projects</a>
-  <ul class="collapse">
-  <li><a href="#a-workflow-to-contribute-to-others-github-projects-via-git" id="toc-a-workflow-to-contribute-to-others-github-projects-via-git" class="nav-link" data-scroll-target="#a-workflow-to-contribute-to-others-github-projects-via-git"><span class="toc-section-number">13.3.1</span>  A Workflow to Contribute to Others Github Projects via <code>git</code>:</a></li>
-  <li><a href="#good-practice" id="toc-good-practice" class="nav-link" data-scroll-target="#good-practice"><span class="toc-section-number">13.3.2</span>  Good Practice</a></li>
+  <li><a href="#contributing-to-other-projects" id="toc-contributing-to-other-projects" class="nav-link" data-scroll-target="#contributing-to-other-projects"><span class="toc-section-number">12.3</span>  Contributing to Other Projects</a>
+  <ul>
+  <li><a href="#a-workflow-to-contribute-to-others-github-projects-via-git" id="toc-a-workflow-to-contribute-to-others-github-projects-via-git" class="nav-link" data-scroll-target="#a-workflow-to-contribute-to-others-github-projects-via-git"><span class="toc-section-number">12.3.1</span>  A Workflow to Contribute to Others Github Projects via <code>git</code>:</a></li>
+  <li><a href="#good-practice" id="toc-good-practice" class="nav-link" data-scroll-target="#good-practice"><span class="toc-section-number">12.3.2</span>  Good Practice</a></li>
   </ul></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="toc-section-number">13.4</span>  Further reading</a></li>
-  </ul></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="toc-section-number">12.4</span>  Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -385,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -399,102 +396,100 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="git-commands-to-work-on-github" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Git Commands to Work on GitHub</h1>
+<!-- #region -->
 <p>As research becomes increasingly collaborative and multiple people work on the same project, it becomes difficult to keep track of changes made by others if not done systematically. Moreover, it is time-consuming to manually incorporate the work of different participants in a project, even when all of their changes are compatible. Hosting the project on an online repository hosting service like GitHub is beneficial to make collaborations open and effective. If you are new to collaboration through <a href="https://github.com">GitHub</a>, please follow the comprehensive guide in the previous sections.</p>
 <p>In this section, we will discuss how to use Git commands to work with an online Git repository.</p>
 <p>Please note that the commands listed in this chapter (both in this and previous subchapters) are NOT specific to GitHub. They are used for collaborative work on any Git repositories and to interact with any repository hosting site/servers, which can be <a href="https://github.com/">GitHub</a>, but also <a href="https://about.gitlab.com/">GitLab</a>, <a href="https://bitbucket.org/">Bitbucket</a> or a <a href="https://opensource.com/life/16/8/how-construct-your-own-git-server-part-6">self-set-up bare Git repository on a web server</a>.</p>
 <p>For simplicity, we will use GitHub as an example to explain commands that are used for interacting with Git repositories.</p>
-<section id="create-a-local-copy-of-an-online-repository" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="create-a-local-copy-of-an-online-repository"><span class="header-section-number">13.1</span> Create a Local Copy of an Online Repository</h2>
-<p>So far, all Git commands introduced in this chapter are concerned with local, unconnected Git repositories. In order to collaborate with others, hosting services, such as GitHub, can store a <em>clone</em> (a copy) of your local repository and expose it to others. Usually, you will have a local repository and a <em>remote</em>, web-hosted repository. Your local repository is connected to the web-based clone. In technical terms, the web-based clone is a <code>remote</code> of the local repository. Usually, this remote is called “origin”. Having a web-based remote allows you to <em>push</em> changes to your project online. It enables others to obtain their own clone of your repository (a copy of your repository to their local computer), make changes, and submit a <em>pull request</em> that allows you to integrate their changes. For example, one can create an independent local copy of a project using the following Git command:</p>
-<pre><code>git clone &lt;insert GitHub link of the repository here&gt;</code></pre>
+<section id="create-a-local-copy-of-an-online-repository" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="create-a-local-copy-of-an-online-repository"><span class="header-section-number">12.1</span> Create a Local Copy of an Online Repository</h2>
+<p>So far, all Git commands introduced in this chapter are concerned with local, unconnected Git repositories. In order to collaborate with others, hosting services, such as GitHub, can store a <em>clone</em> (a copy) of your local repository and expose it to others. Usually, you will have a local repository and a <em>remote</em>, web-hosted repository. Your local repository is connected to the web-based clone. In technical terms, the web-based clone is a <code>remote</code> of the local repository. Usually, this remote is called “origin”. Having a web-based remote allows you to <em>push</em> changes to your project online. It enables others to obtain their own clone of your repository (a copy of your repository to their local computer), make changes, and submit a <em>pull request</em> that allows you to integrate their changes.</p>
 <p>Collaborators can update their local version of an online repository or <em>pull</em> other’s work into their copy using the command:</p>
-<pre><code>git pull</code></pre>
+<p><code>git pull</code></p>
 <p>Similarly, they can edit files locally and stage their updates (<code>git add .</code>), commit changes to a new version (<code>git commit</code>) and <em>push</em> changes to the remote online repository using the Git command:</p>
-<pre><code>git push</code></pre>
+<p><code>git push</code></p>
 </section>
-<section id="link-a-local-project-on-your-computer-to-an-online-repository" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="link-a-local-project-on-your-computer-to-an-online-repository"><span class="header-section-number">13.2</span> Link a Local Project on Your Computer to an Online Repository</h2>
+<section id="link-a-local-project-on-your-computer-to-an-online-repository" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="link-a-local-project-on-your-computer-to-an-online-repository"><span class="header-section-number">12.2</span> Link a Local Project on Your Computer to an Online Repository</h2>
 <p>To link a project on your computer to a new GitHub repository (preferably with the same name), you need to follow the standard workflow for creating a Git repository by issuing the following set of commands in the terminal, one by one:</p>
-<pre><code>    cd &lt;your project folder&gt;
-    git init
-    git add .
-    git commit</code></pre>
+<pre><code>cd &lt;your project folder&gt;
+git init
+git add .
+git commit</code></pre>
 <p>Assuming that you have a GitHub repository that you want to connect with this project, run the following command:</p>
-<pre><code>git remote add origin &lt;GitHub repository link for your project&gt;</code></pre>
+<p><code>git remote add origin &lt;GitHub repository link for your project&gt;</code></p>
 <p>Then, <em>push</em> all the files on your computer to the online version so they match:</p>
-<pre><code>git push -u origin main</code></pre>
+<p><code>git push -u origin main</code></p>
 <p>You can then go on and make more commits on your computer. When you want to push them to your online version, similarly you do:</p>
-<pre><code>git push origin branch_you_want_to_push_to</code></pre>
+<p><code>git push origin branch_you_want_to_push_to</code></p>
 <p>You can also make changes directly on GitHub by editing the online repository, and <em>pull</em> those changes locally by using the <code>git pull</code> command.</p>
 <p>Others can also clone the repository to their computer by using:</p>
-<pre><code>git clone git@github.com:your-github-username/repository_name</code></pre>
+<p><code>git clone git@github.com:your-github-username/repository_name</code></p>
 <p>They can make and commit changes to the code without impacting the original, and push their changes to <em>their</em> online GitHub account using:</p>
-<pre><code>git push -u origin main</code></pre>
+<p><code>git push -u origin main</code></p>
 <p>The same procedure applies to you if you want to clone someone else’s repository.</p>
-<section id="pull-requests" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="pull-requests"><span class="header-section-number">13.2.1</span> Pull Requests</h3>
+<section id="pull-requests" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="pull-requests"><span class="header-section-number">12.2.1</span> Pull Requests</h3>
 <p>If you are working on a personal branch and some other changes were made in the main branch, you can <em>pull</em> those changes down to your branch using the Git command:</p>
-<pre><code>git pull origin main</code></pre>
+<p><code>git pull origin main</code></p>
 <p>When everyone has a copy of the project on their own branch (checkout your branch with <code>git checkout branch-name</code>), they can <em>push</em> their changes to their branch using the following command:</p>
-<pre><code>git push origin branch-name</code></pre>
+<p><code>git push origin branch-name</code></p>
 <p>However, if you can not directly edit the repository (when you are not an owner or admin of the project), you will be able to share your work with the help of <em>pull requests</em>. A pull request allows a contributor to get the proposed changes from their branch or repository integrated into the main branch of the project. It is also possible to make pull requests via the command line (see the GitLab documentation <a href="https://git-scm.com/docs/git-request-pull">here</a>).</p>
 </section>
 </section>
-<section id="contributing-to-other-projects" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="contributing-to-other-projects"><span class="header-section-number">13.3</span> Contributing to Other Projects</h2>
+<section id="contributing-to-other-projects" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="contributing-to-other-projects"><span class="header-section-number">12.3</span> Contributing to Other Projects</h2>
 <p>When you create a local copy of a repository, you only keep the versions of the files that are in the repository at the time of creating that copy. If any changes are made in the original repository afterwards, your copy will get out of sync. This can lead to problems like conflicting file contents when making a pull request or merging changes from your branch to the main repository. Therefore, when working on different branches or forks of a repository, it is a good practice to keep them updated with the main repository and in sync with the original repository.</p>
-<section id="a-workflow-to-contribute-to-others-github-projects-via-git" class="level3" data-number="13.3.1">
-<h3 data-number="13.3.1" class="anchored" data-anchor-id="a-workflow-to-contribute-to-others-github-projects-via-git"><span class="header-section-number">13.3.1</span> A Workflow to Contribute to Others Github Projects via <code>git</code>:</h3>
+<section id="a-workflow-to-contribute-to-others-github-projects-via-git" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="a-workflow-to-contribute-to-others-github-projects-via-git"><span class="header-section-number">12.3.1</span> A Workflow to Contribute to Others Github Projects via <code>git</code>:</h3>
 <p>Using the fork button on the GitHub repository you wish to contribute to, create a copy of the repository in your account. The main repository that you forked will be referred to as the “upstream” repository.</p>
 <p>You can now work on your copy using the command line, via the following steps (make sure you replace the placeholder user and repository names):</p>
 <ol type="1">
 <li><p>Clone it to your local machine:</p>
-<pre><code>git clone git@github.com:your-github-username/repository_name</code></pre></li>
+<p><code>git clone git@github.com:your-github-username/repository_name</code></p></li>
 <li><p>Add the ‘upstream’ repository to the list of remote repositories using the <code>git remote</code> command:</p>
-<pre><code>git remote add upstream git@github.com:upstream-github-username/repository_name</code></pre></li>
+<p><code>git remote add upstream git@github.com:upstream-github-username/repository_name</code></p></li>
 <li><p>Verify the new remote ‘upstream’ repository:</p>
-<pre><code>git remote -v</code></pre></li>
+<p><code>git remote -v</code></p></li>
 <li><p>Update your fork with the latest upstream changes, by first fetching the upstream repository’s branches and latest commits to bring them into your repository:</p>
-<pre><code>git fetch upstream</code></pre></li>
+<p><code>git fetch upstream</code></p></li>
 <li><p>View all branches, including those from upstream:</p>
-<pre><code>git branch -va</code></pre></li>
+<p><code>git branch -va</code></p></li>
 </ol>
 <p>Make sure that you are on your main branch locally, if not, then checkout your main branch using the command <code>git checkout main</code></p>
 <ol start="6" type="1">
 <li><p>Keep your fork updated by merging those commits (fetched from the upstream) to your own local main branch.</p>
-<pre><code>git merge upstream/main</code></pre></li>
+<p><code>git merge upstream/main</code></p></li>
 </ol>
 <p>Now, your local main branch is up-to-date with everything modified upstream. If there are no unique commits on the local main branch, git will simply perform a fast-forward.</p>
 <p><em>Note: The upstream/main is the original repository’s main which you wish to contribute to, whereas origin/main refers to the repository you cloned in your local machine after it was forked on GitHub.</em></p>
 <p>Once your fork is in sync with the upstream main repository, you can always keep your local cloned repository in sync with origin (fork in this case) by using:</p>
-<pre><code>git checkout main
-git pull</code></pre>
+<p><code>git checkout main</code></p>
+<p><code>git pull</code></p>
 <p>The <code>git pull</code> command combines two other commands, <code>git fetch</code> and <code>git merge</code>. When using <code>git fetch</code>, the resulting commits are stored as the remote branch allows you to review the changes before merging.</p>
 <p>Similarly, if you have created more branches other than main, you can also keep them in sync with your main, once it is in sync with the upstream repository.</p>
-<pre><code>git checkout my-other-branch
-git pull origin main</code></pre>
+<p><code>git checkout my-other-branch</code></p>
+<p><code>git pull origin main</code></p>
 <p>When everything is up-to-date, you can work on your branch and commit changes.</p>
 <p>When you are ready to push your local commits to your forked repository (origin), use the following command.</p>
-<pre><code>git push origin forked_repository</code></pre>
+<p><code>git push origin forked_repository</code></p>
 <p>Now you can make a pull request!</p>
 </section>
-<section id="good-practice" class="level3" data-number="13.3.2">
-<h3 data-number="13.3.2" class="anchored" data-anchor-id="good-practice"><span class="header-section-number">13.3.2</span> Good Practice</h3>
+<section id="good-practice" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="good-practice"><span class="header-section-number">12.3.2</span> Good Practice</h3>
 <p>Before you create a branch, make sure you have all the upstream changes from the origin/main branch.</p>
 <p><strong>A word of caution on the <code>rebase</code> command</strong>: While trying to keep your branches in sync, you may come across the <code>rebase</code> command. It tends to rewrite history and could be troublesome if not communicated with others working on the same branch. Try to avoid using the <code>rebase</code> command, and instead use <code>pull</code> or <code>fetch</code>+<code>merge</code>, as discussed in this section. You can find more details about <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">Merging vs Rebasing</a>.</p>
 </section>
 </section>
-<section id="further-reading" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">13.4</span> Further reading</h2>
+<section id="further-reading" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">12.4</span> Further reading</h2>
 <ul>
 <li>An <a href="https://help.github.com/en/articles/syncing-a-fork">article on syncing a fork of a repository</a> to keep it up-to-date with the upstream repository.</li>
-<li>Instructions if you wish to do it all <a href="https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser">in the browser itself</a>.</li>
+<li>Instructions if you wish to do it all <a href="https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser">in the browser itself</a>. <!-- #endregion --></li>
 </ul>
+<p>If there is anything wrong, please open <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues">an issue on GitHub</a> or email f.pianzola@rug.nl</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

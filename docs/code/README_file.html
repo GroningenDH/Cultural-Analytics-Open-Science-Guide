@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Analytics Open Science Guide - 3&nbsp; What is a README file and how to write a good one?</title>
+<title>Cultural Analytics Open Science Guide - 3&nbsp; README file</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -151,22 +151,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -186,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -363,7 +363,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#conventions-to-write-a-good-readme-file" id="toc-conventions-to-write-a-good-readme-file" class="nav-link active" data-scroll-target="#conventions-to-write-a-good-readme-file"><span class="toc-section-number">4</span>  Conventions to write a good README file</a></li>
+  <li><a href="#what-is-a-readme-file-and-how-to-write-a-good-one" id="toc-what-is-a-readme-file-and-how-to-write-a-good-one" class="nav-link active" data-scroll-target="#what-is-a-readme-file-and-how-to-write-a-good-one"><span class="toc-section-number">3.1</span>  What is a README file and how to write a good one?</a></li>
+  <li><a href="#conventions-to-write-a-good-readme-file" id="toc-conventions-to-write-a-good-readme-file" class="nav-link" data-scroll-target="#conventions-to-write-a-good-readme-file"><span class="toc-section-number">3.2</span>  Conventions to write a good README file</a></li>
   </ul>
 </nav>
     </div>
@@ -372,7 +373,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -387,11 +388,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <!-- #region -->
+<section id="what-is-a-readme-file-and-how-to-write-a-good-one" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="what-is-a-readme-file-and-how-to-write-a-good-one"><span class="header-section-number">3.1</span> What is a README file and how to write a good one?</h2>
 <p>A README file is basically a text file that is used as an introduction to your project. In addition to that, someone might want to explain, share information required to understand what the project is about.</p>
 <p><img src="../images/github-README.svg" class="img-fluid" alt="The importance of a README file for a project. Image taken from [Codecademy]"> <strong>Fig 1</strong> The Importance of a README file for a project (image taken from <a href="https://www.codecademy.com/learn/learn-git/modules/github-markdown/cheatsheet">Codecademy</a>)</p>
 <p>Moreover, a README file might contain some information on how to install and use the project.</p>
-<section id="conventions-to-write-a-good-readme-file" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Conventions to write a good README file</h1>
+</section>
+<section id="conventions-to-write-a-good-readme-file" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="conventions-to-write-a-good-readme-file"><span class="header-section-number">3.2</span> Conventions to write a good README file</h2>
 <p>A README file is the first thing someone sees when they access the repository, thus a README file should be as good as the project itself. For this reason, there are some elements that should be included in a good README:</p>
 <ul>
 <li><p><strong>Project Title</strong>: The title name of your project</p></li>
@@ -403,6 +407,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>License</strong>: It’s also important to list a license on your README so other developers can understand what they can and cannot do with your project. You can use&nbsp;<a href="https://choosealicense.com/">this guide</a>&nbsp;to help you choose a license. <!-- #endregion --></p></li>
 </ul>
 <p>Bear in mind that your README should be brief but concise, detailed and up-to-date.</p>
+<p>If there is anything wrong, please open <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues">an issue on GitHub</a> or email f.pianzola@rug.nl</p>
 
 
 </section>
