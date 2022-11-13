@@ -10,11 +10,11 @@ editor:
 ## What are Git and GitHub?
 
 This tutorial refers to Git and GitHub repeatedly. 
-\_Git\_ is a widely-used version control system used to manage code.
+_Git_ is a widely-used version control system used to manage code.
 Git allows you to save drafts of your code so that you can look back at previous versions and potentially undo complicated errors.
-A project managed with Git is called a \_Git repository\_.
+A project managed with Git is called a _Git repository_.
 
-\_GitHub\_ is a popular hosting service for Git repositories.
+_GitHub_ is a popular hosting service for Git repositories.
 GitHub allows you to store your local Git repositories in the cloud.
 With GitHub, you can backup your personal files, share your code, and collaborate with others.
 
@@ -31,7 +31,7 @@ In your own browser:
 Open a new browser tab
 
 2\.
-Navigate to \[https://github.com/\](https://github.com/)
+Navigate to [https://github.com/](https://github.com/)
 
 3\.
 Create an account
@@ -49,20 +49,20 @@ Follow the instructions for your operating system.
 ### Mac users:
 
 1\.
-Launch the \*\*\_Terminal\_\*\* application.
-You can find it in \*\*/Applications/Utilities/\*\*.
-You can also use the \*\*\_Spotlight\_\*\* search tool (the little magnifying glass in the top right of your screen) to search for \*\*\_Terminal\_\*\*.
-Once \*\*\_Spotlight\_\*\* locates it, click on the result that says \*\*\_Terminal\_\*\*.
+Launch the **_Terminal_** application.
+You can find it in **/Applications/Utilities/**.
+You can also use the **_Spotlight_** search tool (the little magnifying glass in the top right of your screen) to search for **_Terminal_**.
+Once **_Spotlight_** locates it, click on the result that says **_Terminal_**.
 
 2\.
-When \*\*\_Terminal\_\*\* opens, type in \`git\` and press enter.
+When **_Terminal_** opens, type in `git` and press enter.
 
 3\.
 If you don't already have Git installed, a dialog will appear saying that "The 'git' command requires the command line developer tools. Would you like to install the tools now?" Click "Install".
 
 \<p align = "center"\>\<img src = "https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_prompt.png"\>\</p\>\<p align = "center"\>
 
-Git and bash setup for Mac; installation of Git (image taken from \[Codecademy\](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_prompt.png))
+Git and bash setup for Mac; installation of Git (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_prompt.png))
 
 \</p\>
 
