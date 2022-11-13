@@ -207,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -217,22 +217,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -490,9 +490,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nineteenth-century immigration data was produced with the express purpose of reducing people to bodies; bodies to easily quantifiable aspects; and assigning value to those aspects which proved that the marginalized people to who they belonged were worth less than their elite counterparts.</p>
 -Anelise Shrout, <a href="https://crdh.rrchnm.org/essays/v01-10-(re)-humanizing-data/">“(Re)Humanizing Data”</a>
 </blockquote>
-<p>The dataset that we’re working with in this lesson is the <a href="https://www.nyuirish.net/almshouse/the-almshouse-records/">Bellevue Almshouse Dataset</a>, created by historian and DH scholar Anelise Shrout. It includes information about Irish-born immigrants who were admitted to New York City’s Bellevue Almshouse in the 1840s.</p>
+<p>The dataset that we’re working with in this lesson is the <a href="https://docs.google.com/spreadsheets/d/1uf8uaqicknrn0a6STWrVfVMScQQMtzYf5I_QyhB9r7I/edit#gid=2057113261">Bellevue Almshouse Dataset</a>, created by historian and DH scholar Anelise Shrout. It includes information about Irish-born immigrants who were admitted to New York City’s Bellevue Almshouse in the 1840s.</p>
 <p>The Bellevue Almshouse was part of New York City’s public health system, a place where poor, sick, homeless, and otherwise marginalized people were sent — sometimes voluntarily and sometimes forcibly. Devastated by widespread famine in Ireland, many Irish people fled their homes for New York City in the 1840s, and many of them ended up in the Bellevue Almshouse.</p>
-<p>We’re using the <a href="https://www.nyuirish.net/almshouse/the-almshouse-records/">Bellevue Almshouse Dataset</a> to practice data analysis with Pandas because we want to think deeply about the consequences of reducing human life to data. As Shrout argues in <a href="https://crdh.rrchnm.org/essays/v01-10-(re)-humanizing-data/">her essay</a>, this data purposely reduced people to bodies and “easily quantifiable aspects” in order to devalue their lives, potentially enacting “both epistemic and physical violence” on them.</p>
+<p>We’re using the <a href="https://docs.google.com/spreadsheets/d/1uf8uaqicknrn0a6STWrVfVMScQQMtzYf5I_QyhB9r7I/edit#gid=2057113261">Bellevue Almshouse Dataset</a> to practice data analysis with Pandas because we want to think deeply about the consequences of reducing human life to data. As Shrout argues in <a href="https://crdh.rrchnm.org/essays/v01-10-(re)-humanizing-data/">her essay</a>, this data purposely reduced people to bodies and “easily quantifiable aspects” in order to devalue their lives, potentially enacting “both epistemic and physical violence” on them.</p>
 <p>We want to think about how responsible data analysis requires more than just technical tools like Pandas. It also requires an interrogation of the data. Who collected this data? How and why was this data collected? What assumptions are present in this data? What are the consequences of this data in the world? What does this data reflect about the world? For example, Shrout claims that the “Bellevue administrators framed any ailments or difficulties inmates might have had as a consequence of [their immigration] status” — perhaps best exemplified by the fact that a frequent “disease” in the dataset is “recent emigrant.” Below we’re going to explore the prevalence of “recent emigrant” in the data as well as other salient patterns.</p>
 <hr>
 </section>
@@ -2198,6 +2198,7 @@ Name: profession, dtype: int64</code></pre>
 <li><a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html">10 minutes to Pandas</a>, Pandas Official Documentation</li>
 <li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/03.00-introduction-to-pandas.html">“Data Manipulation with Pandas”</a>, <em>Python Data Science</em>, Jake VanderPlas</li>
 </ul>
+<p>If there is anything wrong, please open <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues">an issue on GitHub</a> or email f.pianzola@rug.nl</p>
 
 
 </section>

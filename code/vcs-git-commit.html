@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Analytics Open Science Guide - 6&nbsp; The git commit command</title>
+<title>Cultural Analytics Open Science Guide - 6&nbsp; The git commit Command</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../code/vcs-git-compare.html" rel="next">
-<link href="../code/vcs-git.html" rel="prev">
+<link href="../code/set-up-git-and-github.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is a README file and how to write a good one?</span></a>
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -151,22 +151,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></a>
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></a>
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></a>
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git Branches</span></a>
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -186,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands on Github</span></a>
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -363,14 +363,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-git-commit-command" id="toc-the-git-commit-command" class="nav-link active" data-scroll-target="#the-git-commit-command"><span class="toc-section-number">7</span>  The <code>git commit</code> Command</a>
+  <li><a href="#more-on-the-commit-messages" id="toc-more-on-the-commit-messages" class="nav-link active" data-scroll-target="#more-on-the-commit-messages"><span class="toc-section-number">6.1</span>  More on the Commit Messages</a>
   <ul>
-  <li><a href="#more-on-the-commit-messages" id="toc-more-on-the-commit-messages" class="nav-link" data-scroll-target="#more-on-the-commit-messages"><span class="toc-section-number">7.1</span>  More on the Commit Messages</a>
-  <ul class="collapse">
-  <li><a href="#good-practice" id="toc-good-practice" class="nav-link" data-scroll-target="#good-practice"><span class="toc-section-number">7.1.1</span>  Good practice</a></li>
+  <li><a href="#good-practice" id="toc-good-practice" class="nav-link" data-scroll-target="#good-practice"><span class="toc-section-number">6.1.1</span>  Good practice</a></li>
   </ul></li>
-  <li><a href="#git-commit-summary" id="toc-git-commit-summary" class="nav-link" data-scroll-target="#git-commit-summary"><span class="toc-section-number">7.2</span>  Git commit: Summary</a></li>
-  </ul></li>
+  <li><a href="#git-commit-summary" id="toc-git-commit-summary" class="nav-link" data-scroll-target="#git-commit-summary"><span class="toc-section-number">6.2</span>  Git commit: Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -379,7 +376,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The git commit command</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -393,31 +390,29 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="the-git-commit-command" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> The <code>git commit</code> Command</h1>
 <p>Every time you ‘add’ changes (new files or existing files with some changes) and ‘commit’ those in your Git repository, you create a version of your project that is stored in your project history and can be accessed any time.</p>
 <p>To commit changes with a meaning statement about changes made in a version, use <code>git commit</code> with a <code>-m</code> (m for message) flag:</p>
-<pre><code>git commit -m 'helpful statement about the change here'</code></pre>
+<p><code>git commit -m 'helpful statement about the change here'</code></p>
 <p>You can see a log of your previous commits using</p>
-<pre><code>git log</code></pre>
+<p><code>git log</code></p>
 <p>In the log report on your terminal, you will see that each version is automatically tagged with a unique string of numbers and letters, called an SHA. You can identify, access and compare different versions by using their corresponding SHA. Here is an example of a commit in the Git log: The SHA is in the very first line, and apart from this SHA, the log also contains information on the date, time, and author of the change as well as the commit message (“minor typo fix”).</p>
 <pre><code>commit 0346c937d0c451f6c622c5800a46f9e9e1c2b035
 Author: Malvika Sharan &lt;some@email.com&gt;
 Date:   Wed May 6 18:22:40 2020 +0100
 
     minor typo fix</code></pre>
-<section id="more-on-the-commit-messages" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="more-on-the-commit-messages"><span class="header-section-number">7.1</span> More on the Commit Messages</h2>
+<section id="more-on-the-commit-messages" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="more-on-the-commit-messages"><span class="header-section-number">6.1</span> More on the Commit Messages</h2>
 <p>As you work on your project, you will make more and more commits. Without any other information, it can be hard to remember which version of your project is in which. Storing past versions is useless if you can not understand them, and figuring out what they contain by inspecting the code is frustrating and takes valuable time.</p>
 <p>When you commit, you have the chance to write a commit message describing what the commit is and what it does, and you should always, <em>always,</em> <strong><em>always</em></strong> do so. A commit message gets attached to the commit, so if you look back at it (for example, via <code>git log</code>), it will show up. Creating insightful and descriptive commit messages is one of the best things you can do to get the most out of version control. It lets people (and your future self when you have long since forgotten what you were doing and why) quickly understand what updates a commit contains without having to carefully read code and waste time figuring it out. Good commit messages improve your code quality by drastically reducing wrong assumptions by people on why certain changes were made.</p>
 <p>When you commit via <code>git commit</code> without the <code>-m</code> or <code>--message</code> option, a field appears (either within the terminal or in a text editor) where a commit message can be written. You can write a meaningful statement and save (and close if writing the message via text editor). You can set your preferred editor as the default by running a statement like this:</p>
-<pre><code>git config --global core.editor "your_preferred_editor"</code></pre>
+<p><code>git config --global core.editor "your_preferred_editor"</code></p>
 <p>To avoid writing this commit message in an editor, you can use the command <code>git commit -m "your message here"</code>, as discussed earlier.</p>
-<section id="good-practice" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="good-practice"><span class="header-section-number">7.1.1</span> Good practice</h3>
+<section id="good-practice" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="good-practice"><span class="header-section-number">6.1.1</span> Good practice</h3>
 <p>The number one rule is: <strong>make it meaningful</strong>. A commit message like “Fixed a bug” leaves it entirely up to the person to understand what that means (again, this person may very well be you a few months in the future when you have forgotten what you were doing). This can end up wasting your or others time figuring out what the bug was, what changes were actually made, and how a bug was fixed. As such, a good commit message should <em>explain what you did, why you did it, and what is impacted by the changes</em>. As with comments, you should describe what the code is “doing” rather than the code itself. For example, it is not obvious what “Change N_sim to 10” actually does, but “Change number of simulations run by the program to 10” is clear.</p>
 <p><strong>Summarise the changes your commit contains</strong>. This should be written in the first line (in 50 characters maximum), then leave a blank line before you continue with the description or body of the message. The first line is the shortened version that appears as a summary when you use the command:</p>
-<pre><code>git log</code></pre>
+<p><code>git log</code></p>
 <p>This makes it much easier to quickly search through a large number of commits. It is also a good practice to <strong>use the imperative present tense</strong> in these messages. For example, instead of “I added tests for” or “Adding tests for”, use “Add tests for”.</p>
 <p>Here is a good example of a commit message structure:</p>
 <pre><code>Short (50 chars. or less) summary of changes
@@ -439,12 +434,12 @@ Further paragraphs come after blank lines.
     between, but conventions vary here</code></pre>
 </section>
 </section>
-<section id="git-commit-summary" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="git-commit-summary"><span class="header-section-number">7.2</span> Git commit: Summary</h2>
+<section id="git-commit-summary" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="git-commit-summary"><span class="header-section-number">6.2</span> Git commit: Summary</h2>
 <p>By committing your changes throughout the development of your project in meaningful units with descriptive and clear commit messages, you can create an easily understandable history. This will help you and others to understand the progress of your work. Furthermore, as the next section will demonstrate, it will also make it easy to view past versions of your history or revert changes you have made.</p>
+<p>If there is anything wrong, please open <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues">an issue on GitHub</a> or email f.pianzola@rug.nl</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -712,13 +707,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/vcs-git.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version Control System and Git/Github</span></span>
+      <a href="../code/set-up-git-and-github.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../code/vcs-git-compare.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieve and Compare Versions</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
