@@ -4,7 +4,10 @@ editor:
     wrap: sentence
 ---
 
-# Git Branches
+<!-- #region -->
+# Branches and Git
+
+##  Git Branches
 
 When working on a project, individually or collaboratively, you may encounter the following scenarios:
 
@@ -27,34 +30,37 @@ Each contributor can have their own branch or branches which are only merged int
 ![Caption: An illustration of branching in Git](../images/sub-branch.png)
 
 
-    You can create a branch and switch to it using:
-
-git checkout -b name_of_your_new_branch
-
-
-    To change between branches, use the following command:
-
-git checkout name_of_the_branch
+- You can create a branch and switch to it using: 
+    
+    `git checkout -b name_of_your_new_branch`
 
 
-    You must commit any work you have in progress before you can to switch to another branch.
-
-    You can see all branches of your project using:
-
-git branch
-
-    This gives the output as a list with an asterisk next to the branch you are on.
-    You can also use `git status` if you have forgotten which branch you are on.
-
-    When we are done and we don't need the new branch anymore, we can delete it. The goal end is to integrate all the changes into the `main` branch. Once this has been done then the branch has served its purpose and can be deleted.
-    The command to do that is the following:
-
-git branch -d new_branch_name
+- To change between branches, use the following command:
+    
+    `git checkout name_of_the_branch`
 
 
-    If the branches have never been merged to the `main` branch, we will need to write a different command:
+**Tip**: You must commit any work you have in progress before you can to switch to another branch.
 
-git branch -D new_branch_name \`\`\`
+
+- You can see all branches of your project using:
+
+    `git branch`
+
+This gives the output as a list with an asterisk next to the branch you are on.
+You can also use `git status` if you have forgotten which branch you are on.
+
+
+When we are done and we don't need the new branch anymore, we can delete it. The goal end is to integrate all the changes into the `main` branch. Once this has been done then the branch has served its purpose and can be deleted.
+
+- The command to delete the branch is the following:
+    
+    `git branch -d new_branch_name`
+
+
+- If the branches have never been merged to the `main` branch, we will need to write a different command:
+   
+   `git branch -D new_branch_name`
 
 ## Summary
 
@@ -81,3 +87,6 @@ Give your branches **sensible names**, "new_feature" is all well and good until 
 
 [Learn Git Branching](https://learngitbranching.js.org/) is a project to provide an interactive way to learn Git.
 Going through their tutorials will provide substantial experience with the most commonly used git commands and branch manipulation techniques.
+<!-- #endregion -->
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

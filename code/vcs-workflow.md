@@ -1,12 +1,12 @@
 ---
-title: General Workflow of a Vercion Control System (VCS)
 editor: 
   markdown: 
     wrap: sentence
 ---
 
-# General Workflow
+# General Workflow of a Vercion Control System (VCS)
 
+## Introduction
 Version control is a systematic approach to record changes made in a file, or set of files, over time.
 This allows you and your collaborators to track the history, see what changed, and recall specific versions later when needed.
 A typical procedure for using version control is as follows:
@@ -58,3 +58,6 @@ If you want, you can create branches from branches (and branches off of those br
 
 No matter how many branches you have, you can access the past versions you made on any of them.
 If you are curious to know how to use this feature in practice, you will find more details a few sections ahead.
+
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

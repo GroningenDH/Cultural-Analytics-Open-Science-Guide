@@ -1,5 +1,7 @@
 <!-- #region -->
-# What is a README file and how to write a good one?
+# README file
+
+## What is a README file and how to write a good one?
 
 A README file is basically a text file that is used as an introduction to your project. In addition to that, someone might want to explain, share information required to understand what the project is about.
 
@@ -10,7 +12,7 @@ A README file is basically a text file that is used as an introduction to your p
 
 Moreover, a README file might contain some information on how to install and use the project.
 
-# Conventions to write a good README file
+## Conventions to write a good README file
 A README file is the first thing someone sees when they access the repository, thus a README file should be as good as the project itself. For this reason, there are some elements that should be included in a good README:
 
 - **Project Title**: The title name of your project
@@ -29,3 +31,6 @@ A README file is the first thing someone sees when they access the repository, t
 <!-- #endregion -->
 
 Bear in mind that your README should be brief but concise, detailed and up-to-date.
+
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

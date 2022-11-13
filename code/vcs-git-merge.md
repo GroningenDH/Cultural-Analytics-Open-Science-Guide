@@ -1,5 +1,4 @@
 ---
-title: Merging Branches in Git
 editor: 
   markdown: 
     wrap: sentence
@@ -13,12 +12,11 @@ Once you have finished up some work on a branch and you are ready to integrate i
 You can also use merging to combine work that other people have done with your own and vice versa.
 
 To merge a branch, branch_A, into another branch, branch_B, switch to branch_A via:
-
-    git checkout branch_A
+`git checkout branch_A`
 
 Merge it into branch_B by:
 
-    git merge branch_B
+`git merge branch_B`
 
 Merging will not be possible if there are changes in either your working directory or staging area that could be written over by the files that you are merging in.
 If this happens, there are no merge conflicts in individual files.
@@ -88,7 +86,7 @@ If during the process, you need a reminder of which files the conflicts are in, 
 
 If you find there are particularly nasty conflicts, and you want to abort the merge you can use:
 
-    git merge --abort
+`git merge --abort`
 
 ### Good practice
 
@@ -102,13 +100,16 @@ Find and familiarise yourself with one that works for you.
 Commonly used merge tools include [KDiff3](http://kdiff3.sourceforge.net/), [Beyond Compare](https://www.scootersoftware.com/), [Meld](http://meldmerge.org/), and [P4Merge](https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge).
 To set a tool as your default do:
 
-    git config --global merge.tool name_of_the_tool
+`git config --global merge.tool name_of_the_tool`
 
 and launch it with:
 
-    git mergetool
+`git mergetool`
 
 Fundamentally, the best way to deal with merge conflicts is, as far as it is possible, to try to avoid them in the first place.
 You can improve your odds on this by keeping branches clean and focused on a single issue and involving as few files as possible.
 Before merging, make sure you know what is in both branches.
 If you are not the only one that has worked on the branches, then keep the lines of communication open, so you are all aware of what the others are doing.
+
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

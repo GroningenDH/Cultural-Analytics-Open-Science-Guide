@@ -1,5 +1,4 @@
 ---
-title: The git commit command
 editor: 
   markdown: 
     wrap: sentence
@@ -11,11 +10,11 @@ Every time you 'add' changes (new files or existing files with some changes) and
 
 To commit changes with a meaning statement about changes made in a version, use `git commit` with a `-m` (m for message) flag:
 
-    git commit -m 'helpful statement about the change here'
+`git commit -m 'helpful statement about the change here'`
 
 You can see a log of your previous commits using
 
-    git log
+`git log`
 
 In the log report on your terminal, you will see that each version is automatically tagged with a unique string of numbers and letters, called an SHA.
 You can identify, access and compare different versions by using their corresponding SHA.
@@ -43,7 +42,7 @@ When you commit via `git commit` without the `-m` or `--message` option, a field
 You can write a meaningful statement and save (and close if writing the message via text editor).
 You can set your preferred editor as the default by running a statement like this:
 
-    git config --global core.editor "your_preferred_editor"
+`git config --global core.editor "your_preferred_editor"`
 
 To avoid writing this commit message in an editor, you can use the command `git commit -m "your message here"`, as discussed earlier.
 
@@ -60,7 +59,7 @@ For example, it is not obvious what "Change N_sim to 10" actually does, but "Cha
 This should be written in the first line (in 50 characters maximum), then leave a blank line before you continue with the description or body of the message.
 The first line is the shortened version that appears as a summary when you use the command:
 
-    git log
+`git log`
 
 This makes it much easier to quickly search through a large number of commits.
 It is also a good practice to **use the imperative present tense** in these messages.
@@ -91,3 +90,6 @@ Here is a good example of a commit message structure:
 By committing your changes throughout the development of your project in meaningful units with descriptive and clear commit messages, you can create an easily understandable history.
 This will help you and others to understand the progress of your work.
 Furthermore, as the next section will demonstrate, it will also make it easy to view past versions of your history or revert changes you have made.
+
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

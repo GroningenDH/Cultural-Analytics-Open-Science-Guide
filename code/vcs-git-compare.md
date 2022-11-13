@@ -1,5 +1,4 @@
 ---
-title: Retrieve and Compare Versions
 editor: 
   markdown: 
     wrap: sentence
@@ -11,17 +10,17 @@ editor:
 
 To cancel your latest commit (revert to the previous version), run the following command:
 
-    git revert HEAD
+`git revert HEAD`
 
 This command creates a new commit that reverts the changes made in the last version.
 If you want to retrieve a version from weeks or months ago, start by using `git log` to find the SHA of the version you want to retrieve.
 To reset your entire project to this version run the following commands:
 
-    git checkout SHA_of_the_version
+`git checkout SHA_of_the_version`
 
 If you want the old version of a single file and not the previous version of the entire project, you can do so by using the following command:
 
-    git checkout SHA_of_the_version -- your_file_name
+`git checkout SHA_of_the_version -- your_file_name`
 
 ### Good Practice
 
@@ -45,13 +44,13 @@ Two files are changed:
 1.  First, the figure file is added in the project repository.
 2.  Then, a line is added in this file that references the figure, so it is displayed.
 
-So two files are affected, but "Add figure to version control chapter" is a single, \*atomic\* unit of work, so only one commit is necessary.
+So two files are affected, but "Add figure to version control chapter" is a single, *atomic* unit of work, so only one commit is necessary.
 
 Finally, do not commit anything that is regenerated from other files committed in a version (unless it is something that would take hours to regenerate).
 
-Generated files, such as scripts, clutter up your repository and may contain features such as timestamps that can cause annoying file conflicts (see {ref}\`rr-vcs-git-merge\`).
+Generated files, such as scripts, clutter up your repository and may contain features such as timestamps that can cause annoying file conflicts.
 
-You can instruct Git to ignore certain files by creating a file called \`.gitignore\` and including names of the file that you do not need to store in your Git repository.
+You can instruct Git to ignore certain files by creating a file called `.gitignore` and including names of the file that you do not need to store in your Git repository.
 
 For example, configuration files that might change from environment to environment should be ignored.
 
@@ -59,26 +58,29 @@ For example, configuration files that might change from environment to environme
 
 At some point, you will likely need/want to compare versions of a project, for example, to see what version was used to generate a particular result.
 
-To address this issue, use the \`git diff\` function, that takes two input data sets and outputs the changes between them.
+To address this issue, use the `git diff` function, that takes two input data sets and outputs the changes between them.
 
-\`git diff\` is a multi-use function that runs on Git data sources such as commits, branches, files and more.
+`git diff` is a multi-use function that runs on Git data sources such as commits, branches, files and more.
 
-By default, \`git diff\` will show you any uncommitted changes since the last commit.
+By default, `git diff` will show you any uncommitted changes since the last commit.
 
 If you want to compare two specific things the syntax is:
 
-git diff thing_a thing_b
+`git diff thing_a thing_b`
 
-    For example, if you want to compare how a file has changed between two commits, use `git log` to get the SHAs of those commits and run:
+For example, if you want to compare how a file has changed between two commits, use `git log` to get the SHAs of those commits and run:
 
-git diff SHA_a:your_file_name SHA_b:your_file_name
+`git diff SHA_a:your_file_name SHA_b:your_file_name`
 
-    Or if you wanted to compare two branches, it would be:
+Or if you wanted to compare two branches, it would be:
 
-git diff branch_name other_branch_name \`\`\`
+`git diff branch_name other_branch_name`
 
 ### Good practice
 
 With a little familiarity, `git diff` becomes an extremely powerful tool you can use to track what files have changed and exactly what those changes are.
 This is extremely valuable for unpicking bugs and comparing work done by different people.
 Be careful to **understand what exactly is being compared** and, where possible, **only compare the relevant files** for what you are interested in to avoid large amounts of extraneous information.
+
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

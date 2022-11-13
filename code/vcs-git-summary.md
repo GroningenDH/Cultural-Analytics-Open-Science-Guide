@@ -5,7 +5,7 @@ editor:
     wrap: sentence
 ---
 
-# Summary Table of Git Commands
+## Summary Table of Git Commands
 
 | Command                         | Use                                                                          |
 |---------------------------------|------------------------------------------------------------------------------|

@@ -136,3 +136,5 @@ When asked for a username and password, type in your GitHub username and passwor
 
 GitHub automatically displays the contents of a file named **README.txt** if it exists in the repository. The README file is the perfect place to write a description of your project.
 <!-- #endregion -->
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

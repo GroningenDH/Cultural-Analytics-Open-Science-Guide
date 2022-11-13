@@ -27,7 +27,7 @@ Next, we will set up *Git* on your personal computer. Follow the instructions fo
 
 ### Mac users:
 
-1. Launch the ***Terminal*** application. You can find it in ***/Applications/Utilities/***. You can also use the ***Spotlight*** search tool (the little magnifying glass in the top right of your screen) to search for ***Terminal***. Once ***Spotlight*** locates it, click on the result that says ***Terminal***.  
+1. Launch the ***Terminal*** application. You can find it in ***Applications/Utilities***. You can also use the ***Spotlight*** search tool (the little magnifying glass in the top right of your screen) to search for ***Terminal***. Once ***Spotlight*** locates it, click on the result that says ***Terminal***.  
 
 2. When ***Terminal*** opens, type in `git` and press enter.
 
@@ -43,13 +43,13 @@ Then click “Agree to the Terms of Service” when requested.
 
 4. When the download finishes, the installer will go away on its own signifying that Git is now installed! Click “Done” to finish the installation process.
 
-![Git and bash setup for Mac; sucessful installation (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_finished.png)](../images/annotated_xcode_finished.png)
+![Git and bash setup for Mac; successful installation (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_finished.png)](../images/annotated_xcode_finished.png)
 **Fig 3** *Git* and *Bash* setup for Mac; successful installation (image taken from [Codecademy](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_finished.png))
 
 
 5. Navigate to GitHub’s articles on setting up your [Git username](https://help.github.com/articles/set-up-git/) and [email](https://help.github.com/articles/setting-your-email-in-git/) and follow the instructions for each using Terminal.
 
-6. GitHub offers two authentication options, HTTPS and SSH, to keep your work secure. This is a security measure that prevents anyone who isn’t authorized from making changes to your GitHub repository. In this article, we will use HTTPS. Navigate to GitHub’s article on [creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and follow the instructions to configure your computer to be able to use HTTPS.
+6. GitHub offers two authentication options, HTTPS and SSH, to keep your work secure. This is a security measure that prevents anyone who isn’t authorised from making changes to your GitHub repository. In this article, we will use HTTPS. Navigate to GitHub’s article on [creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and follow the instructions to configure your computer to be able to use HTTPS.
 
 > Note: As of August 13th, 2021, GitHub uses tokens instead of passwords to authenticate Git operations. More details can be found in [GitHub’s blog post](https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/).
 <!-- #endregion -->
@@ -137,6 +137,4 @@ When asked for a username and password, type in your GitHub username and passwor
 GitHub automatically displays the contents of a file named **README.txt** if it exists in the repository. The README file is the perfect place to write a description of your project.
 <!-- #endregion -->
 
-```python
-
-```
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

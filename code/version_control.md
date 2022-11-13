@@ -1,5 +1,4 @@
 ---
-title: Version Control
 editor: 
   markdown: 
     wrap: sentence
@@ -55,3 +54,6 @@ Finally, version control is invaluable for collaborative projects where differen
 It allows the changes made by different people to be tracked and can automatically combine people's work while saving a great deal of painstaking effort to do so manually.
 Using version control for your research project means that your work is totally transparent, and because all your actions are recorded, it enables others to reproduce your studies.
 Moreover, version control hosting services such as [Github novice motivation](https://the-turing-way.netlify.app/collaboration/github-novice/github-novice-motivation.html#cl-github-novice-motivation) provide a way to communicate and collaborate in a more structured way, such as in pull requests, code reviews, and issues.
+
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

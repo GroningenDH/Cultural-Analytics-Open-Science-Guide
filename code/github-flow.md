@@ -146,3 +146,6 @@ We explored:
 -   Merging a branch and delete it once it's merged.
 
 This covers the main steps of working with a team and managing the workflow using Github.
+
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

@@ -1,5 +1,4 @@
 ---
-title: Version Control for Data
 editor: 
   markdown: 
     wrap: sentence
@@ -78,6 +77,4 @@ Like `git-annex`, it allows you to version control data and share it via third-p
 In addition to sharing and version controlling large files; it allows recording, sharing, and using software environments, recording and re-executing commands or data analyses, and operating seamlessly across a hierarchy of repositories.
 <!-- #endregion -->
 
-```python
-
-```
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

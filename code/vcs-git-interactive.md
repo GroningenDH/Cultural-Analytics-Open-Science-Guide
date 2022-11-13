@@ -1,5 +1,4 @@
 ---
-title: Interactive, Visual Git
 editor: 
   markdown: 
     wrap: sentence
@@ -17,3 +16,6 @@ Through completion of built-in challenges, becoming comfortable with Git command
 ![A challenge in the LearnGitBranching tool (image taken from [The Turing Way](https://the-turing-way.netlify.app/reproducible-research/vcs/vcs-git-interactive.html))](../images/interactive-learn-git.png)
 
 The sandbox capabilities of this tool also make it a great place for testing commands before running them on your actual repository.
+
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl

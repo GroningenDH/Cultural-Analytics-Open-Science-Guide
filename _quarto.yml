@@ -72,7 +72,7 @@ book:
             - code/01-The-Command-Line.ipynb
             - code/README_file.md
             - code/vcs-workflow.md
-            - code/vcs-git.md
+            - code/set-up-git-and-github.md
             - code/vcs-git-commit.md
             - code/vcs-git-compare.md
             - code/vcs-git-branches.md

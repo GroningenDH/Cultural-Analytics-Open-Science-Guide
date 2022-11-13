@@ -1,10 +1,10 @@
 ---
-title: Git Commands on Github
 editor: 
   markdown: 
     wrap: sentence
 ---
 
+<!-- #region -->
 # Git Commands to Work on GitHub
 
 As research becomes increasingly collaborative and multiple people work on the same project, it becomes difficult to keep track of changes made by others if not done systematically.
@@ -29,49 +29,46 @@ In technical terms, the web-based clone is a `remote` of the local repository.
 Usually, this remote is called "origin".
 Having a web-based remote allows you to *push* changes to your project online.
 It enables others to obtain their own clone of your repository (a copy of your repository to their local computer), make changes, and submit a *pull request* that allows you to integrate their changes.
-For example, one can create an independent local copy of a project using the following Git command:
-
-    git clone <insert GitHub link of the repository here>
 
 Collaborators can update their local version of an online repository or *pull* other's work into their copy using the command:
 
-    git pull
+`git pull`
 
 Similarly, they can edit files locally and stage their updates (`git add .`), commit changes to a new version (`git commit`) and *push* changes to the remote online repository using the Git command:
 
-    git push
+`git push`
 
 ## Link a Local Project on Your Computer to an Online Repository
 
 To link a project on your computer to a new GitHub repository (preferably with the same name), you need to follow the standard workflow for creating a Git repository by issuing the following set of commands in the terminal, one by one:
 ```
-    cd <your project folder>
-    git init
-    git add .
-    git commit
+cd <your project folder>
+git init
+git add .
+git commit
 ```
 Assuming that you have a GitHub repository that you want to connect with this project, run the following command:
 
-    git remote add origin <GitHub repository link for your project>
+`git remote add origin <GitHub repository link for your project>`
 
 Then, *push* all the files on your computer to the online version so they match:
 
-    git push -u origin main
+`git push -u origin main`
 
 You can then go on and make more commits on your computer.
 When you want to push them to your online version, similarly you do:
 
-    git push origin branch_you_want_to_push_to
+`git push origin branch_you_want_to_push_to`
 
 You can also make changes directly on GitHub by editing the online repository, and *pull* those changes locally by using the `git pull` command.
 
 Others can also clone the repository to their computer by using:
 
-    git clone git@github.com:your-github-username/repository_name
+`git clone git@github.com:your-github-username/repository_name`
 
 They can make and commit changes to the code without impacting the original, and push their changes to *their* online GitHub account using:
 
-    git push -u origin main
+`git push -u origin main`
 
 The same procedure applies to you if you want to clone someone else's repository.
 
@@ -79,11 +76,11 @@ The same procedure applies to you if you want to clone someone else's repository
 
 If you are working on a personal branch and some other changes were made in the main branch, you can *pull* those changes down to your branch using the Git command:
 
-    git pull origin main
+`git pull origin main`
 
 When everyone has a copy of the project on their own branch (checkout your branch with `git checkout branch-name`), they can *push* their changes to their branch using the following command:
 
-    git push origin branch-name
+`git push origin branch-name`
 
 However, if you can not directly edit the repository (when you are not an owner or admin of the project), you will be able to share your work with the help of *pull requests*.
 A pull request allows a contributor to get the proposed changes from their branch or repository integrated into the main branch of the project.
@@ -105,29 +102,34 @@ You can now work on your copy using the command line, via the following steps (m
 
 1.  Clone it to your local machine:
 
-        git clone git@github.com:your-github-username/repository_name
+    `git clone git@github.com:your-github-username/repository_name`
+
 
 2.  Add the 'upstream' repository to the list of remote repositories using the `git remote` command:
 
-        git remote add upstream git@github.com:upstream-github-username/repository_name
+    `git remote add upstream git@github.com:upstream-github-username/repository_name`
+
 
 3.  Verify the new remote 'upstream' repository:
 
-        git remote -v
+    `git remote -v`
+
 
 4.  Update your fork with the latest upstream changes, by first fetching the upstream repository's branches and latest commits to bring them into your repository:
 
-        git fetch upstream
+    `git fetch upstream`
+
 
 5.  View all branches, including those from upstream:
 
-        git branch -va
+    `git branch -va`
 
 Make sure that you are on your main branch locally, if not, then checkout your main branch using the command `git checkout main`
 
 6.  Keep your fork updated by merging those commits (fetched from the upstream) to your own local main branch.
 
-        git merge upstream/main
+    `git merge upstream/main`
+    
 
 Now, your local main branch is up-to-date with everything modified upstream.
 If there are no unique commits on the local main branch, git will simply perform a fast-forward.
@@ -136,24 +138,30 @@ If there are no unique commits on the local main branch, git will simply perform
 
 Once your fork is in sync with the upstream main repository, you can always keep your local cloned repository in sync with origin (fork in this case) by using:
 
-    git checkout main
-    git pull
+`git checkout main`
+
+`git pull`
+
 
 The `git pull` command combines two other commands, `git fetch` and `git merge`.
 When using `git fetch`, the resulting commits are stored as the remote branch allows you to review the changes before merging.
 
 Similarly, if you have created more branches other than main, you can also keep them in sync with your main, once it is in sync with the upstream repository.
 
-    git checkout my-other-branch
-    git pull origin main
+`git checkout my-other-branch`
+
+`git pull origin main`
+
 
 When everything is up-to-date, you can work on your branch and commit changes.
 
 When you are ready to push your local commits to your forked repository (origin), use the following command.
 
-    git push origin forked_repository
+`git push origin forked_repository`
+
 
 Now you can make a pull request!
+
 
 ### Good Practice
 
@@ -168,3 +176,6 @@ You can find more details about [Merging vs Rebasing](https://www.atlassian.com/
 
 -   An [article on syncing a fork of a repository](https://help.github.com/en/articles/syncing-a-fork) to keep it up-to-date with the upstream repository.
 -   Instructions if you wish to do it all [in the browser itself](https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser).
+<!-- #endregion -->
+
+If there is anything wrong, please open [an issue on GitHub](https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues) or email f.pianzola@rug.nl
