@@ -18,14 +18,14 @@ Github is:
 
 For all of these features to work properly Github make use of a **version-control development tool**, the famous [**Git**](https://git-scm.com/).
 
-## Importance of Github
+### Importance of Github
 
 Github gives you access to a huge community of developers.
 You and they are able to share their code, projects, and software development tools with each other.
 
-# Github Flow
+## Github Flow
 
-## Introduction
+### Introduction
 
 The Github flow is essential for every project.
 With that said, following a specific workflow allows the project to move in a more orderly way.
@@ -43,9 +43,9 @@ The basic workflow used with GitHub is as follows:
 
 5.  Merge and delete branch
 
-## The Github flow explained
+### The Github flow explained
 
-### Creating and managing branches
+#### Creating and managing branches
 
 A branch is essentially a divergence from the main project or if we can put it that way, a different path other than the main path of a road.
 
@@ -67,7 +67,7 @@ A good branch name is the following: `doe_update_dashboard_notifications` - It h
 
 -   And a short branch description
 
-### Adding and Commiting changes
+#### Adding and Commiting changes
 
 Let's assume that you were recently assigned to a team to develop a new method to approach texts.
 The first you need to to do is to clone (i.e., download) the repository and then create a branch for your feature of the `main` branch (see \[\[#Creating and managing branches\]\]), and begin coding a new file in your local Git environment.
@@ -77,7 +77,7 @@ As a refresher, the`git commit`command records change to one or more files in yo
 
 You can commit along with a message describing your work, and lastly, push the commit to the remote Github repository.
 
-### Pull requests
+#### Pull requests
 
 Before merging the changes to the `main` branch our code should be reviewed.
 Pull requests on GitHub allow collaborators to review and give feedback on proposed code changes before they are merged to the main branch.
@@ -97,7 +97,7 @@ Open a pull request (image taken from [Codecademy](https://static-assets.codecad
 
 </p>
 
-### Reviewing and Merging a Pull Request
+#### Reviewing and Merging a Pull Request
 
 Once you've created a pull request, other members in your team can review it up on GitHub.
 
@@ -130,7 +130,7 @@ Visualisation of github flow in terms of a pull request (image taken from [Codec
 
 </p>
 
-### Deleting a Branch and Review
+#### Deleting a Branch and Review
 
 Once changes are merged, in order to keep things organized and managed, it's imperative to only keep active branches and delete the closed ones.
 
