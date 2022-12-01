@@ -593,7 +593,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="../images/request-response.png" class="center" width="700" height="400"></p>
 <section id="import-requests" class="level3" data-number="25.2.1">
 <h3 data-number="25.2.1" class="anchored" data-anchor-id="import-requests"><span class="header-section-number">25.2.1</span> Import Requests</h3>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T12:44:17.062413Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T12:44:16.956376Z&quot;}" data-execution_count="4">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:10.835489Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:10.756186Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -624,7 +624,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>&lt;Response [404]&gt;</code></pre>
 </div>
 </div>
-<p><img src="../images/Ghostboogers.png" class="center" width="700" height="400"></p>
+<p><img src="../images/Ghostboogers.png" class="center" width="900" height="400"></p>
 </section>
 <section id="extract-text-from-web-page" class="level3" data-number="25.2.4">
 <h3 data-number="25.2.4" class="anchored" data-anchor-id="extract-text-from-web-page"><span class="header-section-number">25.2.4</span> Extract Text From Web Page</h3>
@@ -858,7 +858,7 @@ INT. MAI...</code></pre>
 <section id="web-scraping" class="level2" data-number="25.3">
 <h2 data-number="25.3" class="anchored" data-anchor-id="web-scraping"><span class="header-section-number">25.3</span> Web Scraping</h2>
 <p>Not all web pages will be as easy to scrape as these screenplay files, however. Let’s say we wanted to scrape the lyrics for Missy Elliott’s song “The Rain (Supa Dupa Fly)” (1997) from Genius.com.</p>
-<p><img src="../images/Missy-Elliott.png" class="center"></p>
+<p><img src="../images/Missy-Elliott.png" class="center" width="900" height="400"></p>
 <p>Even at a glance, we can tell that this <em>Genius</em> web page is a lot more complicated than the <em>Ghostbusters</em> page and that it contains a lot of information beyond the lyrics.</p>
 <p>Sure enough, if we use our requests library again and try to grab the data for this web page, the underlying data is much more complicated, too.</p>
 <div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T12:51:45.341578Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T12:51:45.132931Z&quot;}" data-scrolled="true" data-tags="[&quot;output_scroll&quot;,&quot;hide-output&quot;]" data-execution_count="42">
@@ -927,7 +927,7 @@ g.o.observe({entryTypes:['longtask']})}}();
 <section id="html" class="level2" data-number="25.4">
 <h2 data-number="25.4" class="anchored" data-anchor-id="html"><span class="header-section-number">25.4</span> HTML</h2>
 <p>Parrish’s website is titled “Kittens and the TV Shows They Love.” It can be found at the following URL: http://static.decontextualize.com/kittens.html</p>
-<p><img src="../images/kittens-web.png" class="center" width="700" height="400"></p>
+<p><img src="../images/kittens-web.png" class="center" width="900" height="400"></p>
 <p>If we use our requests library on this Kittens TV website, this is what we get:</p>
 <div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"http://static.decontextualize.com/kittens.html"</span>)</span>
@@ -1067,20 +1067,20 @@ g.o.observe({entryTypes:['longtask']})}}();
 </section>
 <section id="beautifulsoup" class="level2" data-number="25.5">
 <h2 data-number="25.5" class="anchored" data-anchor-id="beautifulsoup"><span class="header-section-number">25.5</span> BeautifulSoup</h2>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T12:49:38.023855Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T12:49:37.898943Z&quot;}" data-execution_count="30">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:01.832698Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:01.680595Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To make a BeautifulSoup document, we call <code>BeautifulSoup()</code> with two parameters: the <code>html_string</code> from our HTTP request and <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#specifying-the-parser-to-use">the kind of parser</a> that we want to use, which will always be <code>"html.parser"</code> for our purposes.</p>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:25.707988Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:25.025919Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"http://static.decontextualize.com/kittens.html"</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>html_string <span class="op">=</span> response.text</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>document <span class="op">=</span> BeautifulSoup(html_string, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="145">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:25.907530Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:25.882526Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>document</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="145">
-<pre><code>&lt;!DOCTYPE doctype html&gt;
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>&lt;!DOCTYPE html&gt;
 
 &lt;html&gt;
 &lt;head&gt;
@@ -1124,29 +1124,29 @@ g.o.observe({entryTypes:['longtask']})}}();
 <section id="extract-html-element" class="level3" data-number="25.5.1">
 <h3 data-number="25.5.1" class="anchored" data-anchor-id="extract-html-element"><span class="header-section-number">25.5.1</span> Extract HTML Element</h3>
 <p>We can use the <code>.find()</code> method to find and extract certain elements, such as a main header.</p>
-<div class="cell" data-execution_count="118">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:28.639552Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:28.629016Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>document.find(<span class="st">"h1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="118">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;h1&gt;Kittens and the TV Shows They Love&lt;/h1&gt;</code></pre>
 </div>
 </div>
 <p>If we want only the text contained between those tags, we can use <code>.text</code> to extract just the text.</p>
-<div class="cell" data-execution_count="146">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:29.460345Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:29.454941Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>document.find(<span class="st">"h1"</span>).text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="146">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'Kittens and the TV Shows They Love'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="147">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:30.187867Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:30.178419Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(document.find(<span class="st">"h1"</span>).text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="147">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>str</code></pre>
 </div>
 </div>
 <p>Find the HTML element that contains an image.</p>
-<div class="cell" data-tags="[&quot;hide-output&quot;]" data-execution_count="120">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:31.141327Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:31.132094Z&quot;}" data-tags="[&quot;hide-output&quot;]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>document.find(<span class="st">"img"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="120">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>&lt;img src="http://placekitten.com/120/120"/&gt;</code></pre>
 </div>
 </div>
@@ -1154,16 +1154,16 @@ g.o.observe({entryTypes:['longtask']})}}();
 <section id="extract-multiple-html-elements" class="level3" data-number="25.5.2">
 <h3 data-number="25.5.2" class="anchored" data-anchor-id="extract-multiple-html-elements"><span class="header-section-number">25.5.2</span> Extract Multiple HTML Elements</h3>
 <p>You can also extract multiple HTML elements at a time with <code>.find_all()</code></p>
-<div class="cell" data-execution_count="121">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:34.547532Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:34.538307Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>document.find_all(<span class="st">"img"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="121">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>[&lt;img src="http://placekitten.com/120/120"/&gt;,
  &lt;img src="http://placekitten.com/110/110"/&gt;]</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[&quot;hide-output&quot;]" data-execution_count="122">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:34.727376Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:34.716843Z&quot;}" data-tags="[&quot;hide-output&quot;]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>document.find_all(<span class="st">"div"</span>, attrs<span class="op">=</span>{<span class="st">"class"</span>: <span class="st">"kitten"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="122">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>[&lt;div class="kitten"&gt;
  &lt;h2&gt;Fluffy&lt;/h2&gt;
  &lt;div&gt;&lt;img src="http://placekitten.com/120/120"/&gt;&lt;/div&gt;
@@ -1176,7 +1176,8 @@ g.o.observe({entryTypes:['longtask']})}}();
  &lt;/li&gt;
  &lt;/ul&gt;
             Last check-up: &lt;span class="lastcheckup"&gt;2014-01-17&lt;/span&gt;
- &lt;/div&gt;, &lt;div class="kitten"&gt;
+ &lt;/div&gt;,
+ &lt;div class="kitten"&gt;
  &lt;h2&gt;Monsieur Whiskeurs&lt;/h2&gt;
  &lt;div&gt;&lt;img src="http://placekitten.com/110/110"/&gt;&lt;/div&gt;
  &lt;ul class="tvshows"&gt;
@@ -1191,15 +1192,15 @@ g.o.observe({entryTypes:['longtask']})}}();
  &lt;/div&gt;]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="125">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:37.016297Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:37.009833Z&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>document.find(<span class="st">"h2"</span>).text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="125">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>'Fluffy'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="148">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T14:11:38.057407Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T14:11:38.047880Z&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>document.find_all(<span class="st">"h2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="148">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>[&lt;h2&gt;Fluffy&lt;/h2&gt;, &lt;h2&gt;Monsieur Whiskeurs&lt;/h2&gt;]</code></pre>
 </div>
 </div>
@@ -1235,11 +1236,16 @@ g.o.observe({entryTypes:['longtask']})}}();
 <pre><code>['Fluffy', 'Monsieur Whiskeurs']</code></pre>
 </div>
 </div>
-<p><code>{admonition} Python Review: List Comprehensions :class: pythonreview How might we transform this for loop into a *list comprehension*? ``` #For Loop h2_headers = [] for header in all_h2_headers:     header_contents = header.text     h2_headers.append(header_contents) ```</code></p>
+<p>How might we transform this for loop into a <em>list comprehension</em>?</p>
+<pre><code>#For Loop
+h2_headers = []
+for header in all_h2_headers:
+    header_contents = header.text
+    h2_headers.append(header_contents)</code></pre>
 <p><strong>Check out the <em>list comprehension</em> answer here</strong></p>
 <div class="cell" data-tags="[&quot;hide-cell&quot;]" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>h2_headers <span class="op">=</span> [header.text <span class="cf">for</span> header <span class="kw">in</span> all_h2_headers]</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>h2_headers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>h2_headers <span class="op">=</span> [header.text <span class="cf">for</span> header <span class="kw">in</span> all_h2_headers]</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>h2_headers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>['Fluffy', 'Monsieur Whiskeurs']</code></pre>
 </div>
@@ -1249,7 +1255,7 @@ g.o.observe({entryTypes:['longtask']})}}();
 <section id="inspect-html-elements-with-browser" class="level2" data-number="25.6">
 <h2 data-number="25.6" class="anchored" data-anchor-id="inspect-html-elements-with-browser"><span class="header-section-number">25.6</span> Inspect HTML Elements with Browser</h2>
 <p>Most times if you’re looking to extract something from an HTML document, it’s best to use your “Inspect” capabilities in your web browser. You can hover over elements that you’re interested in and find that specific element in the HTML.</p>
-<p><img src="../images/inspect.png" class="center" width="700" height="400"></p>
+<p><img src="../images/inspect.png" class="center" width="900" height="400"></p>
 <p>For example, if we hover over the main header:</p>
 <p><img src="../images/inspect-h1.png" class="center" width="700" height="400"></p>
 </section>
@@ -1257,13 +1263,13 @@ g.o.observe({entryTypes:['longtask']})}}();
 <h2 data-number="25.7" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">25.7</span> Your Turn!</h2>
 <p>Ok so now we’ve learned a little bit about how to use BeautifulSoup to parse HTML documents. So how would we apply what we’ve learned to extract Missy Elliott lyrics?</p>
 <div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T12:49:46.175490Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T12:49:45.836451Z&quot;}" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"https://genius.com/Missy-elliott-the-rain-supa-dupa-fly-lyrics"</span>)</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>html_str <span class="op">=</span> response.text</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>document <span class="op">=</span> BeautifulSoup(html_str, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"https://genius.com/Missy-elliott-the-rain-supa-dupa-fly-lyrics"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>html_str <span class="op">=</span> response.text</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>document <span class="op">=</span> BeautifulSoup(html_str, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-01T12:50:42.578119Z&quot;,&quot;start_time&quot;:&quot;2022-12-01T12:50:42.569490Z&quot;}" data-scrolled="true" data-tags="[&quot;output_scroll&quot;]" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>document.text[:<span class="dv">1000</span>] <span class="op">+</span> <span class="st">"..."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>document.text[:<span class="dv">1000</span>] <span class="op">+</span> <span class="st">"..."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>"\n\n\nMissy\xa0Elliott – The Rain (Supa Dupa Fly) Lyrics | Genius Lyrics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFeaturedChartsVideosPromote Your MusicSign UpThe Rain (Supa Dupa Fly)Missy ElliottTrack 4 on\xa0Supa Dupa Fly \xa0“The Rain” is as impressionistic as any lyric in rap; it sets a numinous mood. Furthermore,\n\nthis was Missy Elliott’s first single, and it also spawned her first music… Read More\xa0Produced byTimbalandRelease DateMay 20, 1997View All Credits\xa01115.2K446The Rain (Supa Dupa Fly) Lyrics[Intro: Missy Elliott, Ann Peebles &amp; Timbaland]Run the trackMe, I'm supa flySupa-dupa fly, supa-dupa fly (I can't stand the rain)Me, I'm supa fly (Against my window)Supa-dupa fly, supa-dupa fly (I can't stand the rain)Me, I'm supa fly (Against my window)Supa-dupa fly, supa-dupa fly (I can't stand the rain)Me, I'm supa fly (Against my window)[Verse 1: Missy Elliott]When the rain hits my windowI take and *inhale, cough* me some indoMe and Timbaland, ooh, we sang a jangleWe so tigh..."</code></pre>
 </div>
@@ -1272,8 +1278,8 @@ g.o.observe({entryTypes:['longtask']})}}();
 <p>What HTML element do we need to “find” to extract the song lyrics?</p>
 <p><strong>Check answer here</strong></p>
 <div class="cell" data-tags="[&quot;output_scroll&quot;,&quot;hide-cell&quot;]" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>missy_lyrics <span class="op">=</span> document.find(<span class="st">"p"</span>).text</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missy_lyrics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>missy_lyrics <span class="op">=</span> document.find(<span class="st">"p"</span>).text</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missy_lyrics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[Intro: Missy Elliott &amp; Timbaland]
 [*Yawning*]
@@ -1356,8 +1362,8 @@ I can't stand the rain</code></pre>
 <p>What HTML element do we need to “find” to extract the title?</p>
 <p><strong>Check answer here</strong></p>
 <div class="cell" data-tags="[&quot;hide-cell&quot;]" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>song_title <span class="op">=</span> document.find(<span class="st">'h1'</span>).text</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(song_title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>song_title <span class="op">=</span> document.find(<span class="st">'h1'</span>).text</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(song_title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The Rain (Supa Dupa Fly)</code></pre>
 </div>
