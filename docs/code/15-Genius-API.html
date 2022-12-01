@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cultural Analytics Open Science Guide - 33&nbsp; Song Genius API</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../code/16-Collect-Genius-Lyrics.html" rel="next">
+<link href="../code/14-Song-Genius.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Song Genius API</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../" class="sidebar-logo-link">
+      <img src="../images/dh_gro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Cultural Analytics Open Science Guide</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="" title="Personal account" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://signon.rug.nl/nidp/app/login?id=100&amp;sid=2&amp;option=credential&amp;sid=2">
+          Login to your student account
+          </a>
+        </li>
+    </ul>
+    <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://www.rug.nl/research/research-let/expertisecentra/centre-for-digital-humanities/" title="Center for Digital Humanities - University of Groningen" class="sidebar-tool px-1"><i class="bi bi-house"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/00-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datasets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/version_control.html" class="sidebar-item-text sidebar-link">Version Control</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/01-The-Command-Line.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Command Line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">General Workflow of a Vercion Control System (VCS)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-merge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Merging Branches in Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-interactive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive, Visual Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/github-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/the-clone-wars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Clone Wars</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Git Summary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Version Control for Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/02-Data-Analysis.html" class="sidebar-item-text sidebar-link">Data Analysis (Pandas)</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03-Pandas-Basics-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04-Pandas-Basics-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04.5-Pandas-Basics-Part2-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Pandas Basics Part 2 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05-Pandas-Basics-Part3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05.5-Pandas-Basics-Part3-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Pandas Basics Part 3 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/06-Pandas-Basics-More-Methods-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Pandas Basics — More Useful Methods — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/07-Pandas-Merge-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Pandas — Merge Datasets</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/08-Data-Collection.html" class="sidebar-item-text sidebar-link">Data Collection</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10-Web-Scraping-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10.5-Web-Scraping-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Web Scraping Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/11-Web-Scraping-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13-What-Is-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Application Programming Interfaces (APIs)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13.5-APIs-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">APIs — Workbook</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Data collection examples</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/14-Song-Genius.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Song Genius Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/15-Genius-API.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Song Genius API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/16-Collect-Genius-Lyrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Song Lyrics Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/17-Lyrics-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Song Lyrics Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/18-Twitter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Twitter Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/19-Twitter-API-Setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Twitter API Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/20-Twitter-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Twitter Data Collection &amp; Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/21-Twitter-Data-Sharing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Twitter Data Sharing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/22-Reddit-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">References</span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#api-keys" id="toc-api-keys" class="nav-link active" data-scroll-target="#api-keys"><span class="toc-section-number">33.1</span>  API Keys</a>
+  <ul>
+  <li><a href="#protecting-your-api-key" id="toc-protecting-your-api-key" class="nav-link" data-scroll-target="#protecting-your-api-key"><span class="toc-section-number">33.1.1</span>  Protecting Your API Key</a></li>
+  </ul></li>
+  <li><a href="#making-an-api-request" id="toc-making-an-api-request" class="nav-link" data-scroll-target="#making-an-api-request"><span class="toc-section-number">33.2</span>  Making an API Request</a></li>
+  <li><a href="#looping-through-json-data" id="toc-looping-through-json-data" class="nav-link" data-scroll-target="#looping-through-json-data"><span class="toc-section-number">33.3</span>  Looping Through JSON Data</a>
+  <ul>
+  <li><a href="#get-song-titles" id="toc-get-song-titles" class="nav-link" data-scroll-target="#get-song-titles"><span class="toc-section-number">33.3.1</span>  Get Song Titles</a></li>
+  <li><a href="#get-song-tiles-and-page-view-counts" id="toc-get-song-tiles-and-page-view-counts" class="nav-link" data-scroll-target="#get-song-tiles-and-page-view-counts"><span class="toc-section-number">33.3.2</span>  Get Song Tiles and Page View Counts</a></li>
+  <li><a href="#transform-song-titles-and-page-view-counts-into-a-dataframe" id="toc-transform-song-titles-and-page-view-counts-into-a-dataframe" class="nav-link" data-scroll-target="#transform-song-titles-and-page-view-counts-into-a-dataframe"><span class="toc-section-number">33.3.3</span>  Transform Song Titles and Page View Counts into a DataFrame</a></li>
+  </ul></li>
+  <li><a href="#transform-song-titles-page-view-counts-album-covers-into-a-dataframe" id="toc-transform-song-titles-page-view-counts-album-covers-into-a-dataframe" class="nav-link" data-scroll-target="#transform-song-titles-page-view-counts-album-covers-into-a-dataframe"><span class="toc-section-number">33.4</span>  Transform Song Titles, Page View Counts, &amp; Album Covers into a DataFrame</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn"><span class="toc-section-number">33.5</span>  Your Turn!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Song Genius API</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>In this lesson, we’re going to use the Genius API to access data about Missy Elliott songs.</p>
+<section id="api-keys" class="level2" data-number="33.1">
+<h2 data-number="33.1" class="anchored" data-anchor-id="api-keys"><span class="header-section-number">33.1</span> API Keys</h2>
+<p>To use the Genius API, you need a special API key, specifically a “Client Access Token”, which is kind of like a password. Many APIs require authentication keys to gain access to them. To get your necessary Genius API keys, you need to navigate to the following URL: <a href="https://genius.com/api-clients">https://genius.com/api-clients</a>.</p>
+<p><img src="../images/Genius-API.png" width="100%"></p>
+<p>You’ll be prompted to sign up for <a href="https://genius.com/signup_or_login">a Genius account</a>, which is required to gain API access. Signing up for a Genius account is free and easy. You just need a Genius nickname (which must be one word), an email address, and a password.</p>
+<p>Once you’re signed in, you should be taken to <a href="https://genius.com/api-clients">https://genius.com/api-clients</a>, where you need to click the button that says “New API Client.”</p>
+<p><img src="../images/Genius-New-API.png" width="100%"></p>
+<p>After clicking “New API Client,” you’ll be prompted to fill out a short form about the “App” that you need the Genius API for. You only need to fill out “App Name” and “App Website URL.”</p>
+<p>It doesn’t really matter what you type in. You can simply put “Song Lyrics Project” for the “App Name” and the URL for our course website “https://melaniewalsh.github.io/Intro-Cultural-Analytics/” for the “App Website URL.”</p>
+<p>When you click “Save,” you’ll be given a series of API Keys: a “Client ID” and a “Client Secret.” To generate your “Client Access Token,” which is the API key that we’ll be using in this notebook, you need to click “Generate Access Token”.</p>
+<p>Finally, copy and paste your “Client Access Token” into the quotation marks below, and run the cell to save your variable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>client_access_token <span class="op">=</span> <span class="st">"INSERT YOUR CLIENT ACCESS TOKEN IN THESE QUOTATION MARKS"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="protecting-your-api-key" class="level3" data-number="33.1.1">
+<h3 data-number="33.1.1" class="anchored" data-anchor-id="protecting-your-api-key"><span class="header-section-number">33.1.1</span> Protecting Your API Key</h3>
+<p>For this lesson, if you just copy and paste your Genius API key into your Jupyter notebook, everything should be fine. But that’s actually not the best way of storing your API keys. If you published this notebook to GitHub, for example, other people might be able to read and use/steal your API key.</p>
+<p>For this reason, it’s best practice to keep your API keys away from your code, such as in another file. For example, I made a new Python file called “api_key.py” that contains just one variable <code>your_client_access_token = "MY API KEY"</code>, and I can import this variable into my notebook with <code>import api_key</code>.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> api_key</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>By importing this Python file/module, I get access to the variable <code>your_client_access_token</code> without ever explicitly typing my secret API token in this notebook. If I wanted to publish this notebook to GitHub, then I could ignore or leave out the “api_key.py” file that actually contains my Client Access Token.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>api_key.your_client_access_token</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'INSERT YOUR API KEY HERE'</code></pre>
+</div>
+</div>
+<div class="admonition attention" name="html-admonition" style="background: lightyellow; padding: 10px">
+<p class="title">
+Attention
+</p>
+<p>You should only un-comment and run the cell below if you are importing your API key from the Python file “api_key.py”. If you have already set your <code>client_acces_token</code> in this notebook, you can skip the cell below.</p>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#client_access_token = api_key.your_client_access_token</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="making-an-api-request" class="level2" data-number="33.2">
+<h2 data-number="33.2" class="anchored" data-anchor-id="making-an-api-request"><span class="header-section-number">33.2</span> Making an API Request</h2>
+<p>Making an API request looks a lot like typing a specially-formatted URL. But instead of getting a rendered HTML web page in return, you get some data in return.</p>
+<p>There are a few different ways that we can query the Genius API, all of which are discussed in the <a href="https://docs.genius.com/#songs-h2">Genius API documentation</a>. The way we’re going to cover in this lesson is <a href="https://docs.genius.com/#search-h2">the basic search</a>, which allows you to get a bunch of Genius data about any artist or songs that you search for:</p>
+<p><code>http://api.genius.com/search?q={search_term}&amp;access_token={client_access_token}</code></p>
+<p>Sticking with our Missy Elliott theme/obsession, we’re going to search for Genius data about Missy Elliott.</p>
+<p>First we’re going to assign the string “Missy Elliott” to the variable <code>search_term</code>. Then we’re going to make an f-string URL that contains the variables <code>search_term</code> and <code>client_access_token</code>.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>search_term <span class="op">=</span> <span class="st">"Missy Elliott"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>genius_search_url <span class="op">=</span> <span class="ss">f"http://api.genius.com/search?q=</span><span class="sc">{</span>search_term<span class="sc">}</span><span class="ss">&amp;access_token=</span><span class="sc">{</span>client_access_token<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This URL is basically all we need to make a Genius API request. Want proof? Run the cell below and print this URL, then copy and paste it into a new tab in your web browser.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(genius_search_url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>http://api.genius.com/search?q=Missy Elliott&amp;access_token=YOUR-API-KEY</code></pre>
+</div>
+</div>
+<p>It doesn’t look pretty, but that’s a bunch of Genius data about Missy Elliott!</p>
+<p>We can programmatically do the same thing by again using the Python library <code>requests</code> with this URL. Instead of getting the <code>.text</code> of the response, as we did before, we’re going to use <code>.json()</code>.</p>
+<p><a href="https://www.w3schools.com/whatis/whatis_json.asp">JSON</a> is a data format that is commonly used by APIs. JSON data can be nested and contains key/value pairs, much like a Python dictionary.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(genius_search_url)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>json_data <span class="op">=</span> response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The JSON data that we get from our Missy Elliott API query looks something like this:</p>
+<div class="cell" data-scrolled="true" data-tags="[&quot;output_scroll&quot;]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>json_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>{'meta': {'status': 200},
+ 'response': {'hits': [{'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 32,
+     'api_path': '/songs/4176',
+     'full_title': 'Work It by\xa0Missy\xa0Elliott',
+     'header_image_thumbnail_url': 'https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.300x311x1.jpg',
+     'header_image_url': 'https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.482x500x1.jpg',
+     'id': 4176,
+     'lyrics_owner_id': 6654,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-work-it-lyrics',
+     'pyongs_count': 39,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.300x311x1.jpg',
+     'song_art_image_url': 'https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.482x500x1.jpg',
+     'stats': {'unreviewed_annotations': 2,
+      'hot': False,
+      'pageviews': 1205121},
+     'title': 'Work It',
+     'title_with_featured': 'Work It',
+     'url': 'https://genius.com/Missy-elliott-work-it-lyrics',
+     'song_art_primary_color': '#d63220',
+     'song_art_secondary_color': '#512913',
+     'song_art_text_color': '#fff',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 27,
+     'api_path': '/songs/2368201',
+     'full_title': 'WTF (Where They From) by\xa0Missy\xa0Elliott (Ft.\xa0Pharrell\xa0Williams)',
+     'header_image_thumbnail_url': 'https://images.rapgenius.com/a439d6d6020559ffe7c10f0d73722de1.300x300x1.jpg',
+     'header_image_url': 'https://images.rapgenius.com/a439d6d6020559ffe7c10f0d73722de1.1000x1000x1.jpg',
+     'id': 2368201,
+     'lyrics_owner_id': 282633,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-wtf-where-they-from-lyrics',
+     'pyongs_count': 88,
+     'song_art_image_thumbnail_url': 'https://images.rapgenius.com/a439d6d6020559ffe7c10f0d73722de1.300x300x1.jpg',
+     'song_art_image_url': 'https://images.rapgenius.com/a439d6d6020559ffe7c10f0d73722de1.1000x1000x1.jpg',
+     'stats': {'unreviewed_annotations': 0, 'hot': False, 'pageviews': 289808},
+     'title': 'WTF (Where They From)',
+     'title_with_featured': 'WTF (Where They From) (Ft.\xa0Pharrell\xa0Williams)',
+     'url': 'https://genius.com/Missy-elliott-wtf-where-they-from-lyrics',
+     'song_art_primary_color': '#c920a0',
+     'song_art_secondary_color': '#500863',
+     'song_art_text_color': '#fff',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 14,
+     'api_path': '/songs/4640',
+     'full_title': 'Get Ur Freak On by\xa0Missy\xa0Elliott',
+     'header_image_thumbnail_url': 'https://images.genius.com/338e122c1534b6f6363afb06f77912cf.300x259x1.jpg',
+     'header_image_url': 'https://images.genius.com/338e122c1534b6f6363afb06f77912cf.300x259x1.jpg',
+     'id': 4640,
+     'lyrics_owner_id': 1297,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-get-ur-freak-on-lyrics',
+     'pyongs_count': 18,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/338e122c1534b6f6363afb06f77912cf.300x259x1.jpg',
+     'song_art_image_url': 'https://images.genius.com/338e122c1534b6f6363afb06f77912cf.300x259x1.jpg',
+     'stats': {'unreviewed_annotations': 0, 'hot': False, 'pageviews': 165394},
+     'title': 'Get Ur Freak On',
+     'title_with_featured': 'Get Ur Freak On',
+     'url': 'https://genius.com/Missy-elliott-get-ur-freak-on-lyrics',
+     'song_art_primary_color': '#d58f3a',
+     'song_art_secondary_color': '#eddb91',
+     'song_art_text_color': '#000',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 41,
+     'api_path': '/songs/4173',
+     'full_title': 'Gossip Folks by\xa0Missy\xa0Elliott (Ft.\xa0Ludacris)',
+     'header_image_thumbnail_url': 'https://images.genius.com/206153c53d05804677e236aa2ae4eb45.300x300x1.jpg',
+     'header_image_url': 'https://images.genius.com/206153c53d05804677e236aa2ae4eb45.600x600x1.jpg',
+     'id': 4173,
+     'lyrics_owner_id': 6654,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-gossip-folks-lyrics',
+     'pyongs_count': 7,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/206153c53d05804677e236aa2ae4eb45.300x300x1.jpg',
+     'song_art_image_url': 'https://images.genius.com/206153c53d05804677e236aa2ae4eb45.600x600x1.jpg',
+     'stats': {'unreviewed_annotations': 0, 'hot': False, 'pageviews': 111483},
+     'title': 'Gossip Folks',
+     'title_with_featured': 'Gossip Folks (Ft.\xa0Ludacris)',
+     'url': 'https://genius.com/Missy-elliott-gossip-folks-lyrics',
+     'song_art_primary_color': '#ad3920',
+     'song_art_secondary_color': '#72281f',
+     'song_art_text_color': '#fff',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 9,
+     'api_path': '/songs/2967124',
+     'full_title': "I'm Better by\xa0Missy\xa0Elliott (Ft.\xa0Cainon\xa0Lamb)",
+     'header_image_thumbnail_url': 'https://images.genius.com/609afe10820cce09ce9e3c768518c63c.300x300x1.jpg',
+     'header_image_url': 'https://images.genius.com/609afe10820cce09ce9e3c768518c63c.600x600x1.jpg',
+     'id': 2967124,
+     'lyrics_owner_id': 3075478,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-im-better-lyrics',
+     'pyongs_count': 13,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/609afe10820cce09ce9e3c768518c63c.300x300x1.jpg',
+     'song_art_image_url': 'https://images.genius.com/609afe10820cce09ce9e3c768518c63c.600x600x1.jpg',
+     'stats': {'unreviewed_annotations': 0, 'hot': False, 'pageviews': 107273},
+     'title': 'I’m Better',
+     'title_with_featured': "I'm Better (Ft.\xa0Cainon\xa0Lamb)",
+     'url': 'https://genius.com/Missy-elliott-im-better-lyrics',
+     'song_art_primary_color': '#ba704b',
+     'song_art_secondary_color': '#6b3621',
+     'song_art_text_color': '#fff',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 16,
+     'api_path': '/songs/128',
+     'full_title': 'The Rain (Supa Dupa Fly) by\xa0Missy\xa0Elliott',
+     'header_image_thumbnail_url': 'https://images.genius.com/a1543159342cd360256c12b42185771f.300x308x1.jpg',
+     'header_image_url': 'https://images.genius.com/a1543159342cd360256c12b42185771f.975x1000x1.jpg',
+     'id': 128,
+     'lyrics_owner_id': 4619460,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-the-rain-supa-dupa-fly-lyrics',
+     'pyongs_count': 6,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/a1543159342cd360256c12b42185771f.300x308x1.jpg',
+     'song_art_image_url': 'https://images.genius.com/a1543159342cd360256c12b42185771f.975x1000x1.jpg',
+     'stats': {'unreviewed_annotations': 0, 'hot': False, 'pageviews': 103348},
+     'title': 'The Rain (Supa Dupa Fly)',
+     'title_with_featured': 'The Rain (Supa Dupa Fly)',
+     'url': 'https://genius.com/Missy-elliott-the-rain-supa-dupa-fly-lyrics',
+     'song_art_primary_color': '#3a73ac',
+     'song_art_secondary_color': '#2d3c74',
+     'song_art_text_color': '#fff',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 5,
+     'api_path': '/songs/33158',
+     'full_title': 'Lose Control by\xa0Missy\xa0Elliott (Ft.\xa0Ciara &amp; Fatman\xa0Scoop)',
+     'header_image_thumbnail_url': 'https://images.genius.com/51639e476eac5cb5bed5794c023763ff.300x303x1.jpg',
+     'header_image_url': 'https://images.genius.com/51639e476eac5cb5bed5794c023763ff.700x707x1.jpg',
+     'id': 33158,
+     'lyrics_owner_id': 50,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-lose-control-lyrics',
+     'pyongs_count': 11,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/51639e476eac5cb5bed5794c023763ff.300x303x1.jpg',
+     'song_art_image_url': 'https://images.genius.com/51639e476eac5cb5bed5794c023763ff.700x707x1.jpg',
+     'stats': {'unreviewed_annotations': 0, 'hot': False, 'pageviews': 93331},
+     'title': 'Lose Control',
+     'title_with_featured': 'Lose Control (Ft.\xa0Ciara &amp; Fatman\xa0Scoop)',
+     'url': 'https://genius.com/Missy-elliott-lose-control-lyrics',
+     'song_art_primary_color': '#cf7129',
+     'song_art_secondary_color': '#77330b',
+     'song_art_text_color': '#fff',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 17,
+     'api_path': '/songs/4671',
+     'full_title': 'One Minute Man (Amended Version) by\xa0Missy\xa0Elliott (Ft.\xa0Ludacris &amp; Trina)',
+     'header_image_thumbnail_url': 'https://images.genius.com/a94eaf3c98a7134cb546ebf9e6d2b991.300x300x1.jpg',
+     'header_image_url': 'https://images.genius.com/a94eaf3c98a7134cb546ebf9e6d2b991.953x953x1.jpg',
+     'id': 4671,
+     'lyrics_owner_id': 7299,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-one-minute-man-amended-version-lyrics',
+     'pyongs_count': 6,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/a94eaf3c98a7134cb546ebf9e6d2b991.300x300x1.jpg',
+     'song_art_image_url': 'https://images.genius.com/a94eaf3c98a7134cb546ebf9e6d2b991.953x953x1.jpg',
+     'stats': {'unreviewed_annotations': 5, 'hot': False, 'pageviews': 74646},
+     'title': 'One Minute Man (Amended Version)',
+     'title_with_featured': 'One Minute Man (Amended Version) (Ft.\xa0Ludacris &amp; Trina)',
+     'url': 'https://genius.com/Missy-elliott-one-minute-man-amended-version-lyrics',
+     'song_art_primary_color': '#fbbd46',
+     'song_art_secondary_color': '#f5deae',
+     'song_art_text_color': '#000',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 1,
+     'api_path': '/songs/4042648',
+     'full_title': 'This Is Me (The Reimagined Remix) by\xa0Keala\xa0Settle, Kesha &amp; Missy Elliott',
+     'header_image_thumbnail_url': 'https://images.genius.com/29f15eb96f814e785598d0eea14126a7.300x300x1.png',
+     'header_image_url': 'https://images.genius.com/29f15eb96f814e785598d0eea14126a7.1000x1000x1.png',
+     'id': 4042648,
+     'lyrics_owner_id': 93685,
+     'lyrics_state': 'complete',
+     'path': '/Keala-settle-kesha-and-missy-elliott-this-is-me-the-reimagined-remix-lyrics',
+     'pyongs_count': 16,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/29f15eb96f814e785598d0eea14126a7.300x300x1.png',
+     'song_art_image_url': 'https://images.genius.com/29f15eb96f814e785598d0eea14126a7.1000x1000x1.png',
+     'stats': {'unreviewed_annotations': 0, 'hot': False, 'pageviews': 49366},
+     'title': 'This Is Me (The Reimagined Remix)',
+     'title_with_featured': 'This Is Me (The Reimagined Remix)',
+     'url': 'https://genius.com/Keala-settle-kesha-and-missy-elliott-this-is-me-the-reimagined-remix-lyrics',
+     'song_art_primary_color': '#c9a45c',
+     'song_art_secondary_color': '#f5e093',
+     'song_art_text_color': '#000',
+     'primary_artist': {'api_path': '/artists/1600466',
+      'header_image_url': 'https://assets.genius.com/images/default_avatar_300.png?1630359615',
+      'id': 1600466,
+      'image_url': 'https://assets.genius.com/images/default_avatar_300.png?1630359615',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Keala Settle, Kesha &amp; Missy Elliott',
+      'url': 'https://genius.com/artists/Keala-settle-kesha-and-missy-elliott'}}},
+   {'highlights': [],
+    'index': 'song',
+    'type': 'song',
+    'result': {'annotation_count': 18,
+     'api_path': '/songs/33191',
+     'full_title': 'Bomb Intro/Pass That Dutch by\xa0Missy\xa0Elliott',
+     'header_image_thumbnail_url': 'https://images.genius.com/8c2a5015c6ba9e5f0c154f9a20f14534.300x300x1.jpg',
+     'header_image_url': 'https://images.genius.com/8c2a5015c6ba9e5f0c154f9a20f14534.583x583x1.jpg',
+     'id': 33191,
+     'lyrics_owner_id': 50,
+     'lyrics_state': 'complete',
+     'path': '/Missy-elliott-bomb-intro-pass-that-dutch-lyrics',
+     'pyongs_count': 5,
+     'song_art_image_thumbnail_url': 'https://images.genius.com/8c2a5015c6ba9e5f0c154f9a20f14534.300x300x1.jpg',
+     'song_art_image_url': 'https://images.genius.com/8c2a5015c6ba9e5f0c154f9a20f14534.583x583x1.jpg',
+     'stats': {'unreviewed_annotations': 2, 'hot': False, 'pageviews': 48848},
+     'title': 'Bomb Intro/Pass That Dutch',
+     'title_with_featured': 'Bomb Intro/Pass That Dutch',
+     'url': 'https://genius.com/Missy-elliott-bomb-intro-pass-that-dutch-lyrics',
+     'song_art_primary_color': '#7f5833',
+     'song_art_secondary_color': '#5e4125',
+     'song_art_text_color': '#fff',
+     'primary_artist': {'api_path': '/artists/1529',
+      'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+      'id': 1529,
+      'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+      'is_meme_verified': False,
+      'is_verified': False,
+      'name': 'Missy Elliott',
+      'url': 'https://genius.com/artists/Missy-elliott'}}}]}}</code></pre>
+</div>
+</div>
+<p>We can index this data (again, like a Python dictionary) and look at the first “hit” about Missy Elliott from Genius.com.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>json_data[<span class="st">'response'</span>][<span class="st">'hits'</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>{'highlights': [],
+ 'index': 'song',
+ 'type': 'song',
+ 'result': {'annotation_count': 32,
+  'api_path': '/songs/4176',
+  'full_title': 'Work It by\xa0Missy\xa0Elliott',
+  'header_image_thumbnail_url': 'https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.300x311x1.jpg',
+  'header_image_url': 'https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.482x500x1.jpg',
+  'id': 4176,
+  'lyrics_owner_id': 6654,
+  'lyrics_state': 'complete',
+  'path': '/Missy-elliott-work-it-lyrics',
+  'pyongs_count': 39,
+  'song_art_image_thumbnail_url': 'https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.300x311x1.jpg',
+  'song_art_image_url': 'https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.482x500x1.jpg',
+  'stats': {'unreviewed_annotations': 2, 'hot': False, 'pageviews': 1205121},
+  'title': 'Work It',
+  'title_with_featured': 'Work It',
+  'url': 'https://genius.com/Missy-elliott-work-it-lyrics',
+  'song_art_primary_color': '#d63220',
+  'song_art_secondary_color': '#512913',
+  'song_art_text_color': '#fff',
+  'primary_artist': {'api_path': '/artists/1529',
+   'header_image_url': 'https://images.genius.com/d91c82fa4ae2f1016fadc1c24fbbc59e.1000x333x1.jpg',
+   'id': 1529,
+   'image_url': 'https://images.genius.com/085828b7d79bf8cf068b1557ca7a5e4c.1000x1000x1.jpg',
+   'is_meme_verified': False,
+   'is_verified': False,
+   'name': 'Missy Elliott',
+   'url': 'https://genius.com/artists/Missy-elliott'}}}</code></pre>
+</div>
+</div>
+<p>We can tell that this data describes the song “Work It” and contains other information about the song, such as its number of Genius annotations, its number of web page views, and links to images of its album cover.</p>
+</section>
+<section id="looping-through-json-data" class="level2" data-number="33.3">
+<h2 data-number="33.3" class="anchored" data-anchor-id="looping-through-json-data"><span class="header-section-number">33.3</span> Looping Through JSON Data</h2>
+<section id="get-song-titles" class="level3" data-number="33.3.1">
+<h3 data-number="33.3.1" class="anchored" data-anchor-id="get-song-titles"><span class="header-section-number">33.3.1</span> Get Song Titles</h3>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> song <span class="kw">in</span> json_data[<span class="st">'response'</span>][<span class="st">'hits'</span>]:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(song[<span class="st">'result'</span>][<span class="st">'full_title'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Work It by&nbsp;Missy&nbsp;Elliott
+WTF (Where They From) by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Pharrell&nbsp;Williams)
+Get Ur Freak On by&nbsp;Missy&nbsp;Elliott
+Gossip Folks by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ludacris)
+I'm Better by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Cainon&nbsp;Lamb)
+The Rain (Supa Dupa Fly) by&nbsp;Missy&nbsp;Elliott
+Lose Control by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ciara &amp; Fatman&nbsp;Scoop)
+One Minute Man (Amended Version) by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ludacris &amp; Trina)
+This Is Me (The Reimagined Remix) by&nbsp;Keala&nbsp;Settle, Kesha &amp; Missy Elliott
+Bomb Intro/Pass That Dutch by&nbsp;Missy&nbsp;Elliott</code></pre>
+</div>
+</div>
+</section>
+<section id="get-song-tiles-and-page-view-counts" class="level3" data-number="33.3.2">
+<h3 data-number="33.3.2" class="anchored" data-anchor-id="get-song-tiles-and-page-view-counts"><span class="header-section-number">33.3.2</span> Get Song Tiles and Page View Counts</h3>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> song <span class="kw">in</span> json_data[<span class="st">'response'</span>][<span class="st">'hits'</span>]:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(song[<span class="st">'result'</span>][<span class="st">'full_title'</span>], song[<span class="st">'result'</span>][<span class="st">'stats'</span>][<span class="st">'pageviews'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Work It by&nbsp;Missy&nbsp;Elliott 1205121
+WTF (Where They From) by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Pharrell&nbsp;Williams) 289808
+Get Ur Freak On by&nbsp;Missy&nbsp;Elliott 165394
+Gossip Folks by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ludacris) 111483
+I'm Better by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Cainon&nbsp;Lamb) 107273
+The Rain (Supa Dupa Fly) by&nbsp;Missy&nbsp;Elliott 103348
+Lose Control by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ciara &amp; Fatman&nbsp;Scoop) 93331
+One Minute Man (Amended Version) by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ludacris &amp; Trina) 74646
+This Is Me (The Reimagined Remix) by&nbsp;Keala&nbsp;Settle, Kesha &amp; Missy Elliott 49366
+Bomb Intro/Pass That Dutch by&nbsp;Missy&nbsp;Elliott 48848</code></pre>
+</div>
+</div>
+</section>
+<section id="transform-song-titles-and-page-view-counts-into-a-dataframe" class="level3" data-number="33.3.3">
+<h3 data-number="33.3.3" class="anchored" data-anchor-id="transform-song-titles-and-page-view-counts-into-a-dataframe"><span class="header-section-number">33.3.3</span> Transform Song Titles and Page View Counts into a DataFrame</h3>
+<p>We can loop through this data, append it into a list, and then transform that list into a Pandas dataframe by calling <code>pd.DataFrame()</code></p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="admonition pandasreview" name="html-admonition" style="background: black; color: white; padding: 10px">
+<p class="title">
+Pandas
+</p>
+<p>Do you need a refresher or introduction to the Python data analysis library Pandas? Be sure to check out <a href="https://melaniewalsh.github.io/Intro-Cultural-Analytics/Data-Analysis/Pandas-Basics-Part1.html"> Pandas Basics (1-3) </a> in this textbook!</p>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>missy_songs <span class="op">=</span> []</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> song <span class="kw">in</span> json_data[<span class="st">'response'</span>][<span class="st">'hits'</span>]:</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    missy_songs.append([song[<span class="st">'result'</span>][<span class="st">'full_title'</span>], song[<span class="st">'result'</span>][<span class="st">'stats'</span>][<span class="st">'pageviews'</span>]])</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Make a Pandas dataframe from a list</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>missy_df <span class="op">=</span> pd.DataFrame(missy_songs)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>missy_df.columns <span class="op">=</span> [<span class="st">'song_title'</span>, <span class="st">'page_views'</span>]</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>missy_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>song_title</th>
+      <th>page_views</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Work It by&nbsp;Missy&nbsp;Elliott</td>
+      <td>1205121</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>WTF (Where They From) by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ph...</td>
+      <td>289808</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Get Ur Freak On by&nbsp;Missy&nbsp;Elliott</td>
+      <td>165394</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Gossip Folks by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ludacris)</td>
+      <td>111483</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>I'm Better by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Cainon&nbsp;Lamb)</td>
+      <td>107273</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Rain (Supa Dupa Fly) by&nbsp;Missy&nbsp;Elliott</td>
+      <td>103348</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Lose Control by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ciara &amp; Fat...</td>
+      <td>93331</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>One Minute Man (Amended Version) by&nbsp;Missy&nbsp;Elli...</td>
+      <td>74646</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>This Is Me (The Reimagined Remix) by&nbsp;Keala&nbsp;Set...</td>
+      <td>49366</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Bomb Intro/Pass That Dutch by&nbsp;Missy&nbsp;Elliott</td>
+      <td>48848</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="transform-song-titles-page-view-counts-album-covers-into-a-dataframe" class="level2" data-number="33.4">
+<h2 data-number="33.4" class="anchored" data-anchor-id="transform-song-titles-page-view-counts-album-covers-into-a-dataframe"><span class="header-section-number">33.4</span> Transform Song Titles, Page View Counts, &amp; Album Covers into a DataFrame</h2>
+<p>Just for fun, we can do the same thing but also add links to images of Missy Elliott’s album art—and we can actually display those images, too!</p>
+<p>To display images in a Pandas dataframe, you need to run <code>from IPython.core.display import HTML</code> and make the function <code>get_image_html()</code>. We’re going to take the image URLs and make them into HTML objects.</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_image_html(link):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    image_html <span class="op">=</span> <span class="ss">f"&lt;img src='</span><span class="sc">{</span>link<span class="sc">}</span><span class="ss">' width='500px'&gt;"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> image_html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>missy_songs <span class="op">=</span> []</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> song <span class="kw">in</span> json_data[<span class="st">'response'</span>][<span class="st">'hits'</span>]:</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    missy_songs.append([song[<span class="st">'result'</span>][<span class="st">'full_title'</span>], song[<span class="st">'result'</span>][<span class="st">'stats'</span>][<span class="st">'pageviews'</span>], song[<span class="st">'result'</span>][<span class="st">'song_art_image_url'</span>]])</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>missy_df <span class="op">=</span> pd.DataFrame(missy_songs)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>missy_df.columns <span class="op">=</span> [<span class="st">'song_title'</span>, <span class="st">'page_views'</span>,<span class="st">'album_cover_url'</span>]</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Use the function get_image_html()</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>missy_df[<span class="st">'album_cover'</span>] <span class="op">=</span> missy_df[<span class="st">'album_cover_url'</span>].<span class="bu">apply</span>(get_image_html)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>missy_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>song_title</th>
+      <th>page_views</th>
+      <th>album_cover_url</th>
+      <th>album_cover</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Work It by&nbsp;Missy&nbsp;Elliott</td>
+      <td>1205121</td>
+      <td>https://images.genius.com/27c1fbfef17041b43530...</td>
+      <td>&lt;img src='https://images.genius.com/27c1fbfef1...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>WTF (Where They From) by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ph...</td>
+      <td>289808</td>
+      <td>https://images.rapgenius.com/a439d6d6020559ffe...</td>
+      <td>&lt;img src='https://images.rapgenius.com/a439d6d...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Get Ur Freak On by&nbsp;Missy&nbsp;Elliott</td>
+      <td>165394</td>
+      <td>https://images.genius.com/338e122c1534b6f6363a...</td>
+      <td>&lt;img src='https://images.genius.com/338e122c15...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Gossip Folks by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ludacris)</td>
+      <td>111483</td>
+      <td>https://images.genius.com/206153c53d05804677e2...</td>
+      <td>&lt;img src='https://images.genius.com/206153c53d...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>I'm Better by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Cainon&nbsp;Lamb)</td>
+      <td>107273</td>
+      <td>https://images.genius.com/609afe10820cce09ce9e...</td>
+      <td>&lt;img src='https://images.genius.com/609afe1082...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Rain (Supa Dupa Fly) by&nbsp;Missy&nbsp;Elliott</td>
+      <td>103348</td>
+      <td>https://images.genius.com/a1543159342cd360256c...</td>
+      <td>&lt;img src='https://images.genius.com/a154315934...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Lose Control by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ciara &amp; Fat...</td>
+      <td>93331</td>
+      <td>https://images.genius.com/51639e476eac5cb5bed5...</td>
+      <td>&lt;img src='https://images.genius.com/51639e476e...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>One Minute Man (Amended Version) by&nbsp;Missy&nbsp;Elli...</td>
+      <td>74646</td>
+      <td>https://images.genius.com/a94eaf3c98a7134cb546...</td>
+      <td>&lt;img src='https://images.genius.com/a94eaf3c98...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>This Is Me (The Reimagined Remix) by&nbsp;Keala&nbsp;Set...</td>
+      <td>49366</td>
+      <td>https://images.genius.com/29f15eb96f814e785598...</td>
+      <td>&lt;img src='https://images.genius.com/29f15eb96f...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Bomb Intro/Pass That Dutch by&nbsp;Missy&nbsp;Elliott</td>
+      <td>48848</td>
+      <td>https://images.genius.com/8c2a5015c6ba9e5f0c15...</td>
+      <td>&lt;img src='https://images.genius.com/8c2a5015c6...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>If we call <code>HTML()</code> on our dataframe and add the method <code>.to_html(escape=False)</code> to the dataframe, then it should display the dataframe with viewable images.</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>HTML(missy_df[[<span class="st">'album_cover'</span>, <span class="st">'page_views'</span>, <span class="st">'song_title'</span>]].to_html(escape<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album_cover</th>
+      <th>page_views</th>
+      <th>song_title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td><img src="https://images.genius.com/27c1fbfef17041b435302af288cfa0c6.482x500x1.jpg" width="500px"></td>
+      <td>1205121</td>
+      <td>Work It by&nbsp;Missy&nbsp;Elliott</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><img src="https://images.rapgenius.com/a439d6d6020559ffe7c10f0d73722de1.1000x1000x1.jpg" width="500px"></td>
+      <td>289808</td>
+      <td>WTF (Where They From) by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Pharrell&nbsp;Williams)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><img src="https://images.genius.com/338e122c1534b6f6363afb06f77912cf.300x259x1.jpg" width="500px"></td>
+      <td>165394</td>
+      <td>Get Ur Freak On by&nbsp;Missy&nbsp;Elliott</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><img src="https://images.genius.com/206153c53d05804677e236aa2ae4eb45.600x600x1.jpg" width="500px"></td>
+      <td>111483</td>
+      <td>Gossip Folks by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ludacris)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><img src="https://images.genius.com/609afe10820cce09ce9e3c768518c63c.600x600x1.jpg" width="500px"></td>
+      <td>107273</td>
+      <td>I'm Better by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Cainon&nbsp;Lamb)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td><img src="https://images.genius.com/a1543159342cd360256c12b42185771f.975x1000x1.jpg" width="500px"></td>
+      <td>103348</td>
+      <td>The Rain (Supa Dupa Fly) by&nbsp;Missy&nbsp;Elliott</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td><img src="https://images.genius.com/51639e476eac5cb5bed5794c023763ff.700x707x1.jpg" width="500px"></td>
+      <td>93331</td>
+      <td>Lose Control by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ciara &amp; Fatman&nbsp;Scoop)</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td><img src="https://images.genius.com/a94eaf3c98a7134cb546ebf9e6d2b991.953x953x1.jpg" width="500px"></td>
+      <td>74646</td>
+      <td>One Minute Man (Amended Version) by&nbsp;Missy&nbsp;Elliott (Ft.&nbsp;Ludacris &amp; Trina)</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td><img src="https://images.genius.com/29f15eb96f814e785598d0eea14126a7.1000x1000x1.png" width="500px"></td>
+      <td>49366</td>
+      <td>This Is Me (The Reimagined Remix) by&nbsp;Keala&nbsp;Settle, Kesha &amp; Missy Elliott</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td><img src="https://images.genius.com/8c2a5015c6ba9e5f0c154f9a20f14534.583x583x1.jpg" width="500px"></td>
+      <td>48848</td>
+      <td>Bomb Intro/Pass That Dutch by&nbsp;Missy&nbsp;Elliott</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="your-turn" class="level2" data-number="33.5">
+<h2 data-number="33.5" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">33.5</span> Your Turn!</h2>
+<p>Replace “Phoebe Bridgers” with any artist/musician of your choosing and run the following cells.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>search_term <span class="op">=</span> <span class="st">"Phoebe Bridgers"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>genius_search_url <span class="op">=</span> <span class="ss">f"http://api.genius.com/search?q=</span><span class="sc">{</span>search_term<span class="sc">}</span><span class="ss">&amp;access_token=</span><span class="sc">{</span>client_access_token<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(genius_search_url)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>json_data <span class="op">=</span> response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>songs <span class="op">=</span> []</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> song <span class="kw">in</span> json_data[<span class="st">'response'</span>][<span class="st">'hits'</span>]:</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    songs.append((song[<span class="st">'result'</span>][<span class="st">'full_title'</span>], song[<span class="st">'result'</span>][<span class="st">'stats'</span>][<span class="st">'pageviews'</span>], song[<span class="st">'result'</span>][<span class="st">'song_art_image_url'</span>]))</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>artist_df <span class="op">=</span> pd.DataFrame(songs)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>artist_df.columns <span class="op">=</span> [<span class="st">'song_title'</span>, <span class="st">'page_views'</span>, <span class="st">'album_cover_url'</span>]</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>artist_df[<span class="st">'album_cover'</span>] <span class="op">=</span> artist_df[<span class="st">'album_cover_url'</span>].<span class="bu">apply</span>(get_image_html)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>HTML(artist_df[[<span class="st">'album_cover'</span>, <span class="st">'page_views'</span>, <span class="st">'song_title'</span>]].to_html(escape<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album_cover</th>
+      <th>page_views</th>
+      <th>song_title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td><img src="https://images.genius.com/7d0d55bc0879faa98cdadbef8a19d211.1000x1000x1.png" width="500px"></td>
+      <td>302599</td>
+      <td>Kyoto by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><img src="https://images.genius.com/298d31ae23127ba212fbbbcc91508ad7.640x640x1.jpg" width="500px"></td>
+      <td>328494</td>
+      <td>Motion Sickness by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><img src="https://images.genius.com/7d0d55bc0879faa98cdadbef8a19d211.1000x1000x1.png" width="500px"></td>
+      <td>277719</td>
+      <td>I Know the End by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><img src="https://images.genius.com/7d0d55bc0879faa98cdadbef8a19d211.1000x1000x1.png" width="500px"></td>
+      <td>217543</td>
+      <td>Punisher by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><img src="https://images.genius.com/4d6e5376cccd1a411081f1cb5fdc53ef.1000x1000x1.jpg" width="500px"></td>
+      <td>229410</td>
+      <td>Garden Song by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td><img src="https://images.genius.com/d89ce272c353c3483fca92fae2ab0700.640x640x1.jpg" width="500px"></td>
+      <td>198241</td>
+      <td>Smoke Signals by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td><img src="https://images.genius.com/7d0d55bc0879faa98cdadbef8a19d211.1000x1000x1.png" width="500px"></td>
+      <td>188749</td>
+      <td>Savior Complex by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td><img src="https://images.genius.com/7d0d55bc0879faa98cdadbef8a19d211.1000x1000x1.png" width="500px"></td>
+      <td>162229</td>
+      <td>Chinese Satellite by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td><img src="https://images.genius.com/7d0d55bc0879faa98cdadbef8a19d211.1000x1000x1.png" width="500px"></td>
+      <td>170431</td>
+      <td>Graceland Too by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td><img src="https://images.genius.com/069a38a206438c03e3cc75b3a688e90f.640x640x1.jpg" width="500px"></td>
+      <td>147483</td>
+      <td>Funeral by&nbsp;Phoebe&nbsp;Bridgers</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p>If there is anything wrong, please open <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues">an issue on GitHub</a> or email f.pianzola@rug.nl</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../code/14-Song-Genius.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Song Genius Data Collection</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../code/16-Collect-Genius-Lyrics.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Song Lyrics Collection</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Cultural Analytics Open Science Guide</div>   
+    <div class="nav-footer-right">powered by <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
