@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Analytics Open Science Guide - 24&nbsp; Users’ Data: Legal &amp; Ethical Considerations</title>
+<title>Cultural Analytics Open Science Guide - 43&nbsp; Changing the Categorical Variable Data Type</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/10-Web-Scraping-Part1.html" rel="next">
-<link href="../code/08-Data-Collection.html" rel="prev">
+<link href="../code/26-Data-Information.html" rel="next">
+<link href="../code/24-Changing-Numerical-Variable-Data-Types.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Changing the Categorical Variable Data Type</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -266,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -371,7 +371,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/25-Changing-Categorical-Variable-Data-Type.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Changing the Categorical Variable Data Type</span></a>
+  <a href="../code/25-Changing-Categorical-Variable-Data-Type.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Changing the Categorical Variable Data Type</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -403,16 +403,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#legal-considerations" id="toc-legal-considerations" class="nav-link active" data-scroll-target="#legal-considerations"><span class="toc-section-number">24.1</span>  Legal Considerations</a></li>
-  <li><a href="#institutional-review-boards-irbs" id="toc-institutional-review-boards-irbs" class="nav-link" data-scroll-target="#institutional-review-boards-irbs"><span class="toc-section-number">24.2</span>  Institutional Review Boards (IRBs)</a></li>
-  <li><a href="#publishing-privacy-citation" id="toc-publishing-privacy-citation" class="nav-link" data-scroll-target="#publishing-privacy-citation"><span class="toc-section-number">24.3</span>  Publishing, Privacy, &amp; Citation</a></li>
-  <li><a href="#models-examples-of-social-media-data-in-published-research" id="toc-models-examples-of-social-media-data-in-published-research" class="nav-link" data-scroll-target="#models-examples-of-social-media-data-in-published-research"><span class="toc-section-number">24.4</span>  Models &amp; Examples of Social Media Data in Published Research</a>
+  <li><a href="#good-practise" id="toc-good-practise" class="nav-link active" data-scroll-target="#good-practise"><span class="toc-section-number">43.1</span>  Good practise</a></li>
+  <li><a href="#working-with-ordinal-categorical-variables" id="toc-working-with-ordinal-categorical-variables" class="nav-link" data-scroll-target="#working-with-ordinal-categorical-variables"><span class="toc-section-number">43.2</span>  Working with <strong>Ordinal</strong> Categorical Variables</a>
   <ul>
-  <li><a href="#paraphrasing-posts" id="toc-paraphrasing-posts" class="nav-link" data-scroll-target="#paraphrasing-posts"><span class="toc-section-number">24.4.1</span>  Paraphrasing Posts</a></li>
-  <li><a href="#linking-to-posts-using-reasonably-public-thresholds" id="toc-linking-to-posts-using-reasonably-public-thresholds" class="nav-link" data-scroll-target="#linking-to-posts-using-reasonably-public-thresholds"><span class="toc-section-number">24.4.2</span>  Linking to Posts &amp; Using “Reasonably Public” Thresholds</a></li>
-  <li><a href="#direct-collaboration-conversation-with-users" id="toc-direct-collaboration-conversation-with-users" class="nav-link" data-scroll-target="#direct-collaboration-conversation-with-users"><span class="toc-section-number">24.4.3</span>  Direct Collaboration &amp; Conversation with Users</a></li>
+  <li><a href="#one-hot-encoding" id="toc-one-hot-encoding" class="nav-link" data-scroll-target="#one-hot-encoding"><span class="toc-section-number">43.2.1</span>  One-Hot Encoding</a>
+  <ul class="collapse">
+  <li><a href="#how-does-ohe-works" id="toc-how-does-ohe-works" class="nav-link" data-scroll-target="#how-does-ohe-works"><span class="toc-section-number">43.2.1.1</span>  How does OHE works?</a></li>
   </ul></li>
-  <li><a href="#further-recommended-reading" id="toc-further-recommended-reading" class="nav-link" data-scroll-target="#further-recommended-reading"><span class="toc-section-number">24.5</span>  Further Recommended Reading</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -421,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Changing the Categorical Variable Data Type</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -435,57 +433,41 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Before we dive into collecting data from the internet, we need to discuss some serious questions. Is it legal or ethical to computationally collect data from the internet? Is it legal or ethical to publish research that includes internet users’ data without their knowledge?</p>
-<section id="legal-considerations" class="level2" data-number="24.1">
-<h2 data-number="24.1" class="anchored" data-anchor-id="legal-considerations"><span class="header-section-number">24.1</span> Legal Considerations</h2>
-<p>If internet data is publicly available (e.g., tweets from a public Twitter account), it is generally considered legal to collect this data, even if a particular platform says that you cannot. In 2019, the Ninth Circuit Court of Appeals ruled that scraping publicly accessible websites likely does not violate federal anti-hacking laws. You can <a href="https://www.eff.org/deeplinks/2019/09/victory-ruling-hiq-v-linkedin-protects-scraping-public-data#:~:text=Linkedin%20Protects%20Scraping%20of%20Public%20Data,-Share%20It%20Share&amp;text=In%20a%20long%2Dawaited%20decision,and%20Abuse%20Act%20(CFAA).">read more about this legal ruling</a> from the Electronic Frontier Foundation.</p>
-</section>
-<section id="institutional-review-boards-irbs" class="level2" data-number="24.2">
-<h2 data-number="24.2" class="anchored" data-anchor-id="institutional-review-boards-irbs"><span class="header-section-number">24.2</span> Institutional Review Boards (IRBs)</h2>
-<p>Research that involves human participants (e.g., surveys, interviews, blood draws) needs to be approved by an Institutional Review Board (IRB). But research about publicly available internet data does not typically require IRB approval.</p>
-<p>The <a href="https://researchservices.cornell.edu/sites/default/files/2019-05/IRB%20Policy%2020.pdf">Cornell Institutional Review Board</a> recommends being cautious with regard to data mining from the internet, however, and seeking “formal confirmation of non-human participant research status”:</p>
-<blockquote class="blockquote">
-<p>If the individual or social media/network site has not placed any restrictions on access to information about himself/herself (e.g., information available on a public website, blog, twitter feed, chat room, etc.), the following best practices should be followed: - The researcher should send a project description to the IRB office and seek a formal confirmation of non-human participant research status for the study. We believe that in most cases, this will not be considered human participant research, but caution is recommended before a researcher makes his/her own determination, because of the emerging ethical sensitivities in this area.</p>
-</blockquote>
-</section>
-<section id="publishing-privacy-citation" class="level2" data-number="24.3">
-<h2 data-number="24.3" class="anchored" data-anchor-id="publishing-privacy-citation"><span class="header-section-number">24.3</span> Publishing, Privacy, &amp; Citation</h2>
-<p>Just because something is legal or gets approved by an IRB does not mean it is ethical. Collecting, sharing, and publishing internet data created by or about individuals can lead to unwanted public scrutiny, harm, and other negative consequences for those individuals. For these reasons, some researchers attempt to anonymize internet data before sharing it or before publishing an article that cites a post specifically. Yet anonymizing internet data also does not give credit to internet users as creators and authors.</p>
-<p>There is no single, simple answer to the many difficult questions raised by internet data collection. It is important to develop an ethical framework that responds to the specifics of your particular research project or use case (e.g., the platform, the people involved, the context, the potential consequences, etc.).</p>
-<p>In my own research, I have started seeking explicit permission from internet users when I want to quote them in a published article. In this book, I only share internet data that meets a certain threshold of publicness, such as tweets from verified Twitter accounts or Reddit posts with a certain number of upvotes. This is an approach that I have developed based on some of the models and readings included below.</p>
-</section>
-<section id="models-examples-of-social-media-data-in-published-research" class="level2" data-number="24.4">
-<h2 data-number="24.4" class="anchored" data-anchor-id="models-examples-of-social-media-data-in-published-research"><span class="header-section-number">24.4</span> Models &amp; Examples of Social Media Data in Published Research</h2>
-<p>Below are a few examples of how researchers have approached social media data in published research:</p>
-<section id="paraphrasing-posts" class="level3" data-number="24.4.1">
-<h3 data-number="24.4.1" class="anchored" data-anchor-id="paraphrasing-posts"><span class="header-section-number">24.4.1</span> Paraphrasing Posts</h3>
+<section id="good-practise" class="level2" data-number="43.1">
+<h2 data-number="43.1" class="anchored" data-anchor-id="good-practise"><span class="header-section-number">43.1</span> Good practise</h2>
+<p>Just like with numerical variables, best practices for categorical data storage say that we should match the data type of the column with its real-world variable type. However, the types are a little more nuanced:</p>
 <ul>
-<li>In Maria Antoniak, David Mimno, and Karen Levy’s <a href="https://maria-antoniak.github.io/resources/2019_cscw_birth_stories.pdf">article about a Reddit subcommunity dedicated to birthstories (r/BabyBumps)</a>, they paraphrased Reddit submissions discussed in the article and then deleted all collected Reddit data after the article was published.</li>
+<li><p>Nominal variables are often represented by the&nbsp;<code>object</code>&nbsp;data type. Columns in the object data type can contain any combination of values, including strings, integers, booleans, etc. This means that string operations like&nbsp;<code>.lower()</code>&nbsp;are not possible on object columns.</p></li>
+<li><p>Nominal variables are also represented by the&nbsp;<code>string</code>&nbsp;data type. However, Pandas usually guesses&nbsp;<code>object</code>&nbsp;rather than&nbsp;<code>string</code>, so if you want a column to be a string, you will likely have to explicitly tell pandas to make it a&nbsp;<code>string</code>. This is most important if you want to do string manipulations on a column like&nbsp;<code>.lower()</code>.</p></li>
+<li><p>Ordinal variables should be represented as&nbsp;<code>object</code>s, but pandas often guesses&nbsp;<code>int</code>&nbsp;since they are often encoded as whole numbers.</p></li>
+<li><p>Binary variables can be represented as&nbsp;<code>bool</code>, but pandas often guesses&nbsp;<code>int</code>&nbsp;or&nbsp;<code>object</code>&nbsp;data types.</p></li>
 </ul>
 </section>
-<section id="linking-to-posts-using-reasonably-public-thresholds" class="level3" data-number="24.4.2">
-<h3 data-number="24.4.2" class="anchored" data-anchor-id="linking-to-posts-using-reasonably-public-thresholds"><span class="header-section-number">24.4.2</span> Linking to Posts &amp; Using “Reasonably Public” Thresholds</h3>
+<section id="working-with-ordinal-categorical-variables" class="level2" data-number="43.2">
+<h2 data-number="43.2" class="anchored" data-anchor-id="working-with-ordinal-categorical-variables"><span class="header-section-number">43.2</span> Working with <strong>Ordinal</strong> Categorical Variables</h2>
+<p>For ordinal categorical variables, we often want to store two different pieces of information: category labels and their order. None of the data types we have covered so far can store both of these at once.</p>
+<p>We can use the&nbsp;<code>.unique()</code>&nbsp;method to inspect the category names:</p>
+<pre><code>print(data['column_name'].unique())</code></pre>
+<p>At this point, Python does not know that these categories have an inherent order. Luckily, there is a specific data type for categorical variables in pandas called&nbsp;<code>category</code>&nbsp;to address this problem! The pandas&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Categorical.html">.Categorical()</a>&nbsp;method can be used to store data as type&nbsp;<code>category</code>&nbsp;and indicate the order of the categories.</p>
+<pre><code>dataframe['column_name'] =&nbsp;pd.Categorical(dataframe['column_name'], ['bottom', 'mid', 'top'], ordered=True)</code></pre>
 <ul>
-<li>In Deen Freelon, Charlton McIlwain, and Meredith D. Clark’s <a href="https://cmsimpact.org/wp-content/uploads/2016/03/beyond_the_hashtags_2016.pdf">report about the #BlackLivesMatter movement</a>, they included links to tweets rather than the full text of tweets and only linked to tweets with a minimum of 100 retweets published by Twitter users who had at least 3,000 followers or were verified. They embargoed their Twitter data for a year and then publicly released a list of tweet IDs. Tweet IDs can be used by third-parties to re-download any tweets that have not been deleted yet, as I discuss in the lesson <a href="https://melaniewalsh.github.io/Intro-Cultural-Analytics/Data-Collection/Twitter-Data-Sharing.html">“Twitter Data Sharing”</a>.</li>
+<li><code>bottom</code>, <code>mid</code>, <code>top</code>: these values are an example of categories. If we assume, that they were not in this order <code>pd.Categorical</code> allows us to set them in the order that we want.</li>
 </ul>
-</section>
-<section id="direct-collaboration-conversation-with-users" class="level3" data-number="24.4.3">
-<h3 data-number="24.4.3" class="anchored" data-anchor-id="direct-collaboration-conversation-with-users"><span class="header-section-number">24.4.3</span> Direct Collaboration &amp; Conversation with Users</h3>
-<ul>
-<li>In Moya Bailey’s <a href="http://www.digitalhumanities.org/dhq/vol/9/2/000209/000209.html">article about the #GirlsLikeUs hashtag</a>, created by trans advocate Janet Mock, she asked for Mock’s permission to work on the project before it began and collaborated with Mock to develop research questions and determine the project’s direction.</li>
-</ul>
-</section>
-</section>
-<section id="further-recommended-reading" class="level2" data-number="24.5">
-<h2 data-number="24.5" class="anchored" data-anchor-id="further-recommended-reading"><span class="header-section-number">24.5</span> Further Recommended Reading</h2>
-<ul>
-<li><a href="https://www.docnow.io/docs/docnow-whitepaper-2018.pdf">Doc Now White Paper</a>, Bergis Jules, Ed Summers, Dr.&nbsp;Vernon Mitchell, Jr.</li>
-<li><a href="https://cmci.colorado.edu/~cafi5706/ICWSM2020_datascraping.pdf">No Robots, Spiders, or Scrapers: Legal and Ethical Regulation of Data Collection Methods in Social Media Terms of Service</a>, Casey Fiesler, Nathan Beard, Brian C. Keegan</li>
-<li><a href="http://www.digitalhumanities.org/dhq/vol/9/2/000209/000209.html">#transform(ing)DH Writing and Research: An Autoethnography of Digital Humanities and Feminist Ethics</a>, Moya Bailey</li>
-<li><a href="https://modelviewculture.com/pieces/the-twitterethics-manifesto">The #TwitterEthics Manifesto</a>, Dorothy Kim and Eunsong Kim</li>
-</ul>
+<p>Now, not only does Python recognize that the&nbsp;<code>shelf</code>&nbsp;column is an ordinal variable, it understands that&nbsp;<code>top</code>&nbsp;&gt;&nbsp;<code>mid</code>&nbsp;&gt;&nbsp;<code>bottom</code>. If we call&nbsp;<code>.unique()</code>&nbsp;on this column again, we see how Python retains the correct rankings.</p>
+<p>This is helpful in the event that we would like to sort the column by category; <strong>if we use&nbsp;<code>.sort_values()</code>, the DataFrame will be sorted by the logical order</strong> of a given&nbsp;column as opposed to the alphabetical order.</p>
+<section id="one-hot-encoding" class="level3" data-number="43.2.1">
+<h3 data-number="43.2.1" class="anchored" data-anchor-id="one-hot-encoding"><span class="header-section-number">43.2.1</span> One-Hot Encoding</h3>
+<p>Let’s assume that we want to change the data type of a categorical variable, but without assigning any kind of weight to the labels. To do that, firstly we need our categorical variables not to be ordinal or if they are ordinal the order does not really matter; in other words, the values of our variable should not be interpreted only in a specific order.</p>
+<p>To do that, we can perform a different encoding of categorical variables; <em>One-Hot Encoding</em> (OHE). To do that, we can use the pandas <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Categorical.html"><code>.get_dummies()</code></a> method.</p>
+<section id="how-does-ohe-works" class="level4" data-number="43.2.1.1">
+<h4 data-number="43.2.1.1" class="anchored" data-anchor-id="how-does-ohe-works"><span class="header-section-number">43.2.1.1</span> How does OHE works?</h4>
+<p>Basically, it creates a new binary variable (0 or 1) for each of the categories within our original categorical variable. By passing in the dataset and column that we want to encode into&nbsp;<code>pd.get_dummies()</code>, we have created a new dataframe that contains new binary variables, according to the number of categories in our original variable, with values of&nbsp;<code>1</code>&nbsp;for <code>True</code> and&nbsp;<code>0</code>&nbsp;for <code>False</code>, which we can view when we scroll to the right in the table. Now we haven’t assigned weighting to our nominal variable.</p>
+<pre><code>new_df = pd.get_dummies(data=df, columns=['column_name'])</code></pre>
+<p>It is important to note that OHE works best when we do not create too many additional variables, as increasing the dimensionality of our dataframe can create problems when working with certain machine learning models.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -753,13 +735,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/08-Data-Collection.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Collection</span>
+      <a href="../code/24-Changing-Numerical-Variable-Data-Types.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Tips for recognizing the data types</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/10-Web-Scraping-Part1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../code/26-Data-Information.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Data Information</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

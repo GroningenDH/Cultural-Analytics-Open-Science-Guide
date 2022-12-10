@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Analytics Open Science Guide - 24&nbsp; Users’ Data: Legal &amp; Ethical Considerations</title>
+<title>Cultural Analytics Open Science Guide - 45&nbsp; Exploratory Data Analysis and Summary Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/10-Web-Scraping-Part1.html" rel="next">
-<link href="../code/08-Data-Collection.html" rel="prev">
+<link href="../code/28-Association-Between-Variables.html" rel="next">
+<link href="../code/26-Data-Information.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -266,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -381,7 +381,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/27-EDA-Summary-Statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></a>
+  <a href="../code/27-EDA-Summary-Statistics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -403,16 +403,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#legal-considerations" id="toc-legal-considerations" class="nav-link active" data-scroll-target="#legal-considerations"><span class="toc-section-number">24.1</span>  Legal Considerations</a></li>
-  <li><a href="#institutional-review-boards-irbs" id="toc-institutional-review-boards-irbs" class="nav-link" data-scroll-target="#institutional-review-boards-irbs"><span class="toc-section-number">24.2</span>  Institutional Review Boards (IRBs)</a></li>
-  <li><a href="#publishing-privacy-citation" id="toc-publishing-privacy-citation" class="nav-link" data-scroll-target="#publishing-privacy-citation"><span class="toc-section-number">24.3</span>  Publishing, Privacy, &amp; Citation</a></li>
-  <li><a href="#models-examples-of-social-media-data-in-published-research" id="toc-models-examples-of-social-media-data-in-published-research" class="nav-link" data-scroll-target="#models-examples-of-social-media-data-in-published-research"><span class="toc-section-number">24.4</span>  Models &amp; Examples of Social Media Data in Published Research</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">45.1</span>  Introduction</a></li>
+  <li><a href="#univariate-statistics" id="toc-univariate-statistics" class="nav-link" data-scroll-target="#univariate-statistics"><span class="toc-section-number">45.2</span>  Univariate Statistics</a>
   <ul>
-  <li><a href="#paraphrasing-posts" id="toc-paraphrasing-posts" class="nav-link" data-scroll-target="#paraphrasing-posts"><span class="toc-section-number">24.4.1</span>  Paraphrasing Posts</a></li>
-  <li><a href="#linking-to-posts-using-reasonably-public-thresholds" id="toc-linking-to-posts-using-reasonably-public-thresholds" class="nav-link" data-scroll-target="#linking-to-posts-using-reasonably-public-thresholds"><span class="toc-section-number">24.4.2</span>  Linking to Posts &amp; Using “Reasonably Public” Thresholds</a></li>
-  <li><a href="#direct-collaboration-conversation-with-users" id="toc-direct-collaboration-conversation-with-users" class="nav-link" data-scroll-target="#direct-collaboration-conversation-with-users"><span class="toc-section-number">24.4.3</span>  Direct Collaboration &amp; Conversation with Users</a></li>
+  <li><a href="#quantitative-variables" id="toc-quantitative-variables" class="nav-link" data-scroll-target="#quantitative-variables"><span class="toc-section-number">45.2.1</span>  Quantitative variables</a>
+  <ul class="collapse">
+  <li><a href="#central-location" id="toc-central-location" class="nav-link" data-scroll-target="#central-location"><span class="toc-section-number">45.2.1.1</span>  Central location</a></li>
+  <li><a href="#spread" id="toc-spread" class="nav-link" data-scroll-target="#spread"><span class="toc-section-number">45.2.1.2</span>  Spread</a></li>
   </ul></li>
-  <li><a href="#further-recommended-reading" id="toc-further-recommended-reading" class="nav-link" data-scroll-target="#further-recommended-reading"><span class="toc-section-number">24.5</span>  Further Recommended Reading</a></li>
+  <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables"><span class="toc-section-number">45.2.2</span>  Categorical Variables</a></li>
+  </ul></li>
+  <li><a href="#bivariate-statistics" id="toc-bivariate-statistics" class="nav-link" data-scroll-target="#bivariate-statistics"><span class="toc-section-number">45.3</span>  Bivariate Statistics</a></li>
+  <li><a href="#relationship-between-types-of-variables" id="toc-relationship-between-types-of-variables" class="nav-link" data-scroll-target="#relationship-between-types-of-variables"><span class="toc-section-number">45.4</span>  Relationship between types of variables</a>
+  <ul>
+  <li><a href="#one-quantitative-variable-and-one-categorical-variable" id="toc-one-quantitative-variable-and-one-categorical-variable" class="nav-link" data-scroll-target="#one-quantitative-variable-and-one-categorical-variable"><span class="toc-section-number">45.4.1</span>  One Quantitative Variable and One Categorical Variable</a></li>
+  <li><a href="#two-quantitative-variables" id="toc-two-quantitative-variables" class="nav-link" data-scroll-target="#two-quantitative-variables"><span class="toc-section-number">45.4.2</span>  Two Quantitative Variables</a></li>
+  <li><a href="#two-categorical-variables" id="toc-two-categorical-variables" class="nav-link" data-scroll-target="#two-categorical-variables"><span class="toc-section-number">45.4.3</span>  Two Categorical Variables</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -421,7 +428,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -435,57 +442,119 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Before we dive into collecting data from the internet, we need to discuss some serious questions. Is it legal or ethical to computationally collect data from the internet? Is it legal or ethical to publish research that includes internet users’ data without their knowledge?</p>
-<section id="legal-considerations" class="level2" data-number="24.1">
-<h2 data-number="24.1" class="anchored" data-anchor-id="legal-considerations"><span class="header-section-number">24.1</span> Legal Considerations</h2>
-<p>If internet data is publicly available (e.g., tweets from a public Twitter account), it is generally considered legal to collect this data, even if a particular platform says that you cannot. In 2019, the Ninth Circuit Court of Appeals ruled that scraping publicly accessible websites likely does not violate federal anti-hacking laws. You can <a href="https://www.eff.org/deeplinks/2019/09/victory-ruling-hiq-v-linkedin-protects-scraping-public-data#:~:text=Linkedin%20Protects%20Scraping%20of%20Public%20Data,-Share%20It%20Share&amp;text=In%20a%20long%2Dawaited%20decision,and%20Abuse%20Act%20(CFAA).">read more about this legal ruling</a> from the Electronic Frontier Foundation.</p>
-</section>
-<section id="institutional-review-boards-irbs" class="level2" data-number="24.2">
-<h2 data-number="24.2" class="anchored" data-anchor-id="institutional-review-boards-irbs"><span class="header-section-number">24.2</span> Institutional Review Boards (IRBs)</h2>
-<p>Research that involves human participants (e.g., surveys, interviews, blood draws) needs to be approved by an Institutional Review Board (IRB). But research about publicly available internet data does not typically require IRB approval.</p>
-<p>The <a href="https://researchservices.cornell.edu/sites/default/files/2019-05/IRB%20Policy%2020.pdf">Cornell Institutional Review Board</a> recommends being cautious with regard to data mining from the internet, however, and seeking “formal confirmation of non-human participant research status”:</p>
-<blockquote class="blockquote">
-<p>If the individual or social media/network site has not placed any restrictions on access to information about himself/herself (e.g., information available on a public website, blog, twitter feed, chat room, etc.), the following best practices should be followed: - The researcher should send a project description to the IRB office and seek a formal confirmation of non-human participant research status for the study. We believe that in most cases, this will not be considered human participant research, but caution is recommended before a researcher makes his/her own determination, because of the emerging ethical sensitivities in this area.</p>
-</blockquote>
-</section>
-<section id="publishing-privacy-citation" class="level2" data-number="24.3">
-<h2 data-number="24.3" class="anchored" data-anchor-id="publishing-privacy-citation"><span class="header-section-number">24.3</span> Publishing, Privacy, &amp; Citation</h2>
-<p>Just because something is legal or gets approved by an IRB does not mean it is ethical. Collecting, sharing, and publishing internet data created by or about individuals can lead to unwanted public scrutiny, harm, and other negative consequences for those individuals. For these reasons, some researchers attempt to anonymize internet data before sharing it or before publishing an article that cites a post specifically. Yet anonymizing internet data also does not give credit to internet users as creators and authors.</p>
-<p>There is no single, simple answer to the many difficult questions raised by internet data collection. It is important to develop an ethical framework that responds to the specifics of your particular research project or use case (e.g., the platform, the people involved, the context, the potential consequences, etc.).</p>
-<p>In my own research, I have started seeking explicit permission from internet users when I want to quote them in a published article. In this book, I only share internet data that meets a certain threshold of publicness, such as tweets from verified Twitter accounts or Reddit posts with a certain number of upvotes. This is an approach that I have developed based on some of the models and readings included below.</p>
-</section>
-<section id="models-examples-of-social-media-data-in-published-research" class="level2" data-number="24.4">
-<h2 data-number="24.4" class="anchored" data-anchor-id="models-examples-of-social-media-data-in-published-research"><span class="header-section-number">24.4</span> Models &amp; Examples of Social Media Data in Published Research</h2>
-<p>Below are a few examples of how researchers have approached social media data in published research:</p>
-<section id="paraphrasing-posts" class="level3" data-number="24.4.1">
-<h3 data-number="24.4.1" class="anchored" data-anchor-id="paraphrasing-posts"><span class="header-section-number">24.4.1</span> Paraphrasing Posts</h3>
+<section id="introduction" class="level2" data-number="45.1">
+<h2 data-number="45.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">45.1</span> Introduction</h2>
+<p>The summary statistics are very useful for an Exploratory Data Analysis (henceforward: <em>EDA</em>) since they allow us to condense a large amount of information and make it a little bit more interpretable since we will just look at a few numbers.</p>
+<p>When we want to decide what kind of information we would like to use, we need to have in mind two important aspects-questions:</p>
 <ul>
-<li>In Maria Antoniak, David Mimno, and Karen Levy’s <a href="https://maria-antoniak.github.io/resources/2019_cscw_birth_stories.pdf">article about a Reddit subcommunity dedicated to birthstories (r/BabyBumps)</a>, they paraphrased Reddit submissions discussed in the article and then deleted all collected Reddit data after the article was published.</li>
+<li>the <strong>research question</strong> (and how many variables this question involves)</li>
+<li>the <strong>data</strong> (if it is quantitative or categorical)</li>
 </ul>
 </section>
-<section id="linking-to-posts-using-reasonably-public-thresholds" class="level3" data-number="24.4.2">
-<h3 data-number="24.4.2" class="anchored" data-anchor-id="linking-to-posts-using-reasonably-public-thresholds"><span class="header-section-number">24.4.2</span> Linking to Posts &amp; Using “Reasonably Public” Thresholds</h3>
+<section id="univariate-statistics" class="level2" data-number="45.2">
+<h2 data-number="45.2" class="anchored" data-anchor-id="univariate-statistics"><span class="header-section-number">45.2</span> Univariate Statistics</h2>
+<p>Summary statistics that focus on only one variable are called <em>univariate statistics</em>.</p>
+<p>For example, let’s say that we have a dataset about books of a specific bookstore and in this dataset there is a column that contains the price of each book. (data)</p>
+<p>Our question is how much does a book cost on average in this bookstore.</p>
+<p>To do that we need to calculate the mean of the values in the prices column, thus we need to focus only in one variable; therefore this summary statistic is called <em>univariate</em>.</p>
+<section id="quantitative-variables" class="level3" data-number="45.2.1">
+<h3 data-number="45.2.1" class="anchored" data-anchor-id="quantitative-variables"><span class="header-section-number">45.2.1</span> Quantitative variables</h3>
+<p>When we have to deal with quantitative variables, usually we need to describe the <em>central location</em> (centrality) and <em>spread</em> (spreadness) of the values of these variables.</p>
+<section id="central-location" class="level4" data-number="45.2.1.1">
+<h4 data-number="45.2.1.1" class="anchored" data-anchor-id="central-location"><span class="header-section-number">45.2.1.1</span> Central location</h4>
+<p>By finding the <em>central location</em> (aka central tendency) we find the “typical” value of a variable. There are a lot of methods to find this typical value:</p>
 <ul>
-<li>In Deen Freelon, Charlton McIlwain, and Meredith D. Clark’s <a href="https://cmsimpact.org/wp-content/uploads/2016/03/beyond_the_hashtags_2016.pdf">report about the #BlackLivesMatter movement</a>, they included links to tweets rather than the full text of tweets and only linked to tweets with a minimum of 100 retweets published by Twitter users who had at least 3,000 followers or were verified. They embargoed their Twitter data for a year and then publicly released a list of tweet IDs. Tweet IDs can be used by third-parties to re-download any tweets that have not been deleted yet, as I discuss in the lesson <a href="https://melaniewalsh.github.io/Intro-Cultural-Analytics/Data-Collection/Twitter-Data-Sharing.html">“Twitter Data Sharing”</a>.</li>
+<li><strong>Mean</strong>: (aka average) the value that derives from the sum of all values divided by the number (i.e., the length) of the values.</li>
+<li><strong>Median</strong>: the middle value of a variable when the values are sorted.</li>
+<li><strong>Mode</strong>: the most frequent value of the variable</li>
+<li><strong>Trimmed mean</strong>: the mean excluding x percent of the lowest and highest data points.</li>
 </ul>
-</section>
-<section id="direct-collaboration-conversation-with-users" class="level3" data-number="24.4.3">
-<h3 data-number="24.4.3" class="anchored" data-anchor-id="direct-collaboration-conversation-with-users"><span class="header-section-number">24.4.3</span> Direct Collaboration &amp; Conversation with Users</h3>
+<p>Sometimes in order to choose the most appropriate summary statistic for a variable we need to combine it with a visualization and domain knowledge.</p>
+<p>For example, let’s assume that we get the following values as summary statistics from a variable of cars’ prices:</p>
 <ul>
-<li>In Moya Bailey’s <a href="http://www.digitalhumanities.org/dhq/vol/9/2/000209/000209.html">article about the #GirlsLikeUs hashtag</a>, created by trans advocate Janet Mock, she asked for Mock’s permission to work on the project before it began and collaborated with Mock to develop research questions and determine the project’s direction.</li>
+<li>Mean = Rs. 63827.18</li>
+<li>Median = Rs. 45000.00</li>
+<li>Mode = Rs. 30000.00</li>
+<li>Trimmed Mean = Rs. 47333.61</li>
 </ul>
+<p>If we look closely at these values, we will observe that the mean is so much larger than the median and the trimmed mean, which might means that there are some outliers in the dataset.</p>
 </section>
-</section>
-<section id="further-recommended-reading" class="level2" data-number="24.5">
-<h2 data-number="24.5" class="anchored" data-anchor-id="further-recommended-reading"><span class="header-section-number">24.5</span> Further Recommended Reading</h2>
+<section id="spread" class="level4" data-number="45.2.1.2">
+<h4 data-number="45.2.1.2" class="anchored" data-anchor-id="spread"><span class="header-section-number">45.2.1.2</span> Spread</h4>
+<p>Spread, or dispersion, describes the variability within a feature. This is important because it provides context for measures of central location. For example, if there is a lot of variability in car prices, we can be less certain that any particular car will be close to 450000.00 Rupees (the median price). Like the central location measures, there are a few values that can describe the spread:</p>
 <ul>
-<li><a href="https://www.docnow.io/docs/docnow-whitepaper-2018.pdf">Doc Now White Paper</a>, Bergis Jules, Ed Summers, Dr.&nbsp;Vernon Mitchell, Jr.</li>
-<li><a href="https://cmci.colorado.edu/~cafi5706/ICWSM2020_datascraping.pdf">No Robots, Spiders, or Scrapers: Legal and Ethical Regulation of Data Collection Methods in Social Media Terms of Service</a>, Casey Fiesler, Nathan Beard, Brian C. Keegan</li>
-<li><a href="http://www.digitalhumanities.org/dhq/vol/9/2/000209/000209.html">#transform(ing)DH Writing and Research: An Autoethnography of Digital Humanities and Feminist Ethics</a>, Moya Bailey</li>
-<li><a href="https://modelviewculture.com/pieces/the-twitterethics-manifesto">The #TwitterEthics Manifesto</a>, Dorothy Kim and Eunsong Kim</li>
+<li>Range: The difference between the maximum and minimum values in a variable.</li>
+<li>Inter-Quartile Range (IQR): The difference between the 75th and 25th percentile values.</li>
+<li>Variance: The average of the squared distance from each data point to the mean.</li>
+<li>Standard Deviation (SD): The square root of the variance.</li>
+<li>Mean Absolute Deviation (MAD): The mean absolute value of the distance between each data point and the mean. e.g.,</li>
 </ul>
+<pre><code># Range  
+data.column_name.max() -&nbsp;data.column_name.min()  </code></pre>
+<pre><code># Interquartile range  
+data.column_name.quantile(0.75) -&nbsp;data.column_name.quantile(0.25)  
+
+# alternative way
+from scipy.stats import iqr  
+iqr(data.column_name)</code></pre>
+<pre><code># Variance  
+data.column_name.var()  </code></pre>
+<pre><code># Standard deviation  
+data.column_name.std()  </code></pre>
+<pre><code># Mean absolute deviation  
+data.column_name.mad()</code></pre>
+<p>Choosing the most appropriate measure of spread is much like choosing a measure of central tendency, in that we need to consider the data holistically. For example, below are measures of spread calculated for&nbsp;<code>selling_price</code>:</p>
+<ul>
+<li>Range: Rs. 9970001</li>
+<li>IQR: Rs. 420001</li>
+<li>Variance: 650044550668.61 (Rs^2)</li>
+<li>Standard Deviation: Rs. 806253.40</li>
+<li>Mean Absolute Deviation: Rs. 42,213.14</li>
+</ul>
+<p>We see that the range is almost 10 million Rupees; however, this could be due to a single 10 million Rupee car in the dataset. If we remove that one car, the range might be much smaller. The IQR is useful in comparison because it trims away outliers.</p>
+<p>Meanwhile, we see that variance is extremely large. This happens because variance is calculated using squared differences, and is therefore not in the same units as the original data, making it less interpretable. Both the standard deviation and MAD solve this issue, but MAD is even less impacted by extreme outliers.</p>
+<p>For highly skewed data or data with extreme outliers, we therefore might prefer to use IQR or MAD. For data that is more normally distributed, the variance and standard deviation are frequently reported.</p>
+</section>
+</section>
+<section id="categorical-variables" class="level3" data-number="45.2.2">
+<h3 data-number="45.2.2" class="anchored" data-anchor-id="categorical-variables"><span class="header-section-number">45.2.2</span> Categorical Variables</h3>
+<p>Categorical variables can be either ordinal (ordered) or nominal (unordered). For ordinal categorical variables, we may still want to summarize central location and spread. However, because ordinal categories are not necessarily evenly spaced (like numbers), we should NOT calculate the mean of an ordinal categorical variable (or anything that relies on the mean, like variance, standard deviation, and MAD).</p>
+<p>For nominal categorical variables (and ordinal categorical variables), another common numerical summary statistic is the frequency or proportion of observations in each category. This is often reported using a frequency table and can be visualized using a bar plot.</p>
+</section>
+</section>
+<section id="bivariate-statistics" class="level2" data-number="45.3">
+<h2 data-number="45.3" class="anchored" data-anchor-id="bivariate-statistics"><span class="header-section-number">45.3</span> Bivariate Statistics</h2>
+<p>In contrast to univariate statistics, bivariate statistics are used to summarize the relationship between two variables. They are useful for answering questions like:</p>
+<ul>
+<li>Do manual transmission cars tend to cost more or less than automatic transmission?</li>
+<li>Do older cars tend to cost less money?</li>
+<li>Are automatic transmission cars more likely to be sold by individuals or dealers?</li>
+</ul>
+<p>Depending on the types of variables we want to summarize a relationship between, we should choose different summary statistics.</p>
+</section>
+<section id="relationship-between-types-of-variables" class="level2" data-number="45.4">
+<h2 data-number="45.4" class="anchored" data-anchor-id="relationship-between-types-of-variables"><span class="header-section-number">45.4</span> Relationship between types of variables</h2>
+<section id="one-quantitative-variable-and-one-categorical-variable" class="level3" data-number="45.4.1">
+<h3 data-number="45.4.1" class="anchored" data-anchor-id="one-quantitative-variable-and-one-categorical-variable"><span class="header-section-number">45.4.1</span> One Quantitative Variable and One Categorical Variable</h3>
+<p>If we want to know whether manual transmission cars tend to cost more or less than automatic transmission cars, we are interested in the relationship between&nbsp;<code>transmission</code>&nbsp;(categorical) and&nbsp;<code>selling_price</code>&nbsp;(quantitative). To answer this question, we can use a <strong>mean or median difference</strong>.</p>
+<p>For example, we could calculate that the median price of automatic transmission cars is 100000 Rupees higher than for manual transmission cars.</p>
+</section>
+<section id="two-quantitative-variables" class="level3" data-number="45.4.2">
+<h3 data-number="45.4.2" class="anchored" data-anchor-id="two-quantitative-variables"><span class="header-section-number">45.4.2</span> Two Quantitative Variables</h3>
+<p>If we want to know whether older cars tend to cost less money, we are interested in the relationship between&nbsp;<code>year</code>&nbsp;and&nbsp;<code>selling_price</code>, both of which are quantitative. To answer this question, we can use the ==Pearson correlation==.</p>
+<p>For example, if we calculate that the correlation between&nbsp;<code>year</code>&nbsp;and&nbsp;<code>selling_price</code>&nbsp;is 0.4, we can conclude that there is a moderate positive association between these variables (older cars do tend to cost less money).</p>
+</section>
+<section id="two-categorical-variables" class="level3" data-number="45.4.3">
+<h3 data-number="45.4.3" class="anchored" data-anchor-id="two-categorical-variables"><span class="header-section-number">45.4.3</span> Two Categorical Variables</h3>
+<p>If we want to know whether automatic transmission cars are more likely to be sold by individuals or dealers, we are interested in the relationship between&nbsp;<code>transmission</code>&nbsp;and&nbsp;<code>seller_type</code>, both of which are categorical. We can explore this relationship using a <strong>contingency table and the Chi-Square statistic</strong>.</p>
+<p>For example, based on the following contingency table, we might conclude that a higher proportion of cars sold by dealers are automatic (compared to cars sold by individuals):</p>
+<pre><code>seller_type   Dealer  Individual  Trustmark Dealer
+transmission                                      
+Automatic        217         212                19
+Manual           777        3032                83</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -753,13 +822,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/08-Data-Collection.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Collection</span>
+      <a href="../code/26-Data-Information.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Data Information</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/10-Web-Scraping-Part1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../code/28-Association-Between-Variables.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Association between variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

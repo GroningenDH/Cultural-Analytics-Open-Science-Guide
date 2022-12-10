@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cultural Analytics Open Science Guide - 24&nbsp; Users’ Data: Legal &amp; Ethical Considerations</title>
+<title>Cultural Analytics Open Science Guide - 41&nbsp; Data Types and Quality</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/10-Web-Scraping-Part1.html" rel="next">
-<link href="../code/08-Data-Collection.html" rel="prev">
+<link href="../code/24-Changing-Numerical-Variable-Data-Types.html" rel="next">
+<link href="../code/22-Reddit-Data.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Data Types and Quality</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -266,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -361,7 +361,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/23-Data-Types-and-Quality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Data Types and Quality</span></a>
+  <a href="../code/23-Data-Types-and-Quality.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Data Types and Quality</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -403,16 +403,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#legal-considerations" id="toc-legal-considerations" class="nav-link active" data-scroll-target="#legal-considerations"><span class="toc-section-number">24.1</span>  Legal Considerations</a></li>
-  <li><a href="#institutional-review-boards-irbs" id="toc-institutional-review-boards-irbs" class="nav-link" data-scroll-target="#institutional-review-boards-irbs"><span class="toc-section-number">24.2</span>  Institutional Review Boards (IRBs)</a></li>
-  <li><a href="#publishing-privacy-citation" id="toc-publishing-privacy-citation" class="nav-link" data-scroll-target="#publishing-privacy-citation"><span class="toc-section-number">24.3</span>  Publishing, Privacy, &amp; Citation</a></li>
-  <li><a href="#models-examples-of-social-media-data-in-published-research" id="toc-models-examples-of-social-media-data-in-published-research" class="nav-link" data-scroll-target="#models-examples-of-social-media-data-in-published-research"><span class="toc-section-number">24.4</span>  Models &amp; Examples of Social Media Data in Published Research</a>
+  <li><a href="#introduction-to-data-types-and-quality" id="toc-introduction-to-data-types-and-quality" class="nav-link active" data-scroll-target="#introduction-to-data-types-and-quality"><span class="toc-section-number">41.1</span>  Introduction to Data Types and Quality</a></li>
+  <li><a href="#working-with-missing-data" id="toc-working-with-missing-data" class="nav-link" data-scroll-target="#working-with-missing-data"><span class="toc-section-number">41.2</span>  Working with Missing Data</a>
   <ul>
-  <li><a href="#paraphrasing-posts" id="toc-paraphrasing-posts" class="nav-link" data-scroll-target="#paraphrasing-posts"><span class="toc-section-number">24.4.1</span>  Paraphrasing Posts</a></li>
-  <li><a href="#linking-to-posts-using-reasonably-public-thresholds" id="toc-linking-to-posts-using-reasonably-public-thresholds" class="nav-link" data-scroll-target="#linking-to-posts-using-reasonably-public-thresholds"><span class="toc-section-number">24.4.2</span>  Linking to Posts &amp; Using “Reasonably Public” Thresholds</a></li>
-  <li><a href="#direct-collaboration-conversation-with-users" id="toc-direct-collaboration-conversation-with-users" class="nav-link" data-scroll-target="#direct-collaboration-conversation-with-users"><span class="toc-section-number">24.4.3</span>  Direct Collaboration &amp; Conversation with Users</a></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data"><span class="toc-section-number">41.2.1</span>  Missing data</a></li>
   </ul></li>
-  <li><a href="#further-recommended-reading" id="toc-further-recommended-reading" class="nav-link" data-scroll-target="#further-recommended-reading"><span class="toc-section-number">24.5</span>  Further Recommended Reading</a></li>
+  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy"><span class="toc-section-number">41.3</span>  Accuracy</a></li>
+  <li><a href="#validity" id="toc-validity" class="nav-link" data-scroll-target="#validity"><span class="toc-section-number">41.4</span>  Validity</a></li>
+  <li><a href="#representative-samples" id="toc-representative-samples" class="nav-link" data-scroll-target="#representative-samples"><span class="toc-section-number">41.5</span>  Representative Samples</a>
+  <ul>
+  <li><a href="#sampling-errors" id="toc-sampling-errors" class="nav-link" data-scroll-target="#sampling-errors"><span class="toc-section-number">41.5.1</span>  Sampling errors</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -421,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Data Types and Quality</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -435,57 +436,67 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Before we dive into collecting data from the internet, we need to discuss some serious questions. Is it legal or ethical to computationally collect data from the internet? Is it legal or ethical to publish research that includes internet users’ data without their knowledge?</p>
-<section id="legal-considerations" class="level2" data-number="24.1">
-<h2 data-number="24.1" class="anchored" data-anchor-id="legal-considerations"><span class="header-section-number">24.1</span> Legal Considerations</h2>
-<p>If internet data is publicly available (e.g., tweets from a public Twitter account), it is generally considered legal to collect this data, even if a particular platform says that you cannot. In 2019, the Ninth Circuit Court of Appeals ruled that scraping publicly accessible websites likely does not violate federal anti-hacking laws. You can <a href="https://www.eff.org/deeplinks/2019/09/victory-ruling-hiq-v-linkedin-protects-scraping-public-data#:~:text=Linkedin%20Protects%20Scraping%20of%20Public%20Data,-Share%20It%20Share&amp;text=In%20a%20long%2Dawaited%20decision,and%20Abuse%20Act%20(CFAA).">read more about this legal ruling</a> from the Electronic Frontier Foundation.</p>
+<section id="introduction-to-data-types-and-quality" class="level2" data-number="41.1">
+<h2 data-number="41.1" class="anchored" data-anchor-id="introduction-to-data-types-and-quality"><span class="header-section-number">41.1</span> Introduction to Data Types and Quality</h2>
+<p>Each individual object that we have in a dataset is called <strong>entity</strong>, <strong>instance</strong>, <strong>observation</strong>. These terms are used interchangeably.</p>
+<p>Each feature of an observation is considered to be a <strong>variable</strong>. Well-defined variable:</p>
+<ol type="1">
+<li><p>Measures only one characteristic.</p></li>
+<li><p>The variable per se should not be a characteristic on it own.</p></li>
+</ol>
 </section>
-<section id="institutional-review-boards-irbs" class="level2" data-number="24.2">
-<h2 data-number="24.2" class="anchored" data-anchor-id="institutional-review-boards-irbs"><span class="header-section-number">24.2</span> Institutional Review Boards (IRBs)</h2>
-<p>Research that involves human participants (e.g., surveys, interviews, blood draws) needs to be approved by an Institutional Review Board (IRB). But research about publicly available internet data does not typically require IRB approval.</p>
-<p>The <a href="https://researchservices.cornell.edu/sites/default/files/2019-05/IRB%20Policy%2020.pdf">Cornell Institutional Review Board</a> recommends being cautious with regard to data mining from the internet, however, and seeking “formal confirmation of non-human participant research status”:</p>
-<blockquote class="blockquote">
-<p>If the individual or social media/network site has not placed any restrictions on access to information about himself/herself (e.g., information available on a public website, blog, twitter feed, chat room, etc.), the following best practices should be followed: - The researcher should send a project description to the IRB office and seek a formal confirmation of non-human participant research status for the study. We believe that in most cases, this will not be considered human participant research, but caution is recommended before a researcher makes his/her own determination, because of the emerging ethical sensitivities in this area.</p>
-</blockquote>
+<section id="working-with-missing-data" class="level2" data-number="41.2">
+<h2 data-number="41.2" class="anchored" data-anchor-id="working-with-missing-data"><span class="header-section-number">41.2</span> Working with Missing Data</h2>
+<p>The types of “missing-ness” are three:</p>
+<ol type="1">
+<li><p><strong>Missing Completely at Random</strong>: When there is data missing and there is no deeper explanation to why the data is not there.</p></li>
+<li><p><strong>Missing at Random</strong>: When we can predict the value of a variable based on the value of another variable. For example, by knowing the type of the tree we might be able to predict the height.</p></li>
+<li><p><strong>Structurally Missing</strong>: it is the data that is missing because we wouldn’t expect a value there to begin with. Let’s say that we want to measure the fruits on the trees. In some trees the fruits might be visible and thus countable, whereas in some other trees the fruits might not be visible and thus uncountable; the latter doesn’t mean that they do not exist.</p></li>
+</ol>
+<p>We need to decide what to do with the missing data. Even if we decide not to do anything, it also affects our analysis. Take care of the missing data at the early stages of the analysis!</p>
+<p><strong>Hint</strong>: A value of <code>0</code> in the dataset is not a <code>NaN</code> value. A <code>NaN</code> value is a completely missing value.</p>
+<section id="missing-data" class="level3" data-number="41.2.1">
+<h3 data-number="41.2.1" class="anchored" data-anchor-id="missing-data"><span class="header-section-number">41.2.1</span> <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html#missing-data" title="Permalink to this headline">Missing data</a></h3>
+<p>pandas primarily uses the value&nbsp;<code>np.nan</code>&nbsp;to represent missing data. It is by default not included in computations. See the&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html#missing-data">Missing Data section</a>.</p>
+<p>Missing values should&nbsp;<strong>not</strong>&nbsp;be included in the Categorical’s&nbsp;<code>categories</code>, only in the&nbsp;<code>values</code>. Instead, it is understood that NaN is different, and is always a possibility. When working with the Categorical’s&nbsp;<code>codes</code>, missing values will always have a code of&nbsp;<code>-1</code>. Methods for working with missing data, e.g.&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.isna.html#pandas.Series.isna" title="pandas.Series.isna"><code>isna()</code></a>,&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.fillna.html#pandas.Series.fillna" title="pandas.Series.fillna"><code>fillna()</code></a>,&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.dropna.html#pandas.Series.dropna" title="pandas.Series.dropna"><code>dropna()</code></a>.</p>
 </section>
-<section id="publishing-privacy-citation" class="level2" data-number="24.3">
-<h2 data-number="24.3" class="anchored" data-anchor-id="publishing-privacy-citation"><span class="header-section-number">24.3</span> Publishing, Privacy, &amp; Citation</h2>
-<p>Just because something is legal or gets approved by an IRB does not mean it is ethical. Collecting, sharing, and publishing internet data created by or about individuals can lead to unwanted public scrutiny, harm, and other negative consequences for those individuals. For these reasons, some researchers attempt to anonymize internet data before sharing it or before publishing an article that cites a post specifically. Yet anonymizing internet data also does not give credit to internet users as creators and authors.</p>
-<p>There is no single, simple answer to the many difficult questions raised by internet data collection. It is important to develop an ethical framework that responds to the specifics of your particular research project or use case (e.g., the platform, the people involved, the context, the potential consequences, etc.).</p>
-<p>In my own research, I have started seeking explicit permission from internet users when I want to quote them in a published article. In this book, I only share internet data that meets a certain threshold of publicness, such as tweets from verified Twitter accounts or Reddit posts with a certain number of upvotes. This is an approach that I have developed based on some of the models and readings included below.</p>
 </section>
-<section id="models-examples-of-social-media-data-in-published-research" class="level2" data-number="24.4">
-<h2 data-number="24.4" class="anchored" data-anchor-id="models-examples-of-social-media-data-in-published-research"><span class="header-section-number">24.4</span> Models &amp; Examples of Social Media Data in Published Research</h2>
-<p>Below are a few examples of how researchers have approached social media data in published research:</p>
-<section id="paraphrasing-posts" class="level3" data-number="24.4.1">
-<h3 data-number="24.4.1" class="anchored" data-anchor-id="paraphrasing-posts"><span class="header-section-number">24.4.1</span> Paraphrasing Posts</h3>
+<section id="accuracy" class="level2" data-number="41.3">
+<h2 data-number="41.3" class="anchored" data-anchor-id="accuracy"><span class="header-section-number">41.3</span> Accuracy</h2>
+<p>Accuracy is how well the data captures the reality. When we try to measure the accuracy, we should think of reliable and unreliable variables.</p>
 <ul>
-<li>In Maria Antoniak, David Mimno, and Karen Levy’s <a href="https://maria-antoniak.github.io/resources/2019_cscw_birth_stories.pdf">article about a Reddit subcommunity dedicated to birthstories (r/BabyBumps)</a>, they paraphrased Reddit submissions discussed in the article and then deleted all collected Reddit data after the article was published.</li>
+<li><p>One way to achieve accuracy is standardization.</p></li>
+<li><p>Looking at the outliers and the distribution in order to get an idea about what the data looks like.</p></li>
+<li><p>Checking errors in the data (e.g.&nbsp;inconsistency on how two variables were measured)</p></li>
+</ul>
+<p>Keep in mind: - every solution has to be tailored to the dataset that we analyze.</p>
+<ul>
+<li>use real-world knowledge to be sure that the dataset reflects reality.</li>
 </ul>
 </section>
-<section id="linking-to-posts-using-reasonably-public-thresholds" class="level3" data-number="24.4.2">
-<h3 data-number="24.4.2" class="anchored" data-anchor-id="linking-to-posts-using-reasonably-public-thresholds"><span class="header-section-number">24.4.2</span> Linking to Posts &amp; Using “Reasonably Public” Thresholds</h3>
-<ul>
-<li>In Deen Freelon, Charlton McIlwain, and Meredith D. Clark’s <a href="https://cmsimpact.org/wp-content/uploads/2016/03/beyond_the_hashtags_2016.pdf">report about the #BlackLivesMatter movement</a>, they included links to tweets rather than the full text of tweets and only linked to tweets with a minimum of 100 retweets published by Twitter users who had at least 3,000 followers or were verified. They embargoed their Twitter data for a year and then publicly released a list of tweet IDs. Tweet IDs can be used by third-parties to re-download any tweets that have not been deleted yet, as I discuss in the lesson <a href="https://melaniewalsh.github.io/Intro-Cultural-Analytics/Data-Collection/Twitter-Data-Sharing.html">“Twitter Data Sharing”</a>.</li>
-</ul>
+<section id="validity" class="level2" data-number="41.4">
+<h2 data-number="41.4" class="anchored" data-anchor-id="validity"><span class="header-section-number">41.4</span> Validity</h2>
+<p><strong>Validity</strong> of a dataset is when a dataset actually measures what we think it measures. Validity is a special kind of quality measure since it’s not only about the dataset itself but it also connected to the purpose of its dataset.</p>
+<p>Some datasets are good to answer a question but not other questions. We undermine the validity of a dataset only if we use it in order to answer a question that it is not possible to be answered using a dataset.</p>
+<p>For instance, we know that you can measure the age of a tree by counting the rings, but we didn’t do that. Let’s say that we did measure the width of the tree.</p>
+<p>We decide that since number of rings and width are related, we will use width as a proxy for the age. With that decision, we just compromised the&nbsp;<strong>validity</strong>&nbsp;of our dataset. Our data doesn’t measure age, it measures width. And even though there is a relationship between the number of rings and the width, it’s not a direct relationship and therefore cannot be substituted without affecting the validity of our dataset and measures.</p>
+<p>Now let’s say that we want to know how much our trees grow every year. We found a dataset for the same region from 20 years ago. We use the locations to match up the old and new measurements. But this data can tell us how much they grow every 20 years, not every year. If we try to use these two datasets to measure yearly growth, we will compromise the&nbsp;<strong>validity</strong>&nbsp;of the dataset again.</p>
+<p>Using proxies and inappropriate time spans are just two ways to compromise the validity of a dataset. There are infinite ways in which a given dataset is not valid for answering a given question.</p>
+<p>One easy way to spot issues with the validity of the dataset is to ask: <strong>Does this variable measure what I think it does?</strong></p>
 </section>
-<section id="direct-collaboration-conversation-with-users" class="level3" data-number="24.4.3">
-<h3 data-number="24.4.3" class="anchored" data-anchor-id="direct-collaboration-conversation-with-users"><span class="header-section-number">24.4.3</span> Direct Collaboration &amp; Conversation with Users</h3>
+<section id="representative-samples" class="level2" data-number="41.5">
+<h2 data-number="41.5" class="anchored" data-anchor-id="representative-samples"><span class="header-section-number">41.5</span> Representative Samples</h2>
+<p><strong>Population</strong> is all the observations for a certain thing that we want to measure (e.g., if we want to measure the number of abortions in New York, the population should include every person that can be impregnated).</p>
+<p><strong>Sample</strong> is the number of observations that we have data about. A sample should be representative; in other words, it should include observations from every different sub-category of the population (e.g., people from every skin colour, race, ethnicity, etc.). In some cases, if we choose randomly a sample from the population yields more robust result since we avoid the cherry-picking of a sample that answer our questions.</p>
+<section id="sampling-errors" class="level3" data-number="41.5.1">
+<h3 data-number="41.5.1" class="anchored" data-anchor-id="sampling-errors"><span class="header-section-number">41.5.1</span> Sampling errors</h3>
+<p>If we have a sampling error, then we insert bias in our dataset.</p>
 <ul>
-<li>In Moya Bailey’s <a href="http://www.digitalhumanities.org/dhq/vol/9/2/000209/000209.html">article about the #GirlsLikeUs hashtag</a>, created by trans advocate Janet Mock, she asked for Mock’s permission to work on the project before it began and collaborated with Mock to develop research questions and determine the project’s direction.</li>
-</ul>
-</section>
-</section>
-<section id="further-recommended-reading" class="level2" data-number="24.5">
-<h2 data-number="24.5" class="anchored" data-anchor-id="further-recommended-reading"><span class="header-section-number">24.5</span> Further Recommended Reading</h2>
-<ul>
-<li><a href="https://www.docnow.io/docs/docnow-whitepaper-2018.pdf">Doc Now White Paper</a>, Bergis Jules, Ed Summers, Dr.&nbsp;Vernon Mitchell, Jr.</li>
-<li><a href="https://cmci.colorado.edu/~cafi5706/ICWSM2020_datascraping.pdf">No Robots, Spiders, or Scrapers: Legal and Ethical Regulation of Data Collection Methods in Social Media Terms of Service</a>, Casey Fiesler, Nathan Beard, Brian C. Keegan</li>
-<li><a href="http://www.digitalhumanities.org/dhq/vol/9/2/000209/000209.html">#transform(ing)DH Writing and Research: An Autoethnography of Digital Humanities and Feminist Ethics</a>, Moya Bailey</li>
-<li><a href="https://modelviewculture.com/pieces/the-twitterethics-manifesto">The #TwitterEthics Manifesto</a>, Dorothy Kim and Eunsong Kim</li>
+<li><strong>Convenience samples</strong>: when we don’t include measurements and observations in our dataset, due to convenience. For example, if we can’t go to a certain area that is important for our sample, we collect the data only from areas where we have some kind of access. To some extent, this is also connected to the validity of the dataset as we saw <a href="http://localhost:3219/3-Data-Types-and-Quality.html#validity">earlier</a>.</li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -753,13 +764,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/08-Data-Collection.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Collection</span>
+      <a href="../code/22-Reddit-Data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/10-Web-Scraping-Part1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../code/24-Changing-Numerical-Variable-Data-Types.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Tips for recognizing the data types</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
