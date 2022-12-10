@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cultural Analytics Open Science Guide - 46&nbsp; Association between variables</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references.html" rel="next">
+<link href="../code/27-EDA-Summary-Statistics.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Association between variables</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../" class="sidebar-logo-link">
+      <img src="../images/dh_gro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Cultural Analytics Open Science Guide</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="" title="Personal account" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://signon.rug.nl/nidp/app/login?id=100&amp;sid=2&amp;option=credential&amp;sid=2">
+          Login to your student account
+          </a>
+        </li>
+    </ul>
+    <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://www.rug.nl/research/research-let/expertisecentra/centre-for-digital-humanities/" title="Center for Digital Humanities - University of Groningen" class="sidebar-tool px-1"><i class="bi bi-house"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/00-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datasets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/version_control.html" class="sidebar-item-text sidebar-link">Version Control</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/01-The-Command-Line.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Command Line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">General Workflow of a Vercion Control System (VCS)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-merge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Merging Branches in Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-interactive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive, Visual Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/github-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/the-clone-wars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Clone Wars</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Git Summary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Version Control for Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/02-Data-Analysis.html" class="sidebar-item-text sidebar-link">Data Analysis (Pandas)</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03-Pandas-Basics-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04-Pandas-Basics-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04.5-Pandas-Basics-Part2-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Pandas Basics Part 2 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05-Pandas-Basics-Part3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05.5-Pandas-Basics-Part3-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Pandas Basics Part 3 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/06-Pandas-Basics-More-Methods-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Pandas Basics — More Useful Methods — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/07-Pandas-Merge-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Pandas — Merge Datasets</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/08-Data-Collection.html" class="sidebar-item-text sidebar-link">Data Collection</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10-Web-Scraping-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10.5-Web-Scraping-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Web Scraping Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/11-Web-Scraping-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13-What-Is-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Application Programming Interfaces (APIs)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13.5-APIs-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">APIs — Workbook</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Data collection examples</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/14-Song-Genius.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Song Genius Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/15-Genius-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Song Genius API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/16-Collect-Genius-Lyrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Song Lyrics Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/17-Lyrics-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Song Lyrics Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/18-Twitter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Twitter Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/19-Twitter-API-Setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Twitter API Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/20-Twitter-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Twitter Data Collection &amp; Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/21-Twitter-Data-Sharing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Twitter Data Sharing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/22-Reddit-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Exploratory Data Analysis (in-depth)</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/23-Data-Types-and-Quality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Data Types and Quality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/24-Changing-Numerical-Variable-Data-Types.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Tips for recognizing the data types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/25-Changing-Categorical-Variable-Data-Type.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Changing the Categorical Variable Data Type</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/26-Data-Information.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Data Information</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/27-EDA-Summary-Statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/28-Association-Between-Variables.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Association between variables</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">References</span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">46.1</span>  Introduction</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset"><span class="toc-section-number">46.2</span>  Dataset</a></li>
+  <li><a href="#association-of-quantitative-and-categorical-binary-variables" id="toc-association-of-quantitative-and-categorical-binary-variables" class="nav-link" data-scroll-target="#association-of-quantitative-and-categorical-binary-variables"><span class="toc-section-number">46.3</span>  Association of quantitative and categorical binary variables</a>
+  <ul>
+  <li><a href="#boxplots-side-by-side" id="toc-boxplots-side-by-side" class="nav-link" data-scroll-target="#boxplots-side-by-side"><span class="toc-section-number">46.3.1</span>  Boxplots (side by side)</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-of-the-side-by-side-boxplots" id="toc-interpretation-of-the-side-by-side-boxplots" class="nav-link" data-scroll-target="#interpretation-of-the-side-by-side-boxplots"><span class="toc-section-number">46.3.1.1</span>  Interpretation of the side-by-side boxplots</a></li>
+  </ul></li>
+  <li><a href="#overallaping-histograms" id="toc-overallaping-histograms" class="nav-link" data-scroll-target="#overallaping-histograms"><span class="toc-section-number">46.3.2</span>  Overallaping histograms</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-of-the-overlapping-histograms" id="toc-interpretation-of-the-overlapping-histograms" class="nav-link" data-scroll-target="#interpretation-of-the-overlapping-histograms"><span class="toc-section-number">46.3.2.1</span>  Interpretation of the overlapping histograms</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#association-between-quantitative-variable-and-non-binary-variables" id="toc-association-between-quantitative-variable-and-non-binary-variables" class="nav-link" data-scroll-target="#association-between-quantitative-variable-and-non-binary-variables"><span class="toc-section-number">46.4</span>  Association between quantitative variable and non-binary variables</a></li>
+  <li><a href="#association-between-quantitative-variables" id="toc-association-between-quantitative-variables" class="nav-link" data-scroll-target="#association-between-quantitative-variables"><span class="toc-section-number">46.5</span>  Association between quantitative variables</a>
+  <ul>
+  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots"><span class="toc-section-number">46.5.1</span>  Scatter plots</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-of-the-scatter-plot" id="toc-interpretation-of-the-scatter-plot" class="nav-link" data-scroll-target="#interpretation-of-the-scatter-plot"><span class="toc-section-number">46.5.1.1</span>  Interpretation of the scatter plot</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#summary-statistics-to-measure-associations" id="toc-summary-statistics-to-measure-associations" class="nav-link" data-scroll-target="#summary-statistics-to-measure-associations"><span class="toc-section-number">46.6</span>  Summary statistics to measure associations</a>
+  <ul>
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="toc-section-number">46.6.1</span>  Covariance</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="toc-section-number">46.6.2</span>  Correlation</a></li>
+  </ul></li>
+  <li><a href="#association-of-categorical-variables" id="toc-association-of-categorical-variables" class="nav-link" data-scroll-target="#association-of-categorical-variables"><span class="toc-section-number">46.7</span>  Association of categorical variables</a>
+  <ul>
+  <li><a href="#marginal-proportions" id="toc-marginal-proportions" class="nav-link" data-scroll-target="#marginal-proportions"><span class="toc-section-number">46.7.1</span>  Marginal proportions</a></li>
+  <li><a href="#expected-proportions" id="toc-expected-proportions" class="nav-link" data-scroll-target="#expected-proportions"><span class="toc-section-number">46.7.2</span>  Expected Proportions</a>
+  <ul class="collapse">
+  <li><a href="#the-chi-square-statistic" id="toc-the-chi-square-statistic" class="nav-link" data-scroll-target="#the-chi-square-statistic"><span class="toc-section-number">46.7.2.1</span>  The Chi-Square Statistic</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Association between variables</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2" data-number="46.1">
+<h2 data-number="46.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">46.1</span> Introduction</h2>
+<p>Sometimes there can be associations between variables. By applying some summary statistics we can explore more this association. We need to remember that when it comes to association between any kind of variables, the information about the value of one variable <strong>gives us information</strong> about the value of the other variable.</p>
+<p>Having set <em>association</em> into this context, we can now focus more on how to work to discover if there is any association between the variables that we have.</p>
+</section>
+<section id="dataset" class="level2" data-number="46.2">
+<h2 data-number="46.2" class="anchored" data-anchor-id="dataset"><span class="header-section-number">46.2</span> Dataset</h2>
+<p>To further explain the examples below, we are going to use a dataset; the <a href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database">Prima Indians Diabetes Database</a>.</p>
+<p>Before we delve into the association of quantitative and categorical variables, we need to clarify some things concerning the dataset we use. All patients in this dataset are females at least 21 years old of the <a href="https://en.wikipedia.org/wiki/Pima_people">Pima Indian heritage</a>.</p>
+<p>This dataset consists of 9 columns:</p>
+<ul>
+<li><code>Pregnancies</code>: the number of times pregnant</li>
+<li><code>Glucose</code>: plasma glucose concentration after 2 hours in an oral glucose tolerance test</li>
+<li><code>BloodPressure</code>: diastolic blood pressure (mm Hg)</li>
+<li><code>SkinThickness</code>: Triceps skin fold thickness (mm)</li>
+<li><code>Insulin</code>: 2-hour serum insulin (mu U/ml)</li>
+<li><code>BMI</code>: Body Mass Index (weight (kg)/ height(m)^2)</li>
+<li><code>DiabetesPedigreeFunction</code>: diabetes pedigree function</li>
+<li><code>Age</code>: age in years</li>
+<li><code>Outcome</code>: Class variable of 0 or 1; 268-768 are 1 and the others are 0.</li>
+</ul>
+</section>
+<section id="association-of-quantitative-and-categorical-binary-variables" class="level2" data-number="46.3">
+<h2 data-number="46.3" class="anchored" data-anchor-id="association-of-quantitative-and-categorical-binary-variables"><span class="header-section-number">46.3</span> Association of quantitative and categorical binary variables</h2>
+<p>An association between a categorical and a quantitative variable is for example a question like the following one:</p>
+<ul>
+<li>is salary associated to gender (for terms of simplicity and to fit to the example, it is assumed only the binary (i.e., male and female) aspect of it)?
+<ul>
+<li>in this case <code>salary</code> will be the quantitative variable and <code>gender</code> will be the categorical variable.</li>
+</ul></li>
+</ul>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T17:20:12.536236Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T17:20:10.690903Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> iqr</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> tmean</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> trim_mean</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T17:20:12.564700Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T17:20:12.542418Z&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>diabetes_data <span class="op">=</span> pd.read_csv(<span class="st">'../data/diabetes.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>diabetes_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Pregnancies</th>
+      <th>Glucose</th>
+      <th>BloodPressure</th>
+      <th>SkinThickness</th>
+      <th>Insulin</th>
+      <th>BMI</th>
+      <th>DiabetesPedigreeFunction</th>
+      <th>Age</th>
+      <th>Outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>148</td>
+      <td>72</td>
+      <td>35</td>
+      <td>0</td>
+      <td>33.6</td>
+      <td>0.627</td>
+      <td>50</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>85</td>
+      <td>66</td>
+      <td>29</td>
+      <td>0</td>
+      <td>26.6</td>
+      <td>0.351</td>
+      <td>31</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8</td>
+      <td>183</td>
+      <td>64</td>
+      <td>0</td>
+      <td>0</td>
+      <td>23.3</td>
+      <td>0.672</td>
+      <td>32</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>89</td>
+      <td>66</td>
+      <td>23</td>
+      <td>94</td>
+      <td>28.1</td>
+      <td>0.167</td>
+      <td>21</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>137</td>
+      <td>40</td>
+      <td>35</td>
+      <td>168</td>
+      <td>43.1</td>
+      <td>2.288</td>
+      <td>33</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>When there is association between quantitative variables we can start by looking at the mean and the median to see if there is any kind of association between two variables.</p>
+<p>The size of this difference can tell a lot about the association. For example, variables that are associated with each other tend to have a large difference between mean and median.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:46:32.534263Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:46:32.529381Z&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>diabetes_data.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>Pregnancies                   int64
+Glucose                       int64
+BloodPressure                 int64
+SkinThickness                 int64
+Insulin                       int64
+BMI                         float64
+DiabetesPedigreeFunction    float64
+Age                           int64
+Outcome                      object
+dtype: object</code></pre>
+</div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:46:32.542999Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:46:32.535892Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># since Outcome is an object, but we know that it is an integer</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (0 or 1), we change the data type accordingly</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>outcome_zero <span class="op">=</span> diabetes_data[<span class="st">'BloodPressure'</span>][diabetes_data[<span class="st">'Outcome'</span>] <span class="op">==</span> <span class="st">'0'</span>].dropna(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>).astype(<span class="st">'int32'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>outcome_one <span class="op">=</span> diabetes_data[<span class="st">'BloodPressure'</span>][diabetes_data[<span class="st">'Outcome'</span>] <span class="op">==</span> <span class="st">'1'</span>].dropna(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>).astype(<span class="st">'int32'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the mean difference</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>mean_diff <span class="op">=</span> outcome_zero.mean() <span class="op">-</span> outcome_one.mean()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">abs</span>(mean_diff))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the median difference</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>median_diff <span class="op">=</span> outcome_zero.median() <span class="op">-</span> outcome_one.median()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">abs</span>(median_diff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.691023626805247
+4.0</code></pre>
+</div>
+</div>
+<p>But how could we define ‘large’ when it comes to the difference between the median and/or the mean of two variables. To be sure about that, we need to have a look at the spreadness of the data.</p>
+<section id="boxplots-side-by-side" class="level3" data-number="46.3.1">
+<h3 data-number="46.3.1" class="anchored" data-anchor-id="boxplots-side-by-side"><span class="header-section-number">46.3.1</span> Boxplots (side by side)</h3>
+<p>A boxplot can show the spread and, to some extent the central location of the data, and whether there are some outliers or not.</p>
+<p>In addition to that, side-by-side boxplots, since they are good in visualizing the mean and median differences, they can also help us estimate the variation of the data and determine whether the mean or median differences are “large” or not.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:46:32.725171Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:46:32.544808Z&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>diabetes_data, x<span class="op">=</span><span class="st">'Outcome'</span>, y<span class="op">=</span><span class="st">'BloodPressure'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="28-Association-Between-Variables_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="interpretation-of-the-side-by-side-boxplots" class="level4" data-number="46.3.1.1">
+<h4 data-number="46.3.1.1" class="anchored" data-anchor-id="interpretation-of-the-side-by-side-boxplots"><span class="header-section-number">46.3.1.1</span> Interpretation of the side-by-side boxplots</h4>
+<p>Looking at the boxplots, we can see that there is some overlap between the values of the two boxes (by looking at the coloured boxes), which explains the difference that we see between the mean (i..e, <code>4.444089694089698</code>) and the median (i.e., <code>4.5</code>).</p>
+<p>The smaller the overlap between the values of the two boxes the bigger the difference of the mean and the median and vice versa.</p>
+</section>
+</section>
+<section id="overallaping-histograms" class="level3" data-number="46.3.2">
+<h3 data-number="46.3.2" class="anchored" data-anchor-id="overallaping-histograms"><span class="header-section-number">46.3.2</span> Overallaping histograms</h3>
+<p>Another way to observe the size of the difference between a categorical and a quantitative variable is to use overlapping histograms.</p>
+<p>To do that we need to create two different histograms, one for each category and then add some additional parameters to make them see-through.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:46:32.865241Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:46:32.727057Z&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># overlapping histograms</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.hist(outcome_zero, color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'0'</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.hist(outcome_one, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'1'</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="28-Association-Between-Variables_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>To explain some of the parameters used in this visualization:</p>
+<ul>
+<li><code>density</code>: instead of counting it gives the density of the values</li>
+<li><code>alpha=0.5</code>: makes the plot transparent enough so the overlapping values are still visible.</li>
+</ul>
+<section id="interpretation-of-the-overlapping-histograms" class="level4" data-number="46.3.2.1">
+<h4 data-number="46.3.2.1" class="anchored" data-anchor-id="interpretation-of-the-overlapping-histograms"><span class="header-section-number">46.3.2.1</span> Interpretation of the overlapping histograms</h4>
+<p>By looking at the overlapping histograms, we can see that there is a moderate association between the two variables which follows the mean and median difference that was computed beforehand. While overlapping histograms and side by side boxplots can convey similar information, histograms give us more detail and can be useful in spotting patterns that were not visible in a box plot (eg., a bimodal distribution).</p>
+<p>While the box plots and means/medians appear similar, the overlapping histograms illuminate the differences between these two distributions of scores.</p>
+</section>
+</section>
+</section>
+<section id="association-between-quantitative-variable-and-non-binary-variables" class="level2" data-number="46.4">
+<h2 data-number="46.4" class="anchored" data-anchor-id="association-between-quantitative-variable-and-non-binary-variables"><span class="header-section-number">46.4</span> Association between quantitative variable and non-binary variables</h2>
+<p>A possible question in this case : - is grades associated to areas? - in this case <code>grades</code> is the quantitative variable and <code>areas</code> is the categorical non-binary variable.</p>
+<p>Areas can be more than two, so the best option in this case is to plot a boxplot and the observe the differences between the side-by-side boxplots.</p>
+<p>Boxplot is the best choice in this situation. A side-by-side boxplot for each of the values in a non-binary categorical variable will allow us to compare every possible aspect of it with our quantitative variable.</p>
+<p>We will examine the association between <code>Pregnancies</code> (it is not a categorical variable but for this visualization it will be considered as one) and <code>BloodPressure</code>. In other words, our question at this point is the following one:</p>
+<blockquote class="blockquote">
+<p>Is the number of pregnancies associated with the changes in the blood pressure?</p>
+</blockquote>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:46:33.121742Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:46:32.866866Z&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>diabetes_data, x<span class="op">=</span><span class="st">'Pregnancies'</span>, y<span class="op">=</span><span class="st">'BloodPressure'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="28-Association-Between-Variables_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>If there are ANY pairwise differences, we can say that the variables are associated; however, it is more useful to specifically report which groups are different.</p>
+<p>Can you spot any pattern?</p>
+</section>
+<section id="association-between-quantitative-variables" class="level2" data-number="46.5">
+<h2 data-number="46.5" class="anchored" data-anchor-id="association-between-quantitative-variables"><span class="header-section-number">46.5</span> Association between quantitative variables</h2>
+<section id="scatter-plots" class="level3" data-number="46.5.1">
+<h3 data-number="46.5.1" class="anchored" data-anchor-id="scatter-plots"><span class="header-section-number">46.5.1</span> Scatter plots</h3>
+<p>The best way to observe any association between quantitative variables is to plot them using a scatter plot.</p>
+<p>By doing that, it is easier to observe any trends or patterns that may exist between two quantitative variables (a possibe trend or patter would be to observe whether a raise in the values of one variable causes a raise in the values of the other variable or vice versa or nothing at all).</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:46:33.230585Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:46:33.126055Z&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(data<span class="op">=</span>diabetes_data, x<span class="op">=</span><span class="st">'Insulin'</span>, y<span class="op">=</span><span class="st">'SkinThickness'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Skin Thickness (mm)'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Insulin (mu U/ml)'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="28-Association-Between-Variables_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="interpretation-of-the-scatter-plot" class="level4" data-number="46.5.1.1">
+<h4 data-number="46.5.1.1" class="anchored" data-anchor-id="interpretation-of-the-scatter-plot"><span class="header-section-number">46.5.1.1</span> Interpretation of the scatter plot</h4>
+<p>In the scatter plot above, we can see a pattern emerging, which means that as long as the skin thickness increases then the insulin levels increasing as well. However, the pattern is not very strong but it is positive. This means that there might a moderate association between the skin thickness and the levels of insulin.</p>
+<p><span style="color:red">!CAUTION!</span>: <strong>Correlation is not causation</strong>, which means that we can draw any conclusion just by looking at a scatter plot or a correlation coefficient; we can only say that the two variables are associated.</p>
+<p>If you want to see what is happening if you draw any conclusions from a scatter plot or a correlation coefficient, have a look <a href="https://www.tylervigen.com/spurious-correlations">here</a>.</p>
+</section>
+</section>
+</section>
+<section id="summary-statistics-to-measure-associations" class="level2" data-number="46.6">
+<h2 data-number="46.6" class="anchored" data-anchor-id="summary-statistics-to-measure-associations"><span class="header-section-number">46.6</span> Summary statistics to measure associations</h2>
+<section id="covariance" class="level3" data-number="46.6.1">
+<h3 data-number="46.6.1" class="anchored" data-anchor-id="covariance"><span class="header-section-number">46.6.1</span> Covariance</h3>
+<p>To measure an association between quantitative variables, we can make use of summary statistics.</p>
+<p><strong><em>Covariance</em></strong> is a summary statistic that measures the strength of the linear relationship between two quantitative variables.</p>
+<p>Covariance can range from positive to negative. A positive covariance means that a rise in variable A is connected with a rise in variable B. A negative covariance means that a drop in variable A is connected with a drop in variable B. In both cases, the variables are associated to each other but the kind of association is different.</p>
+<img src="https://static-assets.codecademy.com/Courses/Hypothesis-Testing/covariance_fig2.svg" class="img-fluid">
+<figcaption align="center">
+<b>Fig. 1</b> These plots show the different kinds of covariance that we might have. Of course there is covariance that lies in between these plots. These are some extreme cases to illustrate it more clearly (image taken from <a href="https://static-assets.codecademy.com/Courses/Hypothesis-Testing/covariance_fig2.svg">Codecademy</a>)
+</figcaption>
+<p>To calculate covariance with Python, we can use the <code>cov(variable1, variable2)</code> function from NumPy. The output is a covariance matrix for two or more variables.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>variable 1</th>
+<th>variable 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>variable 1</td>
+<td>variance (variable 1)</td>
+<td>covariance</td>
+</tr>
+<tr class="even">
+<td>variable 2</td>
+<td>covariance</td>
+<td>variance (variable 2)</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:47:09.487089Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:47:09.477423Z&quot;}" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the covariance</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>diabetes_data_clean <span class="op">=</span> diabetes_data.dropna()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>cov_mat_pregn_bloodpress <span class="op">=</span> np.cov(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    diabetes_data_clean.SkinThickness, diabetes_data_clean.Insulin)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cov_mat_pregn_bloodpress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[  254.47324533   802.97994079]
+ [  802.97994079 13281.18007796]]</code></pre>
+</div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:47:09.691056Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:47:09.686649Z&quot;}" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save covariance in a variable</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># it is like accessing a multi-dimensional array</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>cov_pregn_bloodpress <span class="op">=</span> cov_mat_pregn_bloodpress[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cov_pregn_bloodpress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>802.9799407866152</code></pre>
+</div>
+</div>
+</section>
+<section id="correlation" class="level3" data-number="46.6.2">
+<h3 data-number="46.6.2" class="anchored" data-anchor-id="correlation"><span class="header-section-number">46.6.2</span> Correlation</h3>
+<p>Covariance as a number does not make a lot of sense, thus we need to use a scaled form of it which is called called <em>correlation</em>.</p>
+<p><em>Pearson correlation</em> (ofter refered to simply as “correlation”) is the scaled form of covariance. It is a value between -1 and +1, which makes the relationship more interpretable.</p>
+Following this line of thought, it is assumed that a correlation close to 1 means that the variables are highly associated with each other and that the correlation is positive (e.g.&nbsp;a higher values in variable a are connected with higher values in variable b). In contract, a correlation value close to -1 means that there is also a strong association between the variables but in a negative way. <img src="https://static-assets.codecademy.com/Courses/Hypothesis-Testing/correlation_fig_1-3.svg" class="img-fluid">
+<figcaption align="center">
+<b>Fig. 2</b> This figure shows how different kind of correlation will be represented in a scatter plot; the stronger the correlation (positive or negative) the clearer the pattern in the data points and more distinct the linearity of the data points (image taken from <a href="https://static-assets.codecademy.com/Courses/Hypothesis-Testing/correlation_fig_1-3.svg">Codecademy</a>).
+</figcaption>
+<p>To calculate Pearson’s correlation in Python, we use the <code>pearsonr()</code> function from <code>scipy.stats</code>. Generally, a correlation larger than about .3 indicates a linear association. A correlation greater than about .6 suggests a strong linear association.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-12-10T16:47:10.771656Z&quot;,&quot;start_time&quot;:&quot;2022-12-10T16:47:10.765353Z&quot;}" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pearson's correlation</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>corr_pregn_bloodpress, p <span class="op">=</span> pearsonr(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    diabetes_data_clean.SkinThickness, diabetes_data_clean.Insulin)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(corr_pregn_bloodpress, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.44</code></pre>
+</div>
+</div>
+<p>The correlation value is very close to 0.5, which means that there is a moderate association between the thickness of the skin and the levels of insulin.</p>
+<p>If we would like to describe the type of correlation that exists between the number of thickness of the skin and the levels of insulin for this dataset, we could say that we have a&nbsp;<strong>moderate positive correlation</strong>.</p>
+</section>
+</section>
+<section id="association-of-categorical-variables" class="level2" data-number="46.7">
+<h2 data-number="46.7" class="anchored" data-anchor-id="association-of-categorical-variables"><span class="header-section-number">46.7</span> Association of categorical variables</h2>
+<p>The best way to observe if there is any kind of association between categorical variables is to use a <strong>contingency table</strong>, also known as <em>two-way table</em> or <em>cross-tabulation</em>. The pandas function <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.crosstab.html"><code>crosstab()</code></a> allows us to create a contingency table with the frequencies of the values of the variables under examination.</p>
+<pre class="{pseudo}"><code>crosstab_var1_var2 = pd.crosstab(variable1, variable2)</code></pre>
+<pre class="{pseudo}"><code>Output:
+| variable1 | no   | yes  |
+| --------- | ---- | ---- |
+| variable2 |      |      |
+| no        | 1233 | 3456 |
+| yes       | 4562 | 3253 |</code></pre>
+<p>In order to get the proportions of the values instead of the frequencies we can divide all the frequencies in the contingency table by the total number of observations (i.e., the sum of the frequencies).</p>
+<pre class="{pseudo}"><code>crosstab_var1_var2_prop = crosstab_var1_var2/len(dataframe)</code></pre>
+<p>After doing that, we will have proportions to compare which will make the results more interpretable.</p>
+<section id="marginal-proportions" class="level3" data-number="46.7.1">
+<h3 data-number="46.7.1" class="anchored" data-anchor-id="marginal-proportions"><span class="header-section-number">46.7.1</span> Marginal proportions</h3>
+<p>If the variables in the tables were not associated with each other, someone would expect to see .25 (i.e., 25%) in each row of the table.</p>
+<p>However, this is not the case and in contingency tables we should also take into account the <strong>marginal proportions</strong>. A <em>marginal proportion</em> is the proportion of a value in each category of a single question. With that said, we can assume that we have the following table of proportions:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>motivation</th>
+<th>no</th>
+<th>yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>leadership</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>no</td>
+<td>0.271695</td>
+<td>0.116518</td>
+</tr>
+<tr class="odd">
+<td>yes</td>
+<td>0.212670</td>
+<td>0.399117</td>
+</tr>
+</tbody>
+</table>
+<p>In this contingency table we study the association between motivation and leadership. The bottom row of the tables, which corresponds to people being motivated and have a talent to lead other people, has in total 61,2% of the values. Since that is more than half, we expect most of the values to fall within this range of answers, regardless of whether the questions are associated.</p>
+<p>To calculate the marginal proportions we can use <code>sum()</code> with rows and columns respectively (i.e, <code>axis=0</code> for columns and <code>axis=1</code> for rows).</p>
+<pre class="{pseudo}"><code># crosstab_var1_var2_prop = crosstab_var1_var2/len(dataframe)
+
+var1_marginals = crosstab_var1_var2_prop.sum(axis=0)
+
+var2_marginals crosstab_var1_var2_prop.sum(axis=1)</code></pre>
+<p>The results will look something like this for the table with the proportions that was used as an example:</p>
+<pre class="{pseudo}"><code>motivation
+no     0.48...
+yes    0.51...
+dtype: float64</code></pre>
+<pre class="{pseudo}"><code>leadership
+no     0.38...
+yes    0.61...
+dtype: float64</code></pre>
+</section>
+<section id="expected-proportions" class="level3" data-number="46.7.2">
+<h3 data-number="46.7.2" class="anchored" data-anchor-id="expected-proportions"><span class="header-section-number">46.7.2</span> Expected Proportions</h3>
+<p>By just looking at the contingency tables and at the marginal proportions we cannot be really sure if two categorical variables are associated. Therefore, we need to compute the <strong><em>expected proportions</em></strong> as if these two variables are <strong>not associated with each other</strong>. To calculate these expected proportions, we need to multiply the marginal proportions for each combination of categories.</p>
+<p>Given the previous marginal proportions, we should multiply the values as follows:</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>leadership = no</th>
+<th>leadership = yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>motivation = no</td>
+<td>0.48 * 0.38 = <strong>0.18</strong></td>
+<td>0.61 * 0.48 = <strong>0.29</strong></td>
+</tr>
+<tr class="even">
+<td>motivation = yes</td>
+<td>0.51 * 0.38 = <strong>0.19</strong></td>
+<td>0.61 * 0.51 = <strong>0.31</strong></td>
+</tr>
+</tbody>
+</table>
+<p>To convert these values back into frequencies, we can multiply each of the values with the size of the dataset. After we do that, we will be able to see the number of values expected in each category if there is no association between the variables. <code>SciPy</code> offers the function <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html"><code>chi2_contingency()</code></a>.</p>
+<pre class="{pseudo}"><code>from scipy.stats import chi2_contingency
+
+chi2, pval, dof, expected = chi2_contingency(contingency_with_freq)
+print(np.round(expected))</code></pre>
+<ul>
+<li><code>chi2</code>: will save the chi-squared values</li>
+<li><code>pval</code>: the p-value</li>
+<li><code>dof</code>: the degrees of freedom</li>
+<li><code>expected</code>: the expected values</li>
+</ul>
+<p>The bigger the difference between the expected and the observed values, the more this variables are associated.</p>
+<section id="the-chi-square-statistic" class="level4" data-number="46.7.2.1">
+<h4 data-number="46.7.2.1" class="anchored" data-anchor-id="the-chi-square-statistic"><span class="header-section-number">46.7.2.1</span> The Chi-Square Statistic</h4>
+<p>To summarise the difference between the expected and the observed values in a contingency table, instead of just visually examining the difference, we use the <strong>chi-square statistic</strong>. This statistic is the <strong>squared difference between each observed value and its’ corresponding expected value</strong>; then sum these numbers: <span class="math display">\[ChiSquare = sum((observed - expected)^2)\]</span> This statistics will tell <strong><em>how</em></strong> different the two tables are.</p>
+<p>The interpretation of a ChiSquare statistic is dependent on the size of the contigency table. For example, for a 2x2 table a difference larger than around 4 would suggest a weak association between the variables. Instead of printing the expected values, we print the <code>chi2</code>:</p>
+<pre class="{pseudo}"><code>chi2, pval, dof, expected = chi2_contigency(contigency_with_freq)
+print(np.round(chi2))</code></pre>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../code/27-EDA-Summary-Statistics.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Cultural Analytics Open Science Guide</div>   
+    <div class="nav-footer-right">powered by <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
