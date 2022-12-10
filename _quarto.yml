@@ -114,6 +114,14 @@ book:
             - code/20-Twitter-Data.ipynb
             - code/21-Twitter-Data-Sharing.ipynb
             - code/22-Reddit-Data.ipynb
+        - part: "Exploratory Data Analysis (in-depth)"
+          chapters:
+            - code/23-Data-Types-and-Quality.ipynb
+            - code/24-Changing-Numerical-Variable-Data-Types.ipynb
+            - code/25-Changing-Categorical-Variable-Data-Type.ipynb
+            - code/26-Data-Information.ipynb
+            - code/27-EDA-Summary-Statistics.ipynb
+            - code/28-Association-Between-Variables.ipynb
         - part: references.qmd
 bibliography: references.bib
 

@@ -1,7 +1,7 @@
 ---
 title: Git Summary
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: sentence
 ---
 
@@ -26,3 +26,6 @@ editor:
 | `git remote add origin URL`     | Links a local repository and an online repository at the specified URL       |
 | `git push origin branch_name`   | Pushes local changes to the specified branch of the online repository        |
 | `git pull origin branch_name`   | Pull changes from the online repository into local repository                |
+
+
+A handy Git cheat sheet is offered by Github themselves. Click [here](https://education.github.com/git-cheat-sheet-education.pdf) to redirect there.
