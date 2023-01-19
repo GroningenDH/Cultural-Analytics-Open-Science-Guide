@@ -1,6 +1,6 @@
 ---
 title: Git Summary
-author: "Paschalis Agapitos"
+author: "The Turing Way Community"
 editor:
   markdown:
     wrap: sentence
