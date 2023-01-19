@@ -1,3 +1,7 @@
+---
+author: "Paschalis Agapitos"
+---
+
 <!-- #region -->
 ## What are Git and GitHub?
 

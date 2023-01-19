@@ -1,3 +1,7 @@
+---
+author: "Paschalis Agapitos"
+---
+
 # The Clone Wars
 ## git clone
 Part of Git is also **teamwork**.

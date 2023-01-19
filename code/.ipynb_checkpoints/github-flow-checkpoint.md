@@ -1,4 +1,5 @@
 ---
+author: "Paschalis Agapitos"
 editor: 
   markdown: 
     wrap: sentence
@@ -93,7 +94,7 @@ When creating pull requests, it is imperative that you include as much relevant 
 
 <p align="center">
 
-Open a pull request (image taken from [Codecademy](https://static-assets.codecademy.com/Courses/learn-git-github/github-flow/github-flow-branch.svg))
+<b>Figure 1</b>: Open a pull request (image taken from [Codecademy](https://static-assets.codecademy.com/Courses/learn-git-github/github-flow/github-flow-branch.svg))
 
 </p>
 
@@ -126,7 +127,7 @@ If all goes well, the pull request will eventually be merged into `main`!
 
 <p align="center">
 
-Visualisation of github flow in terms of a pull request (image taken from [Codecademy](https://static-assets.codecademy.com/Courses/learn-git-github/github-flow/github-flow-branch.svg))
+<b>Figure 2</b>: Visualisation of github flow in terms of a pull request (image taken from [Codecademy](https://static-assets.codecademy.com/Courses/learn-git-github/github-flow/github-flow-branch.svg))
 
 </p>
 

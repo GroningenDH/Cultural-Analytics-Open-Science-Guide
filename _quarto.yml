@@ -16,8 +16,8 @@ book:
     title: "Cultural Analytics Open Science Guide"
 
     author:
-        - Federico Pianzola
-        - Paschalis Agapitos
+        - Federico Pianzola (editor)
+        - Paschalis Agapitos (editor)
     #date-meta: today
     # downloads: [pdf]
 
@@ -100,7 +100,6 @@ book:
             - code/10.5-Web-Scraping-Part1-WORKBOOK.ipynb
             - code/11-Web-Scraping-Part2.ipynb
             - code/11.5-Web-Scraping-Part2-WORKBOOK.ipynb
-            - code/12-Git-Github.ipynb
             - code/13-What-Is-API.ipynb
             - code/13.5-APIs-WORKBOOK.ipynb
         - part: "Data collection examples"
@@ -122,7 +121,7 @@ book:
             - code/26-Data-Information.ipynb
             - code/27-EDA-Summary-Statistics.ipynb
             - code/28-Association-Between-Variables.ipynb
-        - part: references.qmd
+
 bibliography: references.bib
 
 format:

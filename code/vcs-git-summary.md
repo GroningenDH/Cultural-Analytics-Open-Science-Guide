@@ -1,5 +1,6 @@
 ---
 title: Git Summary
+author: "Paschalis Agapitos"
 editor:
   markdown:
     wrap: sentence

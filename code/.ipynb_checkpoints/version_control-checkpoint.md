@@ -1,4 +1,5 @@
 ---
+author: "Paschalis Agapitos"
 editor: 
   markdown: 
     wrap: sentence
