@@ -5,7 +5,7 @@ editor:
     wrap: sentence
 ---
 
-# General Workflow of a Vercion Control System (VCS)
+# General Workflow of a Version Control System (VCS)
 
 ## Introduction
 Version control is a systematic approach to record changes made in a file, or set of files, over time.
