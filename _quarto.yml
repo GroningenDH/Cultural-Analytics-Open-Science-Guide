@@ -72,13 +72,13 @@ book:
             - code/01-The-Command-Line.ipynb
             - code/README_file.md
             - code/vcs-workflow.md
-            - code/set-up-git-and-github.md
+            - code/12-Git-GitHub.ipynb
+            - code/github-flow.md
             - code/vcs-git-commit.md
             - code/vcs-git-compare.md
             - code/vcs-git-branches.md
             - code/vcs-git-merge.md
             - code/vcs-git-interactive.md
-            - code/github-flow.md
             - code/vcs-github.md
             - code/the-clone-wars.md
             - code/vcs-git-summary.md
@@ -99,7 +99,7 @@ book:
             - code/10-Web-Scraping-Part1.ipynb
             - code/10.5-Web-Scraping-Part1-WORKBOOK.ipynb
             - code/11-Web-Scraping-Part2.ipynb
-            - code/11.5-Web-Scraping-Part2-WORKBOOK.ipynb
+            - code/11.5-Web-Scraping-Part2-Workbook.ipynb
             - code/13-What-Is-API.ipynb
             - code/13.5-APIs-WORKBOOK.ipynb
         - part: "Data collection examples"

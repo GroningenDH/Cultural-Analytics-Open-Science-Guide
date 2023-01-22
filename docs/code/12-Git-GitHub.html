@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Paschalis Agapitos">
+<meta name="author" content="Melanie Walsh">
 
-<title>Cultural Analytics Open Science Guide - 5&nbsp; What are Git and GitHub?</title>
+<title>Cultural Analytics Open Science Guide - 5&nbsp; Git and GitHub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -30,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/vcs-git-commit.html" rel="next">
+<link href="../code/github-flow.html" rel="next">
 <link href="../code/vcs-workflow.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -73,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git and GitHub</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -152,37 +215,37 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></a>
+  <a href="../code/12-Git-GitHub.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git and GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
+  <a href="../code/github-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Github Flow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-merge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Merging Branches in Git</span></a>
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/vcs-git-interactive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive, Visual Git</span></a>
+  <a href="../code/vcs-git-merge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Merging Branches in Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/github-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Github</span></a>
+  <a href="../code/vcs-git-interactive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Interactive, Visual Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -283,6 +346,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/11-Web-Scraping-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/11.5-Web-Scraping-Part2-Workbook.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2 — Workbook</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -401,17 +469,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link active" data-scroll-target="#create-a-github-account"><span class="toc-section-number">5.1</span>  Create a GitHub Account</a></li>
-  <li><a href="#git-setup-for-mac-and-windows" id="toc-git-setup-for-mac-and-windows" class="nav-link" data-scroll-target="#git-setup-for-mac-and-windows"><span class="toc-section-number">5.2</span>  Git Setup for Mac and Windows</a>
-  <ul>
-  <li><a href="#mac-users" id="toc-mac-users" class="nav-link" data-scroll-target="#mac-users"><span class="toc-section-number">5.2.1</span>  Mac users:</a></li>
-  <li><a href="#windows-users" id="toc-windows-users" class="nav-link" data-scroll-target="#windows-users"><span class="toc-section-number">5.2.2</span>  Windows users:</a></li>
-  </ul></li>
-  <li><a href="#create-your-first-repository" id="toc-create-your-first-repository" class="nav-link" data-scroll-target="#create-your-first-repository"><span class="toc-section-number">5.3</span>  Create your first repository</a></li>
-  <li><a href="#your-first-remote-repository-on-github" id="toc-your-first-remote-repository-on-github" class="nav-link" data-scroll-target="#your-first-remote-repository-on-github"><span class="toc-section-number">5.4</span>  Your First Remote Repository on GitHub</a>
-  <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions"><span class="toc-section-number">5.4.1</span>  Instructions</a></li>
-  </ul></li>
+  <li><a href="#what-is-git" id="toc-what-is-git" class="nav-link active" data-scroll-target="#what-is-git"><span class="toc-section-number">5.1</span>  What is Git?</a></li>
+  <li><a href="#why-is-git-useful" id="toc-why-is-git-useful" class="nav-link" data-scroll-target="#why-is-git-useful"><span class="toc-section-number">5.2</span>  Why is Git Useful?</a></li>
+  <li><a href="#what-is-github" id="toc-what-is-github" class="nav-link" data-scroll-target="#what-is-github"><span class="toc-section-number">5.3</span>  What is GitHub?</a></li>
+  <li><a href="#negative-critiques-of-github" id="toc-negative-critiques-of-github" class="nav-link" data-scroll-target="#negative-critiques-of-github"><span class="toc-section-number">5.4</span>  Negative Critiques of GitHub</a></li>
+  <li><a href="#anatomy-of-a-github-page" id="toc-anatomy-of-a-github-page" class="nav-link" data-scroll-target="#anatomy-of-a-github-page"><span class="toc-section-number">5.5</span>  Anatomy of a GitHub Page</a></li>
+  <li><a href="#install-git" id="toc-install-git" class="nav-link" data-scroll-target="#install-git"><span class="toc-section-number">5.6</span>  Install Git</a></li>
+  <li><a href="#download-a-github-repository" id="toc-download-a-github-repository" class="nav-link" data-scroll-target="#download-a-github-repository"><span class="toc-section-number">5.7</span>  Download a GitHub Repository</a></li>
+  <li><a href="#update-a-github-repository" id="toc-update-a-github-repository" class="nav-link" data-scroll-target="#update-a-github-repository"><span class="toc-section-number">5.8</span>  Update a GitHub Repository</a></li>
   </ul>
 </nav>
     </div>
@@ -420,7 +485,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are Git and GitHub?</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git and GitHub</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -430,7 +495,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Paschalis Agapitos </p>
+             <p>Melanie Walsh </p>
           </div>
   </div>
     
@@ -440,112 +505,106 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<!-- #region -->
-<p>This tutorial refers to Git and GitHub repeatedly.&nbsp;<em>Git</em>&nbsp;is a widely-used version control system used to manage code. <em>Git</em> allows you to save drafts of your code so that you can look back at previous versions and potentially undo complicated errors. A project managed with Git is called a&nbsp;<em>Git repository</em>.</p>
-<p><em>GitHub</em>&nbsp;is a popular hosting service for <em>Git</em> repositories. <em>GitHub</em> allows you to store your local <em>Git</em> repositories in the cloud. With <em>GitHub</em>, you can backup your personal files, share your code, and collaborate with others.</p>
-<p>In short, <em>GitHub</em> is a tool for working with <em>Git</em>. There are other services to host <em>Git</em> repositories, but <em>GitHub</em> is a trusted, free service used by organizations across the world, big and small.</p>
-<section id="create-a-github-account" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="create-a-github-account"><span class="header-section-number">5.1</span> Create a GitHub Account</h2>
-<p>To use <em>GitHub</em>, you will need a <em>GitHub</em> account.</p>
-<p>In your own browser:</p>
-<ol type="1">
-<li>Open a new browser tab</li>
-<li>Navigate to&nbsp;<a href="https://github.com/">https://github.com/</a></li>
-<li>Create an account</li>
-</ol>
-<p>If you already have a <em>GitHub</em> account, continue to the next exercise.</p>
-<p>After you sign up, you will receive a verification e-mail. Be sure to verify your e-mail address to <em>GitHub</em> by following the instructions in that e-mail.</p>
+<section id="what-is-git" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="what-is-git"><span class="header-section-number">5.1</span> What is Git?</h2>
+<p>Git is a version control system, which helps you keep track of the changes that you make in a project. It’s a bit like Google Docs or MS Word’s Track Changes, except it’s typically used for code.</p>
 </section>
-<section id="git-setup-for-mac-and-windows" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="git-setup-for-mac-and-windows"><span class="header-section-number">5.2</span> Git Setup for Mac and Windows</h2>
-<p>Next, we will set up <em>Git</em> on your personal computer. Follow the instructions for your operating system.</p>
-<section id="mac-users" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="mac-users"><span class="header-section-number">5.2.1</span> Mac users:</h3>
-<ol type="1">
-<li><p>Launch the&nbsp;<strong><em>Terminal</em></strong>&nbsp;application. You can find it in&nbsp;<strong><em>Applications/Utilities</em></strong>. You can also use the&nbsp;<strong><em>Spotlight</em></strong>&nbsp;search tool (the little magnifying glass in the top right of your screen) to search for&nbsp;<strong><em>Terminal</em></strong>. Once&nbsp;<strong><em>Spotlight</em></strong>&nbsp;locates it, click on the result that says&nbsp;<strong><em>Terminal</em></strong>.</p></li>
-<li><p>When&nbsp;<strong><em>Terminal</em></strong>&nbsp;opens, type in&nbsp;<code>git</code>&nbsp;and press enter.</p></li>
-<li><p>If you don’t already have Git installed, a dialog will appear saying that “The ‘git’ command requires the command line developer tools. Would you like to install the tools now?” Click “Install”.</p></li>
-</ol>
-<p><img src="../images/annotated_xcode_prompt.png" class="img-fluid" alt="Git and bash setup for Mac; installation of Git (image taken from Codecademy)"> <strong>Fig 1</strong> <em>Git</em> and <em>Bash</em> setup for Mac; installation of Git (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_prompt.png">Codecademy</a>)</p>
-<p>Then click “Agree to the Terms of Service” when requested.</p>
-<p><img src="../images/annotated_xcode_terms.png" class="img-fluid" alt="Git and bash setup for Mac; License Agreement (image taken from Codecademy"> <strong>Fig 2</strong> <em>Git</em> and <em>Bash</em> setup for Mac; License Agreement (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_terms.png">Codecademy</a></p>
-<ol start="4" type="1">
-<li>When the download finishes, the installer will go away on its own signifying that Git is now installed! Click “Done” to finish the installation process.</li>
-</ol>
-<p><img src="../images/annotated_xcode_finished.png" class="img-fluid" alt="Git and bash setup for Mac; successful installation (image taken from Codecademy"> <strong>Fig 3</strong> <em>Git</em> and <em>Bash</em> setup for Mac; successful installation (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_xcode_finished.png">Codecademy</a>)</p>
-<ol start="5" type="1">
-<li><p>Navigate to GitHub’s articles on setting up your&nbsp;<a href="https://help.github.com/articles/set-up-git/">Git username</a>&nbsp;and&nbsp;<a href="https://help.github.com/articles/setting-your-email-in-git/">email</a>&nbsp;and follow the instructions for each using Terminal.</p></li>
-<li><p>GitHub offers two authentication options, HTTPS and SSH, to keep your work secure. This is a security measure that prevents anyone who isn’t authorised from making changes to your GitHub repository. In this article, we will use HTTPS. Navigate to GitHub’s article on&nbsp;<a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">creating a personal access token</a>&nbsp;and follow the instructions to configure your computer to be able to use HTTPS.</p></li>
-</ol>
-<blockquote class="blockquote">
-<p>Note: As of August 13th, 2021, GitHub uses tokens instead of passwords to authenticate Git operations. More details can be found in <a href="https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/">GitHub’s blog post</a>. <!-- #endregion --></p>
-</blockquote>
-<!-- #region -->
+<section id="why-is-git-useful" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="why-is-git-useful"><span class="header-section-number">5.2</span> Why is Git Useful?</h2>
+<p>Even though Git is mostly used for code, it’s useful to think about Git in relationship to writing projects, which you might be more familiar with.</p>
+<p>Let’s say you’re halfway through writing an essay when suddenly you come up with a brilliant idea for a different opening paragraph. Maybe you’re tempted to delete the opening paragraph that you’ve already written and start a new one, but you’re scared that the new paragraph won’t be quite as brilliant as it seems in your head.</p>
+<p>With a version control system like Git, you would be able to save the current version of the essay, create another version of the essay with the seemingly brilliant new opening paragraph, and compare them. If you ended up liking the version with the new opening paragraph better, you could easily merge it into the main version of the essay. Even if you changed your mind the next day, you could still revert back to the version with the original opening paragraph. All the changes and updates would be carefully tracked and easily navigable.</p>
+<p>These are some of the things that make Git so useful, especially when you start working on bigger projects and complicated code.</p>
 </section>
-<section id="windows-users" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="windows-users"><span class="header-section-number">5.2.2</span> Windows users:</h3>
-<p>This portion of the guide assumes you have already installed a program called Git Bash which allows us access to Git on Windows. If you have not installed Git Bash, please refer to the previous tutorial on Command Line Interface (CLI) Setup and follow the instructions for installing Git Bash on Windows. Once you complete that you can continue with this guide.</p>
-<ol type="1">
-<li>Open the Start menu and search for the app, git bash. You should see ‘Git Bash Desktop app’ appear. Press Enter or click on the Git Bash icon to open the app.</li>
-</ol>
-<p><img src="../images/annotated_gitbash_start.png" class="img-fluid" alt="Git and bash setup for Windows; Open Git Bash (image taken from Codecademy)"> <strong>Fig 4</strong> <em>Git</em> and <em>Bash</em> setup for Windows; Open <em>Git Bash</em> (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_start.png">Codecademy</a>)</p>
-<p>A new window will open that looks like this:</p>
-<p><img src="../images/annotated_gitbash_shell_edited.png" class="img-fluid" alt="Git and bash setup for Windows; visualisation of the git bash cell (image taken from Codecademy)"> <strong>Fig 5</strong> Git* and <em>Bash</em> setup for Windows; visualisation of the git bash cell (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_shell_edited.png">Codecademy</a>)</p>
-<p>This window is our CLI, where we will use our Git commands.</p>
-<ol start="2" type="1">
-<li>If you want to make sure that Git is installed, run&nbsp;<code>git --version</code>&nbsp;in the CLI. You should see a response that gives you the version of Git installed. It will look like this:</li>
-</ol>
-<p><img src="../images/annotated_gitbash_test_edited.png" class="img-fluid" alt="Git and bash setup for Windows; check your Git version (image taken from Codecademy)"> <strong>Fig 6</strong> <em>Git</em> and <em>Bash</em> setup for Windows; check your <em>Git</em> version (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_test_edited.png">Codecademy</a>)</p>
-<p>Git can now be used in the Git Bash app!</p>
-<ol start="3" type="1">
-<li><p>Navigate to GitHub’s articles on setting up your&nbsp;<a href="https://help.github.com/articles/set-up-git/">Git username</a>&nbsp;and&nbsp;<a href="https://help.github.com/articles/setting-your-email-in-git/">email</a>&nbsp;and follow the instructions for each using Git Bash.</p></li>
-<li><p>GitHub offers two authentication options, HTTPS and SSH, to keep your work secure. This is a security measure that prevents anyone who isn’t authorized from making changes to your GitHub repository. In this article, we will use HTTPS. Navigate to GitHub’s article on&nbsp;<a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">creating a personal access token</a>&nbsp;and follow the instructions to configure your computer to be able to use HTTPS.</p></li>
-</ol>
-<blockquote class="blockquote">
-<p>Note: As of August 13th, 2021, GitHub uses tokens instead of passwords to authenticate Git operations. More details can be found in <a href="https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/">GitHub’s blog post</a>.</p>
-</blockquote>
+<section id="what-is-github" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="what-is-github"><span class="header-section-number">5.3</span> What is GitHub?</h2>
+<p>GitHub is a website/social network that’s built on top of the Git version control software. It allows you to store and easily publish projects. GitHub has become a primary place for people to publish datasets and share code. Remember The Pudding’s film dialogue data? They published it <a href="https://github.com/matthewfdaniels/scripts/">on GitHub</a>!</p>
 </section>
+<section id="negative-critiques-of-github" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="negative-critiques-of-github"><span class="header-section-number">5.4</span> Negative Critiques of GitHub</h2>
+<p><a href="https://www.theatlantic.com/technology/archive/2020/01/ice-contract-github-sparks-developer-protests/604339/"><img src="../images/GitHub-ICE-protest.png" width="100%"></a></p>
+<p>It’s also important to foreground some recent backlash against GitHub regarding their decision to renew a contract with U.S. Immigrations and Customs Enforcement (ICE). This decision has motivated some employees, developers, and GitHub users to protest and/or boycott the platform.</p>
+<p>You can read more about the controversy in <a href="https://www.theatlantic.com/technology/archive/2020/01/ice-contract-github-sparks-developer-protests/604339/">“The Schism at the Heart of the Open-Source Movement”</a> and <a href="https://github.com/drop-ice/dear-github-2.0/blob/master/README.md">Dear GitHub</a>.</p>
 </section>
-<section id="create-your-first-repository" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="create-your-first-repository"><span class="header-section-number">5.3</span> Create your first repository</h2>
-<p>Now you have everything you need to practice your Git skills on your local computer. Take a moment to run the commands below to initialize a Git repository. We will use this Git repository again later in this tutorial so make sure you complete these steps exactly as described.</p>
-<ol type="1">
-<li><code>mkdir git_practice</code>&nbsp;to make a new directory to practice.</li>
-<li><code>cd git_practice</code>&nbsp;to make the new directory your working directory.</li>
-<li><code>git init</code>&nbsp;to turn the current, empty directory into a fresh Git repository.</li>
-<li><code>echo "Hello Git and GitHub" &gt;&gt; README.txt</code>&nbsp;to create a new README file (more on this later) with some sample text.</li>
-<li><code>git add README.txt</code>&nbsp;to add the new file to the Git staging area.</li>
-</ol>
+<section id="anatomy-of-a-github-page" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="anatomy-of-a-github-page"><span class="header-section-number">5.5</span> Anatomy of a GitHub Page</h2>
+<p><img src="../images/GitHub-Anatomy.png" width="100%"></p>
 </section>
-<section id="your-first-remote-repository-on-github" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="your-first-remote-repository-on-github"><span class="header-section-number">5.4</span> Your First Remote Repository on GitHub</h2>
-<p>Finally, we’ll create a repository on GitHub and then link it to a local repository on your computer. This allows you to backup your work constantly and safely, so you never need to worry about losing your work again!</p>
-<p>Now, let’s connect our local Git repository to GitHub.</p>
-<section id="instructions" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="instructions"><span class="header-section-number">5.4.1</span> Instructions</h3>
-<ol type="1">
-<li><p>In your Command Line Interface, make sure your current working directory is your new Git repository. Navigate there if not.</p></li>
-<li><p>Check the status of which files and folders are new or have been edited. There should be no files modified. (run this command in your terminal <code>git status</code>).</p></li>
-<li><p>On GitHub, create a new repository by clicking the&nbsp;<strong>New repository</strong>&nbsp;button on the home page. <img src="../images/newrepository.png" class="img-fluid" alt="Graphic User Interface of Github; by clicking on the button “New repository” you tell Github to create a remote Github repository (image taken from Codecademy)"> <strong>Fig 7</strong> Graphic User Interface of <em>Github</em>; by clicking on the button “New repository” you tell <em>Github</em> to create a remote <em>Github</em> repository (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/newrepository.png">Codecademy</a>)</p></li>
-<li><p>On the new repository page, give your repository a name. It’s not necessary, but it would be convenient to name it the same as the directory,&nbsp;<strong>git_practice</strong>. After naming the repository, click&nbsp;<strong>Create repository</strong>.</p></li>
-</ol>
-<p><img src="../images/createrepository.png" class="img-fluid" alt="Graphic User Interface of Github; Give your repository a short but descriptive name (hint: make sure to separate different words either with underscores or hyphens, because this will prevent git from throwing an error). After you give some additional information for different aspects of your Github repository, click on the button “Create Repository”(image taken from Codecademy)"> <strong>Fig 8</strong> Graphic User Interface of <em>Github</em>; Give your repository a short but descriptive name (hint: make sure to separate different words either with underscores or hyphens, because this will prevent git from throwing an error). After you give some additional information for different aspects of your <em>Github</em> repository, click on the button “Create Repository”(image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/createrepository.png">Codecademy</a>)</p>
-<ol start="5" type="1">
-<li>After creating a repository, <em>GitHub</em> displays the repository page. At the top of the page, make sure “HTTPS” is selected.</li>
-</ol>
-<p><img src="../images/githubhttps.png" class="img-fluid" alt="Populating a remote repository using “HTTPS” (image taken from Codecademy)"> <strong>Fig 9</strong> Populating a remote repository using “HTTPS” (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/githubhttps.png">Codecademy</a>)</p>
-<p>6.The repository is empty, so it’s time to connect it to your existing work. Copy the Git commands on the GitHub page, under the title “…or push an existing repository from the command line”, and paste them into your Command Line Interface. Running these commands will add a remote repository, and then push your local repository to the remote repository.</p>
-<p>When asked for a username and password, type in your GitHub username and password and press&nbsp;<code>enter</code>&nbsp;after each. Don’t be alarmed if you can’t see the characters you are typing, they are intentionally hidden as a security measure.</p>
-<p><img src="../images/githubcommands.png" class="img-fluid" alt="Graphic User Interface of Github; these are the commands with which you can populate your remote Github repository. Always remember that you should run every command on a separate line” (image taken from Codecademy)"> <strong>Fig 10</strong> Graphic User Interface (GUI) of <em>Github</em>; these are the commands with which you can populate your remote <em>Github</em> repository. Always remember that you should run every command on a separate line” (image taken from <a href="https://content.codecademy.com/courses/freelance-1/unit-3/git%20setup/githubcommands.png">Codecademy</a>)</p>
-<p><strong>Note:</strong>&nbsp;If you set up two-factor authentication with GitHub (don’t worry if you didn’t), follow&nbsp;<a href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/">GitHub’s instructions on creating a personal access (OAuth) token</a>&nbsp;to be used instead of your password in bash. By default, <em>GitHub</em> does not set up two-factor authentication. If you are not familiar with two-factor authentication, you don’t have to generate an OAuth token.</p>
-<ol start="7" type="1">
-<li>Once your Command Line Interface reports that the push is complete, refresh the page on GitHub. You should now see the text you wrote earlier in the README file, “Hello Git and GitHub.”</li>
-</ol>
-<p>GitHub automatically displays the contents of a file named&nbsp;<strong>README.txt</strong>&nbsp;if it exists in the repository. The README file is the perfect place to write a description of your project. <!-- #endregion --></p>
-<p>If there is anything wrong, please open <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide/issues">an issue on GitHub</a> or email f.pianzola@rug.nl</p>
+<section id="install-git" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="install-git"><span class="header-section-number">5.6</span> Install Git</h2>
+<p>To use Git, you first need to install Git. Instructions for <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">installing Git can be found here</a>.</p>
+<p>To install Git on a Windows computer, you need to install something called Git for Windows (which comes with something called Git Bash). The Digital Humanities Research Institute offers <a href="https://github.com/DHRI-Curriculum/install/blob/master/sections/git.md#windows">helpful step-by-step instructions</a> here.</p>
+<div class="cell" data-tags="[&quot;command_line&quot;]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git <span class="op">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>git version 2.21.1 (Apple Git-122.3)</code></pre>
+</div>
+</div>
+</section>
+<section id="download-a-github-repository" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="download-a-github-repository"><span class="header-section-number">5.7</span> Download a GitHub Repository</h2>
+<p>To download an entire GitHub repository, first click the green “Clone or download button” and then copy the URL.</p>
+<p><img src="../images/clone-button.png" width="100%"></p>
+<p>Then, from the command line (or from Git Bash), type <code>git clone</code> and paste the URL for the desired GitHub repo.</p>
+<div class="cell" data-tags="[&quot;command_line&quot;]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>melaniewalsh<span class="op">/</span>Intro<span class="op">-</span>Cultural<span class="op">-</span>Analytics<span class="op">-</span>Notebooks.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cloning into 'Intro-Cultural-Analytics-Notebooks'...
+remote: Enumerating objects: 48, done.
+remote: Counting objects: 100% (48/48), done.
+remote: Compressing objects: 100% (39/39), done.
+remote: Total 48 (delta 7), reused 44 (delta 6), pack-reused 0
+Unpacking objects: 100% (48/48), done.</code></pre>
+</div>
+</div>
+<p>This <code>git clone</code> command should download a folder called “Intro-Cultural-Analytics-Notebooks,” which contains all the files and folders in the repository.</p>
+<p>If you navigate into that folder and list its contents, you can see that it matches the GitHub website.</p>
+<div class="cell" data-tags="[&quot;command_line&quot;]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cd Intro<span class="op">-</span>Cultural<span class="op">-</span>Analytics<span class="op">-</span>Notebooks<span class="op">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/Users/melaniewalsh/Intro-Cultural-Analytics/Website-Content/Collecting-Cultural-Data/Intro-Cultural-Analytics-Notebooks</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[&quot;command_line&quot;]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting-Cultural-Data/ Python/                   data/
+Cultural-Data-Analysis/   README.md                 something_new.txt</code></pre>
+</div>
+</div>
+</section>
+<section id="update-a-github-repository" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="update-a-github-repository"><span class="header-section-number">5.8</span> Update a GitHub Repository</h2>
+<p>Ok here’s where Git will be very convenient. If I update the “Introduction to Cultural Analytics” repository with new files, you can update your copy of the repository and get those new files with a single command <code>git pull</code>, which “pulls” down the updates from GitHub.</p>
+<p>For example, I just added a new file called “something_newer.txt”, and if you run the <code>git pull</code> command…</p>
+<div class="cell" data-tags="[&quot;command_line&quot;]" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/melaniewalsh/Intro-Cultural-Analytics-Notebooks
+   2fd60e3..c786385  master     -&gt; origin/master
+Updating 2fd60e3..c786385
+Fast-forward
+ something_newer.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 something_newer.txt</code></pre>
+</div>
+</div>
+<p>then it will update the repository and download that file into the right place. To double check, you can run <code>ls</code> and see that “something_newer.txt” is now there.</p>
+<div class="cell" data-tags="[&quot;command_line&quot;]" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting-Cultural-Data/ README.md                 something_newer.txt
+Cultural-Data-Analysis/   data/
+Python/                   something_new.txt</code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -818,8 +877,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/vcs-git-commit.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../code/github-flow.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Github Flow</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
