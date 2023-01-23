@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <title>About</title>
+</head>
+<style>
+
+
+html{
+        background-color: black;
+        height: 100vh;
+        padding: 0;
+    }
+
+@font-face {
+    font-family: "Caligraf";
+    src: url(./fonts/Caligraf-Light_PERSONAL_USE_ONLY.ttf);
+}
+
+
+@font-face {
+    font-family: "Balinest";
+    src: url(./fonts/balinest.regular.otf);
+}
+
+@font-face {
+  font-family: "Portia";
+  src: url(./fonts/Portia-Aged.otf);
+}
+
+@font-face {
+  font-family: "Lucien";
+  src: url(./fonts/Lucian\ Schoenschrift\ CAT.ttf);
+}
+
+
+body{
+    background-color: rgb(0, 0, 0);
+    margin-top: 100px;
+    left: 100px;
+    margin-right: 70px;
+    margin-left: 70px;
+}
+
+html::after {
+    content: "";
+    background: url(./images/film-noir-android-iphone-desktop-hd-backgrounds-wallpapers-1080p-4khd-wallpapers-desktop-background-android-iphone-1080p-4k-5imgo-1080x740.jpg);
+    opacity:0.6;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;  
+    background-repeat: no-repeat;
+    background-size: cover; 
+    min-height: 100%;
+    
+}
+
+h1 {
+    text-align: center;
+    letter-spacing: .4rem;
+    font-family: "Portia";
+    font-weight: bold;
+    font-size: 150px;
+    background-image: linear-gradient(#505050, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+#p1{
+    font-size: 70px;
+    text-align: center;
+    bottom: 150px;
+    color: rgb(255, 255, 255);
+    text-shadow: 5px 5px 10px rgb(0, 0, 0);
+    font-family: "Lucien";
+    
+}
+
+*{
+    box-sizing: border-box;
+    font-family: 'Caligraf', sans-serif;
+    font-family: 'Caligraf', sans-serif;
+  }
+  .wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /*background: linear-gradient(-135deg, #000000, #e3eefe);*/
+    /* background: linear-gradient(375deg, #7e7e7e, #000000); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+    /* clip-path: circle(25px at calc(0% + 45px) 45px); */
+    background: #000;
+    clip-path: circle(25px at calc(100% - 45px) 45px);
+    transition: all 0.3s ease-in-out;
+  }
+  #active:checked ~ .wrapper{
+    clip-path: circle(75%);
+  }
+  .menu-btn{
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+    /* left: 20px; */
+    top: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    /*background: linear-gradient(-135deg, #000000, #e3eefe);*/
+    /* background: linear-gradient(375deg, #7e7e7e, #000000); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+    background: rgb(0, 0, 0);
+    transition: all 0.3s ease-in-out;
+  }
+  #active:checked ~ .menu-btn{
+    color: #fff;
+  }
+  #active:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+  .wrapper ul{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+  .wrapper ul li{
+    margin: 15px 0;
+  }
+  .wrapper ul li a{
+    color: none;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    color: #fff;
+    border-radius: 50px;
+    background: #000;
+    position: relative;
+    line-height: 50px;
+    transition: all 0.3s ease;
+  }
+  .wrapper ul li a:after{
+    position: absolute;
+    content: "";
+    background: #fff;
+     background: linear-gradient(#000000, #ffffff, #000000);
+    /*background: linear-gradient(375deg, #000000, #ffffff);*/
+    width: 104%;
+    height: 110%;
+    left: -2%;
+    top: -5%; 
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    animation: rotate 1.5s linear infinite;
+    transition: transform 0.3s ease;
+  }
+  .wrapper ul li a:hover:after{
+    transform: scaleY(1);
+  }
+  .wrapper ul li a:hover{
+    color: #fff;
+  }
+  input[type="checkbox"]{
+    display: none;
+  }
+  .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    text-align: center;
+    width: 100%;
+    color: #202020;
+  }
+  .content .title{
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .content p{
+    font-size: 35px;
+    font-weight: 600;
+  }
+  
+  @keyframes rotate {
+    0%{
+      filter: hue-rotate(0deg);
+    }
+    100%{
+      filter: hue-rotate(360deg);
+    }
+  }
+
+
+h2 {
+color: rgb(255, 255, 255);
+padding: 20px;
+margin: 20px;
+text-shadow:px 5px 10px #000;
+
+}
+
+#piece {
+    font-family: "Balinest";
+    font-size: 23px;
+    position: absolute;
+    top: 150px;
+    right: 600px;
+    bottom: 500px;
+    width: 800px;
+    height: fit-content;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    border-radius:50px; 
+    border:5px solid transparent; 
+    padding: 1rem;
+    color: white;
+    border-width: 3px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        rgb(255, 255, 255), 
+        rgba(65, 65, 65, 0.815)
+      ) 1 100%;
+
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) padding-box, 
+       linear-gradient(#fff 0 0);
+  }
+
+img {
+  margin-left: auto;
+  display: block;
+  bottom: 50px;
+  height: 100%;
+  padding-right: 50px;
+  position: relative;
+}
+
+#table {
+  width: 100%;
+}
+
+#logo {
+  top: 200px;
+  right: 400px;
+  height: 40%;
+  width: 40%;
+}
+
+#logo2 {
+  top: 50px;
+  right: 100px;
+  height: 30%;
+  width: 30%;
+}
+
+#noir-paragraph {
+  width: 500px;
+  border: 15px rgb(0, 0, 0);
+  margin: 10px;
+  background-color: #000;
+  
+}
+
+#nparagraph {
+  font-family: "Balinest";
+  font-size: 23px;
+  position: absolute;
+  top: 750px;
+  right: 25px;
+  left: 50px;
+  width: 1400px;
+  height: fit-content;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  border-radius:50px; 
+  border:5px solid transparent; 
+  padding: 1rem;
+  color: rgb(255, 255, 255);
+  border-width: 3px;
+  border-style: solid;
+  border-image: 
+      linear-gradient(
+        to bottom, 
+        rgb(255, 255, 255), 
+        rgba(65, 65, 65, 0.815)
+      ) 1 100%;
+
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) padding-box, 
+       linear-gradient(#fff 0 0);
+  }
+
+.peculiar {
+  font-size: 100px;
+  text-align: center;
+  letter-spacing: .4rem;
+  font-family: "Portia";
+  font-weight: bold;
+  background-image: linear-gradient(#505050, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+</style>
+<body>
+  <table id="table">
+    <h2> Film Noir </h2>
+    <td>
+      <div id="piece">   
+      Film noir is a cinematic term used primarily to describe stylish Hollywood crime dramas, particularly those that emphasize cynical attitudes and motivations. The 1940s and 1950s are generally regarded as the "classic period" of American film noir. Film noir of this era is associated with a low-key, black-and-white visual style that has roots in German Expressionist cinematography. Many of the prototypical stories and much of the attitude of classic noir derive from the hardboiled school of crime fiction that emerged in the United States during the Great Depression.
+      The term film noir, French for 'black film' (literal) or 'dark film' (closer meaning), was first applied to Hollywood films by French critic Nino Frank in 1946, but was unrecognized by most American film industry professionals of that era. Frank is believed to have been inspired by the French literary publishing imprint Série noire, founded in 1945.
+      <br><br>
+      <br><br>
+      <br><br>
+      <br><br>
+      
+      <h1 class = "peculiar">Project description</h1>
+        <h2>Data description</h2>
+        ‘Film noir’ is a term you’ve probably heard hundreds of times, and has long been regarded as one of cinema’s most intriguing styles that defined post-war American cinematography. The genre developed iconic cinematic motifs and tropes that inspire filmmakers today. For this reason, our group decided to focus our research project on the topic of Film- Noir movies, and thereby we searched online for a suitable dataset.  We will use the dataset “Film Noir: They Shot Dark Pictures, Didn’t They?” (https://www.kaggle.com/datasets/kabhishm/film-noir-they-shot-dark-pictures-didnt-they). This dataset has been recently updated and it contains over 1000 film-noir movies along with the following information:
+        <ul>
+          <li>'Title' : The title of the movie</li>
+          <li>'Genre' : The genre of the movie</li>
+          <li>'Year' : Year of release</li>
+          <li>'Runtime' : Total runtime of the movie</li>
+          <li>'Rating' : Rating of the movie</li>
+          <li>'desc' : Movie description</li>
+          <li>'Votes' : Number of people who voted for the movie</li>
+          <li>'Director' : Name of the director</li>
+          <li>'Stars' : Leading star of the movie</li>
+        </ul>
+        
+        The dataset is taken from IMDb, which is an online database related to films, and series, among other media types. As the data we are working with is not produced by us, we had to evaluate the data. For the variable ‘desc’, we questioned who was writing the descriptions on IMDB. After looking it up, we can conclude that these are produced by anonymous contributors, which means that the movie descriptions in our dataset could have been written by anyone. We consider this a problem. For the variable ‘’Votes’, we questioned the time in which these votes were produced. The variable ‘Votes’ is based on contemporary votes as it gives IMDb users the chance to vote on various films. Therefore, we can only say how well film noir movies are received in this day and age. 
+        
+        Datasheet for datasets (from http://dx.doi.org/10.1145/3458723) posed several interesting questions. Here is a list which we think is relevant to us: 
+
+        <ul>
+          <li>Does the dataset identify any subpopulations (e.g., by age, gender)? </li>
+            <ul><li>No</li></ul>
+          <li>Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, tweets, other datasets)? </li>
+              <ul><li>The dataset relies on the movie database IMDB. Rating and votes may change over time.</li></ul>
+          <li>What data does each instance consist of? </li>
+            <ul><li>Raw (unprocessed) text.</li></ul>
+          <li>Is any information missing from individual instances? </li>
+            <ul><li>Null values are present in place of stars and directors.</li></ul>
+          <li>What do the instances that comprise the dataset represent (e.g., documents, photos, people, countries)? </li>
+            <ul><li>The instances are movies extracted from an online movie database along with movie descriptions, genre of the movie, number of people who voted for the movie, total runtime of the movie, name of the director and leading star of the movie.</li></ul>
+        </ul>
+
+        <h2>Goals of the research</h2>
+        In this research project, we have several goals in mind. At first glance, the information provided by the dataset would allow us to discover what sort of genres were popular throughout the Film Noir age, by correlating the rating of the movie with the actual votes from viewers. 
+        Also, an important aspect would be the dominating presence of several directors and how they monopolized the genre, and if the viewers actually enjoy the movies produced by those specific directors. What is more, we will look into what movie stars had the most success during their Film Noir career. 
+        <br><br>
+        A short description of the plot is provided for each movie in the dataset, and we would be interested to determine what the most frequent words are used to describe the movies, if there was a particular inclination for a certain type of character or plot. In addition to that, the dataset also provides movies from the Neo-Noir period, so an interesting analysis could consist of looking at different statistical changes from the initial release of this kind of movies and the revival of the genre later on in time. 
+        To actually perform the desired analysis, we want to make use of a few specific methodological approaches, pointedly exploratory data analysis and data visualization, using features provided by the Pandas library, Matplotlib library, and Numpy library.  
+
+        <hr>
+        We will navigate through the analysis using some of the tutorials provided by the <a href="https://groningendh.github.io/Cultural-Analytics-Open-Science-Guide/code/05-Pandas-Basics-Part3.html"> Cultural Analytics Open Science Guide </a>. We want to guide the user through how they will create their own Pandas DataFrame and use that in order to do some explanatory analysis and data visualization. 
+        For the active learning exercises, we transformed our goals into questions, in order for it to be as engaging as possible, and provide a Jupyter Notebook with the solutions there as a learning experience. Of course, the users are free to come up with their own questions based on the dataset, which are clearly marked as free-style questions. 
+
+        <h2>Description of output</h2>
+        Thinking of the structure of our project, our output has been transformed into a GitHub repository, where all the data and additional Jupyter Notebooks will be stored, so that all the changes and improvements could be visible. 
+        Additionally, a Data Management Plan (DMP), in which it has been explicitly stated what data we are using, how we handled and stored it, and how the data is supposed to be managed once the project is completed. 
+        As you probably noticed by now, we put together a website, because we think it is important for users to visualize and interact with the data and the outputs of the research project. 
+
+
+
+      <h3>Contributor roles</h3>
+        <h5> Person - what they contributed</h5>
+            <b>Catalina Cruceanu </b> - Conceptualization, Formal analysis, Investigation, Methodology, Software, Visualization, Writing (DMP - original draft), Writing (review & editing), Exercise 5
+            <br>
+            <b>Ece Demirtaş </b>- Conceptualization, Formal analysis, Investigation, Methodology, Software, Visualization, Writing (original draft - review & editing), Exercise 3, Webdesign.
+            <br>
+            <b>Ziyi Wang </b>- Conceptualization, Formal analysis,Investigation, Methodology, Software, Visualization, Writing (original draft), Exercise 2
+            <br>
+            <b>Shannon Wietsma </b>- Conceptualization, Formal analysis, Investigation, Methodology, Project administration, Software, Supervision, Visualization, Writing (original draft - review & editing), Exercise 1 & 4
+            <br>
+     
+    </div>
+    <img id="logo" src="https://typographicdex.com/wp-content/uploads/2020/06/film-noir-logo-571x241.png">
+    <img id="logo2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FmUE-nkxNgENvWAnSSmeHW2o5FYF0upl62HHLnnQlaQSUGSUWJGnRaj6cjYD_2zlkqM&usqp=CAU">
+    
+    <br>
+  </td>
+<td>
+    <img src="https://www.historytoday.com/sites/default/files/styles/large/public/articles/kane.jpg?itok=UnUbT6Gz">
+  </tr>
+</table>
+<div id = "noir-paragraph">
+  <p id = "nparagraph">
+    <h3>Contributor roles</h3>
+        <h4> Person - what they contributed</h4>
+            <p> <b>Catalina Cruceanu  - </b></p>
+            <p> <b>Ece Demirtaş - </b></p>
+            <p> <b>Ziyi Wang - </b></p>
+            <p> <b>Shannon Wietsma - </b></p>
+  </p>    
+</div>
+    <input type="checkbox" id="active">
+<label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+<div class="wrapper">
+  <ul>
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./About.html">About</a></li>
+    <li><a href="./Gallery.html">Gallery</a></li>
+</ul>
+
+</div>
+<div class="content">
+  <div class="title">
+</div>
+    
+</body>
+</html>
