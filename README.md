@@ -1,21 +1,13 @@
-# Cultural Analytics: An Open Science Guide
+# SGG
 
-This is a textbook to learn how to analyze cultural phenomena using computational methods. 
+Steam Game Genre
 
-It follows the principles of Open Science to teach you how to conduct research that is ethical, methodologically solid, and accessible. Topics covered include:
-- theory development
-- data management
-- data collection
-- data analysis
-- data visualization.
 
-We believe that none of these aspects should be disregarded in a cultural analytics project that aims at being truly Open.
+Data of this project comes from Steam official website - https://store.steampowered.com/charts.
 
-The programming language used is Python (code in R will be published later).
-There are discursive sections and interactive Jupyter Notebooks to let you learn-by-doing.
+The data scraped from this project can also be used to analysis questions like user preferences based on regions, platform preferences of Top 100 games and so on.
 
----
 
-Inspiration for this guide come from the following sources:
-- [The Turing Way](https://the-turing-way.netlify.app/welcome.html) handbook to reproducible, ethical and collaborative data science, initiated by The Alan Turing Institute
-- [Introduction to Cultural Analytics & Python](https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html) by Melanie Walsh
+Contributors to this project:
+
+BAI, Haozhe, S5171326 JIANG, Yingyue, S5202256 LIU, Ruohan, S5085462 WAN, Spring, S5343224 ZHAO, Yuanjie, S3581063
