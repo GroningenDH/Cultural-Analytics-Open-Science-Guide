@@ -16,6 +16,6 @@ There are discursive sections and interactive Jupyter Notebooks to let you learn
 
 ---
 
-Inspiration for this guide come from the following sources:
+Some of the pages of this guide have been originally created by others:
 - [The Turing Way](https://the-turing-way.netlify.app/welcome.html) handbook to reproducible, ethical and collaborative data science, initiated by The Alan Turing Institute
 - [Introduction to Cultural Analytics & Python](https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html) by Melanie Walsh
