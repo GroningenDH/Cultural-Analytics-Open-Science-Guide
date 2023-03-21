@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cultural Analytics Open Science Guide - 41&nbsp; 100 Historical Spanish Newspaper Editions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../code/23-Data-Types-and-Quality.html" rel="next">
+<link href="../code/22-Reddit-Data.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">100 Historical Spanish Newspaper Editions</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../" class="sidebar-logo-link">
+      <img src="../images/dh_gro_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Cultural Analytics Open Science Guide</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="" title="Personal account" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://signon.rug.nl/nidp/app/login?id=100&amp;sid=2&amp;option=credential&amp;sid=2">
+          Login to your student account
+          </a>
+        </li>
+    </ul>
+    <a href="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://www.rug.nl/research/research-let/expertisecentra/centre-for-digital-humanities/" title="Center for Digital Humanities - University of Groningen" class="sidebar-tool px-1"><i class="bi bi-house"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/00-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datasets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/version_control.html" class="sidebar-item-text sidebar-link">Version Control</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/01-The-Command-Line.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Command Line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/README_file.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">README file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">General Workflow of a Version Control System (VCS)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/12-Git-GitHub.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git and GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/set-up-git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Create a GitHub Account</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/github-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Github Flow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-commit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>git commit</code> Command</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-compare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Retrieving and Comparing Versions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-branches.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Branches and Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-merge.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Merging Branches in Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-interactive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Interactive, Visual Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Git Commands to Work on GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/the-clone-wars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Clone Wars</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-git-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Git Summary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/vcs-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Version Control for Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/02-Data-Analysis.html" class="sidebar-item-text sidebar-link">Data Analysis (Pandas)</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03-Pandas-Basics-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/03.5-Pandas-Basics-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Pandas Basics Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04-Pandas-Basics-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/04.5-Pandas-Basics-Part2-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Pandas Basics Part 2 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05-Pandas-Basics-Part3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Pandas Basics — Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/05.5-Pandas-Basics-Part3-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Pandas Basics Part 3 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/06-Pandas-Basics-More-Methods-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Pandas Basics — More Useful Methods — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/07-Pandas-Merge-Datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Pandas — Merge Datasets</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../code/08-Data-Collection.html" class="sidebar-item-text sidebar-link">Data Collection</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/09-User-Ethics-Legal-Concerns.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Users’ Data: Legal &amp; Ethical Considerations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10-Web-Scraping-Part1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Web Scraping — Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/10.5-Web-Scraping-Part1-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Web Scraping Part 1 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/11-Web-Scraping-Part2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/11.5-Web-Scraping-Part2-Workbook.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Web Scraping — Part 2 — Workbook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13-What-Is-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Application Programming Interfaces (APIs)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/13.5-APIs-WORKBOOK.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">APIs — Workbook</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Data collection examples</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/14-Song-Genius.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Song Genius Data Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/15-Genius-API.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Song Genius API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/16-Collect-Genius-Lyrics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Song Lyrics Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/17-Lyrics-Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Song Lyrics Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/18-Twitter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Twitter Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/19-Twitter-API-Setup.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Twitter API Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/20-Twitter-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Twitter Data Collection &amp; Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/21-Twitter-Data-Sharing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Twitter Data Sharing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/22-Reddit-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/Collecting-Data-Group-6.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">100 Historical Spanish Newspaper Editions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Exploratory Data Analysis (in-depth)</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/23-Data-Types-and-Quality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Data Types and Quality of the Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/24-Changing-Numerical-Variable-Data-Types.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Tips for recognizing the data types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/25-Changing-Categorical-Variable-Data-Type.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Categorical Variable Data Type</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/26-Data-Information.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Data Information</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/27-EDA-Summary-Statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/28-Association-Between-Variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Association between variables</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-and-background" id="toc-introduction-and-background" class="nav-link active" data-scroll-target="#introduction-and-background"><span class="toc-section-number">42</span>  Introduction and Background</a></li>
+  <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="toc-section-number">43</span>  Tutorial</a>
+  <ul>
+  <li><a href="#collecting-the-data" id="toc-collecting-the-data" class="nav-link" data-scroll-target="#collecting-the-data"><span class="toc-section-number">43.1</span>  Collecting the data</a></li>
+  <li><a href="#managing-the-data---cleaning-the-texts-and-selection-of-the-appropriate-corpus" id="toc-managing-the-data---cleaning-the-texts-and-selection-of-the-appropriate-corpus" class="nav-link" data-scroll-target="#managing-the-data---cleaning-the-texts-and-selection-of-the-appropriate-corpus"><span class="toc-section-number">43.2</span>  Managing the data - cleaning the texts and selection of the appropriate corpus</a></li>
+  <li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data"><span class="toc-section-number">43.3</span>  Exploring the data</a></li>
+  <li><a href="#analysing-the-data" id="toc-analysing-the-data" class="nav-link" data-scroll-target="#analysing-the-data"><span class="toc-section-number">43.4</span>  Analysing the data</a></li>
+  </ul></li>
+  <li><a href="#active-learning-exercises" id="toc-active-learning-exercises" class="nav-link" data-scroll-target="#active-learning-exercises"><span class="toc-section-number">44</span>  Active Learning Exercises</a>
+  <ul>
+  <li><a href="#update-the-dataframes" id="toc-update-the-dataframes" class="nav-link" data-scroll-target="#update-the-dataframes"><span class="toc-section-number">44.1</span>  Update the DataFrames</a></li>
+  <li><a href="#explore-the-dataframes" id="toc-explore-the-dataframes" class="nav-link" data-scroll-target="#explore-the-dataframes"><span class="toc-section-number">44.2</span>  Explore the DataFrames</a></li>
+  <li><a href="#come-up-with-interesting-research-questions" id="toc-come-up-with-interesting-research-questions" class="nav-link" data-scroll-target="#come-up-with-interesting-research-questions"><span class="toc-section-number">44.3</span>  Come up with interesting research questions</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="toc-section-number">45</span>  References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">100 Historical Spanish Newspaper Editions</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cruceanu, C., Henning, M., Ianovitskii, M., Raulli, L., Uribe Silva, M.P. </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-and-background" class="level1" data-number="42">
+<h1 data-number="42"><span class="header-section-number">42</span> Introduction and Background</h1>
+<p>Newspapers are the tangible record of the history lived by a society, and their importance lies in the way they observe, describe and record the facts. How do they record reality? How have editorial lines and political trends marked these records? Can we observe these changes of records and trends through a distant observation analysis? Our project wants to provide a dataset of historical Spanish newspaper editions. This dataset should be suitable for tackling our underlying question: <strong>What influences newspaper style?</strong> (the question will be properly adressed in the final Tool and Methods project.)</p>
+<p>The project focuses on Spain because we wanted to work with a non-English dataset. There is a strong focus within the Digital Humanities on English data - understandably, since it is an international field of study. Still, we wanted to provide a different dataset here. The project also focuses on the years 1890 to 1940. This is a subjective selection, but those years were definitely eventful in Spain: The country moved from a monarchy to a monarchy with a dictatorship to a republic, had a civil war, a revolution and then became a dictatorship. We were interested in seeing whether these tumultous events would be visible in newspaper style.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Collecting-Data-Group-6_files/figure-html/firstdraftofhistory.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">firstdraftofhistory.png</figcaption><p></p>
+</figure>
+</div>
+<p><em>From left to right: <a href="https://hemerotecadigital.bne.es/hd/es/viewer?id=ad772850-c5e0-4a9c-953a-ae739996e8d7">“El Somaten”, September 1923</a>, Primo de Rivera’s coup d’etat; <a href="https://hemerotecadigital.bne.es/hd/es/viewer?id=880ff9d9-b57b-4437-8bed-9b698ed6f537">“La Libertad”, 14 April 1931</a>, beginning of the Second Spanish Republic; <a href="https://hemerotecadigital.bne.es/hd/es/viewer?id=e7af9705-7452-40b6-8ccb-5b091ac18d3f">“Ahora”, 19 July 1936</a>, Franco’s uprising and the start of the Spanish Civil War.</em></p>
+<p>Political change through time is obviously not the only thing that could influence a newspaper edition’s style. A language itself changes with <strong>time</strong>, a newspaper’s staff as well. All of this would mean that time would be feature we wanted to track for our newspaper editions. Another feature would be their <strong>ideology</strong>: maybe Socialists wrote differently than Conservatives, Anarchists differently from Republicans? Languages are also not monolithic, most have many dialects spoken across a country. Taking this into account, we also wanted to track newspapers’ <strong>headquarters</strong> and target <strong>regions</strong>. Another potential feature could be the age of the target <strong>audience</strong>, as there were many papers aimed specifically at young readers. There are also different kinds of newspapers: some are more concerned with breaking the news, others with providing a regular perspective on things. We therefore also track publication <strong>format</strong>. And finally, maybe it was not so much the time that articles were written in, but the time when a newspaper was founded that influenced its style? For this, we also tracked our newspapers’ years of <strong>foundation</strong>.</p>
+<p>The features we wanted to track therefore were: - Ideology - Headquarters - Audience - Region - Format - Foundation</p>
+<p>We then collected <strong>100 editions</strong> of various newspapers spread out as much as possible along these features. Our data and our metadata come from the Digital Newspaper Library of the National Library of Spain (<strong><a href="https://hemerotecadigital.bne.es/hd/es/advanced">Hemeroteca Digital</a></strong>), where a diversity of newspapers and magazines with different editorial and political lines published from the year 1840 to the year 2022 can be found. The data is also provided under the Creative Commons Attribution 4.0 International licence, meaning we do not need to worry about potential copyright issues.</p>
+<p>For further information on this project, please feel free to have a look at its <strong><a href="https://github.com/pilyu/Collecting-Data-">repository</a></strong>, and it its <strong><a href="https://spanishnewspaper.my.canva.site/">website</a></strong>, were we presented some further analysis.</p>
+</section>
+<section id="tutorial" class="level1" data-number="43">
+<h1 data-number="43"><span class="header-section-number">43</span> Tutorial</h1>
+<section id="collecting-the-data" class="level2" data-number="43.1">
+<h2 data-number="43.1" class="anchored" data-anchor-id="collecting-the-data"><span class="header-section-number">43.1</span> Collecting the data</h2>
+<p>Everything started by manually selecting and downloading 100 editions according to their features. This selection also took into account the usability of the available data.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-03-16T21:14:19.405763Z&quot;,&quot;start_time&quot;:&quot;2023-03-16T21:14:16.151875Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> spacy</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os.path</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> glob <span class="im">import</span> glob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-03-16T21:14:19.416073Z&quot;,&quot;start_time&quot;:&quot;2023-03-16T21:14:19.413327Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> glob(<span class="st">'../data/texts/*.txt'</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The dataset contains "</span> <span class="op">+</span> <span class="bu">str</span>(counter) <span class="op">+</span> <span class="st">" text files."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The dataset contains 100 text files.</code></pre>
+</div>
+</div>
+<p>The metadata on all text files was stored in a CSV file.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-03-16T21:14:51.624215Z&quot;,&quot;start_time&quot;:&quot;2023-03-16T21:14:51.585198Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>editions <span class="op">=</span> pd.read_csv(<span class="st">'../data/editions.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>editions.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>newspaper</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>link</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>ahora</td>
+      <td>1931</td>
+      <td>4</td>
+      <td>9</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ahora</td>
+      <td>1932</td>
+      <td>4</td>
+      <td>15</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ahora</td>
+      <td>1932</td>
+      <td>9</td>
+      <td>16</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ahora</td>
+      <td>1935</td>
+      <td>1</td>
+      <td>9</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ahora</td>
+      <td>1935</td>
+      <td>11</td>
+      <td>15</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Metadata not specific to the individual editions - so ideology, newspaper HQ etc. - was stored in a separate CSV file.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-03-16T21:14:57.402629Z&quot;,&quot;start_time&quot;:&quot;2023-03-16T21:14:57.378898Z&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>newspapers <span class="op">=</span> pd.read_csv(<span class="st">'../data/newspapers.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>newspapers.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ideology</th>
+      <th>hq</th>
+      <th>audience</th>
+      <th>region</th>
+      <th>format</th>
+      <th>hq latitude</th>
+      <th>hq longitude</th>
+      <th>foundedin</th>
+    </tr>
+    <tr>
+      <th>newspaper</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ahora</th>
+      <td>socialist</td>
+      <td>madrid</td>
+      <td>adult</td>
+      <td>national</td>
+      <td>daily</td>
+      <td>40.416.775</td>
+      <td>-3.703.790</td>
+      <td>1930</td>
+    </tr>
+    <tr>
+      <th>andalucia</th>
+      <td>regionalist</td>
+      <td>sevilla</td>
+      <td>adult</td>
+      <td>andalucia</td>
+      <td>monthly</td>
+      <td>37.392.529</td>
+      <td>-5.994.072</td>
+      <td>1916</td>
+    </tr>
+    <tr>
+      <th>ceda</th>
+      <td>carlist</td>
+      <td>madrid</td>
+      <td>adult</td>
+      <td>national</td>
+      <td>biweekly</td>
+      <td>40400</td>
+      <td>-3.703.790</td>
+      <td>1933</td>
+    </tr>
+    <tr>
+      <th>el amigo</th>
+      <td>NaN</td>
+      <td>madrid</td>
+      <td>youth</td>
+      <td>national</td>
+      <td>daily</td>
+      <td>40.416.775</td>
+      <td>-3500</td>
+      <td>1915</td>
+    </tr>
+    <tr>
+      <th>el cantábrico</th>
+      <td>socialist</td>
+      <td>santander</td>
+      <td>adult</td>
+      <td>cantabria</td>
+      <td>weekly</td>
+      <td>43.462.774</td>
+      <td>-3.805.000</td>
+      <td>1895</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="managing-the-data---cleaning-the-texts-and-selection-of-the-appropriate-corpus" class="level2" data-number="43.2">
+<h2 data-number="43.2" class="anchored" data-anchor-id="managing-the-data---cleaning-the-texts-and-selection-of-the-appropriate-corpus"><span class="header-section-number">43.2</span> Managing the data - cleaning the texts and selection of the appropriate corpus</h2>
+<p>After selecting and downloading the raw texts from the Hemeroteca Digital of the National Library of Spain, the next step was to clean the downloaded texts. Text cleaning is a fundamental step for the development of the dataset and subsequent analysis, therefore, we invested a lot of hours to build a consistent and clean dataset as much as we could to answer our research question. We strongly recommend investing time to clean the raw data to be used for any project in a mindful way.</p>
+<p>In general, the scanned texts were in acceptable reading condition when we collect them. There are two problems though: 1. There were extra spaces in some words, and 2. Certain characters were not recognized by the OCR.</p>
+<p>Fixing words with extra spaces manually was not an option because of the amount of data, so we decided to create a function that tries to recompose those words, remove the spaces, and put all the tokens in lowercase. To address the OCR issue instead, we decided to work with a Spanish corpus to remove unrecognized text. An important part of the work was therefore to select which corpus we would work with. After evaluating some available corpora in Spanish, we selected two to test in depth:</p>
+<ol type="1">
+<li><strong>NLTK “cess_esp”</strong> corpus was created in 2007 and contains 188,650 words of Spanish which have been syntactically annotated within the framework of the CESS-ECE project (Syntactically &amp; Semantically Annotated Corpora, Spanish, Catalan, Basque). The CESS-ESP was annotated using constituents and functions (with AGTK, University of Pennsylvania). Source: <strong><a href="http://universal.elra.info/product_info.php?cPath=42_43&amp;products_id=1509">Universal Catalogue</a></strong> <br> <br></li>
+<li><strong>SpaCy “es_core_news_md”</strong> is a free, open-source library for advanced Natural Language Processing (NLP) in Python, it is designed specifically for production use and it helps you build applications that process large volumes of text. During processing, spaCy first tokenizes the text, i.e.&nbsp;segments it into words, punctuation, and so on. This is done by applying rules specific to each language, in our case, we select a Spanish pipeline optimized for CPU. Source: <strong><a href="https://spacy.io/models/es">Spacy.io</a></strong></li>
+</ol>
+<p>But how could we quantitatively evaluate which of the corpora best optimizes our future dataset? We decided to select the corpus which would recognize the highest quantity of words in our dataset. For this purpose, we have created a function that, starting from our full dataset, calculates the percentage of tokens recognized by each corpus, and we selected the one with the highest score.</p>
+<p>The main differences between NLTK and spaCy are well described in <strong><a href="https://www.activestate.com/blog/natural-language-processing-nltk-vs-spacy/">this article</a></strong>.</p>
+<p>This function can be applied to any corpus, which makes it flexible for future use. The advantages of applying this method are mainly that it is simple, relatively fast, and that it allows us to maximize the amount of useful data we can work with, which gives us the possibility to carry out a more extensive analysis of our dataset. Its disadvantage is that we cannot be sure of the quality of the result, since not necessarily a greater amount of data (in this case, words) is synonymous with a higher data quality. Despite the limits, we believe that it is useful for our project to carry out this evaluation and that this method can be improved over time and adjusted to the demands, needs, and objectives of the project that decides to make use of it.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-03-16T21:15:01.976024Z&quot;,&quot;start_time&quot;:&quot;2023-03-16T21:15:01.970924Z&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if you don't have the packages below installed you can uncomment the following lines and run the code</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install spacy nltk</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#!python -m spacy download es_core_news_md</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>spacy_es <span class="op">=</span> spacy.load(<span class="st">"es_core_news_md"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>spacy_es.max_length <span class="op">=</span> <span class="dv">4000000</span> <span class="co">#Increase the limit of the text that Spacy can work with</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"punkt"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"cess_esp"</span>) <span class="co">#Spanish corpus available in NLTK</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\lorga\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package cess_esp to
+[nltk_data]     C:\Users\lorga\AppData\Roaming\nltk_data...
+[nltk_data]   Package cess_esp is already up-to-date!</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Run this function to read the file</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_file(filename):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, encoding<span class="op">=</span><span class="st">'utf8'</span>) <span class="im">as</span> infile:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        contents <span class="op">=</span> infile.read()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> contents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Run this function to recompose the words, remove the spaces, and put tokens in lower letters</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> retokenize(tokenized_text):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    tokenized <span class="op">=</span> []</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    is_broken_word <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    temp_word <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> token <span class="kw">in</span> tokenized_text:</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        token_lower <span class="op">=</span> token.lower()</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(token) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> is_broken_word:</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                is_broken_word <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                temp_word <span class="op">=</span> token_lower</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                temp_word <span class="op">+=</span> token_lower</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> is_broken_word:</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                tokenized.append(temp_word)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                temp_word <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>                is_broken_word <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>            tokenized.append(token_lower)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tokenized</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tokenize all the texts</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tokens <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> glob(<span class="st">'../data/texts/*.txt'</span>):</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> read_file(filename)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    tokenized_text <span class="op">=</span> nltk.tokenize.word_tokenize(text)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    tokenized_text <span class="op">=</span> <span class="bu">set</span>(retokenize(tokenized_text))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    tokens <span class="op">=</span> tokens <span class="op">|</span> tokenized_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now run the actual comparison between the two potential corpora.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Words recognized by each corpus</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>corpora <span class="op">=</span> {}</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>words_corpus <span class="op">=</span> {word.lower() <span class="cf">for</span> word <span class="kw">in</span> nltk.corpus.cess_esp.words()}</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>corpora[<span class="st">"cess_esp"</span>] <span class="op">=</span> {word <span class="cf">for</span> word <span class="kw">in</span> tokens <span class="cf">if</span> word <span class="kw">in</span> words_corpus}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>doc <span class="op">=</span> spacy_es(<span class="st">" "</span>.join(tokens))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>corpora[<span class="st">"es_core_news_md"</span>] <span class="op">=</span> {token.text <span class="cf">for</span> token <span class="kw">in</span> doc <span class="cf">if</span> token.has_vector}</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate the percentage of words recognized </span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> corpus, tokens_recognized <span class="kw">in</span> corpora.items():</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    percent_score <span class="op">=</span> <span class="bu">len</span>(tokens_recognized)<span class="op">*</span><span class="dv">100</span><span class="op">/</span> <span class="bu">len</span>(tokens)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>corpus<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>percent_score<span class="sc">}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cess_esp 4.14768594195563%
+es_core_news_md 18.220112791832964%</code></pre>
+</div>
+</div>
+<p>The SpaCy corpus recognises more than four times as many words. We therefore decided to proceed using this corpus. However, up to this point, all the symbols and unrecognised words that come from the OCR are still included in the dataset. We are now going to remove all words that the SpaCy corpus does not recognise. This way, we know that we have only valid words. The trade-off is that we lose some words and all phrase structure, which means that we know that our analysis will be not completely accurate and cannot fully rely on context.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Run the function to get clean texts</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>raw_tokens <span class="op">=</span> []</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>tokens_recognized <span class="op">=</span> []</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> glob(<span class="st">'../data/texts/*.txt'</span>):</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    basename <span class="op">=</span> os.path.basename(filename)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    new_name <span class="op">=</span> <span class="ss">f'texts_clean/</span><span class="sc">{</span>basename<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> read_file(filename)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    tokenized_text <span class="op">=</span> nltk.tokenize.word_tokenize(text)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    tokenized_text <span class="op">=</span> retokenize(tokenized_text)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    doc <span class="op">=</span> spacy_es(<span class="st">' '</span>.join(tokenized_text))</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    raw_tokens.extend([token.text <span class="cf">for</span> token <span class="kw">in</span> doc])</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    recognized <span class="op">=</span> [token.text <span class="cf">for</span> token <span class="kw">in</span> doc <span class="cf">if</span> token.has_vector]</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    tokens_recognized.extend(recognized)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(new_name, <span class="st">'w'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> fp:</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> item <span class="kw">in</span> recognized:</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>            fp.write(<span class="ss">f'</span><span class="sc">{</span>item<span class="sc">}</span><span class="ss"> '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now also measure the final number of tokens in our dataset.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total token: </span><span class="sc">{</span><span class="bu">len</span>(raw_tokens)<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Token recognized: </span><span class="sc">{</span><span class="bu">len</span>(tokens_recognized)<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Unique raw words: </span><span class="sc">{</span><span class="bu">len</span>(<span class="bu">set</span>(raw_tokens))<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Unique words: </span><span class="sc">{</span><span class="bu">len</span>(<span class="bu">set</span>(tokens_recognized))<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total token: 2317150
+Token recognized: 2000589
+Unique raw words: 330459
+Unique words: 65875</code></pre>
+</div>
+</div>
+<p>As a last step before we start exploring the data, we will create a single function which we can use to easily combine our metadata and data to load our full dataset.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-03-16T21:15:49.907018Z&quot;,&quot;start_time&quot;:&quot;2023-03-16T21:15:49.822098Z&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the file</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> text_reader(<span class="bu">id</span>):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'../data/texts_clean/'</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">id</span>) <span class="op">+</span> <span class="st">'.txt'</span>, <span class="st">"r"</span>, encoding <span class="op">=</span> <span class="st">"utf8"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(text)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load editions and newspapers CSVs, add the newspaper data to the editions DataFrame, add the texts</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> editions_loader():</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    editions <span class="op">=</span> pd.read_csv(<span class="st">'../data/editions.csv'</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    newspapers <span class="op">=</span> pd.read_csv(<span class="st">'../data/newspapers.csv'</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    editions <span class="op">=</span> editions.merge(newspapers, on <span class="op">=</span> <span class="st">"newspaper"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    editions[<span class="st">'text'</span>] <span class="op">=</span> editions[<span class="st">'id'</span>].<span class="bu">apply</span>(text_reader)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> editions</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>editions <span class="op">=</span> editions_loader()</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>editions.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>newspaper</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>link</th>
+      <th>ideology</th>
+      <th>hq</th>
+      <th>audience</th>
+      <th>region</th>
+      <th>format</th>
+      <th>hq latitude</th>
+      <th>hq longitude</th>
+      <th>foundedin</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>ahora</td>
+      <td>1931</td>
+      <td>4</td>
+      <td>9</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+      <td>socialist</td>
+      <td>madrid</td>
+      <td>adult</td>
+      <td>national</td>
+      <td>daily</td>
+      <td>40.416.775</td>
+      <td>-3.703.790</td>
+      <td>1930</td>
+      <td>fi hombre del porvenir . aquel autómata que ha...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>ahora</td>
+      <td>1932</td>
+      <td>4</td>
+      <td>15</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+      <td>socialist</td>
+      <td>madrid</td>
+      <td>adult</td>
+      <td>national</td>
+      <td>daily</td>
+      <td>40.416.775</td>
+      <td>-3.703.790</td>
+      <td>1930</td>
+      <td>v hd ? ! ; militar en el paseo de la nota « fi...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>ahora</td>
+      <td>1932</td>
+      <td>9</td>
+      <td>16</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+      <td>socialist</td>
+      <td>madrid</td>
+      <td>adult</td>
+      <td>national</td>
+      <td>daily</td>
+      <td>40.416.775</td>
+      <td>-3.703.790</td>
+      <td>1930</td>
+      <td>. jefe del estado imponiendo la banda e insign...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>ahora</td>
+      <td>1935</td>
+      <td>1</td>
+      <td>9</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+      <td>socialist</td>
+      <td>madrid</td>
+      <td>adult</td>
+      <td>national</td>
+      <td>daily</td>
+      <td>40.416.775</td>
+      <td>-3.703.790</td>
+      <td>1930</td>
+      <td>/ ' « . concentraciones de tropas en y movimie...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>ahora</td>
+      <td>1935</td>
+      <td>11</td>
+      <td>15</td>
+      <td>https://hemerotecadigital.bne.es/hd/es/viewer?...</td>
+      <td>socialist</td>
+      <td>madrid</td>
+      <td>adult</td>
+      <td>national</td>
+      <td>daily</td>
+      <td>40.416.775</td>
+      <td>-3.703.790</td>
+      <td>1930</td>
+      <td>el momento preciso en que cayo derrumbada la t...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="exploring-the-data" class="level2" data-number="43.3">
+<h2 data-number="43.3" class="anchored" data-anchor-id="exploring-the-data"><span class="header-section-number">43.3</span> Exploring the data</h2>
+<p>In view of the factors we selected for our study, we carried out some analysis on our dataset. It is important to keep in mind here that our dataset is not representative and that we can therefore not make any conclusions about general developments in the Spanish press through this time period - this is simply an exploration of our dataset. First, we looked at how many editions of each newspaper our dataset contains.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-03-16T21:15:53.556006Z&quot;,&quot;start_time&quot;:&quot;2023-03-16T21:15:53.543216Z&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>editions[<span class="st">"newspaper"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>el sol                10
+la dinastia           10
+el pais                9
+ahora                  7
+el imparcial           7
+el siglo futuro        7
+el cruzado español     6
+la actualidad          6
+solidaridad obrera     6
+andalucia              5
+el amigo               5
+el cantábrico          5
+la accion              5
+vida socialista        5
+ceda                   4
+las noticias           3
+Name: newspaper, dtype: int64</code></pre>
+</div>
+</div>
+<p>We can see that <em>El Sol</em> and <em>La Dinastía</em> both have ten editions and <em>El País</em> is a close second with nine, while <em>CEDA</em> and <em>Las Noticias</em> are last. Next, we had a look at how many editions of each ideology the dataset contains.</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>editions[<span class="st">"ideology"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>liberal         20
+socialist       17
+carlist         17
+conservative    15
+republican       9
+anarchist        6
+regionalist      5
+Name: ideology, dtype: int64</code></pre>
+</div>
+</div>
+<p>A fifth of all editions in the dataset are Liberal, then come Socialists, Carlists and Conservatives. We then looked at when our editions were published.</p>
+<p>Let’s look at which years our dataset contains editions for.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sns.displot(x<span class="op">=</span><span class="st">'year'</span>, height<span class="op">=</span><span class="dv">5</span>, aspect<span class="op">=</span><span class="fl">1.5</span>, data<span class="op">=</span>editions, palette <span class="op">=</span> <span class="st">"colorblind"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Collecting-Data-Group-6_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see that the editions are clustered around the beginning and end of our time period, as well as around the end of the 1910. There are much less editions from 1900 to 1910 and the early 1920s. We then examined the ideology of our editions through time shown in various outputs. The first graph illustrates the ratio of the ideology of the editions throughout the time period in question and in each individual period.</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ideology_year <span class="op">=</span> editions</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ideology_year[<span class="st">"ideology"</span>] <span class="op">=</span> pd.Categorical(ideology_year[<span class="st">"ideology"</span>], [</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">"anarchist"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">"socialist"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">"republican"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"liberal"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"conservative"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"regionalist"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"carlist"</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>            ])</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>sns.histplot(data <span class="op">=</span> ideology_year, x <span class="op">=</span> <span class="st">"year"</span>, y <span class="op">=</span> <span class="st">"ideology"</span>, palette <span class="op">=</span> <span class="st">"colorblind"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Collecting-Data-Group-6_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see that Conservative editions strongly dominate in the beginning, but Socialist editions are stronger towards the end. Regionalist and Anarchist papers are only present for the years before 1920 and 1940, respectively. The next two plots These two plots show the spread of specific newspapers’ editions throughout the timeperiod of our dataset.</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.displot(editions, x <span class="op">=</span><span class="st">"year"</span>,hue<span class="op">=</span><span class="st">'newspaper'</span>, height<span class="op">=</span><span class="dv">6</span>,aspect<span class="op">=</span><span class="dv">2</span>, multiple<span class="op">=</span><span class="st">'stack'</span>, palette<span class="op">=</span><span class="st">"colorblind"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Collecting-Data-Group-6_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data<span class="op">=</span>editions, x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"newspaper"</span>, height<span class="op">=</span><span class="dv">9</span>,aspect<span class="op">=</span><span class="fl">1.5</span>, kind<span class="op">=</span><span class="st">"box"</span>, palette<span class="op">=</span><span class="st">"colorblind"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Collecting-Data-Group-6_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>In summary, we can see that are large differences between the ideologies and newspapers present in our dataset. Ideologies are more represented in different time periods, Conservative editions are for example stronger in the early time period, while Anarchist papers are more represented towards the end. Newspapers also existed in different periods and are also present for very different lengths of time, with some spanning nearly the entire dataset, while others are only present for a few years.</p>
+</section>
+<section id="analysing-the-data" class="level2" data-number="43.4">
+<h2 data-number="43.4" class="anchored" data-anchor-id="analysing-the-data"><span class="header-section-number">43.4</span> Analysing the data</h2>
+<p>NB: The <em>Stylo</em> tutorial will be added in a later version in the <em>Data Analysis</em> section.</p>
+<p>For our analysis of the dataset, we decided to use Stylo. For this, we created different subcorpora based on the different features we want to analyse. It is important that the visualisations are as clear as possible, in that sense the colouring plays an essential role. By creating subcorpora from the main corpus, we can colour all editions belonging to the various features in the various analyses the same.</p>
+<p>With this in mind, the analysis started by inputting the plain text and choosing the Spanish language from the Stylo parametres. The parameter for the Most Frequent Words was set to 500 MFW, and as for the words we did not want to be included in the analysis, the culling parameter was set to min=max=20, meaning that a given word has to appear in at least 20% texts. Also, for the analysis, pronouns were excluded as well. In the statistics section, for the corpus at hand, the best exploratory method was Multidimensional Scaling, and for having the most precise result among similarities between texts, Elder’s Delta was chosen since Spanish is such an inflected language. No sampling was performed.</p>
+<p>All Stylo data was then visualised using Gephi.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Collecting-Data-Group-6_files/figure-html/newspapers-format.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">newspapers-format.png</figcaption><p></p>
+</figure>
+</div>
+<p>On the left, individual editions of <strong>newspapers</strong> cluster together fairly strongly, though to various degrees. For example, all editions of <em>Vida Socialista</em> are the closest to each other, while some editions of <em>La Dinastía</em> are spread out fairly widely. This could be a result of actual stylistic differences, but errors in OCR and token recognition are probably the most likely cause. You can also see the different degrees of these newspapers, represented by the size of the nodes. It seems that stylistically, editions of <em>El Sol</em> and <em>El Imparcial</em> had most editions similar to them, as they have the highest degrees. This fits with descriptions of both as being influential newspapers in this period.</p>
+<p>On the right, the main <strong>format</strong> cluster is obviously formed by newspapers with a daily publication cycle. Only a few non-daily newspapers are even close to the main cluster.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Collecting-Data-Group-6_files/figure-html/ideology-headquarters.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ideology-headquarters.png</figcaption><p></p>
+</figure>
+</div>
+<p>On the left, the centre of the main <strong>ideology</strong> cluster is formed by Liberal, Republican or Conservative newspapers. Anarchists, Socialists or Carlists are on the margins, especially in the case of <em>El Cruzado Español</em> on the top right. Interestingly, the other Carlist newspaper <em>CEDA</em> is located rather close to Anarchists and Socialists. There are also two non-political newspapers, shown here as “nan”, which are the ones aimed at youth audiences. They are both completely separate from the main cluster.</p>
+<p>On the right, the centre of the main <strong>headquarters</strong> cluster is formed by newspapers located in the Spanish capital of Madrid. A ring of publications set in Barcelona, Spain’s second city and the capital of Catalonia, surrounds it. One newspaper set in Cantabria’s Santander is well-connected to the main cluster, while the single Andalusian newspaper headquartered in Sevilla is completely separate from the rest. A possible explanation for this could be that Barcelona was such an important city that its newspapers were still written for a national base, but separate enough due to the different location to be recognisably different from the Madrid ones. Santander’s style could not be that much of an influence, while the Andalusian accent is famously strong, suggesting a stronger influence.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Collecting-Data-Group-6_files/figure-html/audience-publication-year.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">audience-publication-year.png</figcaption><p></p>
+</figure>
+</div>
+<p>On the left, in the <strong>audience</strong> analysis, the two newspapers aimed at a youth audience are completely separate from the main cluster, similar to the ideology analysis.</p>
+<p>On the right, editions in the main cluster are ordered from an earlier to a later <strong>year of publication</strong>, from the left to the right.</p>
+<p>Overall, we can’t offer a conclusive answer to the question of what influences newspaper style. However, we can offer a few conclusions from our analysis of the dataset:</p>
+<ul>
+<li><p>The main cluster of our network was made up of daily newspapers, seated in Madrid, with a middle-of-the-road political ideology and a national adult audience. The closer to the centre of the main cluster and the larger the degree of the newspaper edition, the closer it is to this model. Clusters outside of that were made up of newspapers differing in various features, some only in one, some in several.</p></li>
+<li><p>For ideology, there does not seem to be a strong stylistic difference between middle-of-the-road ideologies. More extreme ideologies seem to be located at the edges or completely separate from the main cluster.</p></li>
+<li><p>The target audience seems to be a feature influencing the style particularly strongly, as both non-adult newspapers are completely separate from the main cluster.</p></li>
+<li><p>Editions are also completely ordered according to publication year, suggesting a strong underlying influence.</p></li>
+</ul>
+</section>
+</section>
+<section id="active-learning-exercises" class="level1" data-number="44">
+<h1 data-number="44"><span class="header-section-number">44</span> Active Learning Exercises</h1>
+<section id="update-the-dataframes" class="level2" data-number="44.1">
+<h2 data-number="44.1" class="anchored" data-anchor-id="update-the-dataframes"><span class="header-section-number">44.1</span> Update the DataFrames</h2>
+<p>Given the breadth of resources there is the possibility to update the newspapers data with more newspapers editions, and possibly adding columns with additional information useful to understand Spanish journalistic culture (i.e.&nbsp;name of the journalists). At the moment, there does not seem to be the possibility of downloading the web page via html, but if the National Libary of Spain were to change the structure, the process of downloading the various editions could be automated. <br> <br> Download additional newspaper editions from the <strong><a href="https://hemerotecadigital.bne.es/hd/es/advanced">Hemeroteca Digital</a></strong>, clean them up using Python and add related information to the DataFrame.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="explore-the-dataframes" class="level2" data-number="44.2">
+<h2 data-number="44.2" class="anchored" data-anchor-id="explore-the-dataframes"><span class="header-section-number">44.2</span> Explore the DataFrames</h2>
+<p>We decided to work with separate datasets because we figured it was tidier this way, but to better visualise you will probably want to have a single DataFrame with all the information. Using our previously defined “editions_loader” function, we have loaded this DataFrame for you here.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>editions <span class="op">=</span> editions_loader()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Time to create interesting data visualisations! The task is yours, be creative. As an inspiration: how many samples for each ideology? Is there one you should amend by adding samples?</p>
+<div class="cell" data-execution_count="160">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="come-up-with-interesting-research-questions" class="level2" data-number="44.3">
+<h2 data-number="44.3" class="anchored" data-anchor-id="come-up-with-interesting-research-questions"><span class="header-section-number">44.3</span> Come up with interesting research questions</h2>
+<p>Being that this dataset lends itself well to the use of tools such as Stylo and Gephi, one might come in touch with interesting discoveries in the changing of writing styles over time or ideologies (i.e.&nbsp;Which factor influences the style of a newspaper the most? Can you think of other features to add to the dataset?). To do so, we advise you to rename the files each time with the feature you want to investigate, like this: ideology_id, audience_id etc.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="references" class="level1" data-number="45">
+<h1 data-number="45"><span class="header-section-number">45</span> References</h1>
+<blockquote class="blockquote">
+<p>Bird, S., Klein, E., &amp; Loper, E. (2009). Natural language processing with Python: analyzing text with the natural language toolkit. “Reilly Media, Inc.”</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Hemeroteca Digital. Biblioteca Nacional De España. hemerotecadigital.bne.es/hd/es/advanced.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Honnibal, M., &amp; Montani, I. (2017). spaCy 2: Natural language understanding with Bloom embeddings, convolutional neural networks and incremental parsing.</p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../code/22-Reddit-Data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../code/23-Data-Types-and-Quality.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Data Types and Quality of the Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Cultural Analytics Open Science Guide</div>   
+    <div class="nav-footer-right">powered by <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

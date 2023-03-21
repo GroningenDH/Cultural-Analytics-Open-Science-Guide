@@ -114,6 +114,7 @@ book:
             - code/20-Twitter-Data.ipynb
             - code/21-Twitter-Data-Sharing.ipynb
             - code/22-Reddit-Data.ipynb
+            - code/Collecting-Data-Group-6.ipynb
         - part: "Exploratory Data Analysis (in-depth)"
           chapters:
             - code/23-Data-Types-and-Quality.ipynb

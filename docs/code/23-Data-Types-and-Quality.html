@@ -8,7 +8,7 @@
 
 <meta name="author" content="Paschalis Agapitos">
 
-<title>Cultural Analytics Open Science Guide - 41&nbsp; Data Types and Quality of the Data</title>
+<title>Cultural Analytics Open Science Guide - 42&nbsp; Data Types and Quality of the Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../code/24-Changing-Numerical-Variable-Data-Types.html" rel="next">
-<link href="../code/22-Reddit-Data.html" rel="prev">
+<link href="../code/Collecting-Data-Group-6.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Data Types and Quality of the Data</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Data Types and Quality of the Data</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -360,6 +360,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../code/22-Reddit-Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/Collecting-Data-Group-6.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">100 Historical Spanish Newspaper Editions</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -372,32 +377,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/23-Data-Types-and-Quality.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Data Types and Quality of the Data</span></a>
+  <a href="../code/23-Data-Types-and-Quality.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Data Types and Quality of the Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/24-Changing-Numerical-Variable-Data-Types.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Tips for recognizing the data types</span></a>
+  <a href="../code/24-Changing-Numerical-Variable-Data-Types.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Tips for recognizing the data types</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/25-Changing-Categorical-Variable-Data-Type.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Categorical Variable Data Type</span></a>
+  <a href="../code/25-Changing-Categorical-Variable-Data-Type.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Categorical Variable Data Type</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/26-Data-Information.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Data Information</span></a>
+  <a href="../code/26-Data-Information.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Data Information</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/27-EDA-Summary-Statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></a>
+  <a href="../code/27-EDA-Summary-Statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis and Summary Statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/28-Association-Between-Variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Association between variables</span></a>
+  <a href="../code/28-Association-Between-Variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Association between variables</span></a>
   </div>
 </li>
       </ul>
@@ -411,16 +416,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-to-data-types-and-quality" id="toc-introduction-to-data-types-and-quality" class="nav-link active" data-scroll-target="#introduction-to-data-types-and-quality"><span class="toc-section-number">41.1</span>  Introduction to Data Types and Quality</a></li>
-  <li><a href="#working-with-missing-data" id="toc-working-with-missing-data" class="nav-link" data-scroll-target="#working-with-missing-data"><span class="toc-section-number">41.2</span>  Working with Missing Data</a>
+  <li><a href="#introduction-to-data-types-and-quality" id="toc-introduction-to-data-types-and-quality" class="nav-link active" data-scroll-target="#introduction-to-data-types-and-quality"><span class="toc-section-number">42.1</span>  Introduction to Data Types and Quality</a></li>
+  <li><a href="#working-with-missing-data" id="toc-working-with-missing-data" class="nav-link" data-scroll-target="#working-with-missing-data"><span class="toc-section-number">42.2</span>  Working with Missing Data</a>
   <ul>
-  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data"><span class="toc-section-number">41.2.1</span>  Missing data</a></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data"><span class="toc-section-number">42.2.1</span>  Missing data</a></li>
   </ul></li>
-  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy"><span class="toc-section-number">41.3</span>  Accuracy</a></li>
-  <li><a href="#validity" id="toc-validity" class="nav-link" data-scroll-target="#validity"><span class="toc-section-number">41.4</span>  Validity</a></li>
-  <li><a href="#representative-samples" id="toc-representative-samples" class="nav-link" data-scroll-target="#representative-samples"><span class="toc-section-number">41.5</span>  Representative Samples</a>
+  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy"><span class="toc-section-number">42.3</span>  Accuracy</a></li>
+  <li><a href="#validity" id="toc-validity" class="nav-link" data-scroll-target="#validity"><span class="toc-section-number">42.4</span>  Validity</a></li>
+  <li><a href="#representative-samples" id="toc-representative-samples" class="nav-link" data-scroll-target="#representative-samples"><span class="toc-section-number">42.5</span>  Representative Samples</a>
   <ul>
-  <li><a href="#sampling-errors" id="toc-sampling-errors" class="nav-link" data-scroll-target="#sampling-errors"><span class="toc-section-number">41.5.1</span>  Sampling errors</a></li>
+  <li><a href="#sampling-errors" id="toc-sampling-errors" class="nav-link" data-scroll-target="#sampling-errors"><span class="toc-section-number">42.5.1</span>  Sampling errors</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -430,7 +435,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Data Types and Quality of the Data</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Data Types and Quality of the Data</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/GroningenDH/Cultural-Analytics-Open-Science-Guide"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -450,8 +455,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction-to-data-types-and-quality" class="level2" data-number="41.1">
-<h2 data-number="41.1" class="anchored" data-anchor-id="introduction-to-data-types-and-quality"><span class="header-section-number">41.1</span> Introduction to Data Types and Quality</h2>
+<section id="introduction-to-data-types-and-quality" class="level2" data-number="42.1">
+<h2 data-number="42.1" class="anchored" data-anchor-id="introduction-to-data-types-and-quality"><span class="header-section-number">42.1</span> Introduction to Data Types and Quality</h2>
 <p>Each individual object that we have in a dataset is called <strong>entity</strong>, <strong>instance</strong>, <strong>observation</strong>. These terms are used interchangeably.</p>
 <p>Each feature of an observation is considered to be a <strong>variable</strong>. Well-defined variable:</p>
 <ol type="1">
@@ -459,8 +464,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>The variable per se should not be a characteristic on it own.</p></li>
 </ol>
 </section>
-<section id="working-with-missing-data" class="level2" data-number="41.2">
-<h2 data-number="41.2" class="anchored" data-anchor-id="working-with-missing-data"><span class="header-section-number">41.2</span> Working with Missing Data</h2>
+<section id="working-with-missing-data" class="level2" data-number="42.2">
+<h2 data-number="42.2" class="anchored" data-anchor-id="working-with-missing-data"><span class="header-section-number">42.2</span> Working with Missing Data</h2>
 <p>The types of “missing-ness” are three:</p>
 <ol type="1">
 <li><p><strong>Missing Completely at Random</strong>: When there is data missing and there is no deeper explanation to why the data is not there.</p></li>
@@ -469,14 +474,14 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p>We need to decide what to do with the missing data. Even if we decide not to do anything, it also affects our analysis. Take care of the missing data at the early stages of the analysis!</p>
 <p><strong>Hint</strong>: A value of <code>0</code> in the dataset is not a <code>NaN</code> value. A <code>NaN</code> value is a completely missing value.</p>
-<section id="missing-data" class="level3" data-number="41.2.1">
-<h3 data-number="41.2.1" class="anchored" data-anchor-id="missing-data"><span class="header-section-number">41.2.1</span> <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html#missing-data" title="Permalink to this headline">Missing data</a></h3>
+<section id="missing-data" class="level3" data-number="42.2.1">
+<h3 data-number="42.2.1" class="anchored" data-anchor-id="missing-data"><span class="header-section-number">42.2.1</span> <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html#missing-data" title="Permalink to this headline">Missing data</a></h3>
 <p>pandas primarily uses the value&nbsp;<code>np.nan</code>&nbsp;to represent missing data. It is by default not included in computations. See the&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html#missing-data">Missing Data section</a>.</p>
 <p>Missing values should&nbsp;<strong>not</strong>&nbsp;be included in the Categorical’s&nbsp;<code>categories</code>, only in the&nbsp;<code>values</code>. Instead, it is understood that NaN is different, and is always a possibility. When working with the Categorical’s&nbsp;<code>codes</code>, missing values will always have a code of&nbsp;<code>-1</code>. Methods for working with missing data, e.g.&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.isna.html#pandas.Series.isna" title="pandas.Series.isna"><code>isna()</code></a>,&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.fillna.html#pandas.Series.fillna" title="pandas.Series.fillna"><code>fillna()</code></a>,&nbsp;<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.dropna.html#pandas.Series.dropna" title="pandas.Series.dropna"><code>dropna()</code></a>.</p>
 </section>
 </section>
-<section id="accuracy" class="level2" data-number="41.3">
-<h2 data-number="41.3" class="anchored" data-anchor-id="accuracy"><span class="header-section-number">41.3</span> Accuracy</h2>
+<section id="accuracy" class="level2" data-number="42.3">
+<h2 data-number="42.3" class="anchored" data-anchor-id="accuracy"><span class="header-section-number">42.3</span> Accuracy</h2>
 <p>Accuracy is how well the data captures the reality. When we try to measure the accuracy, we should think of reliable and unreliable variables.</p>
 <ul>
 <li><p>One way to achieve accuracy is standardization.</p></li>
@@ -488,8 +493,8 @@ ul.task-list li input[type="checkbox"] {
 <li>use real-world knowledge to be sure that the dataset reflects reality.</li>
 </ul>
 </section>
-<section id="validity" class="level2" data-number="41.4">
-<h2 data-number="41.4" class="anchored" data-anchor-id="validity"><span class="header-section-number">41.4</span> Validity</h2>
+<section id="validity" class="level2" data-number="42.4">
+<h2 data-number="42.4" class="anchored" data-anchor-id="validity"><span class="header-section-number">42.4</span> Validity</h2>
 <p><strong>Validity</strong> of a dataset is when a dataset actually measures what we think it measures. Validity is a special kind of quality measure since it’s not only about the dataset itself but it also connected to the purpose of its dataset.</p>
 <p>Some datasets are good to answer a question but not other questions. We undermine the validity of a dataset only if we use it in order to answer a question that it is not possible to be answered using a dataset.</p>
 <p>For instance, we know that you can measure the age of a tree by counting the rings, but we didn’t do that. Let’s say that we did measure the width of the tree.</p>
@@ -498,12 +503,12 @@ ul.task-list li input[type="checkbox"] {
 <p>Using proxies and inappropriate time spans are just two ways to compromise the validity of a dataset. There are infinite ways in which a given dataset is not valid for answering a given question.</p>
 <p>One easy way to spot issues with the validity of the dataset is to ask: <strong>Does this variable measure what I think it does?</strong></p>
 </section>
-<section id="representative-samples" class="level2" data-number="41.5">
-<h2 data-number="41.5" class="anchored" data-anchor-id="representative-samples"><span class="header-section-number">41.5</span> Representative Samples</h2>
+<section id="representative-samples" class="level2" data-number="42.5">
+<h2 data-number="42.5" class="anchored" data-anchor-id="representative-samples"><span class="header-section-number">42.5</span> Representative Samples</h2>
 <p><strong>Population</strong> is all the observations for a certain thing that we want to measure (e.g., if we want to measure the number of abortions in New York, the population should include every person that can be impregnated).</p>
 <p><strong>Sample</strong> is the number of observations that we have data about. A sample should be representative; in other words, it should include observations from every different sub-category of the population (e.g., people from every skin colour, race, ethnicity, etc.). In some cases, if we choose randomly a sample from the population yields more robust result since we avoid the cherry-picking of a sample that answer our questions.</p>
-<section id="sampling-errors" class="level3" data-number="41.5.1">
-<h3 data-number="41.5.1" class="anchored" data-anchor-id="sampling-errors"><span class="header-section-number">41.5.1</span> Sampling errors</h3>
+<section id="sampling-errors" class="level3" data-number="42.5.1">
+<h3 data-number="42.5.1" class="anchored" data-anchor-id="sampling-errors"><span class="header-section-number">42.5.1</span> Sampling errors</h3>
 <p>If we have a sampling error, then we insert bias in our dataset.</p>
 <ul>
 <li><strong>Convenience samples</strong>: when we don’t include measurements and observations in our dataset, due to convenience. For example, if we can’t go to a certain area that is important for our sample, we collect the data only from areas where we have some kind of access. To some extent, this is also connected to the validity of the dataset as we saw <a href="https://groningendh.github.io/Cultural-Analytics-Open-Science-Guide/code/23-Data-Types-and-Quality.html#validity">earlier</a>.</li>
@@ -778,13 +783,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/22-Reddit-Data.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Reddit Data Collection and Analysis with PSAW</span></span>
+      <a href="../code/Collecting-Data-Group-6.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">100 Historical Spanish Newspaper Editions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../code/24-Changing-Numerical-Variable-Data-Types.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Tips for recognizing the data types</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">Tips for recognizing the data types</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
