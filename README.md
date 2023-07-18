@@ -16,19 +16,19 @@ There are discursive sections and interactive Jupyter Notebooks to let you learn
 
 ---
 
-Some of the pages of this guide have been originally created by others:
-- [The Turing Way](https://the-turing-way.netlify.app/welcome.html) handbook to reproducible, ethical and collaborative data science, initiated by The Alan Turing Institute
-- [Introduction to Cultural Analytics & Python](https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html) by Melanie Walsh
+Some of the pages of this guide have been originally created by others and authorship is attributed on indivdual pages:
+- [The Turing Way](https://the-turing-way.netlify.app/welcome.html) handbook to reproducible, ethical and collaborative data science, initiated by The Alan Turing Institute, licensed under [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/)
+- [Introduction to Cultural Analytics & Python](https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html) by Melanie Walsh, licensed under [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
 
-Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
-This work is licensed under a
-[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+This work, created by Federico Pianzola and  Paschalis Agapitos, and with the University of Groningen as the copyright holder, is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
 
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
-[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
-[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
-[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
